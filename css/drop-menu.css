@@ -1,0 +1,209 @@
+* Page component structure
+---------------------------------------- */
+.page-wrapper {
+	background-color: #fff;
+	}
+.block-screen {
+	position: absolute;
+	display: none;
+	left: 0;
+	top: 0;
+	width: 1000%;
+	height: 1000%;
+	background-color: gray;
+	opacity: 0.5;
+	z-index: 50;
+	}
+.overlay {
+	position: absolute;
+	display: none;
+	z-index: 100;
+	}
+/* Header
+---------------------------------------- */
+.header {
+	height: 100px;
+	}
+/* Call to Action
+---------------------------------------- */
+.cta {
+	text-transform: uppercase;
+	}
+/* Navigation
+---------------------------------------- */
+[role="navigation"] {
+	position: relative;
+	}
+.navigation {
+	position: absolute;
+	margin: 0;
+	font-size: 16px;
+	font-size: 1.6rem;
+	}
+.navigation-link:hover,
+.sub-navigation-link:hover {
+	text-decoration: none;
+	}
+/* DT Only ----------- */
+@media screen and (min-width : 1025px) {
+	.triptych-nav-trigger {
+		display: none;
+		}
+	[role="navigation"] {
+		width: 1024px;
+		margin: 0 auto;
+		z-index: 10;
+		}
+	.close-drawer {
+		display: none;
+		}
+	.navigation {
+		top: 50px; /* dt only */
+		right: 67px; /* dt only */
+		font-family: 'PT Sans Narrow', 'Arial Narrow', 'Helvetica Condensed', Arial, Helvetica, sans-serif;
+		font-size: 20px; /* dt only */
+		font-size: 2.0rem; /* dt only */
+		}
+	.navigation-item {
+		position: relative;
+		display: inline-block;
+		margin: 0 0 0 -.25em; /* dt only */
+		}
+	.navigation-item:after,
+	.navigation-item:first-child:before {
+		content: "|";
+		}
+	.navigation-link {
+		display: inline-block;
+		padding: 10px; /* dt only */
+		margin-right: -0.3em;
+		}
+	.navigation-item:first-child .navigation-link {
+		margin-left: -0.3em;
+		}
+	.navigation-item.active .navigation-link,
+	.navigation-item:hover .navigation-link {
+		color: #4f0100;
+		}
+	.sub-navigation {
+		position: absolute;
+		left: 0;
+		top: 51px;
+		display: none;
+		width: 120px;
+		margin: 0;
+		padding: 0;
+		background-color: #4f0100;
+		font-size: 16px;
+		font-size: 1.6rem;
+		}
+	.navigation-item.active .sub-navigation {
+		display: block;
+		}
+	.sub-navigation-item {
+		margin: 0;
+		border-bottom: 1px solid #fff;
+		}
+	.sub-navigation-link {
+		display: block;
+		padding: 1ex 1em;
+		color: #fff;
+		}
+	.sub-navigation-item.active .sub-navigation-link,
+	.sub-navigation-item:hover .sub-navigation-link {
+		color: #ffb612;
+		}
+}
+/* Mobile and Tablet ----------- */
+@media screen and (min-width : 0px) and (max-width : 1024px) {
+	/* General Helpers
+	---------------------------------------- */
+	.mobile-hide {
+		display: none;
+		}
+	/* Page structure
+	---------------------------------------- */
+	.container {
+		overflow: hidden;
+		}
+	.page-wrapper {
+		position: relative;
+		box-shadow: -2px 0 10px 0 rgba(0, 0, 0, 0.2);
+		width: auto;
+		padding: 0 10%;
+		}
+	.page-wrapper.reveal {
+		left: 210px;
+		}
+    .page-wrapper.reveal ~ .block-screen {
+        display: block;
+        left: 210px;
+        }
+	/* Masthead
+	---------------------------------------- */
+	.triptych-nav-trigger {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 51px;
+		height: 51px;
+		margin: 0;
+		border: none;
+		padding: 0;
+		background: none;
+		background-color: #ffb612;
+		z-index: 10;
+		}
+	.svg.triptych {
+		width: 21px;
+		height: 17px;
+		}
+	.close-drawer {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 210px;
+		margin: 0;
+		border: none;
+		border-bottom: 1px solid #b5b5a8;
+		padding: 1ex 1em;
+		background: none;
+		font-weight: 700;
+		font-size: 1.6rem;
+		line-height: 160%;
+		text-align: left;
+		}
+	.close-drawer:after {
+		content: "X";
+		position: absolute;
+		right: .4em;
+		top: 50%;
+		font-weight: bold;
+		font-size: 1.9rem;
+		line-height: 1;
+		margin-top: -.8ex;
+}
+	.navigation {
+		left: 0;
+		top: 41px;
+		bottom: 0;
+		height: 100%;
+		width: 210px;
+		padding: 0;
+		background-color: #e7eaee;
+		font-weight: bold; /* mobi only */
+		}
+	.navigation-item {
+		margin-bottom: 0;
+		border-bottom: 1px solid #b5b5a8;
+		padding: 1ex 1em;
+		}
+	.navigation-link,
+	.sub-navigation-link {
+		color: #161e25;
+		}
+	.sub-navigation {
+		margin: 1ex 1em;
+		font-weight: 400;
+		}
+}
