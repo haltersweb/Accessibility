@@ -44,6 +44,12 @@
 .sub-navigation-link:hover {
 	text-decoration: none;
 	}
+.sub-navigation {
+	display: none;
+	}
+.navigation-item.active .sub-navigation {
+	display: block;
+	}
 /* DT Only ----------- */
 @media screen and (min-width : 1025px) {
 	.triptych-nav-trigger {
@@ -89,16 +95,12 @@
 		position: absolute;
 		left: 0;
 		top: 51px;
-		display: none;
 		width: 120px;
 		margin: 0;
 		padding: 0;
 		background-color: #4f0100;
 		font-size: 16px;
 		font-size: 1.6rem;
-		}
-	.navigation-item.active .sub-navigation {
-		display: block;
 		}
 	.sub-navigation-item {
 		margin: 0;
