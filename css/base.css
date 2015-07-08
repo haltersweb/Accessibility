@@ -126,6 +126,15 @@ h5, .h5 {
 	}
 h6, .h6 {
 	}
+/* Lists
+---------------------------------------- */
+.bullet {
+	padding-left: 1.4em;
+	list-style-type: disc;
+	}
+.singletons li {
+	margin-bottom: 0;
+}
 /* Forms
 ---------------------------------------- */
 legend {
