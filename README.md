@@ -2,5 +2,5 @@
 
 ##Library of Solutions
 
-View a library of solutions at http://haltersweb.github.io/Accessibility/
+View the library of solutions from this repository at http://haltersweb.github.io/Accessibility/
 
