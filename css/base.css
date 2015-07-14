@@ -331,7 +331,9 @@ i.svg {
 /* Code snippets
 ---------------------------------------- */
 .code-snippet {
-	padding: 0 2em;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+	padding: 0 1.5em;
 	background-color: #ccc;
 }
 /* Page component structure
