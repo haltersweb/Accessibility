@@ -14,7 +14,7 @@
 			<p>SVGs are currently still very problematic with all screen readers.  Therefore I do not suggest using nested title and desc elements within an SVG element.  Nor do I suggest assigning role="img" to an SVG.</p>
 			<p>Also, stay away from using aria-labeledby and aria-describedby.  This causes repeating phrases.</p>
 			<h2>Known issues:</h2>
-			<p>Below are just some of the issues using svg[role="img"] and using nested title and desc elements.</p>
+			<p>Below are just some of the issues when using nested <strong>title and desc</strong> elements as well as using <strong>role="img"</strong>.</p>
 			<h3>Problems with JAWS:</h3>
 			<ul class="bullet">
 				<li>JAWS will run the title and the word "icon" together as one word causing pronunciation issues.</li>
@@ -30,10 +30,11 @@
 			</ul>
 			<h2>Preferred method:</h2>
 			<ul class="bullet">
-				<li>Assign the attribute role="presentation" to the SVG element.</li>
-				<li>Assign the attribute focusable="false" to the SVG element.</li>
-				<li>Use accessibly-hidden text to give the button or link meaning for those using a screen reader.</li>
+				<li>Assign the attribute <strong>role="presentation"</strong> to the SVG element.</li>
+				<li>Assign the attribute <strong>focusable="false"</strong> to the SVG element.</li>
+				<li>Use <strong>accessibly-hidden text</strong> to give the button or link meaning for those using a screen reader.</li>
 			</ul>
+			<h3>Button example:</h3>
 			<div>
 				<button type="button">
 					<span class="accessibly-hidden">Reveal navigation</span>
@@ -44,7 +45,7 @@
 					</i>
 				</button>
 			</div>
-			<pre class="code-snippet" style="width: 685px;"><code>
+			<pre class="code-snippet" style="width: 700px;"><code>
 &lt;button type="button"&gt;
   &lt;span class="accessibly-hidden"&gt;Reveal navigation&lt;/span&gt;
   &lt;i class="svg" style="width: 50px; height: 50px;"&gt;
@@ -54,8 +55,9 @@
   &lt;/i&gt;
 &lt;/button>
 			</code></pre>
+			<h3>Link example:</h3>
 			<div>
-				<a href="http://www.google.com/">
+				<a href="http://www.google.com/" style="display: inline-block;">
 					<span class="accessibly-hidden">search google</span>
 					<i class="svg" style="width: 50px; height: 50px;">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" role="presentation" focusable="false">
@@ -64,8 +66,8 @@
 					</i>
 				</a>
 			</div>
-			<pre class="code-snippet" style="width: 685px;"><code>
-&lt;a href="http://www.google.com/"&gt;
+			<pre class="code-snippet" style="width: 700px;"><code>
+&lt;a href="http://www.google.com/" style="display: inline-block;"&gt;
   &lt;span class="accessibly-hidden"&gt;search google&lt;/span&gt;
   &lt;i class="svg" style="width: 50px; height: 50px;"&gt;
     &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="00 0 90 90" role="presentation" focusable="false"&gt;

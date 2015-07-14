@@ -59,6 +59,9 @@ a.current {
 a.current:hover {
 	text-decoration: none;
 	}
+button {
+	cursor: pointer;
+	}
 fieldset {
 	position: relative;
 	margin: 0;
@@ -181,7 +184,6 @@ textarea {
     border: 1px solid #d5d5d5;
     border-radius: 2px;
     box-shadow: inset 0 5px 5px -5px rgba(0,0,0,0.2);
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
     }
 input[type="radio"],
@@ -331,7 +333,6 @@ i.svg {
 /* Code snippets
 ---------------------------------------- */
 .code-snippet {
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
 	padding: 0 1.5em;
 	background-color: #ccc;
