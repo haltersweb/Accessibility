@@ -328,6 +328,12 @@ i.svg {
 		display: none;
 		}
 	}
+/* Code snippets
+---------------------------------------- */
+.code-snippet {
+	padding: 0 2em;
+	background-color: #ccc;
+}
 /* Page component structure
 ---------------------------------------- */
 .page-wrapper {

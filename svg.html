@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>This is a Title</title>
+	<link rel="stylesheet" href="normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="page-wrapper">
+			<h1>Inline SVG used for buttons and links</h1>
+			<p>SVGs are currently still very problematic with all screen readers.  Therefore I do not suggest using nested title and desc elements within an SVG element.  Nor do I suggest assigning role="img" to an SVG.</p>
+			<p>Also, stay away from using aria-labeledby and aria-describedby.  This causes repeating phrases.</p>
+			<h2>Known issues:</h2>
+			<p>Below are just some of the issues using svg[role="img"] and using nested title and desc elements.</p>
+			<h3>Problems with JAWS:</h3>
+			<ul class="bullet">
+				<li>JAWS will run the title and the word "icon" together as one word causing pronunciation issues.</li>
+				<li>JAWS announces a link with an SVG assigned a role="img" as a "link graphic".  This does not add anything to the semantics of the link.</li>
+			</ul>
+			<h3>Problems with NVDA:</h3>
+			<ul class="bullet">
+				<li>NVDA will read the title text multiple times when an SVG is nested in an anchor or a button</li>
+			</ul>
+			<h3>Problems with VoiceOver:</h3>
+			<ul class="bullet">
+				<li>VoiceOver does not recognize the title or desc element.</li>
+			</ul>
+			<h2>Preferred method:</h2>
+			<ul class="bullet">
+				<li>Assign the attribute role="presentation" to the SVG element.</li>
+				<li>Assign the attribute focusable="false" to the SVG element.</li>
+				<li>Use accessibly-hidden text to give the button or link meaning for those using a screen reader.</li>
+			</ul>
+			<div>
+				<button type="button">
+					<span class="accessibly-hidden">Reveal navigation</span>
+					<i class="svg">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.8 25" role="presentation" focusable="false">
+							<rect fill="#000000" width="31.8" height="5"></rect>
+							<rect y="10" fill="#000000" width="31.8" height="5"></rect>
+							<rect y="20" fill="#000000" width="31.8" height="5"></rect>
+						</svg>
+					</i>
+				</button>
+			</div>
+			<pre class="code-snippet"><code>
+&lt;button type="button"&gt;
+  &lt;span class="accessibly-hidden"&gt;Reveal navigation&lt;/span&gt;
+  &lt;i class="svg"&gt;
+    &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.8 25" role="presentation" focusable="false"&gt;
+      &lt;rect fill="#000000" width="31.8" height="5"&gt;&lt;/rect&gt;
+      &lt;rect y="10" fill="#000000" width="31.8" height="5"&gt;&lt;/rect&gt;
+      &lt;rect y="20" fill="#000000" width="31.8" height="5"&gt;&lt;/rect&gt;
+    &lt;/svg&gt;
+  &lt;/i&gt;
+&lt;/button>
+			</code></pre>
+			<div>
+				<a href="http://www.google.com/">
+					<span class="accessibly-hidden">search google</span>
+					<i class="svg">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.8 25" role="presentation" focusable="false">
+							<rect fill="#000000" width="31.8" height="5"></rect>
+							<rect y="10" fill="#000000" width="31.8" height="5"></rect>
+							<rect y="20" fill="#000000" width="31.8" height="5"></rect>
+						</svg>
+					</i>
+				</a>
+			</div>
+			<pre class="code-snippet"><code>
+&lt;a href="http://www.google.com/"&gt;
+  &lt;span class="accessibly-hidden"&gt;search google&lt;/span&gt;
+  &lt;i class="svg"&gt;
+    &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.8 25" role="presentation" focusable="false"&gt;
+      &lt;rect fill="#000000" width="31.8" height="5"&gt;&lt;/rect&gt;
+      &lt;rect y="10" fill="#000000" width="31.8" height="5"&gt;&lt;/rect&gt;
+      &lt;rect y="20" fill="#000000" width="31.8" height="5"&gt;&lt;/rect&gt;
+    &lt;/svg&gt;
+  &lt;/i&gt;
+&lt;/a&gt;
+			</code></pre>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+</body>
+</html>
