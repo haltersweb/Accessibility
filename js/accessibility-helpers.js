@@ -63,7 +63,7 @@
         });
     };
     /*
-    removes focus blocking set with NAME.blockFocus method
+    removes focus blocking that was set with NAME.blockFocus method
     */
     NAME.access.removeBlockFocus = function ($blockedContainers) {
         $blockedContainers.off('focusin.blockingFocus');
