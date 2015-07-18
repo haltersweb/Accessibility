@@ -6,21 +6,22 @@
 	<title>Accessible Modal Window</title>
 	<link rel="stylesheet" href="css/normalization.css" />
 	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/modal-window.css" />
 </head>
 <body>
 	<div class="container">
 		<div class="page-wrapper">
 			<h1>Lorem ipsum dolor sit amet</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
-			<p><button type="button" data-trigger="modal" aria-controls="myModalWindow">Launch modal window</button></p>
+			<p><button type="button" data-controls="modal" aria-controls="myModalWindow">Launch modal window</button></p>
 			<p>Lorem ipsum <a href="#">dolor sit amet</a>, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue <a href="#">scelerisque bibendum</a>. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</p>
-			<p><button type="button" data-trigger="modal" aria-controls="myModalWindow">Launch modal window</button></p>
+			<p><button type="button" data-controls="modal" aria-controls="myModalWindow">Launch modal window</button></p>
 		</div>
-		<div id="myModalWindow" class="modal" role="dialog" aria-hidden="true" style="display: none;">
-			<div><button type="button" class="close">Close Dialog</button></div>
+		<div id="myModalWindow" class="modal" role="dialog" data-widget="modal" aria-hidden="true" style="display: none;">
+			<div><button type="button" class="close-dialog" data-control="close">Close Dialog</button></div>
 			<h2>Welcome to the Modal</h2>
 			<p>Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue.</p>
-			<div><button type="button">Close Window</button></div>
+			<div><button type="button">Fake Button</button></div>
 		</div>
 		<div class="block-screen"></div>
 	</div>
