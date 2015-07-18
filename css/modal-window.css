@@ -17,5 +17,12 @@
 .modal {
 	position: absolute;
 	display: none;
+	left: 0;
+	top: 300px;
+	width: 80%;
+	background-color: #fff;
 	z-index: 100;
+	}
+.modal.active {
+	display: block;
 	}

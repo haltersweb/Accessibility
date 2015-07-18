@@ -31,20 +31,16 @@
         var $modalTrigger = $(this),
             $blockScreen = $('.block-screen'),
             $blockedContainers = $('.page-wrapper'),
-            $modal = $('#' + $modalTrigger.attr('aria-controls')),
-            $closeModalBtn = $modal.find('[data-control="close"]');
+            $modal = $('#' + $modalTrigger.attr('aria-controls'));
         //flag trigger used to open overlay
         NAME.access.tagTrigger();
         //show screen blocker
         $blockScreen.addClass('active');
-        //block focus in blocked containers
-        //hide page content from reader
-        NAME.access.blockFocus($blockedContainers, $closeModalBtn);
         //unblock overlay content from screen reader
         //position and show overlay
         //bind esc to trigger close button
         //put focus on close button.
-        openDialog();
+        openDialog($modal, "modal", $blockedContainers);
     });
     $('[data-widget="modal"] [data-control="close"]').on('click', function (evt) {
         var $closeModalBtn = $(this),
@@ -58,13 +54,42 @@
     /*
         function to open a dialog box
     */
-    function openDialog($dialog) {
-        /*
-        1. set aria-hidden = false;
-        2. position dialog (is this a tooltip or a modal?)
-        3. show dialog
-        */
+    function openDialog($dialog, modalOrTooltip, $blockedContainers) {
+        var $closeModalBtn = $dialog.find('[data-control="close"]');
+        $dialog.attr("aria-hidden", "false");
+        if (modalOrTooltip = "modal") {
+            //position in center
+            //block focus in blocked containers & hide page content from reader
+            NAME.access.blockFocus($blockedContainers, $closeModalBtn);
+        }
+        if (modalOrTooltip = "tooltip") {
+            //position relative to [data-trigger="true"]
+        }
+        $dialog.addClass('active');
+        //bind esc to trigger close button
+        $dialog.on('keyup.esc-key-closes-dialog', function (event) {
+            escapeKeyClose(event);
+        });
+        //put focus on close button
+        $closeModalBtn.focus();
         console.log('openModal function run.');
+    }
+    /*
+        esc key closes dialog
+    */
+        // Close the overlay using the escape key
+    function escapeKeyClose (event) {
+        if (event.keyCode === NAME.keyboard.esc) {
+            // If focus is in a form field, the escape key should not close the overlay
+            // because form fields have default escape behavior on their own.
+            if ($(':focus').filter('input, textarea').length > 0) {
+                return;
+            }
+            // Close the current overlay
+            if ($currentOverlay) {
+                hideOverlay($currentOverlay);
+            }
+        }
     }
     /*
         function to close a dialog box

@@ -11,17 +11,22 @@
 <body>
 	<div class="container">
 		<div class="page-wrapper">
-			<h1>Lorem ipsum dolor sit amet</h1>
+			<h1>Creating an Accessible Modal Window</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
 			<p><button type="button" data-controls="modal" aria-controls="myModalWindow">Launch modal window</button></p>
 			<p>Lorem ipsum <a href="#">dolor sit amet</a>, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue <a href="#">scelerisque bibendum</a>. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</p>
 			<p><button type="button" data-controls="modal" aria-controls="myModalWindow">Launch modal window</button></p>
 		</div>
-		<div id="myModalWindow" class="modal" role="dialog" data-widget="modal" aria-hidden="true" style="display: none;">
+		<div id="myModalWindow" class="modal" role="dialog" data-widget="modal" aria-hidden="true">
 			<div><button type="button" class="close-dialog" data-control="close">Close Dialog</button></div>
-			<h2>Welcome to the Modal</h2>
-			<p>Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue.</p>
-			<div><button type="button">Fake Button</button></div>
+			<h2>Escaping the Modal</h2>
+			<p>With a modal you are mimicking an operating system dialog box.  Thus there is no way to leave the dialog without either:</p>
+			<ul class="bullet">
+				<li>engaging the actionable items in the dialog box, or</li>
+				<li>hitting the ESC key.</li>
+			</ul>
+			<p>A modal window should mimic this behavior.  As long as the user has a way out either by using the close button or by hitting “ESC” the modal is fine.</p>
+			<p><a href="#">Fake link</a></p>
 		</div>
 		<div class="block-screen"></div>
 	</div>
