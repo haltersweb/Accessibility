@@ -45,12 +45,15 @@
     $('[data-widget="modal"] [data-control="close"]').on('click', function (evt) {
         var $closeModalBtn = $(this),
             $screenBlock = $('.block-screen'),
-            $contentsToBlock=$('.page-wrapper');
+            $contentsToBlock = $('.page-wrapper');
 
-        closeDialog();
-        NAME.access.removeBlockFocus($blockedContainers);
+        hideDialog();
+        NAME.access.removeBlockFocus($contentsToBlock);
         NAME.access.focusTrigger();
     });
+    /*
+        function to open a dialog box
+    */
     function showDialog($dialog, $blockedContainers) {
         var $firstActionableElement = $dialog.find(NAME.focusables).not('[data-bookends]').eq(0);
         // if there is no actionable element inside dialog, make the dialog the actionable element
@@ -66,8 +69,6 @@
             $screenBlock.addClass('active');
             //add bookends to modal
             addBookends($dialog);
-            //constrain tabbing to bookends
-            bookendFocus($dialog);
             //position in center
             positionModal();
             //block focus in blocked containers & hide page content from reader
@@ -75,16 +76,17 @@
         // else this is a tooltip
         } else {
             //position relative to trigger
+            positionTooltip();
         }
         // flag the trigger used to open dialog
         NAME.access.tagTrigger();
-        // reveal dialog content to screen reader
-        $dialog.attr("aria-hidden", "false");
         // show the dialog box
         $dialog.addClass('active');
+        // reveal dialog content to screen reader
+        $dialog.attr("aria-hidden", "false");
         //bind esc to close the dialog box
         $dialog.on('keyup.esc-key', function (event) {
-            escapeKeyClose(event);
+            escapeKeyClosesDialog(event);
         });
         //put focus on close button
         $firstActionableElement.focus();
@@ -93,12 +95,14 @@
     function addBookends($container) {
         var bookendMarkup = '<div tabindex="0" data-bookends></div>';
         //first check to see if bookends already exists
-        if($('[data-bookends]').length > 0) {
+        if ($('[data-bookends]').length > 0) {
             return true;
         }
         //add bookends
         $container.prepend(bookendMarkup);
         $container.append(bookendMarkup);
+        //constrain tabbing to bookends
+        bookendFocus($container);
     }
     function bookendFocus($container) {
         // Capture focus events on bookends to contain tabbing within a container
@@ -109,37 +113,40 @@
         // First check to make sure the bookends exist
         if ($bookends.size() > 0) {
             // Focusing first bookend sends focus to last real focusable element
-            $bookends.eq(0).on('focus.bookend-focus', function (event) {
+            $bookends.eq(0).on('focus', function (event) {
                 var $focusableElements = $container.find(NAME.focusables);
                 $focusableElements.eq(-2).focus();
             });
             // Focusing last bookend sends focus to the first real focusable element
-            $bookends.eq(1).on('focus.bookend-focus', function (event) {
+            $bookends.eq(1).on('focus', function (event) {
                 var $focusableElements = $container.find(NAME.focusables);
                 $focusableElements.eq(1).focus();
             });
         }
     }
+    /*
+        function to position modal in center of screen
+    */
     function positionModal() {
 
     }
     /*
-        function to open a dialog box
+        function to position tooltip relative to trigger
     */
-    function openDialog($dialog, modalOrTooltip, $blockedContainers) {
-        var $closeModalBtn = $dialog.find('[data-control="close"]');
+    function positionTooltip() {
+
     }
     /*
         esc key closes dialog
     */
-        // Close the overlay using the escape key
-    function escapeKeyClose (event) {
+    function escapeKeyClosesDialog(event) {
         if (event.keyCode === NAME.keyboard.esc) {
             // If focus is in a form field, the escape key should not close the overlay
             // because form fields have default escape behavior on their own.
             if ($(':focus').filter('input, textarea').length > 0) {
                 return;
             }
+            console.log($currentDialog);
             // Close the current overlay
             if ($currentDialog) {
                 hideDialog($currentDialog);
@@ -147,7 +154,7 @@
         }
     }
     /*
-        function to close a dialog box
+        function to hide a dialog box
     */
     function hideDialog($dialog) {
         /*

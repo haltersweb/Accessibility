@@ -14,19 +14,25 @@
 			<h1>Creating an Accessible Modal Window</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
 			<p><button type="button" data-controls="modal" aria-controls="myModalWindow">Launch modal window</button></p>
-			<p>Lorem ipsum <a href="#">dolor sit amet</a>, consectetur adipiscing elit. Phasellus quis lectus metus, at posuere neque. Sed pharetra nibh eget orci convallis at posuere leo convallis. Sed blandit augue vitae augue <a href="#">scelerisque bibendum</a>. Vivamus sit amet libero turpis, non venenatis urna. In blandit, odio convallis suscipit venenatis, ante ipsum cursus augue.</p>
+			<h2>Focus when a modal opens</h2>
+			<p>Focus should go to the first actionable element when the modal is opened.  This is most often the close modal button.</p>
+			<h2>The use of role="dialog" and role="document"</h2>
+			<p>You will notice the modal window has a role="dialog".</p>
+			<p>When using role="dialog" it is imperative that you place all content within a nested container having a role="document".  Otherwise, in some browsers content that doesn't gain focus will not be read.</p>
 			<p><button type="button" data-controls="modal" aria-controls="myModalWindow">Launch modal window</button></p>
 		</div>
 		<div id="myModalWindow" class="modal" role="dialog" data-widget="modal" aria-hidden="true">
-			<div><button type="button" class="close-dialog" data-control="close">Close Dialog</button></div>
-			<h2>Escaping the Modal</h2>
-			<p>With a modal you are mimicking an operating system dialog box.  Thus there is no way to leave the dialog without either:</p>
-			<ul class="bullet">
-				<li>engaging the actionable items in the dialog box, or</li>
-				<li>hitting the ESC key.</li>
-			</ul>
-			<p>A modal window should mimic this behavior.  As long as the user has a way out either by using the close button or by hitting “ESC” the modal is fine.</p>
-			<p><a href="#">Fake link</a></p>
+			<div role="document">
+				<div><button type="button" class="close-dialog" data-control="close">Close Dialog</button></div>
+				<h2>Escaping the Modal Window</h2>
+				<p>With a modal you are mimicking an operating system dialog box wherein there is no way to leave the dialog without either:</p>
+				<ul class="bullet">
+					<li>engaging the actionable items in the dialog box, or</li>
+					<li>hitting the ESC key.</li>
+				</ul>
+				<p>A modal window should mimic this behavior.  As long as the user has a way out either by using the close button or by hitting “ESC” the modal is fine. It is acceptable that the user is unable to reach the browser chrome while the modal window is active.</p>
+				<p><a href="#">Fake link</a></p>
+			</div>
 		</div>
 		<div class="block-screen"></div>
 	</div>
