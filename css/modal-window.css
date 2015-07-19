@@ -1,9 +1,5 @@
 /* Components
 ---------------------------------------- */
-.container {
-	position: relative;
-	overflow: hidden;
-}
 .block-screen {
 	position: absolute;
 	display: none;
