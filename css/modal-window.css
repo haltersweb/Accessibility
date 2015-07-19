@@ -1,12 +1,16 @@
 /* Components
 ---------------------------------------- */
+.container {
+	position: relative;
+	overflow: hidden;
+}
 .block-screen {
 	position: absolute;
 	display: none;
 	left: 0;
 	top: 0;
-	width: 100%;
-	height: 100%;
+	width: 1000%;
+	height: 1000%;
 	background-color: gray;
 	opacity: 0.5;
 	z-index: 50;
