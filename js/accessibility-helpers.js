@@ -17,6 +17,10 @@
         del:    46
     };
     /*
+    a string of selectors identifying focusable elements.
+    */
+    NAME.focusables = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]';
+    /*
     General helpers namespacing
     */
     NAME.general = {};
