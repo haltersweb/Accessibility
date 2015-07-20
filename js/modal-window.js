@@ -4,15 +4,18 @@
  */
 (function ($, NAME) {
     'use strict';
-    var $currentDialog = null, // a reference to the current dialog box being shown
+    var $currentDialog = null, // a reference to the current dialog box being shown.
+        $currentTrigger = null,
         $screenBlock = $('.block-screen'), // a reference to the dimmed layer that blocks what's behind it.
         $contentsToBlock = $('.page-wrapper'); // a reference to content containers that are blocked when dialog is visible.
     /*
         assign click event to open the modal window
     */
     $('[data-controls="modal"]').on('click', function (evt) {
+        // identify the trigger
+        $currentTrigger = $(this);
         // identify the modal
-        $currentDialog = $('#' + $(this).attr('aria-controls'));
+        $currentDialog = $('#' + $currentTrigger.attr('aria-controls'));
         showDialog($currentDialog, $contentsToBlock);
     });
     /*
@@ -27,7 +30,7 @@
             $dialog: is the dialog to open
             $blockedContainers: (OPTIONAL) contents to block if dialog is a modal
     */
-    function showDialog($dialog, $blockedContainers) {
+    function showDialog($dialog, $OPTIONALblockedContainers) {
         //find the first actionable element in the dialog box
         var $firstActionableElement = $dialog.find(NAME.focusables).not('[data-bookends]').eq(0);
         // if there is no actionable element inside dialog, make the dialog the actionable element
@@ -36,7 +39,7 @@
             $firstActionableElement = $dialog;
         }
         // IF we are blocking content then this is a MODAL
-        if ($blockedContainers) {
+        if ($OPTIONALblockedContainers) {
             //show screen blocker
             $screenBlock.addClass('active');
             //add bookends to modal
@@ -44,14 +47,14 @@
             //position modal in center of screen
             positionModal();
             //block focus in blocked containers & hide page content from reader
-            NAME.access.blockFocus($blockedContainers, $firstActionableElement);
+            NAME.access.blockFocus($OPTIONALblockedContainers, $firstActionableElement);
         // ELSE this is a TOOLTIP
         } else {
             //position relative to trigger
             positionTooltip();
         }
         // flag the trigger used to open the dialog
-        NAME.access.tagTrigger();
+        NAME.access.tagTrigger($currentTrigger);
         // show the dialog box
         $dialog.addClass('active');
         // reveal dialog content to screen reader
@@ -112,7 +115,6 @@
     */
     function escapeKeyClosesDialog(event) {
         if (event.keyCode === NAME.keyboard.esc) {
-            console.log('ESC key pushed');
             // If focus is in a form field, the ESC key should not close the overlay
             // because form fields have default ESC behavior on their own.
             if ($(':focus').filter('input, textarea').length > 0) {
@@ -151,6 +153,7 @@
         NAME.access.focusTrigger();
         // reset local variable
         $currentDialog = null;
+        $currentTrigger = null;
     }
 
 }(jQuery, NAME));
