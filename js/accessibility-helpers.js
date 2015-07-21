@@ -95,7 +95,7 @@
 
     /*
     tag trigger ($OPTIONALtrigger can be used to override default trigger capture)
-    NOTE:  preferrable to pass $OPTIONALtrigger because Safari does not focus during click event.
+    NOTE: It's preferrable to pass $OPTIONALtrigger because Safari does not focus during click event.
     */
     NAME.access.tagTrigger = function ($OPTIONALtrigger) {
         var $trigger;

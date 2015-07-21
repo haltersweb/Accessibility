@@ -16,7 +16,7 @@
             $subNav = $navigation.find('.sub-navigation'),
             $closeDrawerButton = $('.close-drawer');
         evt.stopPropagation();
-        NAME.access.tagTrigger();
+        NAME.access.tagTrigger($(this));
         NAME.access.ariaExpand($subNav);
         $navigation.removeClass('mobile-hide');
         $pageWrapper.addClass('reveal');
