@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Testing Aria Hidden</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="page-wrapper">
+			<h1>Is aria-hidden recognized when using the up and down arrows?</h1>
+			<h2>Sample Text</h2>
+			<p>This is a paragraph.</p>
+			<p><a href="#">This is a fake link.</a></p>
+			<p aria-hidden="true">Now this paragraph is supposed to be hidden from screen-readers by using aria-hidden="true"</p>
+			<p>This is another regular paragraph (not hidden from screen readers).</p>
+			<h2>The Test:</h2>
+			<ul class="bullets">
+				<li>Open page in Safari with VoiceOver on.</li>
+				<li>Have VoiceOver read the entire page.  Expected result: The aria-hidden paragraph is not read.</li>
+				<li>Next, use the up and down arrows to review the page.</li>
+			</ul>
+			<p>NOTE: This experiment does not take into account Quick Nav or Trackpad Commander in Safari on Mac.  It simply tests whether the user can access aria-hidden content using the up and down arrows.</p>
+			<table>
+				<caption><h2>My Findings</h2></caption>
+				<thead>
+					<tr>
+						<th scope="col">Was aria-hidden content read:</th>
+						<th scope="col">JAWS with IE</th>
+						<th scope="col">NVDA with Firefox</th>
+						<th scope="col">VoiceOver on Safari (Mac)</th>
+						<th scope="col">VoiceOver on Safari (iPad)</th>
+						<th scope="col">VoiceOver on Safari (iPhone)</th>
+						<th scope="col">TalkBack on Chrome (Galaxy Tablet)</th>
+						<th scope="col">TalkBack on Chrome (Galaxy Phone)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">when page is automatically read</th>
+						<td>No</td>
+						<td>No</td>
+						<td>No</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<th scope="row">when up and down arrows are used</th>
+						<td>No</td>
+						<td>No</td>
+						<td>Yes</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+			<p>NOTE: When using Quick Nav or Trackpad Commander in Safari on Mac aria-hidden="true" is honored.</p>
+			<h3>What the W3C says:</h3>
+			<p><a href="http://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden">aria-hidden (state)</a></p>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+</body>
+</html>
