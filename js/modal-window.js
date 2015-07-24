@@ -45,7 +45,7 @@
             //add bookends to modal
             addBookends($dialog);
             //position modal in center of screen
-            positionModal();
+            positionModal($dialog);
             //block focus in blocked containers & hide page content from reader
             NAME.access.blockFocus($OPTIONALblockedContainers, $firstActionableElement);
         // ELSE this is a TOOLTIP
@@ -101,14 +101,109 @@
     /*
         function to position modal in center of screen
     */
-    function positionModal() {
-
+    function positionModal($modal) {
+        // Position and show the modal window.
+        var modalHeight = $modal.outerHeight();
+        $modal.css({
+            "position": "fixed",
+            "z-index": "200",
+            "margin-left": -$modal.outerWidth() / 2,
+            "margin-top": -modalHeight / 2,
+            "left": "50%",
+            "top": "50%"
+        });
+        // Use absolute positioning for modal if it's too tall for viewport
+        if ($(window).height() < modalHeight) {
+            $modal.css({
+                "position": "absolute",
+                "top": $(document).scrollTop() + 10,
+                "margin-top": "0"
+            });
+        }
     }
     /*
         function to position tooltip relative to trigger
     */
-    function positionTooltip() {
+    function positionTooltip(prop) {
+        var newPos = {
+                maxWidth: '', // reset maxWidth/maxHeight in case theywere set in another tooltip
+                maxHeight: ''
+            },
+            showOn = fn.activeTooltip.showOn,
+            appearFrom = fn.activeTooltip.appearFrom,
+            space = {
+                left: prop.trigger.left - prop.window.scrollLeft,
+                right: prop.window.width + prop.window.scrollLeft - (prop.trigger.left + prop.trigger.width),
+                top: prop.trigger.top - prop.window.scrollTop,
+                bottom: prop.window.height + prop.window.scrollTop - (prop.trigger.top + prop.trigger.height)
+            };
+        // Determine which side the tooltip will appear (left / right), can be forced through settings
+        if ($.inArray(showOn, ["left", "right"]) < 0) {
+            if (space.left > space.right) {
+                showOn = "left";
+            }
+            else {
+                showOn = "right";
+            }
+        }
 
+        switch (showOn) {
+            case "left":
+                newPos.left = prop.trigger.left - prop.tooltip.width - fn.activeTooltip.distance / 2;
+                if (newPos.left < prop.window.scrollLeft){
+                    // this will shrink the tooltip and keep it on the screen if it goes past the left edge
+                    newPos.maxWidth = space.left - fn.activeTooltip.distance / 2;
+                    newPos.left = prop.window.scrollLeft;
+                }
+                break;
+            case "right":
+                fn.$tooltip.addClass('toLeft'); // this is where the arrow is positioned
+                newPos.left = prop.trigger.left + prop.trigger.width + fn.activeTooltip.distance / 2;
+                if (newPos.left + prop.tooltip.width > space.right){
+                    // this will shrink the tooltip and keep it on the screen if it goes past the right edge
+                    newPos.maxWidth = space.right - fn.activeTooltip.distance / 2;
+                }
+                break;
+        }
+        if (newPos.maxWidth){
+            //maxWidth was set so we need to reset the tooltip height property
+            fn.$tooltip.css({
+                maxWidth: newPos.maxWidth + 'px'
+            });
+            prop.tooltip.height = fn.$tooltip.outerHeight();
+        }
+
+        // Determine which side the tooltip will appear (top / bottom), can be forced through settings
+        if ($.inArray(appearFrom, ["top", "bottom"]) < 0) {
+            if (space.top > space.bottom) {
+                appearFrom = "top";
+            }
+            else {
+                appearFrom = "bottom";
+            }
+        }
+
+        switch (appearFrom) {
+            case "bottom":
+                newPos.top = prop.trigger.top;
+                break;
+            case "top":
+                fn.$tooltip.addClass('alignBottom'); // this is the arrow position
+                newPos.top = (prop.trigger.top + prop.trigger.height/2) - prop.tooltip.height + prop.tooltip.paddingTop + 15 + 11;// 15 is from the position of the arrow pseudo element, 11 is from half the height of the arrow
+                if (newPos.top < prop.window.scrollTop){
+                    // reset top if tooltip goes off the top of the screen
+                    newPos.top = prop.window.scrollTop;
+                }
+                break;
+        }
+
+        for (var key in newPos){
+            if (newPos.hasOwnProperty(key) && !isNaN(parseFloat(newPos[key]))){
+                newPos[key] = (newPos[key] < 0 ? 0 : newPos[key]) + 'px';
+            }
+        }
+
+        return newPos;
     }
     /*
         esc key closes dialog
