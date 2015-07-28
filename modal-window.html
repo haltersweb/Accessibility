@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Accessible Modal Window</title>
+	<title>Accessible Modals and Tooltips</title>
 	<link rel="stylesheet" href="css/normalization.css" />
 	<link rel="stylesheet" href="css/base.css" />
 	<link rel="stylesheet" href="css/modal-window.css" />
@@ -11,15 +11,48 @@
 <body>
 	<div class="container">
 		<div class="page-wrapper">
-			<h1>Creating an Accessible Modal Window</h1>
+			<h1>Creating Modals and Tooltips</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
+			<h2>Modal Windows</h2>
 			<p><button type="button" class="btn" data-controls="modal" aria-controls="myModalWindow">Launch modal window</button></p>
-			<h2>Focus when a modal opens</h2>
+			<h3>Focus when a modal opens</h3>
 			<p>Focus should go to the first actionable element when the modal is opened.  This is most often the close modal button.</p>
-			<h2>The use of role="dialog" and role="document"</h2>
+			<h3>The use of role="dialog" and role="document"</h3>
 			<p>You will notice the modal window has a role="dialog".</p>
 			<p>When using role="dialog" it is imperative that you place all content within a nested container having a role="document".  Otherwise, in some browsers content that doesn't gain focus will not be read.</p>
 			<p><button type="button" class="btn" data-controls="modal" aria-controls="myModalWindow">Launch modal window</button></p>
+			<h2>Tooltips (mini dialog boxes)</h2>
+			<p>Find out more about
+				<a href="#tooltipExample1" data-controls="tooltip" aria-owns="tooltipExample1" aria-controls="tooltipExample1">this tooltip</a>
+				<span id="tooltipExample1" class="tooltip" role="tooltip" aria-hidden="true" tabindex="-1">
+					<button type="button" class="btn" class="close-dialog" data-control="close">Close Tooltip</button>
+					This is an accessible tooltip
+				</span>
+			. It is fully accessible.</p>
+			<p>Here you have a second paragraph with a tooltip in it.  Read about
+				<a href="#tooltipExample2" data-controls="tooltip" aria-owns="tooltipExample2" aria-controls="tooltipExample2">this tooltip</a>
+				<span id="tooltipExample2" class="tooltip" role="tooltip" aria-hidden="true" tabindex="-1">
+					<button type="button" class="btn" class="close-dialog" data-control="close">Close Tooltip</button>
+					This is a second accessible tooltip
+				</span>
+			. It is also fully accessible.</p>
+
+			<h3>Opening the Tooltip</h3>
+			<p>Tooltips can be opened by:</p>
+			<ul class="bullet singletons">
+				<li>trigger is hovered on (after delay)</li>
+				<li>trigger gains focus (after delay)</li>
+				<li>trigger is clicked/engaged</li>
+			</ul>
+			<h3>Closing the Tooltip</h3>
+			<p>Tooltips are closed based on how they were opened:</p>
+			<ul class="bullet singletons">
+				<li>on mouseout (if triggered by mouseover)</li>
+				<li>on blur</li>
+				<li>hitting the ESC key</li>
+				<li>when close button clicked/engaged</li>
+				<li>when surrounding area is clicked</li>
+			</ul>
 		</div>
 		<div id="myModalWindow" class="modal" role="dialog" data-widget="modal" aria-hidden="true">
 			<div role="document">
