@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Graphical Tables</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/table.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="page-wrapper">
+			<h1>Lorem ipsum dolor sit amet</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
+			<h2>&lt;thead&gt;</h2>
+			<p>When focus is given to the &lt;th&gt; cells in the &lt;thead&gt;:</p>
+			<ul class="bullet singletons">
+				<li><strong>IE/JAWS:</strong> TBD</li>
+				<li><strong>FF/NVDA:</strong> identifies cell content correctly with no superfluous identification. (correct)</li>
+				<li><strong>Safari/VO:</strong> content in cells 2+ are identified using cell 1 content (incorrect)</li>
+			</ul>
+			<h2>&lt;tfoot&gt;</h2>
+			<p>content is recognized correctly as last row even.  Cells are not recognized as table headings.</p>
+			<p>Note that &lt;tfoot&gt; is not considered by screen readers within the td cells.</p>
+			<h2>&lt;tbody&gt;</h2>
+			<h3>&lt;th&gt; tags:</h3>
+			<ul class="bullet singletons">
+				<li></li>
+				<li><strong>FF/NVDA:</strong> identifies cell content correctly with no superfluous identification. (correct)</li>
+				<li><strong>Safari:</strong> identifies the cell with all &lt;th&gt; content above it the when reviewing via row cells. (incorrect)</li>
+			</ul>
+
+
+			<p></p>
+			<div class="table-wrap">
+				<table>
+					<thead class="Aaccessibly-hidden">
+						<tr>
+							<th tabindex="-1" scope="col">Name</th>
+							<th tabindex="-1" scope="col">Birthday</th>
+							<th tabindex="-1" scope="col">Company</th>
+							<th tabindex="-1" scope="col">Automobile</th>
+						</tr>
+					</thead>
+					<tfoot style="display: none;">
+						<tr>
+							<th scope="col">First Name</th>
+							<th scope="col">Month and Day</th>
+							<th scope="col">Work Place</th>
+							<th scope="col">Manufacturer</th>
+						</tr>
+					</tfoot>
+					<tbody>
+						<tr>
+							<th scope="row">Adina</th>
+							<td scope="row">May 19</td>
+							<td scope="row">Comcast</td>
+							<td scope="row">Highlander</td>
+						</tr>
+						<tr>
+							<th>George</th>
+							<td>December 12</td>
+							<td>Vanguard</td>
+							<td>Sienna</td>
+						</tr>
+						<tr>
+							<th>Jonathan</th>
+							<td>July 11</td>
+							<td>Harriton</td>
+							<td>none</td>
+						</tr>
+						<tr>
+							<th>Lydia</th>
+							<td>December 8</td>
+							<td>Welsh Valley</td>
+							<td>none</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+</body>
+</html>

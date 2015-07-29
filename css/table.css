@@ -1,0 +1,14 @@
+.table-wrap {
+	position: relative;
+	padding-bottom: 44px;
+}
+table {
+}
+thead {
+	left: 0;
+	top: 100px;
+}
+th {
+	background-color: gray;
+	color: white;
+}
