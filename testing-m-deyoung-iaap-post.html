@@ -113,7 +113,7 @@
 				<li>I can't hear the legend and therefore do not know what this radio button cluster is for (JAWS/NVDA only).</li>
 				<li>I cannot hear the label and the checked state of the radio buttons announced when it receives focus.</li>
 			</ul>
-			<h2>Two examples of radio buttons to test:</h2>
+			<h2>Three examples of radio buttons to test:</h2>
 			<h3>Typical radio button cluster</h3>
 			<form action="">
 				<fieldset>
@@ -132,6 +132,7 @@
 					</label>
 				</fieldset>
 			</form>
+			<p>This is a <a href="#">fake link</a> for focusing on.</p>
 			<h3>Michelle's sample code</h3>
 			<form action="" id="statuses1" class="statuses">
 				<input id="activity-status-1a" class="status-radio" type="radio" value="AP" name="disclosureOutsideActivities[1].outsideActivityReviewStatus">
@@ -148,15 +149,15 @@
 				</label>
 			</form>
 			<p>This is a <a href="#">fake link</a> for focusing on.</p>
-			<h3>Typical radio button cluster</h3>
+			<h3>Accessible solution for a graphical radio button</h3>
 			<form action="">
 				<fieldset>
-					<legend>Set status of the first activity:</legend>
+					<legend>Set status of the second activity:</legend>
 					<div>
 					<label for="confirm2" class="graphical-radio">
 						Confirm
-						<input type="radio" id="confirm2" name="first-activity" />
-						<span class="radio-icon confirm-icon">
+						<input type="radio" id="confirm2" name="second-activity" />
+						<span class="radio-icon">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86.555 68.907" role="presentation" focusable="false">
 								<polygon class="svg-shape" points="20.529,23.412 3.723,39.378 33.134,67.109 85.235,18.37 71.79,2.403 33.975,34.756 "/>
 							</svg>
@@ -164,8 +165,8 @@
 					</label>
 					<label for="forward2" class="graphical-radio">
 						Forward
-						<input type="radio" id="forward2" name="first-activity" />
-						<span class="radio-icon forward-icon">
+						<input type="radio" id="forward2" name="second-activity" />
+						<span class="radio-icon">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86.555 68.907" role="presentation" focusable="false">
 								<polygon class="svg-shape" points="10.765,32.353 41.857,0 75.471,32.353 54.462,32.353 53.622,64.706 31.773,68.907 31.773,34.454 "/>
 							</svg>
@@ -173,8 +174,8 @@
 					</label>
 					<label for="sendBack2" class="graphical-radio">
 						Send Back
-						<input type="radio" id="sendBack2" name="first-activity" />
-						<span class="radio-icon send-back-icon">
+						<input type="radio" id="sendBack2" name="second-activity" />
+						<span class="radio-icon">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86.555 68.907" role="presentation" focusable="false">
 								<path class="svg-shape" d="M0,43.857L28.571,26.21v9.244h42.857V22.849h-24.37V7.723h24.37c0,0,15.126,10.387,15.126,23.681,S73.949,48.059,73.949,48.059H31.093v12.605L0,43.857z"/>
 							</svg>
@@ -184,6 +185,17 @@
 				</fieldset>
 			</form>
 			<p>This is a <a href="#">fake link</a> for focusing on.</p>
+			<h2>Accessible Solution notes</h2>
+			<ul class="bullet singletons">
+				<li>Radio buttons and labels are not moved off-screen.</li>
+				<li>Radio buttons and labels are hidden behind icons.</li>
+				<li>Fieldset and legend is used to give radio cluster meaning.</li>
+				<li>Label wraps around input field and icon, making the whole thing clickable.</li>
+				<li>If a background image is used, the text behind will be seen in high-contrast mode.</li>
+				<li>If SVGs are used (as shown) they will still be visible in high contrast mode.</li>
+				<li>focus is placed around the icon using sibling selector.</li>
+				<li>checked state color is assigned using sibling selector.</li>
+			</ul>
 		</div>
 		<div class="overlay"></div>
 		<div class="block-screen"></div>
