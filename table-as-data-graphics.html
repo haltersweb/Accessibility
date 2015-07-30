@@ -14,73 +14,83 @@
 			<h1>Lorem ipsum dolor sit amet</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
 			<h2>The Problem</h2>
-			<p>How to tie the thead contents to the tbody cells when the thead is hidden.</p>
-			<h3>What doesn't work</h3>
-			<ul>
-				<li>Hiding the thead with .accessibly-hidden</li>
-				<li>Using tfoot contents</li>
-				<li>Giving thead a display: table-footer-group</li>
-				<li>Using position: absolute and moving to the bottom (if it stays at the top it's OK</li>
+			<p>How to tie the &lt;thead&gt; contents to the tbody cells when the &lt;thead&gt; is hidden and &lt;thead&gt; content has been moved to &lt;tfoot&gt;.</p>
+			<h3>What didn't work</h3>
+			<ul class="bullet singletons">
+				<li>Hiding the &lt;thead&gt; with .accessibly-hidden</li>
+				<li>Using &lt;tfoot&gt; contents by themselves.  &lt;tfoot&gt; content doesn't map to cells it relates to.</li>
+				<li>Giving &lt;thead&gt; a display: table-footer-group</li>
+				<li>Using position: absolute and moving &lt;thead&gt; the bottom (if it stays at the top it's OK)</li>
+				<li>Giving &lt;tfoot&gt; a display: table-header-group</li>
+				<li>Assigning &lt;thead&gt; position: relative and top.  Works for FF, doesn't reposition in Safari.</li>
+			</ul>
+			<h3>What does work: K.I.S.S.</h3>
+			<ul class="bullet singletons">
+				<li>Don't try to hide the &lt;thead&gt; with .accessibly-hidden.</li>
+				<li>Write special style for &lt;thead&gt; th with height: 1px, etc.</li>
+				<li>Don't use &lt;tfoot&gt; at all.</li>
+				<li>Create a div to hold a copy of the &lt;thead&gt; content at the bottom of the table.</li>
 			</ul>
 			<h2>&lt;thead&gt;</h2>
 			<p>When focus is given to the &lt;th&gt; cells in the &lt;thead&gt;:</p>
 			<ul class="bullet singletons">
-				<li><strong>IE/JAWS:</strong> TBD</li>
+				<li><strong>IE/JAWS:</strong> identifies cell content correctly with no superfluous identification. (correct)</li>
 				<li><strong>FF/NVDA:</strong> identifies cell content correctly with no superfluous identification. (correct)</li>
 				<li><strong>Safari/VO:</strong> content in cells 2+ are identified using cell 1 content (incorrect)</li>
 			</ul>
 			<h2>&lt;tfoot&gt;</h2>
-			<p>content is recognized correctly as last row even.  Cells are not recognized as table headings.</p>
-			<p>Note that &lt;tfoot&gt; is not considered by screen readers within the td cells.</p>
+			<p>&lt;tfoot&gt; is not supported as a table heading set in any screen reader.  It is simply treated as a final row of data. (See &lt;tbody&gt; below.)</p>
 			<h2>&lt;tbody&gt;</h2>
 			<h3>&lt;th&gt; tags:</h3>
 			<ul class="bullet singletons">
-				<li></li>
+				<li><strong>IE/JAWS:</strong> identifies cell content correctly with no superfluous identification. (correct)</li>
 				<li><strong>FF/NVDA:</strong> identifies cell content correctly with no superfluous identification. (correct)</li>
 				<li><strong>Safari:</strong> identifies the cell with all &lt;th&gt; content above it the when reviewing via row cells. (incorrect)</li>
 			</ul>
-
-
-			<p></p>
+			<h3>&lt;td&gt; tags:</h3>
+			<p>Depending on whether you enter a &lt;td&gt; from the top/bottom or from the left/right it will be identified either by the th[scope="row"] or th[scope="col"] content.</p>
+			<p>No screen readers yet correctly identify a &lt;td&gt; with both corresponding &lt;th&gt;s at the same time.</p>
+			<h2>Table Examples</h2>
+			<h3>Normal table with &lt;thead&gt;, left &lt;th&gt; cells, and &lt;tfoot&gt;.</h3>
 			<div class="table-wrap">
 				<table>
-					<thead class="Aaccessibly-hidden">
+					<thead>
 						<tr>
-							<th tabindex="-1" scope="col">Name</th>
-							<th tabindex="-1" scope="col">Birthday</th>
-							<th tabindex="-1" scope="col">Company</th>
-							<th tabindex="-1" scope="col">Automobile</th>
+							<th scope="col">Name</th>
+							<th scope="col">Birthday</th>
+							<th scope="col">Company</th>
+							<th scope="col">Automobile</th>
 						</tr>
 					</thead>
-					<tfoot style="display: none;">
+					<tfoot>
 						<tr>
 							<th scope="col">First Name</th>
-							<th scope="col">Month and Day</th>
-							<th scope="col">Work Place</th>
+							<th scope="col">Day and Month</th>
+							<th scope="col">Workplace</th>
 							<th scope="col">Manufacturer</th>
 						</tr>
 					</tfoot>
 					<tbody>
 						<tr>
 							<th scope="row">Adina</th>
-							<td scope="row">May 19</td>
-							<td scope="row">Comcast</td>
-							<td scope="row">Highlander</td>
+							<td>May 19</td>
+							<td>Comcast</td>
+							<td>Highlander</td>
 						</tr>
 						<tr>
-							<th>George</th>
+							<th scope="row">George</th>
 							<td>December 12</td>
 							<td>Vanguard</td>
 							<td>Sienna</td>
 						</tr>
 						<tr>
-							<th>Jonathan</th>
+							<th scope="row">Jonathan</th>
 							<td>July 11</td>
 							<td>Harriton</td>
 							<td>none</td>
 						</tr>
 						<tr>
-							<th>Lydia</th>
+							<th scope="row">Lydia</th>
 							<td>December 8</td>
 							<td>Welsh Valley</td>
 							<td>none</td>
@@ -88,6 +98,52 @@
 					</tbody>
 				</table>
 			</div>
+			<h3>Table cell with "hidden" &lt;thead&gt; and fake &lt;tfoot&gt; for use in a graphical data chart.</h3>
+			<div class="table-wrap graphic-table">
+				<table>
+					<thead>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">Birthday</th>
+							<th scope="col">Company</th>
+							<th scope="col">Automobile</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">Adina</th>
+							<td>May 19</td>
+							<td>Comcast</td>
+							<td>Highlander</td>
+						</tr>
+						<tr>
+							<th scope="row">George</th>
+							<td>December 12</td>
+							<td>Vanguard</td>
+							<td>Sienna</td>
+						</tr>
+						<tr>
+							<th scope="row">Jonathan</th>
+							<td>July 11</td>
+							<td>Harriton</td>
+							<td>none</td>
+						</tr>
+						<tr>
+							<th scope="row">Lydia</th>
+							<td>December 8</td>
+							<td>Welsh Valley</td>
+							<td>none</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="tfoot" aria-hidden="true">
+					<div>Name</div>
+					<div>Bithday</div>
+					<div>Company</div>
+					<div>Automobile</div>
+				</div>
+			</div>
+			<p>Ths is <a href="#">a fake link</a>.</p>
 		</div>
 		<div class="overlay"></div>
 		<div class="block-screen"></div>

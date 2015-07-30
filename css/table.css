@@ -1,14 +1,28 @@
-.table-wrap {
-	position: relative;
-	padding-bottom: 44px;
-}
 table {
 }
-thead {
-	left: 0;
-	top: 100px;
+th, td {
+	width: 25%;
 }
 th {
 	background-color: gray;
 	color: white;
+}
+.graphic-table thead th {
+	height: 1px;
+	padding: 0;
+	margin: 0;
+	font-size: 0;
+	line-height: 0;
+	color: transparent;
+	background-color: transparent;
+}
+.tfoot {
+	overflow: hidden;
+	background-color: gray;
+	color: white;
+}
+.tfoot div {
+	display: block;
+	float: left;
+	width: 25%;
 }
