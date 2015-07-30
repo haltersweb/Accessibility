@@ -31,17 +31,17 @@
 				<li>Don't use &lt;tfoot&gt; at all.</li>
 				<li>Create a div to hold a copy of the &lt;thead&gt; content at the bottom of the table.</li>
 			</ul>
-			<h2>&lt;thead&gt;</h2>
+			<h2>How screen readers handle &lt;thead&gt;</h2>
 			<p>When focus is given to the &lt;th&gt; cells in the &lt;thead&gt;:</p>
 			<ul class="bullet singletons">
 				<li><strong>IE/JAWS:</strong> identifies cell content correctly with no superfluous identification. (correct)</li>
 				<li><strong>FF/NVDA:</strong> identifies cell content correctly with no superfluous identification. (correct)</li>
 				<li><strong>Safari/VO:</strong> content in cells 2+ are identified using cell 1 content (incorrect)</li>
 			</ul>
-			<h2>&lt;tfoot&gt;</h2>
+			<h2>How screen readers handle &lt;tfoot&gt;</h2>
 			<p>&lt;tfoot&gt; is not supported as a table heading set in any screen reader.  It is simply treated as a final row of data. (See &lt;tbody&gt; below.)</p>
-			<h2>&lt;tbody&gt;</h2>
-			<h3>&lt;th&gt; tags:</h3>
+			<h2>How screen readers handle &lt;tbody&gt;</h2>
+			<h3>Row &lt;th&gt; tags:</h3>
 			<ul class="bullet singletons">
 				<li><strong>IE/JAWS:</strong> identifies cell content correctly with no superfluous identification. (correct)</li>
 				<li><strong>FF/NVDA:</strong> identifies cell content correctly with no superfluous identification. (correct)</li>
