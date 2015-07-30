@@ -152,7 +152,7 @@
 			<h3>Accessible solution for a graphical radio button</h3>
 			<form action="">
 				<fieldset>
-					<legend>Set status of the second activity:</legend>
+					<legend class="accessibly-hidden">Set status of the second activity:</legend>
 					<div>
 					<label for="confirm2" class="graphical-radio">
 						Confirm
@@ -190,6 +190,7 @@
 				<li>Radio buttons and labels are not moved off-screen.</li>
 				<li>Radio buttons and labels are hidden behind icons.</li>
 				<li>Fieldset and legend is used to give radio cluster meaning.</li>
+				<li>I have accessibly-hidden the legend so that it is only picked up by a screenreader.</li>
 				<li>Label wraps around input field and icon, making the whole thing clickable.</li>
 				<li>If a background image is used, the text behind will be seen in high-contrast mode.</li>
 				<li>If SVGs are used (as shown) they will still be visible in high contrast mode.</li>
