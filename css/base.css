@@ -52,6 +52,9 @@ a:hover,
 	outline: none;
 	box-shadow: inset 0px 0px 2px 2px #3279bf;
 	}
+input:focus {
+	box-shadow: 0px 0px 2px 2px #3279bf;
+}
 a.current {
 	color: #4f0100;
 	cursor: text;
