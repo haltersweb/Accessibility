@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>This is a Title</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<style>
+		.statuses input.status-radio {
+		    height: 1px;
+		    left: -10000px;
+		    overflow: hidden;
+		    position: absolute;
+		    top: auto;
+		    width: 1px;
+		}
+		input[type="file"], input[type="checkbox"], input[type="radio"], select {
+		    margin: 0 0 1rem;
+		}
+		.statuses input[type="radio"] + label.ok-it {
+		 background: rgba(0, 0, 0, 0) url("images/testing-m-deyoung-iaap-post/approve.png") no-repeat scroll center center;
+		}
+		.statuses input[type="radio"] + label.forward-it {
+		 background: rgba(0, 0, 0, 0) url("images/testing-m-deyoung-iaap-post/forward.png") no-repeat scroll center center;
+		}
+		.statuses input[type="radio"] + label.return-it {
+		    background: rgba(0, 0, 0, 0) url("images/testing-m-deyoung-iaap-post/return.png") no-repeat scroll center center;
+		}
+		.statuses input[type="radio"] + label {
+		    border: 1px solid transparent;
+		    box-sizing: border-box;
+		    height: 90px;
+		    margin-left: 0;
+		    margin-right: 0;
+		    width: 91px;
+		}
+
+		.statuses label span {
+		    height: 1px;
+		    left: -10000px;
+		    overflow: hidden;
+		    position: absolute;
+		    top: auto;
+		    width: 1px;
+		}
+
+		.statuses input[type="radio"] + label.ok-it {
+		 background: rgba(0, 0, 0, 0) url("images/testing-m-deyoung-iaap-post/approve.png") no-repeat scroll center center;
+		}
+		/* ---------------- new css ---------------- */
+		label {
+			width: auto;
+		}
+		.graphical-radio {
+			position: relative;
+			width: 65px;
+			height: 52px;
+			padding: 5px;
+			overflow: hidden;
+			vertical-align: top;
+		}
+		.radio-icon {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 65px;
+			height: 52px;
+			background-color: white;
+		}
+		.svg-shape {
+			fill: blue;
+		}
+		input:checked + .radio-icon .svg-shape {
+			fill: red;
+		}
+		input:focus + .radio-icon {
+			box-shadow: 0px 0px 2px 2px #3279bf inset;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="page-wrapper">
+			<h1>Using images in place of radio buttons</h1>
+			<h2>Accessibility Tests</h2>
+			<p>Requirements:</p>
+			<ul class="bullet singletons">
+				<li>Do not use a mouse for this test.</li>
+				<li>It is best to test in JAWS+IE or NVDA+FF.</li>
+				<li>Test with keyboard only first.</li>
+				<li>Retest with keyboard + screen reader.</li>
+			</ul>
+			<h3>Pass:</h3>
+			<h4>Keyboard only</h4>
+			<ul class="bullet">
+				<li>As I tab into the radio button cluster I can see a focus outline around the radio button with focus.</li>
+				<li>As I use my space bar or my arrows to check/uncheck a particular radio button the state change is visually obvious.</li>
+			</ul>
+			<h4>Keyboard + screen reader</h4>
+			<ul class="bullet">
+				<li>As I tab into the radio button cluster I hear the legend describing what the radio buttons are for (JAWS/NVDA only).</li>
+				<li>As each radio button receives focus I hear the label and the checked state of the radio button.</li>
+			</ul>
+			<h3>Fail:</h3>
+			<h4>Keyboard only</h4>
+			<ul class="bullet">
+				<li>When tabbing into a radio button cluster I do not see a focus outline around the radio button with focus.</li>
+				<li>As I use my space bar or arrow keys to check/uncheck a particular radio button I can't visually tell whether it is in a checked or unchecked state.</li>
+			</ul>
+			<h4>Keyboard + screen reader</h4>
+			<ul class="bullet">
+				<li>I can't hear the legend and therefore do not know what this radio button cluster is for (JAWS/NVDA only).</li>
+				<li>I cannot hear the label and the checked state of the radio buttons announced when it receives focus.</li>
+			</ul>
+			<h2>Two examples of radio buttons to test:</h2>
+			<h3>Typical radio button cluster</h3>
+			<form action="">
+				<fieldset>
+					<legend>Set status of the first activity:</legend>
+					<label for="confirm1">
+						Confirm
+						<input type="radio" id="confirm1" name="first-activity" />
+					</label>
+					<label for="forward1">
+						Forward
+						<input type="radio" id="forward1" name="first-activity" />
+					</label>
+					<label for="sendBack1">
+						Send Back
+						<input type="radio" id="sendBack1" name="first-activity" />
+					</label>
+				</fieldset>
+			</form>
+			<h3>Michelle's sample code</h3>
+			<form action="" id="statuses1" class="statuses">
+				<input id="activity-status-1a" class="status-radio" type="radio" value="AP" name="disclosureOutsideActivities[1].outsideActivityReviewStatus">
+				<label class="status-label ok-it" for="activity-status-1a">
+					<span>Confirm</span>
+				</label>
+				<input id="activity-status-1b" class="status-radio" type="radio" value="FR" name="disclosureOutsideActivities[1].outsideActivityReviewStatus">
+				<label class="status-label forward-it" for="activity-status-1b">
+					<span>Forward to second-level review</span>
+				</label>
+				<input id="activity-status-1c" class="status-radio" type="radio" value="RR" name="disclosureOutsideActivities[1].outsideActivityReviewStatus">
+				<label class="status-label return-it" for="activity-status-1c">
+					<span>Send back for revisions</span>
+				</label>
+			</form>
+			<p>This is a <a href="#">fake link</a> for focusing on.</p>
+			<h3>Typical radio button cluster</h3>
+			<form action="">
+				<fieldset>
+					<legend>Set status of the first activity:</legend>
+					<div>
+					<label for="confirm2" class="graphical-radio">
+						Confirm
+						<input type="radio" id="confirm2" name="first-activity" />
+						<span class="radio-icon confirm-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86.555 68.907" role="presentation" focusable="false">
+								<polygon class="svg-shape" points="20.529,23.412 3.723,39.378 33.134,67.109 85.235,18.37 71.79,2.403 33.975,34.756 "/>
+							</svg>
+						</span>
+					</label>
+					<label for="forward2" class="graphical-radio">
+						Forward
+						<input type="radio" id="forward2" name="first-activity" />
+						<span class="radio-icon forward-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86.555 68.907" role="presentation" focusable="false">
+								<polygon class="svg-shape" points="10.765,32.353 41.857,0 75.471,32.353 54.462,32.353 53.622,64.706 31.773,68.907 31.773,34.454 "/>
+							</svg>
+						</span>
+					</label>
+					<label for="sendBack2" class="graphical-radio">
+						Send Back
+						<input type="radio" id="sendBack2" name="first-activity" />
+						<span class="radio-icon send-back-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86.555 68.907" role="presentation" focusable="false">
+								<path class="svg-shape" d="M0,43.857L28.571,26.21v9.244h42.857V22.849h-24.37V7.723h24.37c0,0,15.126,10.387,15.126,23.681,S73.949,48.059,73.949,48.059H31.093v12.605L0,43.857z"/>
+							</svg>
+						</span>
+					</label>
+					</div>
+				</fieldset>
+			</form>
+			<p>This is a <a href="#">fake link</a> for focusing on.</p>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+</body>
+</html>
