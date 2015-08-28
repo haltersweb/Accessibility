@@ -108,10 +108,15 @@
     };
 
     /*
-    focuses on trigger and removes trigger tag
+    focuses on trigger and removes trigger tag ($OPTIONALtrigger can be used to override default trigger capture)
     */
-    NAME.access.focusTrigger = function () {
-        var $trigger = $('[data-trigger="true"]');
+    NAME.access.focusTrigger = function ($OPTIONALtrigger) {
+        var $trigger;
+        if ($OPTIONALtrigger) {
+            $trigger = $OPTIONALtrigger;
+        } else {
+            $trigger = $('[data-trigger="true"]');
+        }
         $trigger.focus().removeAttr('data-trigger');
     };
 

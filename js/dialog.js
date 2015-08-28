@@ -22,8 +22,27 @@
         assign click event to close the modal window
     */
     $('[data-widget="modal"] [data-control="close"]').on('click', function (evt) {
-
         hideDialog($currentDialog);
+    });
+    /*
+        assign click event to open the tooltip
+    */
+    $('[data-controls="tooltip"]').on('click', function (evt) {
+        // identify the trigger
+        $currentTrigger = $(this);
+        // identify the modal
+        $currentDialog = $('#' + $currentTrigger.attr('aria-controls'));
+        showDialog($currentDialog);
+    });
+    /*
+        assign click event to close the tooltip
+    */
+    $('[data-widget="tooltip"] [data-control="close"]').on('click', function (evt) {
+        var $this = $(this);
+        $currentDialog = $this.closest('[data-widget="tooltip"]');
+        $currentTrigger = $currentDialog.closest('[data-controls="tooltip"]');
+        hideDialog($currentDialog);
+        return false;
     });
     /*
         function to open a dialog box where:
@@ -51,7 +70,7 @@
         // ELSE this is a TOOLTIP
         } else {
             //position relative to trigger
-            positionTooltip();
+            positionTooltip($dialog);
         }
         // flag the trigger used to open the dialog
         NAME.access.tagTrigger($currentTrigger);
@@ -65,6 +84,31 @@
         });
         //put focus on dialog box's close button
         $firstActionableElement.focus();
+    }
+    /*
+        function to hide a dialog box
+    */
+    function hideDialog($dialog) {
+        /*
+        1. set aria-hidden = true;
+        2. hide dialog;
+        */
+        console.log($dialog);
+        //hide screen blocker
+        $screenBlock.removeClass('active');
+        //block focus in blocked containers & hide page content from reader
+        NAME.access.removeBlockFocus($contentsToBlock);
+        // hide the dialog box
+        $dialog.removeClass('active');
+        // hide dialog content from screen reader
+        $dialog.attr("aria-hidden", "true");
+        // remove ESC key event
+        $dialog.off('keyup.esc-key');
+        // focus on the trigger that had opened the dialog
+        NAME.access.focusTrigger($currentTrigger);
+        // reset local variable
+        $currentDialog = null;
+        $currentTrigger = null;
     }
     function addBookends($container) {
         var bookendMarkup = '<div tabindex="0" data-bookends></div>';
@@ -124,86 +168,9 @@
     /*
         function to position tooltip relative to trigger
     */
-    function positionTooltip(prop) {
-        var newPos = {
-                maxWidth: '', // reset maxWidth/maxHeight in case theywere set in another tooltip
-                maxHeight: ''
-            },
-            showOn = fn.activeTooltip.showOn,
-            appearFrom = fn.activeTooltip.appearFrom,
-            space = {
-                left: prop.trigger.left - prop.window.scrollLeft,
-                right: prop.window.width + prop.window.scrollLeft - (prop.trigger.left + prop.trigger.width),
-                top: prop.trigger.top - prop.window.scrollTop,
-                bottom: prop.window.height + prop.window.scrollTop - (prop.trigger.top + prop.trigger.height)
-            };
-        // Determine which side the tooltip will appear (left / right), can be forced through settings
-        if ($.inArray(showOn, ["left", "right"]) < 0) {
-            if (space.left > space.right) {
-                showOn = "left";
-            }
-            else {
-                showOn = "right";
-            }
-        }
-
-        switch (showOn) {
-            case "left":
-                newPos.left = prop.trigger.left - prop.tooltip.width - fn.activeTooltip.distance / 2;
-                if (newPos.left < prop.window.scrollLeft){
-                    // this will shrink the tooltip and keep it on the screen if it goes past the left edge
-                    newPos.maxWidth = space.left - fn.activeTooltip.distance / 2;
-                    newPos.left = prop.window.scrollLeft;
-                }
-                break;
-            case "right":
-                fn.$tooltip.addClass('toLeft'); // this is where the arrow is positioned
-                newPos.left = prop.trigger.left + prop.trigger.width + fn.activeTooltip.distance / 2;
-                if (newPos.left + prop.tooltip.width > space.right){
-                    // this will shrink the tooltip and keep it on the screen if it goes past the right edge
-                    newPos.maxWidth = space.right - fn.activeTooltip.distance / 2;
-                }
-                break;
-        }
-        if (newPos.maxWidth){
-            //maxWidth was set so we need to reset the tooltip height property
-            fn.$tooltip.css({
-                maxWidth: newPos.maxWidth + 'px'
-            });
-            prop.tooltip.height = fn.$tooltip.outerHeight();
-        }
-
-        // Determine which side the tooltip will appear (top / bottom), can be forced through settings
-        if ($.inArray(appearFrom, ["top", "bottom"]) < 0) {
-            if (space.top > space.bottom) {
-                appearFrom = "top";
-            }
-            else {
-                appearFrom = "bottom";
-            }
-        }
-
-        switch (appearFrom) {
-            case "bottom":
-                newPos.top = prop.trigger.top;
-                break;
-            case "top":
-                fn.$tooltip.addClass('alignBottom'); // this is the arrow position
-                newPos.top = (prop.trigger.top + prop.trigger.height/2) - prop.tooltip.height + prop.tooltip.paddingTop + 15 + 11;// 15 is from the position of the arrow pseudo element, 11 is from half the height of the arrow
-                if (newPos.top < prop.window.scrollTop){
-                    // reset top if tooltip goes off the top of the screen
-                    newPos.top = prop.window.scrollTop;
-                }
-                break;
-        }
-
-        for (var key in newPos){
-            if (newPos.hasOwnProperty(key) && !isNaN(parseFloat(newPos[key]))){
-                newPos[key] = (newPos[key] < 0 ? 0 : newPos[key]) + 'px';
-            }
-        }
-
-        return newPos;
+    function positionTooltip($tooltip) {
+        var $parent = $tooltip.parent();
+        $tooltip.css('bottom', $parent.outerHeight());
     }
     /*
         esc key closes dialog
@@ -220,35 +187,6 @@
                 hideDialog($currentDialog);
             }
         }
-    }
-    /*
-        function to hide a dialog box
-    */
-    function hideDialog($dialog) {
-        /*
-        1. set aria-hidden = true;
-        2. hide dialog;
-        */
-
-        var $blockedContainers = $contentsToBlock;
-
-        // identify the screen element that lays over the blocked content
-        $screenBlock = $('.block-screen');
-        //show screen blocker
-        $screenBlock.removeClass('active');
-        //block focus in blocked containers & hide page content from reader
-        NAME.access.removeBlockFocus($blockedContainers);
-        // hide the dialog box
-        $dialog.removeClass('active');
-        // hide dialog content from screen reader
-        $dialog.attr("aria-hidden", "true");
-        // remove ESC key event
-        $dialog.off('keyup.esc-key');
-        // focus on the trigger that had opened the dialog
-        NAME.access.focusTrigger();
-        // reset local variable
-        $currentDialog = null;
-        $currentTrigger = null;
     }
 
 }(jQuery, NAME));

@@ -1,0 +1,62 @@
+/* Components
+---------------------------------------- */
+.block-screen {
+	position: fixed;
+	display: none;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: gray;
+	opacity: 0.5;
+	z-index: 50;
+	}
+.block-screen.active {
+	display: block;
+	}
+.modal {
+	position: absolute;
+	display: none;
+	left: 0;
+	top: 300px;
+	width: 80%;
+	padding: 25px;
+	background-color: #fff;
+	z-index: 100;
+	}
+.modal.active {
+	display: block;
+	}
+[data-controls="tooltip"] {
+	display: inline-block;
+	position: relative;
+	}
+.tooltip {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	display: none;
+	padding: 15px;
+	width: 200px;
+	border: 1px solid #333;
+	background-color: #fc3;
+	}
+.tooltip.active {
+	display: block;
+	}
+.svg.close-dialog {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	width: 25px;
+	height: 25px;
+	padding: 0;
+	margin: 0;
+	font-size: 0;
+}
+.tooltip .svg.close-dialog {
+	right: 5px;
+	top: 5px;
+	width: 15px;
+	height: 15px;
+}
