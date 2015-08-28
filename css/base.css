@@ -71,6 +71,9 @@ fieldset {
 	padding: 0;
 	border: 0;
 }
+hr {
+	margin: 20px 0 15px;
+	}
 table {
 	width: 100%;
 	}
@@ -260,6 +263,13 @@ input[type="checkbox"] {
     font-size: 1.3rem;
     line-height: 32px;
     font-weight: bold;
+	}
+.btn.svg {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
 	}
 /* Icons
 ---------------------------------------- */
