@@ -1,6 +1,6 @@
 /**
  * @author Adina Halter
- * Accessible Modal Window
+ * Accessible Modal and Tooltips
  */
 (function ($, NAME) {
     'use strict';
