@@ -1,0 +1,47 @@
+.tab-menu-item {
+	display: inline-block;
+	width: 33.3%;
+	margin-left: -0.5rem;
+}
+.tab-menu-item:first-child {
+	margin-left: 0;
+}
+.tab-menu-link {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	height: 6ex;
+	padding: 1.25ex 0 0;
+	border: 1px solid #000;
+	background-color: #666;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+}
+.tab-menu-link:visited {
+	color: white;
+}
+.tab-menu-link:hover,
+.tab-menu-link:active,
+.tab-menu-link:focus {
+	text-decoration: none;
+	background-color: #006;
+	}
+.tab-menu-link.current {
+	background-color: #ccc;
+	color: #000;
+}
+.single-container-view .content-panel {
+	display: none;
+}
+.single-container-view .content-panel.current {
+	display: block;
+}
+.single-container-view {
+	border: 1px solid red;
+    padding: 20px;
+}
+.content-panel:focus {
+	outline: none;
+	box-shadow: none;
+}

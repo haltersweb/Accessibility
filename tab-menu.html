@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Tab Menu</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/tab-menu.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="page-wrapper">
+			<h1>Tab Menu&mdash;Two Versions</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
+			<p>Same-page tab menus can either:</p>
+			<ul class="bullet singletons">
+				<li>Show a single content panel at a time.</li>
+				<li>Show all content and scroll to the content requested.</li>
+			</ul>
+			<p><em>After navigating to new in-page content press the tab key and notice where focus goes.</em></p>
+			<p>What's important is that engaging in-page navigation <strong>moves focus to the content</strong> requested via js.  By assigning <strong>tabindex="-1"</strong> to the content container it can accept focus.</p>
+			<p>Use the buttons below to see each version.  The js does not change.</p>
+			<p>
+				<button type="button" id="allContentView">Full content version</button>
+				<button type="button" id="singleContainerView">Single content panel version</button>
+			</p>
+			<div class="tabbed-content single-container-view">
+				<ul data-widget="tab-menu">
+					<li class="tab-menu-item"><a href="#one" class="tab-menu-link current">Section One</a></li>
+					<li class="tab-menu-item"><a href="#two" class="tab-menu-link">Section Two</a></li>
+					<li class="tab-menu-item"><a href="#three" class="tab-menu-link">Section Three</a></li>
+				</ul>
+				<div id="one" class="content-panel current" tabindex="-1">
+					<h2>Welcome to Section One</h2>
+					<p><button type="button">Fake button</button></p>
+					<p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing</a> elit. Voluptatibus amet veritatis vero incidunt vel itaque assumenda, nesciunt hic eius sequi sit tempore? Nam temporibus reprehenderit aliquid iure at aliquam veritatis.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus amet veritatis vero incidunt vel itaque assumenda, nesciunt hic eius sequi sit tempore? Nam temporibus reprehenderit aliquid iure at aliquam veritatis.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus amet veritatis vero incidunt vel itaque assumenda, nesciunt hic eius sequi sit tempore? Nam temporibus reprehenderit aliquid iure at aliquam veritatis.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus amet veritatis vero incidunt vel itaque assumenda, nesciunt hic eius sequi sit tempore? Nam temporibus reprehenderit aliquid iure at aliquam veritatis.</p>
+				</div>
+				<div id="two" class="content-panel" tabindex="-1">
+					<h2>Welcome to Section Two</h2>
+					<p><button type="button">Fake button</button></p>
+					<p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing</a> elit. Voluptatibus amet veritatis vero incidunt vel itaque assumenda, nesciunt hic eius sequi sit tempore? Nam temporibus reprehenderit aliquid iure at aliquam veritatis.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus amet veritatis vero incidunt vel itaque assumenda, nesciunt hic eius sequi sit tempore? Nam temporibus reprehenderit aliquid iure at aliquam veritatis.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus amet veritatis vero incidunt vel itaque assumenda, nesciunt hic eius sequi sit tempore? Nam temporibus reprehenderit aliquid iure at aliquam veritatis.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus amet veritatis vero incidunt vel itaque assumenda, nesciunt hic eius sequi sit tempore? Nam temporibus reprehenderit aliquid iure at aliquam veritatis.</p>
+				</div>
+				<div id="three" class="content-panel" tabindex="-1">
+					<h2>Welcome to Section Three</h2>
+					<p><button type="button">Fake button</button></p>
+					<p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing</a> elit. Voluptatibus amet veritatis vero incidunt vel itaque assumenda, nesciunt hic eius sequi sit tempore? Nam temporibus reprehenderit aliquid iure at aliquam veritatis.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus amet veritatis vero incidunt vel itaque assumenda, nesciunt hic eius sequi sit tempore? Nam temporibus reprehenderit aliquid iure at aliquam veritatis.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus amet veritatis vero incidunt vel itaque assumenda, nesciunt hic eius sequi sit tempore? Nam temporibus reprehenderit aliquid iure at aliquam veritatis.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus amet veritatis vero incidunt vel itaque assumenda, nesciunt hic eius sequi sit tempore? Nam temporibus reprehenderit aliquid iure at aliquam veritatis.</p>
+				</div>
+			</div>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+	<script type="text/javascript" src="js/tab-menu.js"></script>
+</body>
+</html>
