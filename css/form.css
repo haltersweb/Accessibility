@@ -1,0 +1,8 @@
+.error-list {
+    border: 1px solid red;
+    padding: 10px 15px 10px 30px;
+	}
+input[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+	border: 1px solid red;
+	}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>An Accessible Form</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/form.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="page-wrapper">
+		<h1>Welcome to an Accessible Form</h1>
+		<p>To see <strong>error handling</strong> click the submit button.</p>
+		<p>Error messages will be tied to their offending input fields using aria-describedby and aria-invalid</p>
+		<p><a href="#">Fake link</a>. Voluptatem corrupti possimus sit, sequi, quo corporis ipsa, perferendis ipsum, voluptates eius maxime sint ex assumenda? At atque dolorem dolorum qui maiores.</p>
+		<h2>Tracking Your Eating Habits</h2>
+		<form action="post">
+			<div class="form-row">
+				<label for="honorific">Honorific</label>
+				<select name="honorific" id="honorific">
+					<option value="Mr.">Mr.</option>
+					<option value="Mrs.">Mrs.</option>
+					<option value="Ms.">Ms.</option>
+				</select>
+			</div>
+			<div class="form-row">
+				<label for="firstName">First Name</label>
+				<input id="firstName" type="text" />
+			</div>
+			<div class="form-row">
+				<label for="lastName" class="required-field">Last Name</label>
+				<input id="lastName" type="text" aria-required="true" />
+			</div>
+			<div class="form-row">
+				<label for="date" class="required-field">Birthday</label>
+				<input type="date" id="date" aria-required="true" aria-describedby="dateInstr" />
+				<span id="dateInstr">write in MM/DD/YYYY format</span>
+			</div>
+			<fieldset>
+				<legend><span class="legend">What is your favorite time to eat? (example with nested label/input)</span></legend>
+				<div class="form-row">
+					<label for="morning" class="inline-label">
+						<input type="radio" name="eating_times" id="morning" />
+						morning
+					</label>
+					<label for="morning" class="inline-label">
+						<input type="radio" name="eating_times" id="afternoon" />
+						afternoon
+					</label>
+					<label for="morning" class="inline-label">
+						<input type="radio" name="eating_times" id="evening" />
+						evening
+					</label>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend><span class="legend">What are your favorite foods? (example with sequential label/input)</span></legend>
+				<fieldset>
+					<legend><span class="legend">Favorite Fruits</span></legend>
+					<div class="form-row">
+						<input type="checkbox" id="apples" name="fruits" />
+						<label for="apples">apples</label>
+					</div>
+					<div class="form-row">
+						<input type="checkbox" id="oranges" name="fruits" />
+						<label for="oranges">oranges</label>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend><span class="legend">Favorite Vegetables</span></legend>
+					<div class="form-row">
+						<input type="checkbox" id="lettuce" name="vegetables" />
+						<label for="lettuce">lettuce</label>
+					</div>
+					<div class="form-row">
+						<input type="checkbox"id="carrots" name="vegetables" />
+						<label for="carrots">carrots</label>
+					</div>
+				</fieldset>
+			</fieldset>
+			<div class="form-row">
+				<label for="about" class="legend block-label">Tell Us About Yourself</label>
+				<textarea name="about" id="about" cols="30" rows="10"></textarea>
+			</div>
+			<div class="form-row">
+				<button type="reset" class="btn-secondary">Reset</button> <button type="submit" class="btn-primary">Submit</button>
+			</div>
+		</form>
+		<p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>. Voluptatem corrupti possimus sit, sequi, quo corporis ipsa, perferendis ipsum, voluptates eius maxime sint ex assumenda? At atque dolorem dolorum qui maiores.</p>
+	</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+	<script type="text/javascript" src="js/form.js"></script>
+</body>
+</html>
