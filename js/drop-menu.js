@@ -1,28 +1,29 @@
 /**
  * @author Adina Halter
- * Accessible Drop Menu
+ * Accessible Drop Menu and Menu Drawer
  */
 (function ($, NAME) {
     'use strict';
+    var $pageWrapper = $('.page-wrapper'),
+        $blockScreen = $('.block-screen'),
+        $navigation = $('[role="navigation"]'),
+        $subNav = $navigation.find('.sub-navigation'),
+        $closeDrawerButton = $('.close-drawer');
     /*
         when mobile nav drawer trigger is clicked:
             1.  open drawer
             2.  bind one-time click event to close drawer button and block-screen to close drawer
     */
     $('.triptych-nav-trigger').on('click', function (evt) {
-        var $pageWrapper = $('.page-wrapper'),
-            $blockScreen = $('.block-screen'),
-            $navigation = $('[role="navigation"]'),
-            $subNav = $navigation.find('.sub-navigation'),
-            $closeDrawerButton = $('.close-drawer');
+        var $this = $(this);
         evt.stopPropagation();
-        NAME.access.tagTrigger($(this));
-        NAME.access.ariaExpand($subNav);
+        NAME.access.tagTrigger($this);
+        NAME.access.ariaExpand($this, $subNav);
         $navigation.removeClass('mobile-hide');
         $pageWrapper.addClass('reveal');
         $closeDrawerButton.focus();
         $blockScreen.add($closeDrawerButton).one('click', function () {
-            NAME.access.ariaContract($subNav);
+            NAME.access.ariaContract($this, $subNav);
             $pageWrapper.removeClass('reveal');
             $navigation.addClass('mobile-hide');
             NAME.access.removeBlockFocus($pageWrapper);
@@ -33,17 +34,18 @@
     /*
         function to open a subnav
     */
-    function openSubnav($nav, $subnav) {
-        NAME.access.ariaExpand($subnav);
+    function openSubnav($nav, $subnav, $trigger) {
+        NAME.access.ariaExpand($trigger, $subnav);
         $nav.addClass('active');
     }
     /*
         function to close an active subnav
     */
     function closeActiveSubnav() {
-        var $formerActiveSubnav = $('.sub-navigation[aria-expanded="true"]'),
+        var $formerActiveTrigger = $('[aria-expanded="true"]'),
+            $formerActiveSubnav = $formerActiveTrigger.siblings('.sub-navigation'),
             $formerActiveElems = $formerActiveSubnav.closest('.navigation').find('.active');
-        NAME.access.ariaContract($formerActiveSubnav);
+        NAME.access.ariaContract($formerActiveTrigger, $formerActiveSubnav);
         $formerActiveElems.removeClass('active');
     }
     /*
@@ -74,11 +76,11 @@
         if ($subnav.length === 0) {
             return false;
         }
-        if ($subnav.attr('aria-expanded') === 'true') {
+        if ($navLink.attr('aria-expanded') === 'true') {
             return;
         }
         closeActiveSubnav();
-        openSubnav($this, $subnav);
+        openSubnav($this, $subnav, $navLink);
     });
     /*
         when navigation item hover is removed, close subnav and clear aria-tagging
@@ -105,7 +107,7 @@
             if ($subnav.length === 0) {
                 return true;
             }
-            openSubnav($nav, $subnav);
+            openSubnav($nav, $subnav, $this);
             $subnav
                 .find('li:first-child').addClass('active')
                 .find('a').focus();

@@ -76,21 +76,17 @@
     /*
     aria tagging while expanding content
     */
-    NAME.access.ariaExpand = function ($expandingContainer) {
-        $expandingContainer.attr({
-            "aria-hidden" : "false",
-            "aria-expanded" : "true"
-        });
+    NAME.access.ariaExpand = function ($expander, $expandingContainer) {
+        $expander.attr("aria-expanded", "true");
+        $expandingContainer.attr("aria-hidden", "false");
     };
 
     /*
     aria tagging while contracting content
     */
-    NAME.access.ariaContract = function ($expandingContainer) {
-        $expandingContainer.attr({
-            "aria-hidden" : "true",
-            "aria-expanded" : "false"
-        });
+    NAME.access.ariaContract = function ($expander, $expandingContainer) {
+        $expander.attr("aria-expanded", "false");
+        $expandingContainer.attr("aria-hidden", "true");
     };
 
     /*
