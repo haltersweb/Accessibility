@@ -4,9 +4,6 @@
  */
 (function ($, NAME) {
     'use strict';
-
-
-
     $('.accordion-trigger').on('click', function (evt) {
         var $trigger = $(this),
             $triggerParent = $trigger.parent(),
@@ -19,15 +16,4 @@
             NAME.access.ariaContract($trigger, $expandingContainer);
         }
     });
-
-
-
-
-
-
-
-
-
-
-
 }(jQuery, NAME));
