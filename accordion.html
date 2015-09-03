@@ -11,25 +11,32 @@
 <body>
 	<div class="container">
 		<div class="page-wrapper">
-			<h1>Accordion a.k.a. Blinds</h1>
+			<h1>Accordion <span style="text-transform: lowercase">a.k.a.</span> Blinds</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
-			<p>Uses same code as tab-menu with a few additions and aria defined relationships.</p>
-			<h2>Example where blind reveals new content but it is unnecessary to use aria to define a relationship.</h2>
+			<p>This method is light on aria. Aria tagging used is:</p>
+			<ul class="bullet singletons">
+				<li>aria-owns or aria-controls</li>
+				<li>aria-expanded</li>
+				<li>aria-hidden</li>
+			</ul>
+			<h2>Using aria-controls</h2>
+			<p>Example where blind reveals new content but it is unnecessary to use aria to define ownership. The <strong>aria-controls</strong> attribute is used to tie trigger and expandable content together.</p>
 			<div class="book-of-armaments">
 				<h3>
-					<a href="#armaments_2_9" class="accordion-trigger" aria-owns="#armaments_2_9" aria-expanded="false">
+					<a href="#armaments_2_9" class="accordion-trigger" aria-controls="armaments_2_9" aria-expanded="false">
 						Armaments 2:9&ndash;10
 					</a>
 				</h3>
 				<p id="armaments_2_9" class="accordion">And Saint Attila raised the hand grenade up on high, saying, "O Lord, bless this thy hand grenade, that with it thou mayst blow thine enemies to tiny bits, in thy mercy." And the Lord did grin. And the people did feast upon the lambs, and sloths, and carp, and anchovies, and orangutans, and breakfast cereals, and fruit bats, and large chu&hellip;</p>
 				<h3>
-					<a href="#armaments_2_19" class="accordion-trigger" aria-owns="armaments_2_19" aria-expanded="false">
+					<a href="#armaments_2_19" class="accordion-trigger" aria-controls="armaments_2_19" aria-expanded="false">
 						Armaments 2:19&ndash;21
 					</a>
 				</h3>
 				<p id="armaments_2_19" class="accordion">And the Lord spake, saying, "First shalt thou take out the Holy Pin. Then shalt thou count to three, no more, no less. Three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out. Once the number three, being the third number, be reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, being naughty in My sight, shall snuff it.</p>
 			</div>
-			<h2>Example with a parent/child relationship between the content trigger and the content in the blind.</h2>
+			<h2>Using aria-owns</h2>
+			<p>Example with a parent/child relationship between the content trigger and the content in the blind. In this case <strong>aria-owns</strong> is assigned to the trigger to tie it to its expandable container.</p>
 			<div class="expenses">
 				<div class="itemization">
 					<a href="#oldWomanBreakdown" class="accordion-trigger" aria-owns="oldWomanBreakdown" aria-expanded="false">
