@@ -1,0 +1,65 @@
+
+.expenses {
+    border-top: 1px solid #222;
+    margin-bottom: 2ex;
+}
+.cost {
+    float: right;
+}
+.itemization {
+    border: 1px solid #222;
+    border-top: 0;
+    background-color: #434343;
+}
+.accordion {
+    display: none;
+}
+.book-of-armaments .accordion-trigger:before {
+    content: "\25B8";
+}
+.book-of-armaments .expanded .accordion-trigger:before {
+    content: "\25BE";
+}
+.accordion .itemization {
+    padding: 1ex 1em 1ex 2.4em;
+    background-color: #efefef;
+}
+.itemization.expanded {
+    background-color: #586c10;
+}
+.expenses .accordion-trigger {
+    position: relative;
+    display: block;
+    padding: 1ex 1em 1ex 2.4em;
+    color: #fff;
+    font-weight: bold;
+}
+.expanded + .accordion {
+    display: block;
+}
+.accordion-trigger svg {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+}
+.expenses svg {
+    left: .6em;
+}
+.expenses svg circle {
+    fill: #fff;
+}
+.expenses svg path {
+    fill: #222;
+}
+svg[class$="expanded"] {
+    display: none;
+}
+.expanded svg[class$="expanded"] {
+    display: block;
+}
+.expanded svg[class$="collapsed"] {
+    display: none;
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Accordions / Blinds</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/accordion.css">
+</head>
+<body>
+	<div class="container">
+		<div class="page-wrapper">
+			<h1>Accordion a.k.a. Blinds</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
+			<p>Uses same code as tab-menu with a few additions and aria defined relationships.</p>
+			<h2>Example where blind reveals new content but it is unnecessary to use aria to define a relationship.</h2>
+			<div class="book-of-armaments">
+				<h3>
+					<a href="#armaments_2_9" class="accordion-trigger" aria-controls="#armaments_2_9" aria-expanded="false">
+						Armaments 2:9&ndash;10
+					</a>
+				</h3>
+				<p id="armaments_2_9" class="accordion">And Saint Attila raised the hand grenade up on high, saying, "O Lord, bless this thy hand grenade, that with it thou mayst blow thine enemies to tiny bits, in thy mercy." And the Lord did grin. And the people did feast upon the lambs, and sloths, and carp, and anchovies, and orangutans, and breakfast cereals, and fruit bats, and large chu&hellip;</p>
+				<h3>
+					<a href="#armaments_2_19" class="accordion-trigger" aria-controls="armaments_2_19" aria-expanded="false">
+						Armaments 2:19&ndash;21
+					</a>
+				</h3>
+				<p id="armaments_2_19" class="accordion">And the Lord spake, saying, "First shalt thou take out the Holy Pin. Then shalt thou count to three, no more, no less. Three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out. Once the number three, being the third number, be reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, being naughty in My sight, shall snuff it.</p>
+			</div>
+			<h2>Example with a parent/child relationship between the content trigger and the content in the blind.</h2>
+			<div class="expenses">
+				<div class="itemization">
+					<a href="#oldWomanBreakdown" class="accordion-trigger" aria-owns="oldWomanBreakdown" aria-expanded="false">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" role="presentation" focusable="false" class="svg-collapsed">
+							<circle cx="25" cy="25" r="25"/>
+							<path fill="#FFFFFF" d="M37,25L20.5,40c-1.2,1.1-3.1,1-4.2-0.2c-1.1-1.2-1-3.1,0.2-4.2L28,25L16.5,15c-1.2-1.1-1.4-3-0.3-4.2,c1.1-1.2,3-1.4,4.2-0.3L37,25z"/>
+						</svg>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" role="presentation" focusable="false" class="svg-expanded">
+							<circle cx="25" cy="25" r="25"/>
+							<path fill="#FFFFFF" d="M25,37L10,20.5c-1.1-1.2-1-3.1,0.2-4.2c1.2-1.1,3.1-1,4.2,0.2L25,28l10-11.5c1.1-1.2,3-1.4,4.2-0.3,c1.2,1.1,1.4,3,0.3,4.2L25,37z"/>
+						</svg>
+						Old Woman
+						<span class="cost">
+							$100
+						</span>
+					</a>
+				</div>
+				<div id="oldWomanBreakdown" class="accordion">
+					<div class="itemization">
+						2 coconuts
+						<span class="cost">
+							$30
+						</span>
+					</div>
+					<div class="itemization">
+						4 African swallows
+						<span class="cost">
+							$60
+						</span>
+					</div>
+					<div class="itemization">
+						Some lovely filth
+						<span class="cost">
+							$10
+						</span>
+					</div>
+				</div>
+				<div class="itemization">
+					<a href="#rogerBreakdown" class="accordion-trigger" aria-owns="rogerBreakdown" aria-expanded="false">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" role="presentation" focusable="false" class="svg-collapsed">
+							<circle cx="25" cy="25" r="25"/>
+							<path fill="#FFFFFF" d="M37,25L20.5,40c-1.2,1.1-3.1,1-4.2-0.2c-1.1-1.2-1-3.1,0.2-4.2L28,25L16.5,15c-1.2-1.1-1.4-3-0.3-4.2,c1.1-1.2,3-1.4,4.2-0.3L37,25z"/>
+						</svg>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" role="presentation" focusable="false" class="svg-expanded">
+							<circle cx="25" cy="25" r="25"/>
+							<path fill="#FFFFFF" d="M25,37L10,20.5c-1.1-1.2-1-3.1,0.2-4.2c1.2-1.1,3.1-1,4.2,0.2L25,28l10-11.5c1.1-1.2,3-1.4,4.2-0.3,c1.2,1.1,1.4,3,0.3,4.2L25,37z"/>
+						</svg>
+						Roger the Shrubber
+						<span class="cost">
+							$200
+						</span>
+					</a>
+				</div>
+				<div id="rogerBreakdown" class="accordion">
+					<div class="itemization">
+						Heath
+						<span class="cost">
+							$75
+						</span>
+					</div>
+					<div class="itemization">
+						Arborvitae
+						<span class="cost">
+							$125
+						</span>
+					</div>
+				</div>
+			</div>
+			<p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing</a> elit. Facere iure dolorum ipsum veniam officiis iusto laborum commodi qui reprehenderit nobis aperiam alias sunt natus porro, consequatur hic facilis magnam provident?</p>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+	<script type="text/javascript" src="js/tab-menu.js"></script>
+	<script type="text/javascript" src="js/accordion.js"></script>
+</body>
+</html>
