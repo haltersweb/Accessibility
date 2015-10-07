@@ -1,6 +1,9 @@
 h1 {
 	color: #999;
 }
+h3 .blind-trigger {
+    font-weight: bold;
+}
 .masthead {
 	position: relative;
 }
@@ -16,9 +19,10 @@ h1 {
     color: white;
     border-bottom-color: white;
 }
-h3 .blind-trigger {
-    font-weight: bold;
-}
 #yes {
     cursor: pointer;
+}
+:focus {
+    outline: red solid 1px;
+    box-shadow: inset 0px 0px 2px 2px red;
 }
