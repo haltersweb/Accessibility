@@ -1,0 +1,18 @@
+h1 {
+	color: #999;
+}
+.masthead {
+	position: relative;
+}
+.masthead img {
+	position: relative;
+}
+.masthead h1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 10px 20px;
+    color: white;
+    border-bottom-color: white;
+}
