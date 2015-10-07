@@ -16,3 +16,9 @@ h1 {
     color: white;
     border-bottom-color: white;
 }
+h3 .blind-trigger {
+    font-weight: bold;
+}
+#yes {
+    cursor: pointer;
+}

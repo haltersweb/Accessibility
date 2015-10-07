@@ -4,7 +4,10 @@
  */
 (function ($, NAME) {
     'use strict';
-    $('a.btn').on('click', function (evt) {
+    $('#yes').on('click', function (evt) {
+        alert("Huzzah!");
+    });
+    $('#no').on('click', function (evt) {
         evt.preventDefault();
         alert("Well, go ahead and have a lie down, then.");
     });
