@@ -94,13 +94,18 @@
 	}
 	function arrowChangeState(currentFrame) {
 		console.log('arrowChangeState() is running');
-    	$arrows.removeClass('disabled');
+    	$arrows.removeClass('disabled')
+    		.attr('aria-disabled', 'false');
     	if (currentFrame === 1) {
-    		$arrows.filter('[class*="left"]').addClass('disabled');
+    		$arrows.filter('[class*="left"]')
+    			.addClass('disabled')
+    			.attr('aria-disabled', 'true');
     		return;
     	}
     	if (currentFrame === totalItems) {
-    		$arrows.filter('[class*="right"]').addClass('disabled');
+    		$arrows.filter('[class*="right"]')
+    			.addClass('disabled')
+    			.attr('aria-disabled', 'true');
     	}
 	}
 	function lentilChangeState($lentil) {
