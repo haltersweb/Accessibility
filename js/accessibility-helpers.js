@@ -21,7 +21,7 @@
     */
     NAME.focusables = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]';
     /*
-    General helpers namespacing
+    namespacing general helpers
     */
     NAME.general = {};
     NAME.general.senseClickOutside = function ($evtTarget, $container) {
@@ -50,7 +50,7 @@
         };
     };
     /*
-    Accessibility namespacing
+    namespacing accessibility helpers
     */
     NAME.access = {};
     /*
@@ -88,6 +88,32 @@
         $expander.attr("aria-expanded", "false");
         $expandingContainer.attr("aria-hidden", "true");
     };
+
+    /*
+    hide visible content with aria
+    use when you have a content that must still be visible i.e. carousel panels
+    */
+    NAME.access.ariaHideContent = function ($hideContainers) {
+        // find all focusable elements
+        // IMPORTANT: assumes no tabindex > -1 elems
+        var $focusableHiddenElems = $hideContainers.find('a, button, input, select, textaria');
+        // hide the container with aria
+        $hideContainers.attr('aria-hidden', 'true');
+        // remove focusability from focusable elements
+        $focusableHiddenElems.attr('tabindex', "-1")
+            // and add data attribute that flags the focusable elements for reset with ariaShowContent()
+            .attr('data-focusable-hidden-elem', 'true');
+    }
+
+    /*
+    reset the content hidden with ariaHideContent() to its original accessibility state
+    */
+    NAME.access.ariaShowContent = function ($blockedContainers) {
+        var $focusableHiddenElems = $blockedContainers.find('[data-focusable-hidden-elem]');
+        $blockedContainers.removeAttr('aria-hidden');
+        $focusableHiddenElems.removeAttr('tabindex')
+            .removeAttr('data-focusable-hidden-elem');
+    }
 
     /*
     tag trigger ($OPTIONALtrigger can be used to override default trigger capture)
