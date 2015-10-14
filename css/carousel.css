@@ -1,0 +1,149 @@
+.carousel {
+	position: relative;
+	overflow: hidden;
+	}
+.carousel-frame {
+	position: relative;
+	overflow: hidden;
+	box-sizing: border-box;
+	-moz-sizing: border-box;
+	-webkit-sizing: border-box;
+	width: 300px;
+	height: 150px;
+	margin: 0 auto;
+	background-color: #fff;
+	}
+.carousel-items {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	overflow: hidden;
+	box-sizing: border-box;
+	-moz-sizing: border-box;
+	-webkit-sizing: border-box;
+	width: 1200px;
+	height: 150px;
+	-webkit-transition: left 1s ease-in-out;
+	-moz-transition: left 1s ease-in-out;
+	-o-transition: left 1s ease-in-out;
+	transition: left 1s ease-in-out;
+	}
+.carousel-items[data-carousel-item-shown="1"] {
+	left: 0px;
+	}
+.carousel-items[data-carousel-item-shown="2"] {
+	left: -300px;
+	}
+.carousel-items[data-carousel-item-shown="3"] {
+	left: -600px;
+	}
+.carousel-items[data-carousel-item-shown="4"] {
+	left: -900px;
+	}
+.carousel-item {
+	box-sizing: border-box;
+	-moz-sizing: border-box;
+	-webkit-sizing: border-box;
+	width: 300px;
+	height: 150px;
+	padding: 1px 20px 15px;
+	float: left;
+	}
+.lentil {
+	display: inline-block;
+	box-sizing: border-box;
+	-moz-sizing: border-box;
+	-webkit-sizing: border-box;
+	margin: 0;
+	border: 3px solid transparent;
+	padding: 0;
+	background: #3279bf;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	}
+[class^="carousel-arrow"] {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	margin: 0;
+	border: none;
+	padding: 0;
+	background-color: transparent;
+	}
+.carousel-arrow-left {
+	position: absolute;
+	left: 1%;
+	top: 30%;
+	transform: scaleX(-1);
+	}
+.carousel-arrow-right {
+	position: absolute;
+	right: 1%;
+	top: 30%;
+	}
+[class^="carousel-arrow"]:focus {
+	outline: none;
+	box-shadow: none;
+	}
+[class^="carousel-arrow"] circle {
+	fill: #3279bf;
+	stroke: #3279bf;
+	}
+[class^="carousel-arrow"].disabled {
+	cursor: default;
+	pointer-events: none;
+	}
+[class^="carousel-arrow"].disabled circle {
+	fill: #ccc;
+	stroke: #ccc;
+	}
+[class^="carousel-arrow"].disabled:focus circle {
+	stroke: #aaa;
+	}
+[class^="carousel-arrow"]:not(.disabled):focus circle,
+[class^="carousel-arrow"]:not(.disabled):hover circle {
+	stroke: black;
+	}
+.lentils {
+	text-align: center;
+	padding: 20px;
+	}
+.lentil {
+	width: 16px;
+	height: 16px;
+	margin: 0 5px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	line-height: 16px;
+	}
+.lentil:focus {
+	border-color: black;
+	}
+.lentil.enabled {
+	background-color: red;
+	}
+/*
+[class^="carousel-btn"],
+.lentil {
+	display: inline-block;
+	box-sizing: border-box;
+	-moz-sizing: border-box;
+	-webkit-sizing: border-box;
+	margin: 0;
+	border: 3px solid transparent;
+	padding: 0;
+	background: #3279bf;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	}
+[class^="carousel-btn"] {
+	width: 50px;
+	height: 50px;
+	-webkit-border-radius: 25px;
+	-moz-border-radius: 25px;
+	border-radius: 25px;
+	}
+*/

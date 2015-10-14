@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Accessible Carousel</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/carousel.css" />
+</head>
+<body>
+	<div class="container">
+		<div class="page-wrapper">
+			<h1>The Carousel</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
+			<ul>
+				<li>The carousel is assigned an aria-describedby to tell the user that they are in a carousel</li>
+				<li>This version is not written to allow for the use of the keyboard's right/left arrows.</li>
+				<li>Carousel Items are aria-hidden until they slide into view.  Once in view focus is put on that item so that the content can be read.</li>
+				<li>The lentils are leveraged as if they were content tabs.</li>
+			</ul>
+			<p>This is a fake paragraph with a <a href="fake-landing-page.html">fake link</a>.</p>
+			<div class="carousel" tabindex="0" aria-describedby="carouselDescription">
+				<p id="carouselDescription" class="accessibly-hidden">This is a carousel with four offers.</p>
+				<button class="carousel-arrow-left disabled" type="button">
+				<span class="accessibly-hidden">view previous offer</span>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" role="presentation" focusable="false" class="svg-collapsed">
+						<circle cx="25" cy="25" r="22" stroke="black" stroke-width="3" />
+						<path fill="#FFFFFF" d="M37,25L20.5,40c-1.2,1.1-3.1,1-4.2-0.2c-1.1-1.2-1-3.1,0.2-4.2L28,25L16.5,15c-1.2-1.1-1.4-3-0.3-4.2,c1.1-1.2,3-1.4,4.2-0.3L37,25z"/>
+					</svg>
+				</button>
+				<div class="carousel-frame">
+					<div class="carousel-items" data-carousel-item-shown="1" tabindex="-1">
+						<div class="carousel-item" data-carousel-item="1" tabindex="-1">
+							<h2>Offer Number One<span class="accessibly-hidden"> of four</span></h2>
+							<p>Some fantastic text about offer one with a <a href="">call to action</a></p>
+						</div>
+						<div class="carousel-item" data-carousel-item="2" tabindex="-1">
+							<h2>Offer Number Two<span class="accessibly-hidden"> of four</span></h2>
+							<p>Some fantastic text about offer two with a <a href="">call to action</a></p>
+						</div>
+						<div class="carousel-item" data-carousel-item="3" tabindex="-1">
+							<h2>Offer Number Three<span class="accessibly-hidden"> of four</span></h2>
+							<p>Some fantastic text about offer three with a <a href="">call to action</a></p>
+						</div>
+						<div class="carousel-item" data-carousel-item="4" tabindex="-1">
+							<h2>Offer Number Four<span class="accessibly-hidden"> of four</span></h2>
+							<p>Some fantastic text about offer four with a <a href="">call to action</a></p>
+						</div>
+					</div>
+				</div>
+				<button class="carousel-arrow-right" type="button">
+					<span class="accessibly-hidden">view next offer</span>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" role="presentation" focusable="false" class="svg-collapsed">
+						<circle cx="25" cy="25" r="22" stroke="black" stroke-width="3" />
+						<path fill="#FFFFFF" d="M37,25L20.5,40c-1.2,1.1-3.1,1-4.2-0.2c-1.1-1.2-1-3.1,0.2-4.2L28,25L16.5,15c-1.2-1.1-1.4-3-0.3-4.2,c1.1-1.2,3-1.4,4.2-0.3L37,25z"/>
+					</svg>
+				</button>
+				<div class="lentils">
+					<button class="lentil enabled" type="button" data-carousel-item="1"><span class="accessibly-hidden">view offer one</span></button>
+					<button class="lentil" type="button" data-carousel-item="2"><span class="accessibly-hidden">view offer two</span></button>
+					<button class="lentil" type="button" data-carousel-item="3"><span class="accessibly-hidden">view offer three</span></button>
+					<button class="lentil" type="button" data-carousel-item="4"><span class="accessibly-hidden">view offer four</span></button>
+				</div>
+			</div>
+			<p>Pros: The screen-reader user is informed of the nature of the carousel content.</p>
+			<p>Cons: Inability to use left and right arrows as another method of navigation.</p>
+			<p>This is a fake paragraph with a <a href="#">fake link</a>.</p>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+	<script type="text/javascript" src="js/carousel.js"></script>
+</body>
+</html>
