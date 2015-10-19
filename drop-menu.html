@@ -11,6 +11,7 @@
 <body>
 	<!-- BEST TO INSERT ARIA TAGGING WITH JS SO THAT IT WON'T HINDER NON-JS USERS -->
 	<div class="container">
+		<a href="#main" class="skip-link">Skip to main content</a>
 		<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
 		<div role="navigation" class="mobile-hide" aria-label="Main menu">
 			<button type="button" class="close-drawer">Close Drawer</button>
@@ -35,7 +36,7 @@
 				</li>
 			</ul>
 		</div>
-		<div class="page-wrapper">
+		<div class="page-wrapper" id="main" role="main" tabindex="-1">
 			<div class="header" role="banner">
 				<button type="button" class="triptych-nav-trigger">
 					<i class="svg triptych">

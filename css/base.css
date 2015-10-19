@@ -356,6 +356,24 @@ i.svg {
     box-sizing: border-box;
 	padding: 0 1.5em;
 	background-color: #ccc;
+	}
+/* Skip link
+---------------------------------------- */
+.skip-link {
+	display: block;
+    height: 1px;
+    margin-top: -11px;
+    padding: 5px;
+    overflow: hidden;
+
+	}
+.skip-link:focus {
+	height: auto;
+	margin: auto;
+	}
+#main {
+	outline: none;
+	box-shadow: none;
 }
 /* Page component structure
 ---------------------------------------- */
