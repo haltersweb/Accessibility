@@ -4,7 +4,7 @@
  */
 (function ($, NAME) {
     'use strict';
-alert('test');
+    console.log('test');
     $('[data-widget="tab-menu"]').find('a').on('click', function (evt) {
     	var $this = $(this),
     		$targetContent;
