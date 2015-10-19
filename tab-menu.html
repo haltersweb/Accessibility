@@ -13,13 +13,15 @@
 		<div class="page-wrapper">
 			<h1>Tab Menu&mdash;Two Versions</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
-			<p>Same-page tab menus can either:</p>
+			<p>These tab menu links are semantically in-page links.</p>
+			<p><em>Notice that after navigating to the requested in-page content, if you press the tab key focus goes to the first actionable element found in the DOM after the linked container's open tag.</em></p>
+			<p>This is important because engaging an in-page link should <strong>move focus to the corresponding container requested</strong>.</p>
+			<p>Unfortunately, this can be problematic in certain browsers.  Therefore, by assigning <strong>tabindex="-1"</strong> to the target container, the container now accepts focus when the in-page tab link is engaged.</p>
+			<p>These tab menu links can either:</p>
 			<ul class="bullet singletons">
-				<li>Show a single content panel at a time.</li>
+				<li>Reveal a single content panel at a time.</li>
 				<li>Show all content and scroll to the content requested.</li>
 			</ul>
-			<p><em>After navigating to new in-page content press the tab key and notice where focus goes.</em></p>
-			<p>What's important is that engaging in-page navigation <strong>moves focus to the content</strong> requested via js.  By assigning <strong>tabindex="-1"</strong> to the content container it can accept focus.</p>
 			<p>Use the buttons below to see each version.  The js does not change.</p>
 			<p>
 				<button type="button" id="allContentView">Full content version</button>
