@@ -7,7 +7,7 @@
     $('[data-widget="tab-menu"]').find('a').on('click', function (evt) {
     	var $this = $(this),
     		$targetContent;
-    	$this.closest('[data-widget="tab-menu"').find('a').removeClass('current');
+    	$this.closest('[data-widget="tab-menu"]').find('a').removeClass('current');
     	$this.addClass('current');
     	$targetContent = $($this.attr('href'));
     	$targetContent.siblings('.content-panel').removeClass('current');
