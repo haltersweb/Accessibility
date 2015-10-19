@@ -4,6 +4,7 @@
  */
 (function ($, NAME) {
     'use strict';
+alert('test');
     $('[data-widget="tab-menu"]').find('a').on('click', function (evt) {
     	var $this = $(this),
     		$targetContent;
@@ -11,7 +12,7 @@
     	$this.addClass('current');
     	$targetContent = $($this.attr('href'));
     	$targetContent.siblings('.content-panel').removeClass('current');
-    	$targetContent.addClass('current').focus();
+    	$targetContent.addClass('current');
     });
     /*
 		toggle between single content panel view and full content view
