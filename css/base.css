@@ -16,8 +16,7 @@ body {
 	height: 100%;
     margin: 0 auto;
 	background-color: #fff;
-    font-size: 13px;
-    font-size: 1.3em; /* =13px */
+    font-size: 1.3rem; /* =13px */
 	font-weight: normal;
 	color: #161e25;
 	overflow-x: hidden;
@@ -120,22 +119,18 @@ h1, .h1 {
 	margin: 0.7ex 0 1ex;
 	border-bottom: 1px solid #163554;
 	padding-bottom: 0.5ex;
-	font-size: 30px;
 	font-size: 3.0rem;
 	line-height: 1.07;
 	text-transform: uppercase;
 	letter-spacing: normal;
 	}
 h2, .h2 {
-	font-size: 23px;
 	font-size: 2.3rem;
 	}
 h3, .h3 {
-	font-size: 16px;
 	font-size: 1.6rem;
 	}
 h4, .h4 {
-	font-size: 14px;
 	font-size: 1.4rem;
 	}
 h5, .h5 {
@@ -159,12 +154,10 @@ legend {
 .legend {
 	display: block;
 	margin-top: 1ex;
-	font-size: 16px;
 	font-size: 1.6rem;
 	font-weight: bold;
 	}
 fieldset fieldset legend {
-	font-size: 14px;
 	font-size: 1.4rem;
 	}
 label {
@@ -190,7 +183,6 @@ input[type=url],
 textarea {
     padding: 1ex .5em;
     width: 20em;
-    font-size: 13px;
     font-size: 1.3rem;
     line-height: 1;
     background: #fff;
@@ -222,7 +214,6 @@ input[type="checkbox"] {
 	height: 32px;
 	padding: 0 0.6em 0 .8em;
 	background-color: #e7e7e7;
-	font-size: 14px;
 	font-size: 1.4rem;
 	font-weight: bold;
 	color: #161e25;
@@ -266,7 +257,6 @@ input[type="checkbox"] {
 .btn-text {
     height: 31px;
     padding: 0 15px;
-    font-size: 13px;
     font-size: 1.3rem;
     line-height: 32px;
     font-weight: bold;
