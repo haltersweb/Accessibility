@@ -6,3 +6,13 @@ input[aria-invalid="true"],
 textarea[aria-invalid="true"] {
 	border: 1px solid red;
 	}
+button:disabled,
+button:disabled:hover {
+	color: #fff;
+	background-color: #aaa;
+	}
+input:disabled,
+select:disabled,
+textarea:disabled {
+	background-color: #eee;
+	}
