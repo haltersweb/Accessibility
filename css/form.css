@@ -20,10 +20,15 @@ textarea:disabled {
 	position: relative;
 	padding-left: 24px;
 	}
-.img-replacement input {
+.img-replacement [type="radio"] {
     position: absolute;
     left: 4px;
     top: 0;
+	}
+.img-replacement [type="checkbox"] {
+    position: absolute;
+    left: 4px;
+    top: 2px;
 	}
 .svg-radio,
 .svg-checkbox {
@@ -37,6 +42,7 @@ textarea:disabled {
 .svg-radio .stroke,
 .svg-checkbox .stroke {
 	stroke: #ccc;
+	fill: #fff;
 	}
 .svg-radio .center,
 .svg-checkbox .center {
@@ -54,20 +60,3 @@ textarea:disabled {
 :checked + .svg-checkbox .center {
 	fill: #678e19;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
