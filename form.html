@@ -39,6 +39,10 @@
 				<input type="date" id="date" aria-required="true" aria-describedby="dateInstr" />
 				<span id="dateInstr">write in MM/DD/YYYY format</span>
 			</div>
+			<div class="form-row">
+				<label for="anotherName">Another Name</label>
+				<input id="anotherName" type="text" disabled />
+			</div>
 			<fieldset>
 				<legend><span class="legend">What is your favorite time to eat? (example with nested label/input)</span></legend>
 				<div class="form-row">
@@ -86,7 +90,9 @@
 				<textarea name="about" id="about" cols="30" rows="10"></textarea>
 			</div>
 			<div class="form-row">
-				<button type="reset" class="btn-secondary">Reset</button> <button type="submit" class="btn-primary">Submit</button>
+				<button type="button" class="btn-secondary" disabled>Do Something</button>
+				<button type="reset" class="btn-secondary">Reset</button>
+				<button type="submit" class="btn-primary">Submit</button>
 			</div>
 		</form>
 		<p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>. Voluptatem corrupti possimus sit, sequi, quo corporis ipsa, perferendis ipsum, voluptates eius maxime sint ex assumenda? At atque dolorem dolorum qui maiores.</p>
