@@ -60,10 +60,31 @@
 					</label>
 				</div>
 			</fieldset>
+			<fieldset class="img-replacement">
+				<legend><span class="legend">What is your favorite place to eat? (example with image replacement)</span></legend>
+				<div class="form-row">
+					<label for="home" class="inline-label">
+						<input type="radio" name="eating_place" id="home" />
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" role="presentation" focusable="false" class="svg-radio">
+							<circle class="stroke" fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="12.5" cy="12.5" r="11.5"/>
+							<circle class="center" cx="12.5" cy="12.5" r="6.5"/>
+						</svg>
+						home
+					</label>
+					<label for="restaurant" class="inline-label">
+						<input type="radio" name="eating_place" id="restaurant" />
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" role="presentation" focusable="false" class="svg-radio">
+							<circle class="stroke" fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-miterlimit="10" cx="12.5" cy="12.5" r="11.5"/>
+							<circle class="center" cx="12.5" cy="12.5" r="6.5"/>
+						</svg>
+						restaurant
+					</label>
+				</div>
+			</fieldset>
 			<fieldset>
-				<legend><span class="legend">What are your favorite foods? (example with sequential label/input)</span></legend>
+				<legend><span class="legend">What are your favorite foods?</span></legend>
 				<fieldset>
-					<legend><span class="legend">Favorite Fruits</span></legend>
+					<legend><span class="legend">Favorite Fruits (example with sequential label/input)</span></legend>
 					<div class="form-row">
 						<input type="checkbox" id="apples" name="fruits" />
 						<label for="apples">apples</label>
@@ -73,15 +94,27 @@
 						<label for="oranges">oranges</label>
 					</div>
 				</fieldset>
-				<fieldset>
-					<legend><span class="legend">Favorite Vegetables</span></legend>
+				<fieldset class="img-replacement">
+					<legend><span class="legend">Favorite Vegetables (example with image replacement)</span></legend>
 					<div class="form-row">
-						<input type="checkbox" id="lettuce" name="vegetables" />
-						<label for="lettuce">lettuce</label>
+						<label for="lettuce">
+							<input type="checkbox" id="lettuce" name="vegetables" />
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" role="presentation" focusable="false" class="svg-checkbox">
+								<rect class="stroke" x="1" y="1" fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="23" height="23"/>
+								<rect class="center" x="6" y="6" width="13" height="13"/>
+							</svg>
+							lettuce
+						</label>
 					</div>
 					<div class="form-row">
-						<input type="checkbox"id="carrots" name="vegetables" />
-						<label for="carrots">carrots</label>
+						<label for="carrots">
+							<input type="checkbox"id="carrots" name="vegetables" />
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" role="presentation" focusable="false" class="svg-checkbox">
+								<rect class="stroke" x="1" y="1" fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="23" height="23"/>
+								<rect class="center" x="6" y="6" width="13" height="13"/>
+							</svg>
+							carrots
+						</label>
 					</div>
 				</fieldset>
 			</fieldset>

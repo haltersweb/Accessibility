@@ -16,3 +16,58 @@ select:disabled,
 textarea:disabled {
 	background-color: #eee;
 	}
+.img-replacement label {
+	position: relative;
+	padding-left: 24px;
+	}
+.img-replacement input {
+    position: absolute;
+    left: 4px;
+    top: 0;
+	}
+.svg-radio,
+.svg-checkbox {
+	width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -10px;
+	}
+.svg-radio .stroke,
+.svg-checkbox .stroke {
+	stroke: #ccc;
+	}
+.svg-radio .center,
+.svg-checkbox .center {
+	fill: transparent;
+	}
+.img-replacement :focus + .svg-radio,
+.img-replacement :focus + .svg-checkbox {
+	box-shadow: inset 0px 0px 2px 2px #3279bf;
+	}
+.img-replacement :focus + .svg-radio .stroke,
+.img-replacement :focus + .svg-checkbox .stroke {
+	stroke: #3279bf;
+	}
+:checked + .svg-radio .center,
+:checked + .svg-checkbox .center {
+	fill: #678e19;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
