@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" role="presentation" focusable="false" class="svg-checkbox">
-	<rect class="stroke" x="1" y="1" fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="23" height="23"/>
-	<rect class="center" x="6" y="6" width="13" height="13"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" role="presentation" focusable="false" class="svg-checkbox">
+	<rect class="stroke" x="3" y="3" fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="23" height="23"/>
+	<polygon class="center" fill="#000000" points="13,13 4,5 3,5 3,6 12,23 14,23 29,1 29,0 28,0"/>
 </svg>

@@ -85,14 +85,16 @@
 					</div>
 				</fieldset>
 			</fieldset>
-			<div style="border: 1px dotted gray; padding: 10px;">
+			<div style="border: 1px dotted gray; padding: 10px; background-color: #eee;">
 				<h3>Custom Radio And Checkboxes</h3>
 				<p>To make image replacement work I have:</p>
-				<ul>
+				<ul class="bullet singletons">
 					<li>Used SVGs so that they will still show up in high contrast mode.</li>
-					<li>Positioned the actual input fields behind the SVGs.</li>
-					<li>Added the SVGs as next siblings of their input fields</li>
-					<li>Nested the input and SVGs within their labels</li>
+					<li>Nested the input and SVGs within their labels.</li>
+					<li>Added the SVGs as next siblings of their input fields.</li>
+					<li>Positioned the actual input fields behind their SVGs.</li>
+					<li>Made sure SVG focusable="false" and role="presentation".</li>
+					<li>Insured that focus is shown on the SVG when the input has focus.</li>
 				</ul>
 				<fieldset class="img-replacement">
 					<legend><span class="legend">What is your favorite place to eat? (example with image replacement)</span></legend>
@@ -120,9 +122,9 @@
 					<div class="form-row">
 						<label for="oatmeal">
 							<input type="checkbox" id="oatmeal" name="breakfast" />
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" role="presentation" focusable="false" class="svg-checkbox">
-								<rect class="stroke" x="1" y="1" fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="23" height="23"/>
-								<rect class="center" x="6" y="6" width="13" height="13"/>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" role="presentation" focusable="false" class="svg-checkbox">
+								<rect class="stroke" x="3" y="3" fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="23" height="23"/>
+								<polygon class="center" fill="#000000" points="13,13 4,5 3,5 3,6 12,23 14,23 29,1 29,0 28,0"/>
 							</svg>
 							oatmeal
 						</label>
@@ -130,9 +132,9 @@
 					<div class="form-row">
 						<label for="eggs">
 							<input type="checkbox"id="eggs" name="breakfast" />
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" role="presentation" focusable="false" class="svg-checkbox">
-								<rect class="stroke" x="1" y="1" fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="23" height="23"/>
-								<rect class="center" x="6" y="6" width="13" height="13"/>
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" role="presentation" focusable="false" class="svg-checkbox">
+								<rect class="stroke" x="3" y="3" fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="23" height="23"/>
+								<polygon class="center" fill="#000000" points="13,13 4,5 3,5 3,6 12,23 14,23 29,1 29,0 28,0"/>
 							</svg>
 							eggs
 						</label>
