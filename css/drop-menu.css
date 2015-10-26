@@ -75,8 +75,8 @@
 		display: inline-block;
 		margin: 0 0 0 -.25em; /* dt only */
 		}
-	.navigation-item:after,
-	.navigation-item:first-child:before {
+	.navigation-item::after,
+	.navigation-item:first-child::before {
 		content: "|";
 		}
 	.navigation-link {
@@ -175,7 +175,7 @@
 		line-height: 160%;
 		text-align: left;
 		}
-	.close-drawer:after {
+	.close-drawer::after {
 		content: "X";
 		position: absolute;
 		right: .4em;

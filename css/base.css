@@ -207,7 +207,7 @@ input[type="checkbox"] {
     display: inline-block;
     margin-right: .3em;
     }
-.required-field:after {
+.required-field::after {
     content: "*";
     display: inline-block;
     margin-left: .1em;

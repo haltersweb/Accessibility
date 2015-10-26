@@ -14,10 +14,10 @@
 .accordion {
     display: none;
 }
-.book-of-armaments .accordion-trigger:before {
+.book-of-armaments .accordion-trigger::before {
     content: "\25B8";
 }
-.book-of-armaments .expanded .accordion-trigger:before {
+.book-of-armaments .expanded .accordion-trigger::before {
     content: "\25BE";
 }
 .accordion .itemization {
