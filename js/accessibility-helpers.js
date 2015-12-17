@@ -103,7 +103,7 @@
         $focusableHiddenElems.attr('tabindex', "-1")
             // and add data attribute that flags the focusable elements for reset with ariaShowContent()
             .attr('data-focusable-hidden-elem', 'true');
-    }
+    };
 
     /*
     reset the content hidden with ariaHideContent() to its original accessibility state
@@ -113,7 +113,7 @@
         $blockedContainers.removeAttr('aria-hidden');
         $focusableHiddenElems.removeAttr('tabindex')
             .removeAttr('data-focusable-hidden-elem');
-    }
+    };
 
     /*
     tag trigger ($OPTIONALtrigger can be used to override default trigger capture)
@@ -151,7 +151,7 @@
         setTimeout(function () {
             $ariaContainer.text('');
         }, 1000);
-    }
+    };
 
     /*
     reads on-screen text without changing focus
