@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Testing Aria Label</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/testing-icon-labeling.css" />
+</head>
+<body>
+	<div class="container">
+		<a href="#main" class="skip-link">Skip to main content</a>
+		<div class="page-wrapper" id="main" role="main" tabindex="-1">
+			<h1>Testing Labeling Icons</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
+			<p>All icons created by svg and set within an i element.</p>
+			<h2>Experiments</h2>
+			<div class="colors">
+				<div class="one">
+					<div class="accessibly-hidden">circle</div>
+					<i>
+						<svg height="50" width="50" focusable="false">
+							<circle cx="25" cy="25" r="15" stroke="blue" stroke-width="3" fill="transparent" />
+						</svg>
+					</i>
+					<p>uses the accessibly-hidden class</p>
+				</div>
+				<div class="two">
+					<i>
+						<svg height="50" width="50" focusable="false">
+							<title>square</title>
+							<rect width="30" height="30" x="10" y="10" style="fill:transparent;stroke-width:3;stroke:blue" />
+						</svg>
+					</i>
+					<p>uses the svg title element</p>
+				</div>
+				<div class="three">
+					<i>
+						<svg height="50" width="50" aria-label="triangle" focusable="false">
+							<path d="M10 40 L25 10 L40 40 Z" stroke="blue" stroke-width="3" fill="transparent" />
+						</svg>
+					</i>
+					<p>Uses aria-label on the svg element</p>
+				</div>
+			</div>
+			<table id="desktopResults">
+				<caption><h2>Desktop Results</h2></caption>
+				<thead>
+					<tr>
+						<th scope="col">Browser Combo</th>
+						<th scope="col">hidden text</th>
+						<th scope="col">svg title</th>
+						<th scope="col">aria-label</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">VO Safari</th>
+						<td>reads</td>
+						<td>doesn't read</td>
+						<td>doesn't read</td>
+					</tr>
+					<tr>
+						<th scope="row">VO Chrome</th>
+						<td>reads</td>
+						<td>doesn't read</td>
+						<td>doesn't read</td>
+					</tr>
+					<tr>
+						<th scope="row">VO Firefox</th>
+						<td>reads</td>
+						<td>doesn't read</td>
+						<td>doesn't read</td>
+					</tr>
+					<tr>
+						<th scope="row">NVDA Firefox</th>
+						<td>reads</td>
+						<td>doesn't read</td>
+						<td>doesn't read</td>
+					</tr>
+					<tr>
+						<th scope="row">JAWS IE</th>
+						<td>reads</td>
+						<td>reads</td>
+						<td>doesn't read</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+	<script type="text/javascript" src="js/coloring-table.js"></script>
+	<script>
+	$(document).ready(function () {
+		NAME.colorTableContent("desktopResults", "reads", "green", true);
+		NAME.colorTableContent("desktopResults", "doesn't read", "red", false);
+	});
+	</script>
+</body>
+</html>
