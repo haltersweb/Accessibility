@@ -1,0 +1,8 @@
+.test-box {
+	padding: 20px;
+	margin: 20px 0;
+	border: 1px solid gray;
+}
+body {
+	margin: 20px;
+}

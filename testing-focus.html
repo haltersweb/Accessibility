@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Testing Internal Links</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/testing-focus.css">
+</head>
+<body>
+	<p><a href="#noTabIndex">Test link outside all focusables</a></p>
+	<div class="container" id="top" tabindex="-1">
+		<p><a href="#noTabIndex">Test link inside .container</a></p>
+		<div class="page-wrapper" id="main" role="main" tabindex="-1">
+			<p><a href="#noTabIndex">Test link inside #main</a></p>
+			<h1>Testing Focus Handling for Internal Links</h1>
+			<p>Press spacebar to see what has focus (written to console.log)</p>
+			<p>Note: tabindex = -1 is on both #main and .container for this test.</p>
+			<p><a href="#noTabIndex">Internal link to div with NO tabindex</a> (nearest ancester that can receive focus is #main)</p>
+			<p><a href="#withTabIndex">Internal link WITH tabindex = -1</a></p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo dolores nihil aspernatur, fugiat, laboriosam totam?</p>
+			<p>Necessitatibus fuga natus beatae officia corporis earum voluptas. Nihil quaerat, necessitatibus sit soluta, nobis nam.</p>
+			<p>Libero numquam beatae consequatur laborum facilis molestiae totam quod modi vitae ratione exercitationem culpa ad blanditiis voluptate quis ipsam recusandae magni deserunt, placeat quia autem vero architecto fugiat odit. Consequatur!</p>
+			<div id="noTabIndex" class="test-box">
+				div with NO tabindex
+				<a href="#">testing link</a>
+			</div>
+			<div id="withTabIndex" tabindex="-1" class="test-box">
+				div WITH tabindex = -1
+				<a href="#">testing link</a>
+			</div>
+			<p><a href="#top">Back to top</a> (this actually goes to body since #top doesn't have tabindex = -1)</p>
+		</div>
+		<h2>Focus Findings</h2>
+		<h3>Chrome on Mac (Webkit)</h3>
+		<h4>No screen reader</h4>
+		<p>If target doesn't have tabindex = -1 focus goes to <strong>body</strong> although it still <strong>scrolls</strong> to target container.</p>
+		<p>(no difference between clicking and hitting enter)</p>
+		<p>Subsequent tabbing will jump to the first element in tab order <strong>from the body</strong>.</p>
+		<h4>Voice Over</h4>
+		<p>Same as without VO.</p>
+		<p>If target gains focus, content within target gets read.</p>
+		<p>But, if you right-arrow through content it <strong>reads</strong> first content <strong>after the link</strong> you engaged.</p>
+		<p>And, if you continue to right-arrow until you get to the next actionable element focus goes to that element and further tabbing originates from there.</p>
+
+		<h3>Safari (Webkit)</h3>
+		<h4>No screen reader</h4>
+		<p>If target doesn't have tabindex = -1 AND you <strong>click</strong> on trigger focus moves to nearesst focusable ancestor (or maybe focusable wrapper -- I didn't check for if focusable container isn't overflow hidden).</p>
+		<p>If target doesn't have tabindex = -1 AND you <strong>press enter</strong> on trigger (which has been tab focused) focus remains on trigger. In essence <strong>nothing happens</strong>.</p>
+		<p>Subsequent tabbing will take you to the next element in tab order after whatever had focus post-action.</p>
+		<h4>Voice Over</h4>
+		<p>Same as pressing enter without screen reader</p>
+
+		<h3>Firefox on PC (Moz) -- Best Experience</h3>
+		<h4>No screen reader</h4>
+		<p>Doesn't matter whether or not tabindex attribute exists on target.  Focus goes to body. And yet...</p>
+		<p>Scroll does happen.</p>
+		<p>And tab order homebase is the target. Yet focus is on body until tab.</p>
+		<p>Basically, FF doesn't rely on focus in its solution.</p>
+		<p>Works for both clicking and hitting return.</p>
+		<h4>NVDA</h4>
+		<p>Same as without screen reader</p>
+		<p>Reads content of target whether or not it has tabindex = -1</p>
+
+		<h3>IE</h3>
+		<h4>No screen reader</h4>
+		<h4>JAWS</h4>
+
+		<h2>Final Thoughts</h2>
+		<p>Firefox handles internal links the way they should be handled.  It does not leverage focus to do this so tabindex isn't necessary unless focus is required for other reasons.</p>
+		<p>BUT...since all other browsers require focus handling in order to approximate what FF is doing focus and tabindex = -1 will be required for the foreseeable future.</p>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+	<script type="text/javascript" src="js/testing-focus.js"></script>
+</body>
+</html>
