@@ -123,6 +123,7 @@
 						<th scope="col">hidden text</th>
 						<th scope="col">svg title</th>
 						<th scope="col">aria-label</th>
+						<th scope="col">notes</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -131,30 +132,42 @@
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>doesn't read</td>
+						<td></td>
 					</tr>
 					<tr>
 						<th scope="row">VO Chrome</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>doesn't read</td>
+						<td></td>
 					</tr>
 					<tr>
 						<th scope="row">VO Firefox</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>doesn't read</td>
+						<td></td>
 					</tr>
 					<tr>
 						<th scope="row">NVDA Firefox</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>doesn't read</td>
+						<td></td>
 					</tr>
 					<tr>
 						<th scope="row">JAWS IE</th>
 						<td>reads</td>
 						<td>reads</td>
 						<td>doesn't read</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th scope="row">VO iOS</th>
+						<td>reads</td>
+						<td>doesn't read</td>
+						<td>doesn't read</td>
+						<td></td>
 					</tr>
 				</tbody>
 			</table>
@@ -166,6 +179,7 @@
 						<th scope="col">hidden text</th>
 						<th scope="col">svg title</th>
 						<th scope="col">aria-label</th>
+						<th scope="col">notes</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -174,18 +188,21 @@
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>reads</td>
+						<td></td>
 					</tr>
 					<tr>
 						<th scope="row">VO Chrome</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>reads</td>
+						<td></td>
 					</tr>
 					<tr>
 						<th scope="row">VO Firefox</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>reads</td>
+						<td></td>
 					</tr>
 					<!--
 					<tr>
@@ -193,14 +210,23 @@
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>doesn't read</td>
+						<td></td>
 					</tr>
 					<tr>
 						<th scope="row">JAWS IE</th>
 						<td>reads</td>
 						<td>reads</td>
 						<td>doesn't read</td>
+						<td></td>
 					</tr>
 					-->
+					<tr>
+						<th scope="row">VO iOS</th>
+						<td>reads</td>
+						<td>doesn't recognize link*</td>
+						<td>doesn't recognize link*</td>
+						<td>*in iOS VO can't discover a link without text</td>
+					</tr>
 				</tbody>
 			</table>
 			<table id="desktopResults3">
@@ -211,6 +237,7 @@
 						<th scope="col">hidden text</th>
 						<th scope="col">svg title</th>
 						<th scope="col">aria-label</th>
+						<th scope="col">notes</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -219,18 +246,21 @@
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>reads</td>
+						<td></td>
 					</tr>
 					<tr>
 						<th scope="row">VO Chrome</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>reads</td>
+						<td></td>
 					</tr>
 					<tr>
 						<th scope="row">VO Firefox</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>reads</td>
+						<td></td>
 					</tr>
 					<!--
 					<tr>
@@ -238,14 +268,23 @@
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>doesn't read</td>
+						<td></td>
 					</tr>
 					<tr>
 						<th scope="row">JAWS IE</th>
 						<td>reads</td>
 						<td>reads</td>
 						<td>doesn't read</td>
+						<td></td>
 					</tr>
 					-->
+					<tr>
+						<th scope="row">VO iOS</th>
+						<td>reads</td>
+						<td>doesn't read</td>
+						<td>reads</td>
+						<td></td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -260,6 +299,7 @@
 	$(document).ready(function () {
 		NAME.colorTableContent("desktopResults", "reads", "green", true);
 		NAME.colorTableContent("desktopResults", "doesn't read", "red", false);
+		NAME.colorTableContent("desktopResults", "doesn't recognize link*", "red", false);
 	});
 	</script>
 </body>
