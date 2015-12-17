@@ -33,7 +33,7 @@
 			<h3>Experiment 1: SVG icons for non-actionable DOM elements</h3>
 			<div class="just-svgs">
 				<div class="one">
-					<div class="accessibly-hidden">circle</div>
+					<span class="accessibly-hidden">circle</span>
 					<i>
 						<svg height="50" width="50" focusable="false">
 							<circle cx="25" cy="25" r="15" stroke="blue" stroke-width="3" fill="transparent" />
@@ -62,8 +62,8 @@
 			<h3>Experiment 2: SVG icons for links</h3>
 			<div class="anchors">
 				<div class="one">
-					<a href="#main">
-						<div class="accessibly-hidden">circle</div>
+					<a href="#main" aria-label="circle">
+						<span class="accessibly-hidden">circle</span>
 						<i>
 							<svg height="50" width="50" focusable="false">
 								<circle cx="25" cy="25" r="15" stroke="blue" stroke-width="3" fill="transparent" />
@@ -97,8 +97,8 @@
 			<h3>Experiment 3: SVG icons for buttons</h3>
 			<div class="anchors">
 				<div class="one">
-					<button type="button">
-						<div class="accessibly-hidden">circle</div>
+					<button type="button" aria-label="circle">
+						<span class="accessibly-hidden">circle</span>
 						<i>
 							<svg height="50" width="50" focusable="false">
 								<circle cx="25" cy="25" r="15" stroke="blue" stroke-width="3" fill="transparent" />
