@@ -3,8 +3,8 @@
     /*
 
     */
-    NAME.colorTableContent = function (tableId, text, color, boldBoolean) {
-    	var $cells = $('#' + tableId).find('td'),
+    NAME.colorTableContent = function ($tableId, text, color, boldBoolean) {
+    	var $cells = $tableId.find('td'),
     		fontWeight = boldBoolean ? "bold" : "normal";
     	$cells.each(function (i) {
     		if ($(this).text() === text) {

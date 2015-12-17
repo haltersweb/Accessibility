@@ -13,10 +13,24 @@
 		<a href="#main" class="skip-link">Skip to main content</a>
 		<div class="page-wrapper" id="main" role="main" tabindex="-1">
 			<h1>Testing Labeling Icons</h1>
-			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
-			<p>All icons created by svg and set within an i element.</p>
+			<p>This exercise seeks to find the best method to give a text alternative to an SVG icon, whether it is used alone or inside of an anchor or button.</p>
+			<p>Text alternatives described the shape of the icons: "circle", "square", "triangle".</p>
+			<p>Three different methods were tried:</p>
+			<ul class="bullet singletons">
+				<li>Accessibly hiding a text alternative in a span</li>
+				<li>Using the SVG title element</li>
+				<li>Using aria-label</li>
+			</ul>
+			<p>The conclusion seems to be that:</p>
+			<ul class="bullet singletons">
+				<li>accessibly hidden text is the most reliable</li>
+				<li>SVG's title element is only supported in IE</li>
+				<li>aria-label isn't supported at all in non-actionable elements</li>
+				<li>in VO for iOS anchors without text inside are undiscoverable (therefore using aria-label is pointless)</li>
+			</ul>
+			<p>Three tables of results can be found at the botom of the page.</p>
 			<h2>Experiments</h2>
-			<h3>Experiment 1: for non-actionable DOM elements</h3>
+			<h3>Experiment 1: SVG icons for non-actionable DOM elements</h3>
 			<div class="just-svgs">
 				<div class="one">
 					<div class="accessibly-hidden">circle</div>
@@ -25,7 +39,7 @@
 							<circle cx="25" cy="25" r="15" stroke="blue" stroke-width="3" fill="transparent" />
 						</svg>
 					</i>
-					<span>uses the accessibly-hidden class</span>
+					<span>The previous icon uses accessibly-hidden text.</span>
 				</div>
 				<div class="two">
 					<i>
@@ -34,7 +48,7 @@
 							<rect width="30" height="30" x="10" y="10" stroke="blue" stroke-width="3" fill="transparent" />
 						</svg>
 					</i>
-					<span>uses the svg title element</span>
+					<span>The previous icon uses the SVG title element.</span>
 				</div>
 				<div class="three">
 					<i>
@@ -42,10 +56,10 @@
 							<path d="M10 40 L25 10 L40 40 Z" stroke="blue" stroke-width="3" fill="transparent" />
 						</svg>
 					</i>
-					<span>Uses aria-label on the svg element</span>
+					<span>The previous icon uses aria-label on the SVG element.</span>
 				</div>
 			</div>
-			<h3>Experiment 2: for anchor tags</h3>
+			<h3>Experiment 2: SVG icons for links</h3>
 			<div class="anchors">
 				<div class="one">
 					<a href="#main">
@@ -56,10 +70,10 @@
 							</svg>
 						</i>
 					</a>
-					<span>uses the accessibly-hidden class</span>
+					<span>The previous link with icon uses accessibly-hidden text.</span>
 				</div>
 				<div class="two">
-					<a href="#main">
+					<a href="#main">some text
 						<i>
 							<svg height="50" width="50" focusable="false">
 								<title>square</title>
@@ -67,20 +81,20 @@
 							</svg>
 						</i>
 					</a>
-					<span>uses the svg title element</span>
+					<span>The previous link with icon uses the SVG title element.</span>
 				</div>
 				<div class="three">
-					<a href="#main" aria-label="triangle">
+					<a href="#main" aria-label="triangle">some text
 						<i>
 							<svg height="50" width="50" focusable="false">
 								<path d="M10 40 L25 10 L40 40 Z" stroke="blue" stroke-width="3" fill="transparent" />
 							</svg>
 						</i>
 					</a>
-					<span>Uses aria-label on the a element</span>
+					<span>The previous link with icon uses aria-label on the link element.</span>
 				</div>
 			</div>
-			<h3>Experiment 3: for button tags</h3>
+			<h3>Experiment 3: SVG icons for buttons</h3>
 			<div class="anchors">
 				<div class="one">
 					<button type="button">
@@ -91,7 +105,7 @@
 							</svg>
 						</i>
 					</button>
-					<span>uses the accessibly-hidden class</span>
+					<span>The previous button with icon uses accessibly-hidden text.</span>
 				</div>
 				<div class="two">
 					<button type="button">
@@ -102,7 +116,7 @@
 							</svg>
 						</i>
 					</button>
-					<span>uses the svg title element</span>
+					<span>The previous button with icon uses the SVG title element.</span>
 				</div>
 				<div class="three">
 					<button type="button" aria-label="triangle">
@@ -112,11 +126,18 @@
 							</svg>
 						</i>
 					</button>
-					<span>Uses aria-label on the button element</span>
+					<span>The previous button with icon uses aria-label on the button element.</span>
 				</div>
 			</div>
-			<table id="desktopResults1">
-				<caption><h2>Example 1 Desktop Results</h2></caption>
+			<table class="results">
+				<caption><h2>Example 1 Results (SVG element only)</h2></caption>
+				<colgroup>
+					<col class="col-1">
+					<col class="col-2">
+					<col class="col-3">
+					<col class="col-4">
+					<col class="col-5">
+				</colgroup>
 				<thead>
 					<tr>
 						<th scope="col">Browser Combo</th>
@@ -128,42 +149,42 @@
 				</thead>
 				<tbody>
 					<tr>
-						<th scope="row">VO Safari</th>
+						<th scope="row">VO Safari Mac</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>doesn't read</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th scope="row">VO Chrome</th>
+						<th scope="row">VO Chrome Mac</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>doesn't read</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th scope="row">VO Firefox</th>
+						<th scope="row">VO Firefox Mac</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>doesn't read</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th scope="row">NVDA Firefox</th>
+						<th scope="row">NVDA Firefox PC</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>doesn't read</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th scope="row">JAWS IE</th>
+						<th scope="row">JAWS IE PC</th>
 						<td>reads</td>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th scope="row">VO iOS</th>
+						<th scope="row">VO Safari iOS</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>doesn't read</td>
@@ -171,8 +192,15 @@
 					</tr>
 				</tbody>
 			</table>
-			<table id="desktopResults2">
-				<caption><h2>Example 2 Desktop Results</h2></caption>
+			<table class="results">
+				<caption><h2>Example 2 Results (SVG inside link)</h2></caption>
+				<colgroup>
+					<col class="col-1">
+					<col class="col-2">
+					<col class="col-3">
+					<col class="col-4">
+					<col class="col-5">
+				</colgroup>
 				<thead>
 					<tr>
 						<th scope="col">Browser Combo</th>
@@ -184,44 +212,42 @@
 				</thead>
 				<tbody>
 					<tr>
-						<th scope="row">VO Safari</th>
+						<th scope="row">VO Safari Mac</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>reads</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th scope="row">VO Chrome</th>
+						<th scope="row">VO Chrome Mac</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>reads</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th scope="row">VO Firefox</th>
+						<th scope="row">VO Firefox Mac</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>reads</td>
 						<td></td>
 					</tr>
-					<!--
 					<tr>
-						<th scope="row">NVDA Firefox</th>
+						<th scope="row">NVDA Firefox PC</th>
 						<td>reads</td>
 						<td>doesn't read</td>
-						<td>doesn't read</td>
+						<td>reads</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th scope="row">JAWS IE</th>
+						<th scope="row">JAWS IE PC</th>
 						<td>reads</td>
 						<td>reads</td>
-						<td>doesn't read</td>
+						<td>reads</td>
 						<td></td>
 					</tr>
-					-->
 					<tr>
-						<th scope="row">VO iOS</th>
+						<th scope="row">VO Safari iOS</th>
 						<td>reads</td>
 						<td>doesn't recognize link*</td>
 						<td>doesn't recognize link*</td>
@@ -229,8 +255,15 @@
 					</tr>
 				</tbody>
 			</table>
-			<table id="desktopResults3">
-				<caption><h2>Example 3 Desktop Results</h2></caption>
+			<table class="results">
+				<caption><h2>Example 3 Results (SVG inside button)</h2></caption>
+				<colgroup>
+					<col class="col-1">
+					<col class="col-2">
+					<col class="col-3">
+					<col class="col-4">
+					<col class="col-5">
+				</colgroup>
 				<thead>
 					<tr>
 						<th scope="col">Browser Combo</th>
@@ -242,44 +275,42 @@
 				</thead>
 				<tbody>
 					<tr>
-						<th scope="row">VO Safari</th>
+						<th scope="row">VO Safari Mac</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>reads</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th scope="row">VO Chrome</th>
+						<th scope="row">VO Chrome Mac</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>reads</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th scope="row">VO Firefox</th>
+						<th scope="row">VO Firefox Mac</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>reads</td>
 						<td></td>
 					</tr>
-					<!--
 					<tr>
-						<th scope="row">NVDA Firefox</th>
+						<th scope="row">NVDA Firefox PC</th>
 						<td>reads</td>
 						<td>doesn't read</td>
-						<td>doesn't read</td>
+						<td>reads</td>
 						<td></td>
 					</tr>
 					<tr>
-						<th scope="row">JAWS IE</th>
+						<th scope="row">JAWS IE PC</th>
 						<td>reads</td>
 						<td>reads</td>
-						<td>doesn't read</td>
+						<td>reads</td>
 						<td></td>
 					</tr>
-					-->
 					<tr>
-						<th scope="row">VO iOS</th>
+						<th scope="row">VO Safari iOS</th>
 						<td>reads</td>
 						<td>doesn't read</td>
 						<td>reads</td>
@@ -297,9 +328,9 @@
 	<script type="text/javascript" src="js/coloring-table.js"></script>
 	<script>
 	$(document).ready(function () {
-		NAME.colorTableContent("desktopResults", "reads", "green", true);
-		NAME.colorTableContent("desktopResults", "doesn't read", "red", false);
-		NAME.colorTableContent("desktopResults", "doesn't recognize link*", "red", false);
+		NAME.colorTableContent($(".results"), "reads", "green", true);
+		NAME.colorTableContent($(".results"), "doesn't read", "red", false);
+		NAME.colorTableContent($(".results"), "doesn't recognize link*", "red", false);
 	});
 	</script>
 </body>

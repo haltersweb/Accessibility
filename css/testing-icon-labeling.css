@@ -15,3 +15,8 @@ button:hover svg > *,
 button:focus svg > * {
 	stroke: red;
 }
+.col-1 { width: 40%; }
+.col-2 { width: 15%; }
+.col-3 { width: 15%; }
+.col-4 { width: 15%; }
+.col-5 { width: 15%; }
