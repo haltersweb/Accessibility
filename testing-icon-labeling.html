@@ -27,6 +27,7 @@
 				<li>SVG's title element is only supported in IE</li>
 				<li>aria-label isn't supported at all in non-actionable elements</li>
 				<li>in VO for iOS anchors without text inside are undiscoverable (therefore using aria-label is pointless)</li>
+				<li>By the way, using aria-label on an actionable that has text will read the aria-label INSTEAD of the text.</li>
 			</ul>
 			<p>Three tables of results can be found at the botom of the page.</p>
 			<h2>Experiments</h2>
@@ -62,7 +63,7 @@
 			<h3>Experiment 2: SVG icons for links</h3>
 			<div class="anchors">
 				<div class="one">
-					<a href="#main" aria-label="squiggle">
+					<a href="#main">
 						<span class="accessibly-hidden">circle</span>
 						<i>
 							<svg height="50" width="50" focusable="false">
@@ -73,7 +74,7 @@
 					<span>The previous link with icon uses accessibly-hidden text.</span>
 				</div>
 				<div class="two">
-					<a href="#main">some text
+					<a href="#main">
 						<i>
 							<svg height="50" width="50" focusable="false">
 								<title>square</title>
@@ -84,7 +85,7 @@
 					<span>The previous link with icon uses the SVG title element.</span>
 				</div>
 				<div class="three">
-					<a href="#main" aria-label="triangle">some text
+					<a href="#main" aria-label="triangle">
 						<i>
 							<svg height="50" width="50" focusable="false">
 								<path d="M10 40 L25 10 L40 40 Z" stroke="blue" stroke-width="3" fill="transparent" />
@@ -97,7 +98,7 @@
 			<h3>Experiment 3: SVG icons for buttons</h3>
 			<div class="anchors">
 				<div class="one">
-					<button type="button" aria-label="squiggle">
+					<button type="button">
 						<span class="accessibly-hidden">circle</span>
 						<i>
 							<svg height="50" width="50" focusable="false">
