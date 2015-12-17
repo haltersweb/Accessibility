@@ -3,3 +3,12 @@ i {
 	height: 50px;
 	display: inline-block;
 }
+.anchors a {
+	display: inline-block;
+}
+a:hover svg > *,
+a:focus svg > *,
+button:hover svg > *,
+button:focus svg > * {
+	stroke: red;
+}

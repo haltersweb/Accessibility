@@ -16,7 +16,8 @@
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
 			<p>All icons created by svg and set within an i element.</p>
 			<h2>Experiments</h2>
-			<div class="colors">
+			<h3>Experiment 1: for non-actionable DOM elements</h3>
+			<div class="just-svgs">
 				<div class="one">
 					<div class="accessibly-hidden">circle</div>
 					<i>
@@ -24,16 +25,16 @@
 							<circle cx="25" cy="25" r="15" stroke="blue" stroke-width="3" fill="transparent" />
 						</svg>
 					</i>
-					<p>uses the accessibly-hidden class</p>
+					<span>uses the accessibly-hidden class</span>
 				</div>
 				<div class="two">
 					<i>
 						<svg height="50" width="50" focusable="false">
 							<title>square</title>
-							<rect width="30" height="30" x="10" y="10" style="fill:transparent;stroke-width:3;stroke:blue" />
+							<rect width="30" height="30" x="10" y="10" stroke="blue" stroke-width="3" fill="transparent" />
 						</svg>
 					</i>
-					<p>uses the svg title element</p>
+					<span>uses the svg title element</span>
 				</div>
 				<div class="three">
 					<i>
@@ -41,11 +42,81 @@
 							<path d="M10 40 L25 10 L40 40 Z" stroke="blue" stroke-width="3" fill="transparent" />
 						</svg>
 					</i>
-					<p>Uses aria-label on the svg element</p>
+					<span>Uses aria-label on the svg element</span>
 				</div>
 			</div>
-			<table id="desktopResults">
-				<caption><h2>Desktop Results</h2></caption>
+			<h3>Experiment 2: for anchor tags</h3>
+			<div class="anchors">
+				<div class="one">
+					<a href="#">
+						<div class="accessibly-hidden">circle</div>
+						<i>
+							<svg height="50" width="50" focusable="false">
+								<circle cx="25" cy="25" r="15" stroke="blue" stroke-width="3" fill="transparent" />
+							</svg>
+						</i>
+					</a>
+					<span>uses the accessibly-hidden class</span>
+				</div>
+				<div class="two">
+					<a href="#">
+						<i>
+							<svg height="50" width="50" focusable="false">
+								<title>square</title>
+								<rect width="30" height="30" x="10" y="10" stroke="blue" stroke-width="3" fill="transparent" />
+							</svg>
+						</i>
+					</a>
+					<span>uses the svg title element</span>
+				</div>
+				<div class="three">
+					<a href="#" aria-label="triangle">
+						<i>
+							<svg height="50" width="50" focusable="false">
+								<path d="M10 40 L25 10 L40 40 Z" stroke="blue" stroke-width="3" fill="transparent" />
+							</svg>
+						</i>
+					</a>
+					<span>Uses aria-label on the a element</span>
+				</div>
+			</div>
+			<h3>Experiment 3: for button tags</h3>
+			<div class="anchors">
+				<div class="one">
+					<button type="button">
+						<div class="accessibly-hidden">circle</div>
+						<i>
+							<svg height="50" width="50" focusable="false">
+								<circle cx="25" cy="25" r="15" stroke="blue" stroke-width="3" fill="transparent" />
+							</svg>
+						</i>
+					</button>
+					<span>uses the accessibly-hidden class</span>
+				</div>
+				<div class="two">
+					<button type="button">
+						<i>
+							<svg height="50" width="50" focusable="false">
+								<title>square</title>
+								<rect width="30" height="30" x="10" y="10" stroke="blue" stroke-width="3" fill="transparent" />
+							</svg>
+						</i>
+					</button>
+					<span>uses the svg title element</span>
+				</div>
+				<div class="three">
+					<button type="button" aria-label="triangle">
+						<i>
+							<svg height="50" width="50" focusable="false">
+								<path d="M10 40 L25 10 L40 40 Z" stroke="blue" stroke-width="3" fill="transparent" />
+							</svg>
+						</i>
+					</button>
+					<span>Uses aria-label on the button element</span>
+				</div>
+			</div>
+			<table id="desktopResults1">
+				<caption><h2>Example 1 Desktop Results</h2></caption>
 				<thead>
 					<tr>
 						<th scope="col">Browser Combo</th>
@@ -85,6 +156,96 @@
 						<td>reads</td>
 						<td>doesn't read</td>
 					</tr>
+				</tbody>
+			</table>
+			<table id="desktopResults2">
+				<caption><h2>Example 2 Desktop Results</h2></caption>
+				<thead>
+					<tr>
+						<th scope="col">Browser Combo</th>
+						<th scope="col">hidden text</th>
+						<th scope="col">svg title</th>
+						<th scope="col">aria-label</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">VO Safari</th>
+						<td>reads</td>
+						<td>doesn't read</td>
+						<td>reads</td>
+					</tr>
+					<tr>
+						<th scope="row">VO Chrome</th>
+						<td>reads</td>
+						<td>doesn't read</td>
+						<td>reads</td>
+					</tr>
+					<tr>
+						<th scope="row">VO Firefox</th>
+						<td>reads</td>
+						<td>doesn't read</td>
+						<td>reads</td>
+					</tr>
+					<!--
+					<tr>
+						<th scope="row">NVDA Firefox</th>
+						<td>reads</td>
+						<td>doesn't read</td>
+						<td>doesn't read</td>
+					</tr>
+					<tr>
+						<th scope="row">JAWS IE</th>
+						<td>reads</td>
+						<td>reads</td>
+						<td>doesn't read</td>
+					</tr>
+					-->
+				</tbody>
+			</table>
+			<table id="desktopResults3">
+				<caption><h2>Example 3 Desktop Results</h2></caption>
+				<thead>
+					<tr>
+						<th scope="col">Browser Combo</th>
+						<th scope="col">hidden text</th>
+						<th scope="col">svg title</th>
+						<th scope="col">aria-label</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">VO Safari</th>
+						<td>reads</td>
+						<td>doesn't read</td>
+						<td>reads</td>
+					</tr>
+					<tr>
+						<th scope="row">VO Chrome</th>
+						<td>reads</td>
+						<td>doesn't read</td>
+						<td>reads</td>
+					</tr>
+					<tr>
+						<th scope="row">VO Firefox</th>
+						<td>reads</td>
+						<td>doesn't read</td>
+						<td>reads</td>
+					</tr>
+					<!--
+					<tr>
+						<th scope="row">NVDA Firefox</th>
+						<td>reads</td>
+						<td>doesn't read</td>
+						<td>doesn't read</td>
+					</tr>
+					<tr>
+						<th scope="row">JAWS IE</th>
+						<td>reads</td>
+						<td>reads</td>
+						<td>doesn't read</td>
+					</tr>
+					-->
 				</tbody>
 			</table>
 		</div>
