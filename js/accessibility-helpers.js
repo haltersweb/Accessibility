@@ -54,7 +54,7 @@
     */
     NAME.access = {};
     /*
-    will not let you focus on anything within a blocked area
+    hides content within blocked area from screen-readers
     when an element is given focus within a blocked area the focus will move to a target element
     */
     NAME.access.blockFocus = function ($blockedContainers, $focusOnThisInstead) {
@@ -67,7 +67,7 @@
         });
     };
     /*
-    removes focus blocking that was set with NAME.blockFocus method
+    removes focus blocking that was set with NAME.access.blockFocus method
     */
     NAME.access.removeBlockFocus = function ($blockedContainers) {
         $blockedContainers.off('focusin.blockingFocus');
