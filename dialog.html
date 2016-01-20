@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Accessible Modals and Tooltips</title>
+	<title>Accessible Modals</title>
 	<link rel="stylesheet" href="css/normalization.css" />
 	<link rel="stylesheet" href="css/base.css" />
 	<link rel="stylesheet" href="css/dialog.css" />
@@ -11,11 +11,8 @@
 <body>
 	<div class="container">
 		<div class="page-wrapper">
-			<h1>Creating Modals and Tooltips</h1>
+			<h1>Creating Modal Windows</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
-			<p>Modals and tooltips are very similar.  The main difference is that modal windows don't allow you to escape outside the dialog box without closing it.</p>
-			<p>This example uses one set of code to run both modals and tooltips.  Notice how the data attributes and markup structure drive the difference between modals and tooltips.</p>
-			<h2>Modal Windows</h2>
 			<p><button type="button" class="btn" data-controls="modal" aria-controls="myModalWindow">Launch modal window</button></p>
 			<h3>Focus when a modal opens</h3>
 			<p>Focus should go to the first actionable element when the modal is opened.  This is most often the close modal button.</p>
@@ -23,61 +20,6 @@
 			<p>You will notice the modal window has a role="dialog".</p>
 			<p>When using role="dialog" it is imperative that you place all content within a nested container having a role="document".  Otherwise, in some browsers content that doesn't gain focus will not be read.</p>
 			<p><button type="button" class="btn" data-controls="modal" aria-controls="myModalWindow">Launch modal window</button></p>
-			<hr />
-			<h2>Tooltips (mini dialog boxes)</h2>
-			<p>Find out more about
-				<a href="#tooltipExample1" data-controls="tooltip" aria-owns="tooltipExample1" aria-controls="tooltipExample1">this tooltip
-					<span id="tooltipExample1" class="tooltip" role="tooltip"  data-widget="tooltip" aria-hidden="true" tabindex="-1">
-						This is an accessible tooltip
-						<button type="button" class="btn svg close-dialog" data-control="close">
-							<span class="accessibly-hidden">
-								Close Tooltip
-							</span>
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" role="presentation" focusable="false">
-								<path d="M22.5,0C10.1,0,0,10.1,0,22.5S10.1,45,22.5,45S45,34.9,45,22.5S34.9,0,22.5,0z M27.9,35.5l-3-4.6c-1.2-1.8-2-3.1-2.9-4.6,h-0.1c-0.7,1.5-1.5,2.8-2.5,4.6l-2.7,4.6H8.2l9.5-13L8.5,9.9h8.5l2.9,4.7c1,1.6,1.7,2.8,2.5,4.3h0.1c0.8-1.6,1.4-2.8,2.2-4.3,l2.8-4.7H36l-9.3,12.5l9.8,13.1H27.9z"/>
-							</svg>
-						</button>
-					</span>
-				</a>. It is fully accessible.
-			</p>
-			<p>Here you have a second paragraph with a tooltip in it.  Read about
-				<a href="#tooltipExample2" data-controls="tooltip" aria-owns="tooltipExample2" aria-controls="tooltipExample2">this tooltip
-					<span id="tooltipExample2" class="tooltip" role="tooltip" data-widget="tooltip" aria-hidden="true" tabindex="-1">
-						This is a second accessible tooltip
-						<button type="button" class="btn svg close-dialog" data-control="close">
-							<span class="accessibly-hidden">
-								Close Tooltip
-							</span>
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" role="presentation" focusable="false">
-								<path d="M22.5,0C10.1,0,0,10.1,0,22.5S10.1,45,22.5,45S45,34.9,45,22.5S34.9,0,22.5,0z M27.9,35.5l-3-4.6c-1.2-1.8-2-3.1-2.9-4.6,h-0.1c-0.7,1.5-1.5,2.8-2.5,4.6l-2.7,4.6H8.2l9.5-13L8.5,9.9h8.5l2.9,4.7c1,1.6,1.7,2.8,2.5,4.3h0.1c0.8-1.6,1.4-2.8,2.2-4.3,l2.8-4.7H36l-9.3,12.5l9.8,13.1H27.9z"/>
-							</svg>
-						</button>
-					</span>
-				</a>. It is also fully accessible.
-			</p>
-			<h3>Opening and Closing Tooltips</h3>
-<!-- MAYBE ADD THESE ADDITIONAL TRAITS LATER
-			<p>Tooltips can be opened by:</p>
-			<ul class="bullet singletons">
-				<li>trigger is hovered on (after delay)</li>
-				<li>trigger gains focus (after delay)</li>
-				<li>trigger is clicked/engaged</li>
-			</ul>
-			<h3>Closing the Tooltip</h3>
-			<p>Tooltips are closed based on how they were opened:</p>
-			<ul class="bullet singletons">
-				<li>on mouseout (if triggered by mouseover)</li>
-				<li>on blur</li>
-				<li>hitting the ESC key</li>
-				<li>when close button clicked/engaged</li>
-				<li>when surrounding area is clicked</li>
-			</ul>
--->
-			<ul class="bullet">
-				<li>Tooltips are opened by clicking the tooltip link and are closed by either clicking the ESC or clicking the close button.</li>
-				<li>Focus goes to the tooltip contents.  You can then tab to the close button to close the tooltip.</li>
-				<li>You can have more than one tooltip open at the same time.  You can continue to interact with the rest of the page while the tooltip is open.</li>
-			</ul>
 		</div>
 		<div id="myModalWindow" class="modal" role="dialog" data-widget="modal" aria-hidden="true">
 			<div role="document">
