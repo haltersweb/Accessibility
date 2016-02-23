@@ -1,0 +1,39 @@
+body {
+	font-size: 11px;
+	color: gray;
+	}
+.p {
+	margin-bottom: 1.25ex;
+	}
+.btn-primary {
+	color: yellow;
+	background-color: #0cc;
+}
+.svg-checkbox {
+	width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -10px;
+	}
+.svg-checkbox .stroke {
+	stroke: #767676;
+	fill: #fff;
+	}
+.svg-checkbox .center {
+	fill: transparent;
+	}
+.checked .svg-checkbox .center {
+	fill: #678e19;
+	}
+.svg-checkbox + label {
+	margin-left: 2em;
+	width: auto;
+}
+#errorMsg {
+	padding: 1em;
+	border: 1px solid red;
+	color: red;
+	display: none;
+}
