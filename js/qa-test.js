@@ -23,4 +23,12 @@
         $(this).parent().toggleClass('checked');
         $('input#human').click();
     });
+    $('.launch-modal').on('click', function (e) {
+        e.preventDefault();
+        $('.modal, .block-screen').addClass('active');
+    });
+    $('.close-dialog').on('click', function (e) {
+        e.preventDefault();
+        $('.modal, .block-screen').removeClass('active');
+    })
 }(jQuery, NAME));

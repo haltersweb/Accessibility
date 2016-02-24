@@ -10,25 +10,35 @@
 	<div class="container">
 		<div class="page-wrapper" id="main" role="main">
 			<p class="title h1">Contact Us</p>
-			<div>
+			<div class="p">
 				We're glad you are interested in Wonderful Co.  We are here to help in any way.
 				<br />
 				<br />
 				Fill out the form below to let us kow what we can do for you.
 			</div>
+			<h3>Happy Kitty Pictures</h3>
+			<img src="http://dreamatico.com/data_images/kitten/kitten-1.jpg" width="200" />
+			<img src="http://theheightsanimalhospital.com/clients/15389/images/playful-kitten-6683.jpg" width="200" alt="" />
+			<p><a href="#" class="launch-modal">Open more pics</a></p>
 			<form>
+			<p class="h3">Tell us about yourself</p>
 				<p id="errorMsg"></p>
 				<div class="p">
 					<span>First Name</span><input id="firstName" type="text" />
 				</div>
 				<div class="p">
-					<span>Last Name</span><input id="lastName" type="text" />
+					<label for="lastName">*Last Name</label><input id="lastName" type="text" />
 				</div>
 				<div class="p">
 					<input type="text" id="birthMonth" placeholder="Birth Month" data-placeholder="Birth Month" />
+					<p>Type out the month like "May".</p>
+				</div>
+				<div class="p accessibly-hidden">
+					<input type="text" id="birthDate" />
+					<p>Two digit number like "30".</p>
 				</div>
 				<div>
-					<h3 for="">Age range</h3>
+					<h3>Age range</h3>
 					<div class="p">
 						<input type="radio" name="age" id="one" />
 						<label for="one">1-25</label>
@@ -51,13 +61,20 @@
 							<polygon class="center" fill="#000000" points="13,13 4,5 3,5 3,6 12,23 14,23 29,1 29,0 28,0"></polygon>
 						</svg>
 						<label for="human">Yes, I am a human.</label>
-						<input type="checkbox" id="human" style="display: 1none;" />
+						<input type="checkbox" id="human" style="display: none;" />
 					</div>
 				</div>
 				<div class="btn btn-primary" id="submit">Submit</div>
 			</form>
 		</div>
-		<div class="overlay"></div>
+		<div class="modal">
+			<a class="btn svg close-dialog" href="#">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 45 45" role="presentation" focusable="false">
+					<path d="M22.5,0C10.1,0,0,10.1,0,22.5S10.1,45,22.5,45S45,34.9,45,22.5S34.9,0,22.5,0z M27.9,35.5l-3-4.6c-1.2-1.8-2-3.1-2.9-4.6,h-0.1c-0.7,1.5-1.5,2.8-2.5,4.6l-2.7,4.6H8.2l9.5-13L8.5,9.9h8.5l2.9,4.7c1,1.6,1.7,2.8,2.5,4.3h0.1c0.8-1.6,1.4-2.8,2.2-4.3,l2.8-4.7H36l-9.3,12.5l9.8,13.1H27.9z"  fill="#ffffff"></path>
+				</svg>
+			</a>
+			<img src="https://my.vetmatrixbase.com/clients/12679/images/cats-animals-grass-kittens--800x960.jpg" width="300" alt="Picture of a cute little fuzzy baby" />
+		</div>
 		<div class="block-screen"></div>
 	</div>
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
