@@ -1,6 +1,6 @@
 .swatch-frame {
 	display: inline-block;
-	width: 25%;
+	width: 45%;
 	border: 5px solid gray;
 	padding: 5ex 3em;
 }
@@ -8,18 +8,37 @@
 	background: black;
 }
 .swatch {
+	position: relative;
 	display: inline-block;
 	width: 20px;
 	height: 20px;
 	box-sizing: border-box;
+	margin: 0 1em 4ex;
 }
+.swatch:before {
+	content: '';
+	position: absolute;
+	bottom: -3ex;
+	left: -0.5em;
+	font-family: 'Courier New', Courier, monospace;
+	font-weight: bold;
+}
+.swatch-frame-black .swatch:before { color: white; }
 .black { background-color: #000; }
+.black:before { content: '#000'; }
 .white { background-color: #fff; border: 1px solid black; }
+.white:before { content: '#fff'; }
 .red { background-color: #f00; }
+.red:before { content: '#f00'; }
 .green { background-color: #0f0; }
+.green:before { content: '#0f0'; }
 .blue { background-color: #00f; }
+.blue:before { content: '#00f'; }
 .yellow { background-color: #ff0; }
+.yellow:before { content: '#ff0'; }
 .cyan { background-color: #0ff; }
+.cyan:before { content: '#0ff'; }
 .magenta { background-color: #f0f; }
+.magenta:before { content: '#f0f'; }
 .swatch-frame-black .black { border: 1px solid white; }
 .swatch-frame-black .white { border: none; }
