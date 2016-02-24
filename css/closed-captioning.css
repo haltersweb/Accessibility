@@ -1,0 +1,25 @@
+.swatch-frame {
+	display: inline-block;
+	width: 25%;
+	border: 5px solid gray;
+	padding: 5ex 3em;
+}
+.swatch-frame-black {
+	background: black;
+}
+.swatch {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	box-sizing: border-box;
+}
+.black { background-color: #000; }
+.white { background-color: #fff; border: 1px solid black; }
+.red { background-color: #f00; }
+.green { background-color: #0f0; }
+.blue { background-color: #00f; }
+.yellow { background-color: #ff0; }
+.cyan { background-color: #0ff; }
+.magenta { background-color: #f0f; }
+.swatch-frame-black .black { border: 1px solid white; }
+.swatch-frame-black .white { border: none; }
