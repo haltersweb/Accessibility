@@ -70,3 +70,7 @@ body {
     top: 10px;
     right: 10px;
 }
+.fieldset label {
+	width: auto;
+	white-space: nowrap;
+}
