@@ -15,7 +15,7 @@
             $('#errorMsg').text('We need to know if you are a human.').show();
         } else {
             $('#errorMsg').text('').hide();
-            alert('Thanks for submitting this form');
+            alert('This form validated nicely.  Thank you.');
         }
     });
     $('svg#human').on('click', function () {
