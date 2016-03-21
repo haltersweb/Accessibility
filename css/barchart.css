@@ -1,0 +1,103 @@
+.barchart {
+	position: relative;
+	height: 360px;
+	padding-bottom: 70px;
+	box-sizing: content-box;
+}
+.barchart * {
+	box-sizing: border-box;
+}
+.bar-table {
+	table-layout: fixed;
+	width: 94%;
+	margin-left: 5%;
+}
+.tfoot {
+	height: 70px;
+	width: 94%;
+	margin-left: 5%;
+	overflow: hidden;
+}
+.tfoot-cell {
+	width: 21%;
+	padding: 1.4rem 2% 0 2%;
+	vertical-align: top;
+	font-weight: bold;
+	text-align: center;
+	float: left;
+	box-sizing: content-box;
+}
+.tfoot-cell > * {
+	display: block;
+}
+th {
+	height: 1px;
+    padding: 0;
+    margin-top: 0px;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    color: transparent;
+    background-color: transparent;
+}
+td {
+	position: relative;
+	vertical-align: bottom;
+	text-align: center;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+td [data-value] {
+	position: relative;
+	display: block;
+	width: 52%;
+	min-width: 23px;
+	height: 0;
+	margin: 0 auto;
+	background-color: #7298bd;
+}
+.barchart-background {
+	position: absolute;
+	bottom: 69px;
+	width: 100%;
+	border-top: 1px solid #e0e0e0;
+}
+.increment {
+	border-top: 1px solid #e0e0e0;
+	color: #666;
+}
+.increment:first-child {
+	border-top: none;
+}
+.overage {
+	position: absolute;
+	display: block;
+	top: 0;
+	width: 100%;
+	background-color: #e3654c;
+}
+.overage:after {
+	content: "";
+	position: absolute;
+	display: block;
+	bottom: -1px;
+	width: 100%;
+	height: 2px;
+	background-color: #fff;
+}
+.planlimit {
+	display: block;
+	position: absolute;
+	bottom: -1px;
+	width: 100%;
+	border-top: 2px dashed #d11a38;
+	text-align: left;
+	color: #d11a38;
+}
+.barchart .label {
+	position: absolute;
+	padding: 0.4rem 0.5rem;
+}
+.barchart .label.short {
+	padding: 0 0.5rem;
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CSS-based Bar Chart</title>
+        <link rel="stylesheet" type="text/css" href="css/normalization.css" />
+        <link rel='stylesheet' type='text/css' href='css/base.css' />
+        <link rel='stylesheet' type='text/css' href='css/barchart.css' />
+    </head>
+    <body>
+        <div class="pl-pattern">
+            <h1>Bar Chart</h1>
+			<div class="container">
+				<div class="page-wrapper" id="main" role="main" tabindex="-1">
+					<div class="barchart" style="margin-top: 90px;">
+						<div class="barchart-background" aria-hidden="true">
+							<div class="increment" data-grid-value="400" style="height:90px;">
+								<span class="label">400GB</span>
+							</div>
+							<div class="increment" data-grid-value="300" style="height: 90px; border: none;">
+								<span class="label accessibly-hidden">300GB</span>
+							</div>
+							<div class="increment" data-grid-value="200" style="height:90px;">
+								<span class="label">200GB</span>
+							</div>
+							<div class="increment" data-grid-value="100" style="height:90px;">
+								<span class="label">100GB</span>
+							</div>
+							<span class="planlimit" style="margin-bottom:270px;">
+								<span class="label">300GB</span>
+							</span>
+						</div>
+						<table class="bar-table">
+							<colgroup>
+								<col class="col-1">
+								<col class="col-2">
+								<col class="col-3">
+								<col class="col-4">
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col" data-plan="300">Nov. 1 - Nov. 30, 2013
+									</th>
+									<th scope="col" data-plan="300">Dec. 1 - Dec. 31, 2013
+									</th>
+									<th scope="col" data-plan="300">Jan. 1 - Jan. 31, 2014
+									</th>
+									<th scope="col" data-plan="300">Feb. 1 - Feb. 28, 2014
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span data-value="400" style="height: 360px; margin-top: 0px;">
+											<span class="label accessibly-hidden">400GB out of 300GB</span>
+											<span class="overage" style="height:90px;"></span>
+										</span>
+									</td>
+									<td>
+										<span data-value="310" style="height: 279px; margin-top: 81px;">
+											<span class="label accessibly-hidden">310GB out of 300GB</span>
+											<span class="overage" style="height:9px;"></span>
+										</span>
+									</td>
+									<td>
+										<span data-value="300" style="height: 270px; margin-top: 90px;">
+											<span class="label accessibly-hidden">300GB out of 300GB</span>
+										</span>
+									</td>
+									<td>
+										<span data-value="150" style="height: 135px; margin-top: 225px;">
+											<span class="label accessibly-hidden">150GB out of 100GB</span>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="tfoot">
+							<div class="tfoot-cell">
+								<span aria-hidden="true">Nov. 1 - Nov. 30, 2013</span>
+								<a href="#">
+									View Details
+									<span class="accessibly-hidden">for Nov. 1 - Nov. 30, 2013</span>
+								</a>
+							</div>
+							<div class="tfoot-cell">
+								<span aria-hidden="true">Dec. 1 - Dec. 31, 2013</span>
+								<a href="#">
+									View Details
+									<span class="accessibly-hidden">for Dec. 1 - Dec. 31, 2013</span>
+								</a>
+							</div>
+							<div class="tfoot-cell">
+								<span aria-hidden="true">Jan. 1 - Jan. 31, 2014</span>
+								<a href="#">
+									View Details
+									<span class="accessibly-hidden">for Jan. 1 - Jan. 31, 2014</span>
+								</a>
+							</div>
+							<div class="tfoot-cell">
+								<span aria-hidden="true">Feb. 1 - Feb. 28, 2014</span>
+								<a href="#">
+									View Details
+									<span class="accessibly-hidden">for Feb. 1 - Feb. 28, 2014</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </div>
+    </body>
+</html>
