@@ -74,3 +74,7 @@ body {
 	width: auto;
 	white-space: nowrap;
 }
+.remove-outline:focus {
+	outline: none!important;
+    box-shadow: none!important;
+}
