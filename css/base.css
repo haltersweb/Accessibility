@@ -386,6 +386,6 @@ i.svg {
 ---------------------------------------- */
 .page-wrapper {
 	width: 80%;
-	margin: 0 auto;
+	margin: 0 auto 10ex;
 	background-color: #fff;
 	}
