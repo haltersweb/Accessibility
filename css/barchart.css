@@ -1,7 +1,11 @@
+h1 {
+	margin-top: 3ex;
+	padding-left: 2em;
+}
 .barchart {
 	position: relative;
-	height: 360px;
-	padding-bottom: 70px;
+	padding-top: 10ex;
+	padding-bottom: 4ex;
 	box-sizing: content-box;
 }
 .barchart * {
@@ -12,42 +16,36 @@
 	width: 94%;
 	margin-left: 5%;
 }
-.tfoot {
-	height: 70px;
-	width: 94%;
-	margin-left: 5%;
-	overflow: hidden;
-}
-.tfoot-cell {
-	width: 21%;
-	padding: 1.4rem 2% 0 2%;
-	vertical-align: top;
-	font-weight: bold;
-	text-align: center;
-	float: left;
-	box-sizing: content-box;
-}
-.tfoot-cell > * {
-	display: block;
-}
 th {
-	height: 1px;
-    padding: 0;
-    margin-top: 0px;
-    overflow: hidden;
-    font-size: 0;
-    line-height: 0;
-    color: transparent;
-    background-color: transparent;
+	padding: 0;
+}
+.table-header-text {
+	position: absolute;
+	display: block;
+	bottom: 0;
+	margin-left: 5%;
+	width: 23.5%;
+	text-align: center;
+}
+th:nth-child(1) .table-header-text {
+	left: 0;
+}
+th:nth-child(2) .table-header-text {
+	left: 23.5%;
+}
+th:nth-child(3) .table-header-text {
+	left: 47%;
+}
+th:nth-child(4) .table-header-text {
+	left: 70.5%;
 }
 td {
 	position: relative;
 	vertical-align: bottom;
 	text-align: center;
-	padding-top: 0;
-	padding-bottom: 0;
+	padding: 0;
 }
-td [data-value] {
+[data-value] {
 	position: relative;
 	display: block;
 	width: 52%;
@@ -58,7 +56,7 @@ td [data-value] {
 }
 .barchart-background {
 	position: absolute;
-	bottom: 69px;
+	bottom: 4ex;
 	width: 100%;
 	border-top: 1px solid #e0e0e0;
 }
@@ -68,6 +66,12 @@ td [data-value] {
 }
 .increment:first-child {
 	border-top: none;
+}
+.usage {
+	display: block;
+	position: relative;
+	top: -15px;
+	z-index: 1;
 }
 .overage {
 	position: absolute;
