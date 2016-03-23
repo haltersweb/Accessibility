@@ -1,0 +1,119 @@
+html {
+	color: #3b3b3b;
+}
+body {
+	min-width: 980px;
+}
+
+/* Copy styles
+---------------------------------------- */
+/* Terms and conditions, etc. */
+.cui-fine-print p,
+.cui-fine-print li {
+	font-size: 11px;
+	font-size: 1.1rem;
+	line-height: 1.1em;
+	color: #666;
+}
+
+/* Pull this out by attaching the wrap page class where it belongs */
+[role="main"] {
+	position: relative;
+	width: 980px;
+	margin: 0 auto;
+	}
+.cui-wrap-page {
+	width: 980px;
+	padding: 0;
+	}
+[data-credentials*="primary"] {
+	padding-top: 37px;
+	}
+[data-credentials*="restricted"] {
+	padding-top: 27px;
+	}
+/* Move icon stuff to icons file */
+/* Toggle style radio buttons */
+.cui-toggle {
+	letter-spacing: -0.4em;
+}
+.cui-toggle label {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: relative;
+	display: inline-block;
+	padding: 12px 30px;
+	padding: 1.2rem 3.0rem;
+	border: 1px solid #cacaca;
+	background-color: #f7f7f7;
+	background: -webkit-linear-gradient(top, #fff 0%, #e6e6e6 100%);
+	background: linear-gradient(to bottom, #fff 0%, #e6e6e6 100%);
+	font-size: 11px;
+	font-size: 1.1rem;
+	font-weight: bold;
+	text-align: center;
+	letter-spacing: normal;
+	text-overflow: ellipsis;
+  	text-shadow: 0 1px 0 #fff;
+	white-space: nowrap;
+	cursor: pointer;
+}
+.cui-toggle label.selected {
+	box-shadow: inset 2px 2px 6px rgba(0,0,0,0.2);
+	background-color: #ddd;
+	background-image: none;
+}
+.cui-toggle label.focused {
+	z-index: 1;
+	border: 1px dotted #000;
+	outline-offset: -5px;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+.cui-toggle label:first-child {
+	border-radius: 6px 0 0 6px;
+}
+.cui-toggle label:last-child {
+	border-radius: 0 6px 6px 0;
+}
+/* Bulleted list with image bullets */
+ul.cui-list-custom,
+.cui-list-custom ul {
+    list-style: none;
+    padding: 0 0 0 18px;
+    font-size: 12px;
+    font-size: 1.2rem;
+}
+.cui-list-custom li {
+    position: relative;
+    margin-bottom: .5em;
+    line-height: 1.3em;
+}
+.cui-list-custom li:last-child {
+    margin: 0;
+}
+.cui-list-custom li:before {
+    content: "";
+    display: inline-block;
+    vertical-align: baseline;
+    margin-left: -14px;
+    width: 14px;
+    height: 7px;
+}
+/* Checkmark image as bullet */
+.cui-list-custom.checks li:before {
+    background: transparent url("/~/media/customer_comcast_com/Images/cui-my-acct-sprite.png") -150px -1350px;
+}
+.cui-list-custom.checks.green li:before {
+    background: transparent url("/~/media/customer_comcast_com/Images/cui-my-acct-sprite.png") -200px -1350px;
+}
+
+/* Table-row pattern */
+.mya-table-row {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+}
+.mya-table-row > .mya-table-cell {
+	display: table-cell;
+	vertical-align: top;
+}

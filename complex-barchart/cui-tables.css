@@ -1,0 +1,47 @@
+/* Table styling
+-------------------------------------------------- */
+	
+table.cui-table,
+.cui-table table {
+	width: 100%;
+    empty-cells: show;
+    border: 1px solid #d5d5d5;
+	}
+
+.cui-table caption {
+    padding: 1em;
+    text-align: center;
+	}
+
+.cui-table td,
+.cui-table th {
+	overflow: visible;
+	margin: 0;
+	padding: .25em .5em;
+	font-size: inherit;
+	border-width: 0;
+	}
+	
+.cui-table td:first-child,
+.cui-table th:first-child {
+    border-left-width: 0;
+	}
+
+.cui-table thead {
+	vertical-align: bottom;
+    text-align: left;
+    background: #eee;
+    white-space: nowrap;
+	}
+
+/* Bordered table */
+.cui-table-bordered td,
+.cui-table-bordered th {
+    border-bottom: 1px solid #d5d5d5;
+    border-left: 1px solid #d5d5d5;
+    border-width: 0 0 1px 1px;
+	}	
+	
+.cui-table-bordered tbody > tr:last-child td {
+    border-bottom-width: 0;
+	}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CUI BAR CHART from LIBRARY</title>
+        <link rel="stylesheet" type="text/css" href="normalization.css" />
+        <link rel='stylesheet' type='text/css' href='base.css' />
+        <link rel='stylesheet' type='text/css' href='cui-barchart.css' />
+    </head>
+    <body>
+        <div class="pl-pattern">
+            <h1>Bar Chart</h1>
+			<div class="container">
+				<div class="page-wrapper" id="main" role="main" tabindex="-1">
+                	<div class="cui-table" data-component="barchart" data-options="timeframe:monthly; unit:GB">
+						<table cellpadding="0" cellspacing="0">
+							<thead>
+								<tr>
+									<th scope="col" data-plan="300">Nov. 1 - Nov. 30, 2013
+										<p><a href="">View Details</a></p>
+									</th>
+									<th scope="col" data-plan="300">Dec. 1 - Dec. 31, 2013
+										<p><a href="">View Details</a></p>
+									</th>
+									<th scope="col" data-plan="300">Jan. 1 - Jan. 31, 2014
+										<p><a href="">View Details</a></p>
+									</th>
+									<th scope="col" data-plan="300">Feb. 1 - Feb. 28, 2014
+										<p><a href="">View Details</a></p>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><span data-value="400">400GB out of 300GB</span></td>
+									<td><span data-value="310">310GB out of 300GB</span></td>
+									<td><span data-value="300">300GB out of 300GB</span></td>
+									<td><span data-value="150">150GB out of 100GB</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+            </div>
+        </div>
+        <script src='jquery171min.js'></script>
+        <script src='cui.js'></script>
+        <script src='cui-barchart.js'></script>
+    </body>
+</html>

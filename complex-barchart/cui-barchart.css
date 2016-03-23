@@ -1,0 +1,100 @@
+.cui-barchart {
+	position: relative;
+	height: 360px;
+}
+.cui-barchart * {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.cui-barchart table {
+	table-layout: fixed;
+	width: 94%;
+	margin-left: 5%;
+}
+.cui-barchart table p {
+	font-size: 12px;
+	font-size: 1.2rem;
+}
+.cui-barchart tfoot th {
+	vertical-align: top;
+	padding-top: 8px;
+	padding-top: 1.4rem;
+	font-weight: bold;
+	text-align: center;
+}
+.cui-barchart tbody td {
+	position: relative;
+	vertical-align: bottom;
+	text-align: center;
+}
+.cui-barchart tbody td [data-value] {
+	position: relative;
+	display: block;
+	width: 52%;
+	min-width: 23px;
+	height: 0;
+	margin: 0 auto;
+	background-color: #85b2dd;
+}
+.cui-barchart .cui-barchart-bg {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	border-top: 1px solid #e0e0e0;
+}
+.cui-barchart .cui-barchart-bg .increment {
+	border-top: 1px solid #e0e0e0;
+	color: #666;
+}
+.cui-barchart .cui-barchart-bg .increment:first-child {
+	border-top: none;
+}
+/* An increment that doesn't take up space, such as the extra 1GB line */
+.cui-barchart .cui-barchart-bg .increment.extra-increment {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+/* Specific to the Data Usage charts */
+.cui-barchart tbody td [data-value].overage {
+	background-color: #ea684e;
+}
+.cui-barchart .overage {
+	position: absolute;
+	display: block;
+	top: 0;
+	width: 100%;
+	background-color: #ea684e;
+}
+.cui-barchart .overage:after {
+	content: "";
+	position: absolute;
+	display: block;
+	bottom: -1px;
+	width: 100%;
+	height: 2px;
+	background-color: #fff;
+}
+.cui-barchart .planlimit {
+	display: block;
+	position: absolute;
+	bottom: -1px;
+	width: 100%;
+	border-top: 2px dashed #d11a38;
+	text-align: left;
+	color: #d11a38;
+}
+.cui-barchart .label {
+	position: absolute;
+	padding: 4px 5px;
+	padding: 0.4rem 0.5rem;
+}
+.cui-barchart .label.short {
+	padding: 0 5px;
+	padding: 0 0.5rem;
+}
+/* Table styling as a fallback will be .cui-table */
+[data-component=barchart].cui-table {
+	overflow: auto;
+}

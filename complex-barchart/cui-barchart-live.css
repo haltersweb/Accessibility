@@ -1,0 +1,171 @@
+/* Bar Chart - cui-barchart.css
+---------------------------------------- */
+.cui-barchart {
+	position: relative;
+	height: 360px;
+}
+.cui-barchart * {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.cui-barchart table {
+	table-layout: fixed;
+	width: 100%;
+	margin-left: 0;
+}
+.cui-barchart table p {
+	font-size: 12px;
+	font-size: 1.2rem;
+}
+.cui-barchart tfoot th {
+	vertical-align: top;
+	padding-top: .8em;
+	font-weight: bold;
+	text-align: center;
+}
+.cui-barchart tfoot th p {
+    display: inline-block;
+    margin-top: 0;
+}
+.cui-barchart tfoot th p span {
+    display: block;
+    margin-top: .2em;
+    font-weight: normal;
+    text-align: right;
+}
+.cui-barchart tbody td {
+	position: relative;
+	vertical-align: bottom;
+	text-align: center;
+}
+.cui-barchart tbody td [data-value] {
+	position: relative;
+	display: block;
+	width: 52%;
+	min-width: 23px;
+	height: 0;
+	margin: 0 auto;
+	background-color: #1ca3dd;
+}
+.cui-barchart .cui-barchart-bg {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	border-top: 1px solid #e0e0e0;
+}
+.cui-barchart .cui-barchart-bg .increment {
+	border-top: 1px solid #e0e0e0;
+	color: #666;
+}
+.cui-barchart .cui-barchart-bg .increment:first-child {
+	border-top: none;
+}
+/* An increment that doesn't take up space, such as the extra 1GB line */
+.cui-barchart .cui-barchart-bg .increment.extra-increment {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+/* Specific to the Data Usage charts */
+.cui-barchart tbody td [data-value].courtesy {
+	background-color: #76c6e9;
+}
+.cui-barchart tbody td [data-value].overage {
+	background-color: #c8001d;
+}
+.cui-barchart .overage {
+	position: absolute;
+	display: block;
+	top: 0;
+	width: 100%;
+	background-color: #c8001d;
+    border-bottom: 2px solid #fff;
+    border-top: 1px solid #c8001d;
+}
+.cui-barchart .overage.courtesy {
+    background-color: #76c6e9;
+    border-top: 1px solid #76c6e9;
+}
+/* hidden in current design */
+.cui-barchart .overage:after {
+	content: "";
+	position: absolute;
+	display: none;
+	bottom: -1px;
+	width: 100%;
+	height: 2px;
+	background-color: #fff;
+}
+/* hidden in current design */
+.cui-barchart .planlimit {
+	display: none;
+	position: absolute;
+	bottom: -1px;
+	width: 100%;
+	border-top: 2px dashed #d11a38;
+	text-align: left;
+	color: #d11a38;
+}
+.cui-barchart .label {
+	position: absolute;
+    left: -77px;
+    margin-top: -7px;
+    padding: 0;
+    text-shadow: 1px 1px 0 rgba(255,255,255,.45);
+    width: 67px;
+    text-align: right;
+}
+.cui-barchart .label.short {
+	padding: 0 5px;
+	padding: 0 0.5rem;
+}
+/* Display used value at the top of each bar */
+.cui-barchart .label-used {
+    position: relative;
+    top: -20px;
+}
+/* Table styling as a fallback will be .cui-table */
+[data-component=barchart].cui-table {
+	overflow: auto;
+}
+/* Chart legend */
+.cui-chart-legend {
+    margin: 15px 6% 15px 0;
+    font-size: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: right;
+}
+.cui-chart-legend > * {
+    display: inline-block;
+    margin-left: 10px;
+}
+.cui-chart-legend .cui-courtesy:before,
+.cui-chart-legend .cui-overage:before {
+    content: "";
+    display: inline-block;
+    vertical-align: -1px;
+    margin-right: 3px;
+    width: 9px;
+    height: 9px;
+}
+.cui-chart-legend .cui-courtesy:before {
+    background-color: #76c6e9;
+}
+.cui-chart-legend .cui-overage:before {
+    background-color: #c8001d;
+}
+
+/* shift chart labels back inside the chart */
+@media only screen and (max-width: 1150px) {
+    .cui-barchart .label {
+        left: auto;
+        margin: 0;
+        padding: 4px 5px;
+    }
+    .cui-barchart table {
+        width: 94%;
+	    margin-left: 5%;
+    }
+}
