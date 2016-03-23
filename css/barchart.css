@@ -1,11 +1,8 @@
-h1 {
-	margin-top: 3ex;
-	padding-left: 2em;
-}
 caption {
 	position: absolute;
 	left: 0;
 	top: 0;
+	font-style: italic;
 }
 .barchart {
 	position: relative;
@@ -29,20 +26,7 @@ th {
 	display: block;
 	bottom: 0;
 	margin-left: 5%;
-	width: 23.5%;
 	text-align: center;
-}
-th:nth-child(1) .table-header-text {
-	left: 0;
-}
-th:nth-child(2) .table-header-text {
-	left: 23.5%;
-}
-th:nth-child(3) .table-header-text {
-	left: 47%;
-}
-th:nth-child(4) .table-header-text {
-	left: 70.5%;
 }
 td {
 	position: relative;
@@ -94,7 +78,7 @@ td {
 	height: 2px;
 	background-color: #fff;
 }
-.planlimit {
+.plan-limit {
 	display: block;
 	position: absolute;
 	bottom: -1px;

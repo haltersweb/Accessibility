@@ -4,87 +4,105 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>CSS-based Bar Chart</title>
-        <link rel="stylesheet" type="text/css" href="css/normalization.css" />
-        <link rel='stylesheet' type='text/css' href='css/base.css' />
-        <link rel='stylesheet' type='text/css' href='css/barchart.css' />
-    </head>
-    <body>
-        <div>
-            <h1>Bar Chart</h1>
-			<div class="container">
-				<div class="page-wrapper" id="main" role="main" tabindex="-1">
-					<div class="barchart" style="height: 360px;">
-						<div class="barchart-background" aria-hidden="true">
-							<div class="increment" data-grid-value="400" style="height:90px;">
-								<span class="label">400GB</span>
-							</div>
-							<div class="increment" data-grid-value="300" style="height: 90px; border: none;">
-								<span class="label">300GB</span>
-							</div>
-							<div class="increment" data-grid-value="200" style="height:90px;">
-								<span class="label">200GB</span>
-							</div>
-							<div class="increment" data-grid-value="100" style="height:90px;">
-								<span class="label">100GB</span>
-							</div>
-							<span class="planlimit" style="margin-bottom:270px;">
-								<span class="label">300GB</span>
-							</span>
-						</div>
-						<table class="bar-table">
-							<caption>This table shows internet usage and any overages by month</caption>
-							<colgroup>
-								<col class="col-1">
-								<col class="col-2">
-								<col class="col-3">
-								<col class="col-4">
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col" data-plan="300">
-										<span class="table-header-text">Nov. 1 - Nov. 30, 2013</span>
-									</th>
-									<th scope="col" data-plan="300">
-										<span class="table-header-text">Dec. 1 - Dec. 31, 2013</span>
-									</th>
-									<th scope="col" data-plan="300">
-										<span class="table-header-text">Jan. 1 - Jan. 31, 2014</span>
-									</th>
-									<th scope="col" data-plan="300">
-										<span class="table-header-text">Feb. 1 - Feb. 28, 2014</span>
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<span data-value="400" style="height: 360px; margin-top: 0px;">
-											<span class="usage">400GB<span class="accessibly-hidden">out of 300GB</span></span>
-											<span class="overage" style="height:90px;"></span>
-										</span>
-									</td>
-									<td>
-										<span data-value="310" style="height: 279px; margin-top: 81px;">
-											<span class="usage">310GB<span class="accessibly-hidden">out of 300GB</span></span>
-											<span class="overage" style="height:9px;"></span>
-										</span>
-									</td>
-									<td>
-										<span data-value="300" style="height: 270px; margin-top: 90px;">
-											<span class="usage">300GB<span class="accessibly-hidden">out of 300GB</span></span>
-										</span>
-									</td>
-									<td>
-										<span data-value="150" style="height: 135px; margin-top: 225px;">
-											<span class="usage">150GB<span class="accessibly-hidden">out of 100GB</span></span>
-										</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+    <link rel="stylesheet" type="text/css" href="css/normalization.css" />
+    <link rel='stylesheet' type='text/css' href='css/base.css' />
+    <link rel='stylesheet' type='text/css' href='css/barchart.css' />
+</head>
+<body>
+	<div class="container">
+		<div class="page-wrapper" id="main" role="main" tabindex="-1">
+			<h1>Bar Chart</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
+			<div class="barchart" style="height: 360px;">
+				<div class="barchart-background" aria-hidden="true">
+					<div class="increment" data-grid-value="400" style="height:90px;">
+						<span class="label">400GB</span>
 					</div>
+					<div class="increment" data-grid-value="300" style="height: 90px; border: none;">
+						<span class="label">300GB</span>
+					</div>
+					<div class="increment" data-grid-value="200" style="height:90px;">
+						<span class="label">200GB</span>
+					</div>
+					<div class="increment" data-grid-value="100" style="height:90px;">
+						<span class="label">100GB</span>
+					</div>
+					<span class="plan-limit" style="margin-bottom:270px;">
+						<span class="label">300GB</span>
+					</span>
 				</div>
-            </div>
-        </div>
-    </body>
+				<table class="bar-table">
+					<caption>This table shows internet usage and any overages by month</caption>
+					<colgroup>
+						<col class="col-1">
+						<col class="col-2">
+						<col class="col-3">
+						<col class="col-4">
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col" data-plan="300">
+								<span class="table-header-text" style="width: 23.5%; left: 0;">Nov. 1 - Nov. 30, 2013</span>
+							</th>
+							<th scope="col" data-plan="300">
+								<span class="table-header-text" style="width: 23.5%; left: 23.5%;">Dec. 1 - Dec. 31, 2013</span>
+							</th>
+							<th scope="col" data-plan="300">
+								<span class="table-header-text" style="width: 23.5%; left: 47%;">Jan. 1 - Jan. 31, 2014</span>
+							</th>
+							<th scope="col" data-plan="300">
+								<span class="table-header-text" style="width: 23.5%; left: 70.5%;">Feb. 1 - Feb. 28, 2014</span>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<span data-value="400" style="height: 360px; margin-top: 0px;">
+									<span class="usage">400GB<span class="accessibly-hidden">out of 300GB</span></span>
+									<span class="overage" style="height:90px;"></span>
+								</span>
+							</td>
+							<td>
+								<span data-value="310" style="height: 279px; margin-top: 81px;">
+									<span class="usage">310GB<span class="accessibly-hidden">out of 300GB</span></span>
+									<span class="overage" style="height:9px;"></span>
+								</span>
+							</td>
+							<td>
+								<span data-value="300" style="height: 270px; margin-top: 90px;">
+									<span class="usage">300GB<span class="accessibly-hidden">out of 300GB</span></span>
+								</span>
+							</td>
+							<td>
+								<span data-value="150" style="height: 135px; margin-top: 225px;">
+									<span class="usage">150GB<span class="accessibly-hidden">out of 100GB</span></span>
+								</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<h2>Approach</h2>
+			<p>This bar chart reads as a table in screen-readers because it is a table.  It is a table that leverages CSS to look like a bar chart.  It uses absolutely no js.</p>
+			<p>This chart assumes that certain styles (mainly dimensional styles) that are relevant to a particular chart would be generated on the server side so that the css can stay as generic as possible.</p>
+			<h2>Stumbling Blocks and Solutions</h2>
+			<p>I needed to place column headings (&lsaquo;thead&rsaquo; content) below the chart, under each corresponding bar.</p>
+			<h3>Problem</h3>
+			<ul class="bullet">
+				<li>Column headers are removed as a reference for the data cells when assigning position: absolute on the &lsaquo;thead&rsaquo;, &lsaquo;tr&rsaquo;, or &lsaquo;th&rsaquo; tags.</li>
+				<li>Table foot (&lsaquo;tfoot&rsaquo;) is not supported by screen readers.</li>
+			</ul>
+			<p><a href="table-as-data-graphics.html">Read details about these problems.</a></p>
+			<h3>Solutions</h3><ul class="bullet">
+				<li>Repeat the &lsaquo;thead&rsaquo; content below the chart (a hack).</li>
+				<li>Assign a span with position absolute around the content within each &lsaquo;th&rsaquo; (what I used).</li>
+			</ul>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+		<div aria-live="polite" class="accessibly-hidden"></div>
+		<div role="alert" class="accessibly-hidden"></div>
+	</div>
+</body>
 </html>
