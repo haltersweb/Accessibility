@@ -1,4 +1,4 @@
-var theUrlForTheJsonData = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=AB5F2B2D478D8FDC601701509B768B61&steamids=76561197960435530,76561198152299810,76561197972495328";
+var theUrlForTheJsonData = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=AB5F2B2D478D8FDC601701509B768B61&steamids=76561197960435530,76561198152299810,76561197972495328,76561198125306992";
   // NOTE: for any Steam data url to work you will need to use a web proxy such as Charles
   // and rewrite the header to add Access-Control-Allow-Origin = *
   // this is because Steam doesn't support JSONP
