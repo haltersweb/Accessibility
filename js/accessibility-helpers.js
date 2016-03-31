@@ -1,20 +1,23 @@
+/*global
+    jQuery, NAME
+*/
 /**
  * Accessibility Helpers
  */
 (function ($) {
     'use strict';
     NAME.keyboard = {
-        ctrl:   17,
-        tab:     9,
-        enter:  13,
-        esc:    27,
-        space:  32,
-        left:   37,
-        up:     38,
-        right:  39,
-        down:   40,
-        back:    8,
-        del:    46
+        ctrl: 17,
+        tab: 9,
+        enter: 13,
+        esc: 27,
+        space: 32,
+        left: 37,
+        up: 38,
+        right: 39,
+        down: 40,
+        back: 8,
+        del: 46
     };
     /*
     a string of selectors identifying focusable elements.
