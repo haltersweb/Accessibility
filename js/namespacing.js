@@ -1,3 +1,6 @@
+/*global
+    jQuery
+*/
 /**
  * NAME Namespacing
  */
