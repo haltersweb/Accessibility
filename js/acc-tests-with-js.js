@@ -92,6 +92,91 @@ var ACCTESTS = {};
         htmlElem.style.fontSize = htmlFontSize;
         htmlElem.removeAttribute("data-font-size");
     };
+    ACCTESTS.formOrphans = function () {
+        var $formFields = $('input, select, textarea'),
+            formId = "",
+            $formLabels = $('label'),
+            $formLabel,
+            $orphanFields,
+            $orphanLabels,
+            $multiLabels,
+            $orphanLists = $('<div id="orphanLists">'),
+            $orphanFieldsList = $('<ul id="orphanFieldsList">'),
+            $orphanLabelsList = $('<ul id="orphanLabelsList">'),
+            $multiLabelsList = $('<ul id="multiLabelsList">');
+        // match each form id with label
+        $formFields.each(function () {
+            formId = $(this).attr('id');
+            $formLabel = $('label[for="' + formId + '"]');
+            if ($formLabel.length === 1) {
+                $(this).attr("data-orphan", "no");
+                $formLabel.attr("data-orphan", "no");
+                return true;
+            }
+            if ($formLabel.length > 1) {
+                $(this).attr("data-orphan", "no");
+                $formLabel.attr("data-orphan", "multi");
+                return true;
+            }
+            $(this).attr("data-orphan", "yes");
+        });
+        $formLabels.not('[data-orphan]').attr("data-orphan", "yes");
+        // list all orphan form fields
+        $orphanFields = $('[data-orphan="yes"]').filter('input, select, textarea');
+        for (i = 0; i < $orphanFields.length; i += 1) {
+            $orphanFieldsList.append('<li>' + $orphanFields.get(i).tagName + ':' + $orphanFields.get(i).type + '#' + $orphanFields.get(i).id + '</li>');
+        }
+        // list all orphan labels
+        $orphanLabels = $('label[data-orphan="yes"]');
+        for (i = 0; i < $orphanLabels.length; i += 1) {
+            $orphanLabelsList.append('<li>' + $orphanLabels.get(i).tagName + ': ' + $orphanLabels.eq(i).text() + '</li>');
+        }
+        // list all multiple labels
+        $multiLabels = $('label[data-orphan="multi"]');
+        for (i = 0; i < $multiLabels.length; i += 1) {
+            $multiLabelsList.append('<li>' + $multiLabels.get(i).tagName + ': ' + $multiLabels.eq(i).text() + '</li>');
+        }
+        // append lists
+        $orphanLists.append($('<h4>Orphan Fields</h4>'), $orphanFieldsList, $('<h4>Orphan Labels</h4>'), $orphanLabelsList, $('<h4>Duplicate Labels</h4>'), $multiLabelsList);
+        populateResultsContainer($orphanLists);
+    };
+    ACCTESTS.clearOrphanFlag = function () {
+        $('[data-orphan]').removeAttr('data-orphan');
+    };
+    ACCTESTS.fieldSets = function () {
+        var $checkAndRadios = $(':checkbox, :radio').filter('[name]'),
+            names = {},
+            name = "",
+            $fieldset,
+            $legend;
+        $checkAndRadios.each(function () {
+            name = $(this).attr('name');
+            if (!names[name]) {
+                names[name] = 1;
+                return true;
+            }
+            names[name] = names[name] + 1;
+        });
+        $.each(names, function (key, val) {
+            if (val > 1) {
+                $fieldset = $(':checkbox, :radio').filter('[name="' + key + '"]').eq(0).closest('fieldset');
+                if ($fieldset.length !== 1) {
+                    //missing fieldset
+                    console.log('missing FIELDSET for [name="' + key + '"]');
+                    return true;
+                }
+                $legend = $fieldset.children('legend:first-child');
+                if ($legend.length !== 1) {
+                    //missing legend
+                    console.log('missing LEGEND for [name="' + key + '"]');
+                    return true;
+                }
+            }
+        });
+    };
+    function visualTag() {
+        // use :before or maybe background color to tag offenders
+    }
     function showResultsWindow() {
         $accResultsWindow.show();
     }
@@ -124,6 +209,14 @@ var ACCTESTS = {};
         });
         $('#fontSize .acc-reset').on('click', function () {
             ACCTESTS.decreaseFontSize100();
+        });
+        $('#formOrphans .acc-test').on('click', function () {
+            ACCTESTS.formOrphans();
+            showResultsWindow();
+        });
+        $('#formOrphans .acc-reset').on('click', function () {
+            ACCTESTS.clearOrphanFlag();
+            hideResultsWindow();
         });
     }
     function loadCss() {
