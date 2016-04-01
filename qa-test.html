@@ -23,8 +23,17 @@
 			<p><a href="#" class="remove-outline">This is a test link which goes nowhere.</a></p>
 			<p><a href="#" class="launch-modal">Open more pics</a></p>
 			<form>
-			<p class="h3">Tell us about yourself</p>
-				<p id="errorMsg"></p>
+				<fieldset>
+					<input type="checkbox" name="foo" id="fooOne" />
+					<input type="checkbox" name="foo" id="fooTwo" />
+				</fieldset>
+				<fieldset>
+					<legend>What is bar?</legend>
+					<input type="checkbox" name="bar" id="barOne" />
+					<input type="checkbox" name="bar" id="barTwo" />
+				</fieldset>
+				<p class="h3">Tell us about yourself</p>
+				<label id="errorMsg"></label>
 				<div class="p">
 					<span>First Name</span><input id="firstName" type="text" />
 				</div>
@@ -42,20 +51,20 @@
 				<div class="fieldset">
 					<h3>How many kitties are too many kitties?</h3>
 					<div class="p">
-						<input type="radio" name="age" id="one" />
-						<label for="one">No kitties</label>
+						<input type="radio" name="howMany" id="one" />
+						<label>No kitties</label>
 					</div>
 					<div class="p">
-						<input type="radio" name="age" id="two" />
-						<label for="two">More than one</label>
+						<input type="radio" name="howMany" id="two" />
+						<label>More than one</label>
 					</div>
 					<div class="p">
-						<input type="radio" name="age" id="three" />
-						<label for="three">More than two</label>
+						<input type="radio" name="howMany" id="three" />
+						<label>More than two</label>
 					</div>
 					<div class="p">
-						<input type="radio" name="age" id="four" />
-						<label for="four">You can never have enough kitties</label>
+						<input type="radio" name="howMany" id="four" />
+						<label>You can never have enough kitties</label>
 					</div>
 					<div style="position: relative;" class="p">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" role="presentation" focusable="false" class="svg-checkbox"  id="human">
@@ -63,7 +72,7 @@
 							<polygon class="center" fill="#000000" points="13,13 4,5 3,5 3,6 12,23 14,23 29,1 29,0 28,0"></polygon>
 						</svg>
 						<label for="human">Yes, I am not a kitty.</label>
-						<input type="checkbox" id="human" style="display: none;" />
+						<input type="checkbox" id="human" name="human" style="display: none;" />
 					</div>
 				</div>
 				<div class="btn btn-primary" id="submit">Submit</div>
@@ -100,6 +109,11 @@
 			</li>
 			<li id="fontSize" class="test-item">
 				<h3 class="test-name">Relative Font Size</h3>
+				<button type="button" class="acc-test">test</button>
+				<button type="button" class="acc-reset">reset</button>
+			</li>
+			<li id="formOrphans" class="test-item">
+				<h3 class="test-name">Label/Field Pairing</h3>
 				<button type="button" class="acc-test">test</button>
 				<button type="button" class="acc-reset">reset</button>
 			</li>

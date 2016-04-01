@@ -32,6 +32,8 @@ body {
 	width: auto;
 }
 #errorMsg {
+	width: 100%;
+	margin-bottom: 2ex;
 	padding: 1em;
 	border: 1px solid red;
 	color: red;
