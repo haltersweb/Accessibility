@@ -224,9 +224,18 @@ var ACCTESTS = {};
         myCss.rel = "stylesheet";
         myCss.type = 'text/css';
         myCss.id = "accTesterCss";
-        myCss.href = 'file:///Users/ahalte200/Box%20Sync/Mac%20Desktop/Git_Repositories/Accessibility/css/acc-tests-with-js.css';
+        myCss.href = 'http://haltersweb.github.io/Accessibility/css/acc-tests-with-js.css';
         document.getElementsByTagName('head')[0].appendChild(myCss);
     }
+
+    ACCTESTS.TEMPloadLocalCss = function () {
+        var myCss = document.createElement('link');
+        myCss.rel = "stylesheet";
+        myCss.type = 'text/css';
+        myCss.id = "accTesterCss";
+        myCss.href = 'file:///Users/ahalte200/Box%20Sync/Mac%20Desktop/Git_Repositories/Accessibility/css/acc-tests-with-js.css';
+        document.getElementsByTagName('head')[0].appendChild(myCss);
+    };
     function initialize() {
         loadCss();
         bindTests();
