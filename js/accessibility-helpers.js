@@ -81,7 +81,7 @@
     */
     NAME.access.ariaExpand = function ($expander, $expandingContainer) {
         $expander.attr("aria-expanded", "true");
-        $expandingContainer.attr("aria-hidden", "false");
+        //$expandingContainer.attr("aria-hidden", "false");
     };
 
     /*
@@ -89,7 +89,7 @@
     */
     NAME.access.ariaContract = function ($expander, $expandingContainer) {
         $expander.attr("aria-expanded", "false");
-        $expandingContainer.attr("aria-hidden", "true");
+        //$expandingContainer.attr("aria-hidden", "true");
     };
 
     /*
