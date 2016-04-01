@@ -1,5 +1,5 @@
 /*global
-    jQuery
+    jQuery, window
 */
 /* @author Adina Halter
  * Run Accessibility Tests in JS
@@ -66,6 +66,32 @@ var ACCTESTS = {};
         }
         populateResultsContainer($clickList);
     };
+    ACCTESTS.increaseFontSize200 = function () {
+        var htmlElem = document.getElementsByTagName('html')[0],
+            htmlFontSize,
+            htmlFontSizeNum,
+            htmlFontSizeUnit,
+            accTester = document.getElementById('accTester');
+        htmlFontSize = window.getComputedStyle(htmlElem, null).getPropertyValue('font-size');
+        htmlElem.setAttribute("data-font-size", htmlFontSize);
+        htmlFontSizeNum = htmlFontSize.match(/[0-9\.]*/);
+        htmlFontSizeUnit = htmlFontSize.replace(htmlFontSizeNum, "");
+        htmlFontSizeNum = parseFloat(htmlFontSizeNum) * 2;
+        htmlElem.style.fontSize = (htmlFontSizeNum.toString()) + htmlFontSizeUnit;
+        // reset font size for #accTester
+        accTester.style.fontSize = htmlFontSize;
+    };
+    ACCTESTS.decreaseFontSize100 = function () {
+        var htmlElem = document.getElementsByTagName('html')[0],
+            htmlFontSize;
+        if (!htmlElem.getAttribute("data-font-size")) {
+            console.log("data-font-size doesn't exist");
+            return false;
+        }
+        htmlFontSize = htmlElem.getAttribute("data-font-size");
+        htmlElem.style.fontSize = htmlFontSize;
+        htmlElem.removeAttribute("data-font-size");
+    };
     function showResultsWindow() {
         $accResultsWindow.show();
     }
@@ -93,10 +119,24 @@ var ACCTESTS = {};
         $('#actionableElems .acc-reset').on('click', function () {
             hideResultsWindow();
         });
+        $('#fontSize .acc-test').on('click', function () {
+            ACCTESTS.increaseFontSize200();
+        });
+        $('#fontSize .acc-reset').on('click', function () {
+            ACCTESTS.decreaseFontSize100();
+        });
     }
-    bindTests();
+    function loadCss() {
+        var myCss = document.createElement('link');
+        myCss.rel = "stylesheet";
+        myCss.type = 'text/css';
+        myCss.id = "accTesterCss";
+        myCss.href = 'file:///Users/ahalte200/Box%20Sync/Mac%20Desktop/Git_Repositories/Accessibility/css/acc-tests-with-js.css';
+        document.getElementsByTagName('head')[0].appendChild(myCss);
+    }
+    function initialize() {
+        loadCss();
+        bindTests();
+    }
+    initialize();
 }(jQuery, ACCTESTS));
-
-
-
-

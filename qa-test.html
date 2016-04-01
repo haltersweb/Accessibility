@@ -81,60 +81,6 @@
 		<div class="block-screen"></div>
 	</div>
 	<form id="accTester">
-		<style id="accTesterCss">
-			#accTester {
-				position: fixed;
-				bottom: 0;
-				left: 0;
-				width: 100%;
-				height: 10px;
-				overflow: hidden;
-				background-color: #567;
-				color: white;
-				font-family: Arial, Helvetica, sans-serif;
-				padding: 0 2em 1ex;
-				box-sizing: border-box;
-			}
-			#accTester:hover,
-			#accTester.active {
-				height: auto;
-			}
-			#accTester h2,
-			#accTester h3,
-			#accTester th,
-			#accTester td {
-				color: white;
-			}
-			#accTester .test-name {
-				color: white;
-			}
-			#accTester .test-items {
-				margin-left: .25em;
-				margin-top: 0;
-			    padding-left: 0;
-			    list-style: none;
-			    overflow: hidden;
-			}
-			#accTester .test-item {
-				width: 10%;
-				float: left;
-				margin: 0 0 1.25ex 0;
-				box-sizing: border-box;
-				border: 1px solid white;
-			    padding-left: 0;
-			    line-height: 160%;
-			}
-			#accTester tr {
-				border-bottom: 1px solid #fff;
-			}
-			#accTester th,
-			#accTester td {
-				padding: 2ex 1em 2ex 0;
-			}
-			#accTester th {
-				font-size: 1.2em;
-			}
-		</style>
 		<h2>Accessibility Tester</h2>
 		<ul class="test-items">
 			<li id="readingOrder" class="test-item">
@@ -152,13 +98,11 @@
 				<button type="button" class="acc-test">test</button>
 				<button type="button" class="acc-reset">reset</button>
 			</li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
+			<li id="fontSize" class="test-item">
+				<h3 class="test-name">Relative Font Size</h3>
+				<button type="button" class="acc-test">test</button>
+				<button type="button" class="acc-reset">reset</button>
+			</li>
 		</ul>
 		<div id="accResultsWindow" style="display: none;">
 			<h3>Results</h3>
