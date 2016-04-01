@@ -9,9 +9,9 @@ var ACCTESTS = {};
 (function ($, ACCTESTS) {
     'use strict';
     var i,
-        $accTester = $('#accTester'),
-        $accResultsWindow = $('#accResultsWindow'),
-        $accResults = $('#accResults'),
+        $accTester,
+        $accResultsWindow,
+        $accResults,
         styleSheets = document.styleSheets,
         $pageImages = $('img'),
         $pageSvgs = $('svg');
@@ -24,11 +24,14 @@ var ACCTESTS = {};
         $accResults.html($html);
     }
     ACCTESTS.turnOffCss = function () {
+        var accTester = document.getElementById('accTester'),
+            htmlFontSize = window.getComputedStyle(document.getElementsByTagName('html')[0], null).getPropertyValue('font-size');
+        // reset font size for #accTester
+        accTester.style.fontSize = htmlFontSize;
         for (i = 0; i < styleSheets.length; i += 1) {
             if (styleSheets.item(i).ownerNode.id !== "accTesterCss") {
                 styleSheets.item(i).disabled = true;
             }
-
         }
         resizeImages();
     };
@@ -227,7 +230,13 @@ var ACCTESTS = {};
         myCss.href = 'http://haltersweb.github.io/Accessibility/css/acc-tests-with-js.css';
         document.getElementsByTagName('head')[0].appendChild(myCss);
     }
-
+    function injectHtmlInterface() {
+        var htmlInterface = '<form id="accTester"><h2>Accessibility Tester</h2><ul class="test-items"><li id="readingOrder" class="test-item"><h3 class="test-name">Reading Order</h3><button type="button" class="acc-test">test</button><button type="button" class="acc-reset">reset</button></li><li id="headingOrder" class="test-item"><h3 class="test-name">Heading Order</h3><button type="button" class="acc-test">test</button><button type="button" class="acc-reset">reset</button></li><li id="actionableElems" class="test-item"><h3 class="test-name">Elements w/Click Event</h3><button type="button" class="acc-test">test</button><button type="button" class="acc-reset">reset</button></li><li id="fontSize" class="test-item"><h3 class="test-name">Relative Font Size</h3><button type="button" class="acc-test">test</button><button type="button" class="acc-reset">reset</button></li><li id="formOrphans" class="test-item"><h3 class="test-name">Label/Field Pairing</h3><button type="button" class="acc-test">test</button><button type="button" class="acc-reset">reset</button></li></ul><div id="accResultsWindow" style="display: none;"><h3>Results</h3><div id="accResults"></div></div></form>';
+        $('body').append($(htmlInterface));
+        $accTester = $('#accTester');
+        $accResultsWindow = $('#accResultsWindow');
+        $accResults = $('#accResults');
+    }
     ACCTESTS.TEMPloadLocalCss = function () {
         var myCss = document.createElement('link');
         myCss.rel = "stylesheet";
@@ -238,6 +247,7 @@ var ACCTESTS = {};
     };
     function initialize() {
         loadCss();
+        injectHtmlInterface();
         bindTests();
     }
     initialize();

@@ -13,7 +13,7 @@
 	font-size: 1rem;
 }
 #accTester * {
-	font-size: 1em;
+	font-size: 1.05em;
 }
 #accTester:hover,
 #accTester.active {
@@ -46,7 +46,7 @@
     overflow: hidden;
 }
 #accTester .test-item {
-	width: 10%;
+	width: 20%;
 	float: left;
 	margin: 0 0 1.25ex 0;
 	box-sizing: border-box;
