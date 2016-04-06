@@ -9,14 +9,14 @@
 html {
     overflow-y: scroll;
     min-height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
     font-size: 62.5%;
     }
 body {
 	height: 100%;
     margin: 0 auto;
 	background-color: #fff;
-    font-size: 1.3rem; /* =13px */
+    font-size: 1.4rem; /* =14px */
 	font-weight: normal;
 	color: #161e25;
 	overflow-x: hidden;
