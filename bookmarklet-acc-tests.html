@@ -1,3 +1,58 @@
-<a href="javascript:(function () {var myScript = document.createElement('script');myScript.type = 'text/javascript';myScript.src = 'http://haltersweb.github.io/Accessibility/js/acc-tests-with-js.js';document.getElementsByTagName('body')[0].appendChild(myScript);}());">Acc Test JS</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Additional Automated Accessibility Tests</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+</head>
+<body>
+	<div class="container">
+		<a href="#main" class="skip-link">Skip to main content</a>
+		<div class="page-wrapper" id="main" role="main" tabindex="-1">
+			<h1>Additional Automated Accessibility Tests</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
+			<p>Note, this bookmarklet test expects jQuery.  If you do not use jQuery in your site download jQuery into your page through the console before running this bookmarklet.</p>
+			<h2>The Bookmarklet</h2>
+			<p>Use this JavaScript bookmarklet to do some preliminary semi-automatic testing before running an automated program like aXe.</p>
+			<p>Drag the link below to your favorites.</p>
+			<p><a href="javascript:(function () {var myScript = document.createElement('script');myScript.type = 'text/javascript';myScript.src = 'http://haltersweb.github.io/Accessibility/js/acc-tests-with-js.js';document.getElementsByTagName('body')[0].appendChild(myScript);}());">Adina's A11y Tests</a></p>
+			<h2>The Tests</h2>
+			<ol>
+				<li>
+					Print out the web page (for all breakpoints)
+					<ul class="bullet singletons">
+						<li>Make notes on the way flow should be</li>
+						<li>Make notes on semantic heading structure</li>
+						<li>Make note of all actionable elements (links and buttons)</li>
+					</ul>
+				</li>
+				<li>
+					Run bookmarklet on page and run all tests in bottom blue bar that appears.  This tests for:
+					<ul class="bullet singletons">
+						<li>reading order</li>
+						<li>heading hierarchy and validity</li>
+						<li>elements with click events that may need to be buttons instead</li>
+						<li>relative font sizing</li>
+						<li>form labeling and legending</li>
+					</ul>
+				</li>
+			</ol>
+			<a href="javascript:(function () {var myScript = document.createElement('script');myScript.type = 'text/javascript';myScript.src = 'file:///Users/ahalte200/Box%20Sync/Mac%20Desktop/Git_Repositories/Accessibility/js/acc-tests-with-js.js';document.getElementsByTagName('body')[0].appendChild(myScript);}());" style="display: none;">LOCAL A11y Tests</a>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+		<div aria-live="polite" class="accessibly-hidden"></div>
+		<div role="alert" class="accessibly-hidden"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+</body>
+</html>
 
-<a href="javascript:(function () {var myScript = document.createElement('script');myScript.type = 'text/javascript';myScript.src = 'file:///Users/ahalte200/Box%20Sync/Mac%20Desktop/Git_Repositories/Accessibility/js/acc-tests-with-js.js';document.getElementsByTagName('body')[0].appendChild(myScript);}());" style="display: none;">Local Acc Test JS</a>
+
+
+
+
