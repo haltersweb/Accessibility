@@ -1,3 +1,29 @@
+<template id="template">
+  <style>
+    ...
+  </style>
+  <div id="container">
+    <img class="webcomponents" src="http://webcomponents.org/img/logo.svg">
+    <content select="h1"></content>
+  </div>
+</template>
+<script>
+  // This element will be registered to index.html
+  // Because `document` here means the one in index.html
+  var XComponent = document.registerElement('x-component', {
+    prototype: Object.create(HTMLElement.prototype, {
+      createdCallback: {
+        value: function() {
+          var root = this.createShadowRoot();
+          var template = document.querySelector('#template');
+          var clone = document.importNode(template.content, true);
+          root.appendChild(clone);
+        }
+      }
+    })
+  });
+</script>
+<!--
 <template id="myTemplate">
   <style>
     .container {
@@ -33,3 +59,4 @@
     })
   });
 </script>
+-->
