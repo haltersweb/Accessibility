@@ -1,27 +1,36 @@
-<template id="template">
+<template id="myTemplate">
   <style>
+    .container {
+      border: 3px solid indianred;
+      padding: 20px;
+      background-color: darkslategray;
+      width: 50%;
+      text-align: center;
+      margin: 0 auto;
+    }
+    p {
+      color: honeydew;
+      margin: 1ex 0 0;
+      line-height: 1;
+    }
   </style>
-  <div id="container">
-    <img class="webcomponents" src="http://webcomponents.org/img/logo.svg">
-    <content select="h1"></content>
+  <div class="container">
+    <img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/138.jpg" alt="cute kitty" />
+    <p><content select="#theText"></content></p>
   </div>
 </template>
 <script>
   (function (doc) { // var doc = document.currentScript.ownerDocument;
-    // This element will be registered to index.html
-    // Because `document` here means the one in index.html
-    var XComponent = document.registerElement('x-component', {
-      prototype: Object.create(HTMLElement.prototype, {
-        createdCallback: {
-          value: function() {
-            var root = this.createShadowRoot();
-            // use doc instead of document or document.currentScript.ownerDocument
-            var template = doc.querySelector('#template');
-            var clone = document.importNode(template.content, true);
-            root.appendChild(clone);
-          }
-        }
-      })
+    var proto = Object.create(HTMLElement.prototype),
+        xComponent;
+    proto.createdCallback = function () {
+      var root = this.createShadowRoot(),
+          template = doc.querySelector("#myTemplate"),
+          clone = document.importNode(template.content, true);
+      root.appendChild(clone);
+    }
+    xComponent = document.registerElement('x-component', {
+      prototype: proto
     });
   }(document.currentScript.ownerDocument));
 </script>
