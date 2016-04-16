@@ -1,0 +1,17 @@
+{
+  "name": "polymer",
+  "homepage": "https://github.com/haltersweb/Accessibility/polymer",
+  "authors": [
+    "Adina Halter <haltersweb@gmail.com>"
+  ],
+  "description": "'Polymer accessibility testing'",
+  "main": "'index.html'",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>This is a Title</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+</head>
+<body>
+	<div class="container">
+		<a href="#main" class="skip-link">Skip to main content</a>
+		<div class="page-wrapper" id="main" role="main" tabindex="-1">
+			<h1>Test Form Elements Using Web Components</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
+			<form action="">
+				<h2>Input Fields</h2>
+				<h3>Default</h3>
+				<label for="firstName">First Name</label><input type="text" name="firstName" id="firstName">
+				<label for="lastName">*Last Name</label><input type="text" name="lastName" id="lastName" aria-required="true">
+				<h3>Custom Web Component</h3>
+				<h3>Paper</h3>
+				<h3>Default in Shadow DOM</h3>
+				<h3>Custom in Shadow DOM</h3>
+			</form>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+		<div aria-live="polite" class="accessibly-hidden"></div>
+		<div role="alert" class="accessibly-hidden"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+</body>
+</html>
