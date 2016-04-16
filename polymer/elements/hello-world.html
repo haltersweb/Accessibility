@@ -1,7 +1,12 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<polymer-element name="hello-world" noscript>
+<dom-module id="hello-world">
 	<template>
 		<p>Hello World!</p>
 	</template>
-</polymer-element>
+	<script>
+		Polymer({
+			is: "hello-world"
+		})
+	</script>
+</dom-module>
