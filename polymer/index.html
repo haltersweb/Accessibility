@@ -6,11 +6,23 @@
 	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 	<title>Polymer Start Page</title>
 	<link rel="import" href="elements/hello-world.html">
+	<link rel="import" href="bower-components/paper-radio-button/paper-radio-button.html">
+    <link rel="import" href="bower-components/paper-radio-group/paper-radio-group.html">
+    <link rel="import" href="bower-components/paper-styles/demo-pages.html">
 </head>
 <body>
 	<hello-world></hello-world>
-	<hello-world></hello-world>
-	<hello-world></hello-world>
-	<hello-world></hello-world>
+    <style is="custom-style">
+      paper-radio-button {
+        display: block;
+      }
+    </style>
+	<paper-radio-group selected="c">
+		<paper-radio-button name="o">Oxygen</paper-radio-button>
+		<paper-radio-button name="c">Carbon</paper-radio-button>
+		<paper-radio-button name="h">Hydrogen</paper-radio-button>
+		<paper-radio-button name="n">Nitrogen</paper-radio-button>
+		<paper-radio-button name="ca">Calcium</paper-radio-button>
+	</paper-radio-group>
 </body>
 </html>
