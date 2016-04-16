@@ -20,15 +20,16 @@
   </div>
 </template>
 <script>
-  var proto = Object.create(HTMLElement.prototype),
-    xComponent;
-  proto.createdCallback = function () {
-    var root = this.createShadowRoot(),
-        template = document.querySelector("#myTemplate"),
-        clone = document.importNode(template.content, true);
-    root.appendChild(clone);
-  }
-  xComponent = document.registerElement('x-component', {
-    prototype: proto
+  var xComponent = document.registerElement('x-component', {
+    prototype: Object.create(HTMLElement.prototype, {
+      createdCallback: {
+        value: function() {
+          var root = this.createShadowRoot(),
+            template = document.querySelector("#myTemplate"),
+            clone = document.importNode(template.content, true);
+          root.appendChild(clone);
+        }
+      }
+    })
   });
 </script>
