@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-  (function (doc) {
+  (function (doc) { // var doc = document.currentScript.ownerDocument;
     // This element will be registered to index.html
     // Because `document` here means the one in index.html
     var XComponent = document.registerElement('x-component', {
@@ -15,7 +15,8 @@
         createdCallback: {
           value: function() {
             var root = this.createShadowRoot();
-            var template = document.querySelector('#template');
+            // use doc instead of document or document.currentScript.ownerDocument
+            var template = doc.querySelector('#template');
             var clone = document.importNode(template.content, true);
             root.appendChild(clone);
           }
