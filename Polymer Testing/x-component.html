@@ -1,0 +1,34 @@
+<template id="myTemplate">
+  <style>
+    .container {
+      border: 3px solid indianred;
+      padding: 20px;
+      background-color: darkslategray;
+      width: 50%;
+      text-align: center;
+      margin: 0 auto;
+    }
+    p {
+      color: honeydew;
+      margin: 1ex 0 0;
+      line-height: 1;
+    }
+  </style>
+  <div class="container">
+    <img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/138.jpg" alt="cute kitty" />
+    <p><content select="#theText"></content></p>
+  </div>
+</template>
+<script>
+  var proto = Object.create(HTMLElement.prototype),
+    xComponent;
+  proto.createdCallback = function () {
+    var root = this.createShadowRoot(),
+        template = document.querySelector("#myTemplate"),
+        clone = document.importNode(template.content, true);
+    root.appendChild(clone);
+  }
+  xComponent = document.registerElement('x-component', {
+    prototype: proto
+  });
+</script>
