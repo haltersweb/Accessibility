@@ -1,0 +1,22 @@
+<template class="text-input-template">
+  <style>
+  </style>
+  <label for=""></label>
+  <input type="text" name="" id="" />
+</template>
+<script>
+  (function (doc) { // var doc = document.currentScript.ownerDocument;
+    var proto = Object.create(HTMLElement.prototype),
+        xComponent;
+    proto.createdCallback = function () {
+      var root = this.createShadowRoot(),
+          template = doc.querySelector(".text-input-template")[0],
+          clone = document.importNode(template.content, true);
+      root.appendChild(clone);
+    }
+    xComponent = document.registerElement('text-input-component', {
+      prototype: proto
+    });
+  }(document.currentScript.ownerDocument));
+</script>
+
