@@ -1,4 +1,4 @@
-<template class="text-input-template">
+<template id="textinputtemplate">
   <style>
   </style>
   <label for=""></label>
@@ -10,7 +10,7 @@
         xComponent;
     proto.createdCallback = function () {
       var root = this.createShadowRoot(),
-          template = doc.querySelector(".text-input-template")[0],
+          template = doc.querySelector("#textinputtemplate")[0],
           clone = document.importNode(template.content, true);
       root.appendChild(clone);
     }
