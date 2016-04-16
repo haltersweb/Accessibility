@@ -10,7 +10,7 @@
         xComponent;
     proto.createdCallback = function () {
       var root = this.createShadowRoot(),
-          template = doc.querySelector("#textinputtemplate")[0],
+          template = doc.querySelector("#textinputtemplate"),
           clone = document.importNode(template.content, true);
       root.appendChild(clone);
     }
