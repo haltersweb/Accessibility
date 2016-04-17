@@ -1,0 +1,72 @@
+<template id="radioInputTemplate">
+  <style>
+    *::before, *::after { box-sizing: border-box; }
+    .form-row { margin: 1.5ex 0; }
+    label {
+        display: inline-block;
+        width: 7em;
+        margin-right: 2em;
+    }
+    .required::before {
+      content: "*";
+      color: #c00;
+    }
+    [disabled] {
+      background-color: #eee;
+    }
+    input {
+      width: 20em;
+      box-sizing: border-box;
+      padding: 1ex .5em;
+      border: 1px solid #d5d5d5;
+      border-radius: 2px;
+      box-shadow: inset 0 5px 5px -5px rgba(0,0,0,0.2);
+      background: #fff;
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+  </style>
+  <label for="">
+    <input type="radio" name="" id="" aria-invalid="false" aria-describedby="" />
+  </label>
+</template>
+<script>
+  (function (doc) { // var doc = document.currentScript.ownerDocument;
+    var proto = Object.create(HTMLElement.prototype),
+        xComponent;
+    function completeFormElements(component, root, clone) {
+        var labelText = component.getAttribute('label'),
+            labelTextNode = root.createTextNode(labelText),
+            required = component.hasAttribute('required'),
+            disabled = component.hasAttribute('disabled'),
+            name = component.getAttribute('name'),
+            forId = component.getAttribute('for-id'),
+            cloneLabel = clone.querySelector('label'),
+            cloneInput = clone.querySelector('input');
+        cloneLabel.appendChild(labelText);
+        cloneLabel.setAttribute("for", forId);
+        cloneInput.id = forId;
+        if (name) {
+          cloneInput.name = name;
+        }
+        if (required) {
+          cloneInput.setAttribute("aria-required", "true"); //required attribute has accessiblity issues
+          cloneLabel.className = "required";
+        }
+        if (disabled) {
+          cloneInput.setAttribute("disabled", "");
+        }
+    }
+    proto.createdCallback = function () {
+      var root = this.createShadowRoot(),
+          template = doc.querySelector("#radioInputTemplate"),
+          clone = document.importNode(template.content, true);
+          completeFormElements(this, clone);
+      root.appendChild(clone);
+    }
+    xComponent = document.registerElement('input-text-component', {
+      prototype: proto
+    });
+  }((document._currentScript || document.currentScript).ownerDocument));
+</script>
+

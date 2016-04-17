@@ -6,6 +6,7 @@
 	<title>Accessibility of Form Elements Using Web Components</title>
 	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 	<link rel="import" href="accessible_components/input-text-component.html" />
+	<link rel="import" href="accessible_components/input-radio-component.html" />
 	<link rel="stylesheet" href="../css/normalization.css" />
 	<link rel="stylesheet" href="../css/base.css" />
 </head>
@@ -31,13 +32,14 @@
 					<input type="text" name="middleName" id="middleName" disabled />
 				</div>
 				<h3>Default in Shadow DOM</h3>
-				<input-text-component for-id="shadowFirstName" label="First Name"></input-text-component>
-				<input-text-component required for-id="shadowLastName" label="Last Name"></input-text-component>
-				<input-text-component disabled for-id="shadowMiddleName" label="Middle Name"></input-text-component>
-				<h2>Radio Clusters</h2>
+				<input-text-component label="First Name" for-id="shadowFirstName"></input-text-component>
+				<input-text-component label="Last Name" for-id="shadowLastName" required></input-text-component>
+				<input-text-component label="Middle Name" for-id="shadowMiddleName" disabled></input-text-component>
+
+				<h2>Radio Groups</h2>
 				<h3>Default</h3>
 				<fieldset>
-					<legend><span class="legend">What is your favorite time to eat?</span></legend>
+					<legend>What is your favorite time to eat?</legend>
 					<div class="form-row">
 						<label for="morning" class="inline-label">
 							<input type="radio" name="eatingTimes" id="morning" />
@@ -54,15 +56,11 @@
 					</div>
 				</fieldset>
 				<h3>Default in Shadow DOM</h3>
-				<input-radio-cluster required="true" name="shadowEatingTimes" labels="'morning time' 'afternoon time' 'evening time'"></input-radio-cluster>
-
-<paper-radio-group selected="c">
-	<paper-radio-button name="o">Oxygen</paper-radio-button>
-	<paper-radio-button name="c">Carbon</paper-radio-button>
-	<paper-radio-button name="h">Hydrogen</paper-radio-button>
-	<paper-radio-button name="n">Nitrogen</paper-radio-button>
-	<paper-radio-button name="ca">Calcium</paper-radio-button>
-</paper-radio-group>
+				<input-radio-group required name="shadow-eating-time" label="What is your favorite time to eat?">
+					<input-radio-button label="morning" for-id="morning"></input-radio-button>
+					<input-radio-button label="afternoon" for-id="afternoon" disabled></input-radio-button>
+					<input-radio-button label="evening" for-id="evening"></input-radio-button>
+				</input-radio-group>
 
 				<h3>Stylized</h3>
 				<h3>Stylized in Shadow DOM</h3>
