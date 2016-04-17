@@ -13,8 +13,8 @@
         var labelText = component.getAttribute('label'),
             required = component.getAttribute('required'),
             forId = component.getAttribute('for'),
-            cloneLabel = clone.getElementsByTagName('label')[0],
-            cloneInput = clone.getElementsByTagName('input')[0];
+            cloneLabel = clone.querySelector('label'),
+            cloneInput = clone.querySelector('input');
 
     }
     proto.createdCallback = function () {
