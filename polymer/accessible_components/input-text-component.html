@@ -7,7 +7,7 @@
         width: 6em;
         margin-right: 2em;
     }
-    [required] > label {
+    .required::before {
       content: "*";
       color: #c00;
     }
@@ -45,6 +45,7 @@
         cloneInput.name = forId;
         if (required) {
           cloneInput.setAttribute("aria-required", "true");
+          cloneLabel.className("required");
         }
         if (disabled) {
           cloneInput.setAttribute("disabled");
