@@ -3,8 +3,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="import" href="input-text-component.html">
-	<title>This is a Title</title>
+	<title>Accessibility of Form Elements Using Web Components</title>
+	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+	<link rel="import" href="input-text-component.html" />
 	<link rel="stylesheet" href="../css/normalization.css" />
 	<link rel="stylesheet" href="../css/base.css" />
 </head>
@@ -19,11 +20,11 @@
 				<h3>Default</h3>
 				<div class="form-row">
 					<label for="firstName">First Name</label>
-					<input type="text" name="firstName" id="firstName">
+					<input type="text" name="firstName" id="firstName" />
 				</div>
 				<div class="form-row">
 					<label for="lastName">*Last Name</label>
-					<input type="text" name="lastName" id="lastName" aria-required="true">
+					<input type="text" name="lastName" id="lastName" aria-required="true" />
 				</div>
 				<h3>Default in Shadow DOM</h3>
 				<input-text-component required="false" for="firstName" label="First Name"></input-text-component>
