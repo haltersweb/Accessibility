@@ -48,7 +48,7 @@
         cloneInput.name = forId;
         if (required) {
           cloneInput.setAttribute("aria-required", "true"); //required attribute has accessiblity issues
-          cloneLabel.className("required");
+          cloneLabel.className = "required";
         }
         if (disabled) {
           cloneInput.setAttribute("disabled", "");
