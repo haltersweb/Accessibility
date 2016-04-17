@@ -36,7 +36,7 @@
         xComponent;
     function completeFormElements(component, root, clone) {
         var labelText = component.getAttribute('label'),
-            labelTextNode = root.createTextNode(labelText),
+            labelTextNode = document.createTextNode(labelText),
             required = component.hasAttribute('required'),
             disabled = component.hasAttribute('disabled'),
             name = component.getAttribute('name'),
