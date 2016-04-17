@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Accessibility of Form Elements Using Web Components</title>
 	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
-	<link rel="import" href="input-text-component.html" />
+	<link rel="import" href="accessible_components/input-text-component.html" />
 	<link rel="stylesheet" href="../css/normalization.css" />
 	<link rel="stylesheet" href="../css/base.css" />
 </head>
@@ -16,7 +16,7 @@
 			<h1>Test Form Elements Using Web Components</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
 			<form action="">
-				<h2>Input Fields</h2>
+				<h2>Text Fields</h2>
 				<h3>Default</h3>
 				<div class="form-row">
 					<label for="firstName">First Name</label>
@@ -27,8 +27,40 @@
 					<input type="text" name="lastName" id="lastName" aria-required="true" />
 				</div>
 				<h3>Default in Shadow DOM</h3>
-				<input-text-component required="false" for="shadowFirstName" label="First Name"></input-text-component>
-				<input-text-component required="true" for="shadowLastName" label="Last Name"></input-text-component>
+				<input-text-component disabled for="shadowFirstName" label="First Name"></input-text-component>
+				<input-text-component required for="shadowLastName" label="Last Name"></input-text-component>
+				<h2>Radio Clusters</h2>
+				<h3>Default</h3>
+				<fieldset>
+					<legend><span class="legend">What is your favorite time to eat?</span></legend>
+					<div class="form-row">
+						<label for="morning" class="inline-label">
+							<input type="radio" name="eatingTimes" id="morning" />
+							morning
+						</label>
+						<label for="afternoon" class="inline-label">
+							<input type="radio" name="eatingTimes" id="afternoon" />
+							afternoon
+						</label>
+						<label for="evening" class="inline-label">
+							<input type="radio" name="eatingTimes" id="evening" />
+							evening
+						</label>
+					</div>
+				</fieldset>
+				<h3>Default in Shadow DOM</h3>
+				<input-radio-cluster required="true" name="shadowEatingTimes" labels="'morning time' 'afternoon time' 'evening time'"></input-radio-cluster>
+
+<paper-radio-group selected="c">
+	<paper-radio-button name="o">Oxygen</paper-radio-button>
+	<paper-radio-button name="c">Carbon</paper-radio-button>
+	<paper-radio-button name="h">Hydrogen</paper-radio-button>
+	<paper-radio-button name="n">Nitrogen</paper-radio-button>
+	<paper-radio-button name="ca">Calcium</paper-radio-button>
+</paper-radio-group>
+
+				<h3>Stylized</h3>
+				<h3>Stylized in Shadow DOM</h3>
 			</form>
 		</div>
 		<div class="overlay"></div>

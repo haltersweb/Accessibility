@@ -7,7 +7,7 @@
         width: 6em;
         margin-right: 2em;
     }
-    .required::before {
+    [required] > label {
       content: "*";
       color: #c00;
     }
@@ -35,6 +35,7 @@
     function completeFormElements(component, clone) {
         var labelText = component.getAttribute('label'),
             required = component.getAttribute('required'),
+            disabled = component.getAttribute('disabled'),
             forId = component.getAttribute('for'),
             cloneLabel = clone.querySelector('label'),
             cloneInput = clone.querySelector('input');
@@ -42,9 +43,11 @@
         cloneLabel.setAttribute("for", forId);
         cloneInput.id = forId;
         cloneInput.name = forId;
-        if (required && required === "true") {
-          cloneInput.setAttribute("aria-required", required);
-          cloneLabel.className = "required";
+        if (required) {
+          cloneInput.setAttribute("aria-required", "true");
+        }
+        if (disabled) {
+          cloneInput.setAttribute("aria-disabled", "true");
         }
     }
     proto.createdCallback = function () {
