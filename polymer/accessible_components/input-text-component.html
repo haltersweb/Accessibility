@@ -36,7 +36,7 @@
         var labelText = component.getAttribute('label'),
             required = component.getAttribute('required'),
             disabled = component.getAttribute('disabled'),
-            forId = component.getAttribute('for'),
+            forId = component.getAttribute('for-id'),
             cloneLabel = clone.querySelector('label'),
             cloneInput = clone.querySelector('input');
         cloneLabel.textContent = labelText;
@@ -47,7 +47,7 @@
           cloneInput.setAttribute("aria-required", "true");
         }
         if (disabled) {
-          cloneInput.setAttribute("aria-disabled", "true");
+          cloneInput.setAttribute("disabled");
         }
     }
     proto.createdCallback = function () {
