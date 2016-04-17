@@ -34,7 +34,7 @@
   (function (doc) { // var doc = document.currentScript.ownerDocument;
     var proto = Object.create(HTMLElement.prototype),
         xComponent;
-    function completeFormElements(component, root, clone) {
+    function completeFormElements(component, clone) {
         var labelText = component.getAttribute('label'),
             labelTextNode = document.createTextNode(labelText),
             required = component.hasAttribute('required'),
