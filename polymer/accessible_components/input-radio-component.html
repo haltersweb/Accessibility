@@ -1,15 +1,9 @@
 <template id="radioInputTemplate">
   <style>
-    *::before, *::after { box-sizing: border-box; }
-    .form-row { margin: 1.5ex 0; }
     label {
         display: inline-block;
         width: 7em;
         margin-right: 2em;
-    }
-    .required::before {
-      content: "*";
-      color: #c00;
     }
     [disabled] {
       background-color: #eee;
@@ -51,7 +45,6 @@
         }
         if (required) {
           cloneInput.setAttribute("aria-required", "true"); //required attribute has accessiblity issues
-          cloneLabel.className = "required";
         }
         if (disabled) {
           cloneInput.setAttribute("disabled", "");

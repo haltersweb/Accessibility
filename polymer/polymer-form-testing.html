@@ -7,6 +7,7 @@
 	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 	<link rel="import" href="accessible_components/input-text-component.html" />
 	<link rel="import" href="accessible_components/input-radio-component.html" />
+	<link rel="import" href="accessible_components/input-radio-group-component.html" />
 	<link rel="stylesheet" href="../css/normalization.css" />
 	<link rel="stylesheet" href="../css/base.css" />
 </head>
@@ -57,9 +58,9 @@
 				</fieldset>
 				<h3>Default in Shadow DOM</h3>
 				<input-radio-group required name="shadow-eating-time" label="What is your favorite time to eat?">
-					<input-radio-button label="morning" for-id="morning" name="foo"></input-radio-button>
-					<input-radio-button label="afternoon" for-id="afternoon" name="foo" disabled></input-radio-button>
-					<input-radio-button label="evening" for-id="evening" name="foo"></input-radio-button>
+					<input-radio-button label="morning" for-id="morning"></input-radio-button>
+					<input-radio-button label="afternoon" for-id="afternoon" disabled></input-radio-button>
+					<input-radio-button label="evening" for-id="evening"></input-radio-button>
 				</input-radio-group>
 
 				<h3>Stylized</h3>

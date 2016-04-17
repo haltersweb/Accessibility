@@ -1,0 +1,47 @@
+<template id="radioGroupTemplate">
+  <style>
+    fieldset { margin: 1.5ex 0; }
+    .required::before {
+      content: "*";
+      color: #c00;
+    }
+  </style>
+  <fieldset>
+    <legend></legend>
+  </fieldset>
+</template>
+<script>
+  (function (doc) { // var doc = document.currentScript.ownerDocument;
+    var proto = Object.create(HTMLElement.prototype),
+        xComponent;
+    function completeFormElements(component, clone) {
+        var legendText = component.getAttribute('label'),
+            required = component.hasAttribute('required'),
+            disabled = component.hasAttribute('disabled'),
+            name = component.getAttribute('name'),
+            cloneLegend = clone.querySelector('label');
+        cloneLegend.textContent = legendText;
+        if (name) {
+          //cloneInput.name = name;
+        }
+        if (required) {
+          //cloneInput.setAttribute("aria-required", "true"); //required attribute has accessiblity issues
+          cloneLegend.className = "required";
+        }
+        if (disabled) {
+          //cloneInput.setAttribute("disabled", "");
+        }
+    }
+    proto.createdCallback = function () {
+      var root = this.createShadowRoot(),
+          template = doc.querySelector("#radioGroupTemplate"),
+          clone = document.importNode(template.content, true);
+          completeFormElements(this, clone);
+      root.appendChild(clone);
+    }
+    xComponent = document.registerElement('input-radio-group', {
+      prototype: proto
+    });
+  }((document._currentScript || document.currentScript).ownerDocument));
+</script>
+
