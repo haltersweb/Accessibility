@@ -213,6 +213,9 @@ input[type="checkbox"] {
     display: inline-block;
     margin-right: .3em;
     }
+input[disabled] {
+	background-color: #333;
+}
 .required-field::after {
     content: "*";
     display: inline-block;
