@@ -43,7 +43,7 @@
             forId = component.getAttribute('for-id'),
             cloneLabel = clone.querySelector('label'),
             cloneInput = clone.querySelector('input');
-        cloneLabel.appendChild(labelText);
+        cloneLabel.appendChild(labelTextNode);
         cloneLabel.setAttribute("for", forId);
         cloneInput.id = forId;
         if (name) {
