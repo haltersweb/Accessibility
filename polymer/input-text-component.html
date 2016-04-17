@@ -2,7 +2,7 @@
   <style>
   </style>
   <label for=""></label>
-  <input type="text" name="" id="" />
+  <input type="text" name="" id="" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" />
 </template>
 <script>
   (function (doc) { // var doc = document.currentScript.ownerDocument;
@@ -14,8 +14,13 @@
             required = component.getAttribute('required'),
             forId = component.getAttribute('for'),
             cloneLabel = clone.querySelector('label'),
-            cloneInput = clone.querySelector('input');
-
+            cloneInput = clone.querySelector('input'),
+        cloneLabel.textContent = labelText;
+        cloneLabel.setAttribute("for", forId);
+        cloneInput.id = forId;
+        if (required) {
+          cloneInput.setAttribute("aria-required", required);
+        }
     }
     proto.createdCallback = function () {
       var root = this.createShadowRoot(),
