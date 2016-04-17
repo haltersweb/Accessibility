@@ -15,7 +15,7 @@
       var root = this.createShadowRoot(),
           template = doc.querySelector("#textInputTemplate"),
           clone = document.importNode(template.content, true);
-          completeFormElements();
+          completeFormElements(this);
       root.appendChild(clone);
     }
     xComponent = document.registerElement('input-text-component', {
