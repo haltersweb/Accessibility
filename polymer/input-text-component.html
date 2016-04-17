@@ -8,13 +8,17 @@
   (function (doc) { // var doc = document.currentScript.ownerDocument;
     var proto = Object.create(HTMLElement.prototype),
         xComponent;
+    function completeFormElements(component) {
+        console.log(component);
+    }
     proto.createdCallback = function () {
       var root = this.createShadowRoot(),
           template = doc.querySelector("#textInputTemplate"),
           clone = document.importNode(template.content, true);
+          completeFormElements();
       root.appendChild(clone);
     }
-    xComponent = document.registerElement('text-input-component', {
+    xComponent = document.registerElement('input-text-component', {
       prototype: proto
     });
   }(document.currentScript.ownerDocument));
