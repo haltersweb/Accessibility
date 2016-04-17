@@ -1,15 +1,37 @@
 <template id="textInputTemplate">
   <style>
+    *::before, *::after { box-sizing: border-box; }
+    .form-row { margin: 1.5ex 0; }
+    label {
+        display: inline-block;
+        width: 6em;
+        margin-right: 2em;
+    }
+    [aria-required="true"]::before {
+      content: *;
+      color: #c00;
+    }
+    input {
+      padding: 1ex .5em;
+      width: 20em;
+      font-size: 1.3rem;
+      line-height: 1;
+      background: #fff;
+      border: 1px solid #d5d5d5;
+      border-radius: 2px;
+      box-shadow: inset 0 5px 5px -5px rgba(0,0,0,0.2);
+    }
   </style>
-  <label for=""></label>
-  <input type="text" name="" id="" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" />
+  <div class="form-row">
+    <label for=""></label>
+    <input type="text" name="" id="" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" />
+  </div>
 </template>
 <script>
   (function (doc) { // var doc = document.currentScript.ownerDocument;
     var proto = Object.create(HTMLElement.prototype),
         xComponent;
     function completeFormElements(component, clone) {
-        //console.log(component);
         var labelText = component.getAttribute('label'),
             required = component.getAttribute('required'),
             forId = component.getAttribute('for'),
