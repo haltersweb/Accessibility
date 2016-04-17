@@ -41,7 +41,7 @@
         cloneLabel.textContent = labelText;
         cloneLabel.setAttribute("for", forId);
         cloneInput.id = forId;
-        if (required) {
+        if (required && required === "true") {
           cloneInput.setAttribute("aria-required", required);
           cloneLabel.className = "required";
         }
