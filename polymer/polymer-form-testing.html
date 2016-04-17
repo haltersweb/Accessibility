@@ -17,8 +17,8 @@
 			<form action="">
 				<h2>Input Fields</h2>
 				<h3>Default</h3>
-				<label for="firstName">First Name</label><input type="text" name="firstName" id="firstName">
-				<label for="lastName">*Last Name</label><input type="text" name="lastName" id="lastName" aria-required="true">
+				<div class="form-row"><label for="firstName">First Name</label><input type="text" name="firstName" id="firstName"></div>
+				<div class="form-row"><label for="lastName">*Last Name</label><input type="text" name="lastName" id="lastName" aria-required="true"></div>
 				<h3>Default in Shadow DOM</h3>
 				<input-text-component required="false" for="firstName" label="First Name"></input-text-component>
 				<input-text-component required="true" for="lastName" label="Last Name"></input-text-component>
