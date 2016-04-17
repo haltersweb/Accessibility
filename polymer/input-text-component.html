@@ -55,6 +55,6 @@
     xComponent = document.registerElement('input-text-component', {
       prototype: proto
     });
-  }(document.currentScript.ownerDocument));
+  }((document._currentScript || document.currentScript).ownerDocument));
 </script>
 
