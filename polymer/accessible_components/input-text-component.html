@@ -12,7 +12,7 @@
       color: #c00;
     }
     [disabled] {
-      background-color: #333;
+      background-color: #eee;
     }
     input {
       width: 20em;
@@ -37,8 +37,8 @@
         xComponent;
     function completeFormElements(component, clone) {
         var labelText = component.getAttribute('label'),
-            required = component.getAttribute('required'),
-            disabled = component.getAttribute('disabled'),
+            required = component.hasAttribute('required'),
+            disabled = component.hasAttribute('disabled'),
             forId = component.getAttribute('for-id'),
             cloneLabel = clone.querySelector('label'),
             cloneInput = clone.querySelector('input');
@@ -47,11 +47,11 @@
         cloneInput.id = forId;
         cloneInput.name = forId;
         if (required) {
-          cloneInput.setAttribute("aria-required", "true");
+          cloneInput.setAttribute("aria-required", "true"); //required attribute has accessiblity issues
           cloneLabel.className("required");
         }
         if (disabled) {
-          cloneInput.setAttribute("disabled");
+          cloneInput.setAttribute("disabled", "");
         }
     }
     proto.createdCallback = function () {
