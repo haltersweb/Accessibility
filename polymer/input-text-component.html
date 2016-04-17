@@ -8,14 +8,20 @@
   (function (doc) { // var doc = document.currentScript.ownerDocument;
     var proto = Object.create(HTMLElement.prototype),
         xComponent;
-    function completeFormElements(component) {
-        console.log(component);
+    function completeFormElements(component, clone) {
+        //console.log(component);
+        var labelText = component.getAttribute('label'),
+            required = component.getAttribute('required'),
+            forId = component.getAttribute('for'),
+            cloneLabel = clone.getElementsByTagName('label')[0],
+            cloneInput = clone.getElementsByTagName('input')[0];
+
     }
     proto.createdCallback = function () {
       var root = this.createShadowRoot(),
           template = doc.querySelector("#textInputTemplate"),
           clone = document.importNode(template.content, true);
-          completeFormElements(this);
+          completeFormElements(this, clone);
       root.appendChild(clone);
     }
     xComponent = document.registerElement('input-text-component', {
