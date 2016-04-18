@@ -68,15 +68,15 @@
           label  :  clone.querySelector('label'),
           input  :  clone.querySelector('input')
         }
-        cl.label.textContent = labelText;
+        cl.label.textContent = co.label;
         cl.label.setAttribute("for", forId);
         cl.input.id = forId;
         cl.input.name = forId;
-        if (required) {
+        if (co.required) {
           cl.input.setAttribute("aria-required", "true"); //required attribute has accessiblity issues
           cl.input.className = "required";
         }
-        if (disabled) {
+        if (co.disabled) {
           cl.input.setAttribute("disabled", "");
         }
     }
