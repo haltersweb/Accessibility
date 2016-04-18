@@ -10,20 +10,20 @@
   </style>
   <fieldset>
     <legend></legend>
+    <content select="*"></content>
   </fieldset>
 </template>
 <script>
   (function (doc) { // var doc = document.currentScript.ownerDocument;
     var proto = Object.create(HTMLElement.prototype),
         xComponent;
-    function completeFormElements(component, guts, clone) {
+    function completeFormElements(component, clone) {
         var legendText = component.getAttribute('label'),
             required = component.hasAttribute('required'),
             disabled = component.hasAttribute('disabled'),
             name = component.getAttribute('name'),
             cloneLegend = clone.querySelector('legend');
         cloneLegend.textContent = legendText;
-        clone.appendChild(guts);
         if (name) {
           //cloneInput.name = name;
         }
@@ -37,10 +37,9 @@
     }
     proto.createdCallback = function () {
       var root = this.createShadowRoot(),
-          guts = this.innerHTML,
           template = doc.querySelector("#radioGroupTemplate"),
           clone = document.importNode(template.content, true);
-          completeFormElements(this, guts, clone);
+          completeFormElements(this, clone);
       root.appendChild(clone);
     }
     xComponent = document.registerElement('input-radio-group', {
