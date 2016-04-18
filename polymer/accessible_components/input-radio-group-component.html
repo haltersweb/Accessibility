@@ -34,17 +34,19 @@
             disabled = component.hasAttribute('disabled'),
             name = component.getAttribute('name'),
             cloneLegend = clone.querySelector('legend'),
-            radios = component.childNodes;
+            radios = component.getElementsByTagName('input-radio-button');
         cloneLegend.textContent = legendText;
-        if (name) {
-          radios.setAttribute("name", name);
-        }
-        if (required) {
-          radios.setAttribute("required", ""); //required attribute has accessiblity issues
-          cloneLegend.className = "required";
-        }
-        if (disabled) {
-          radio.setAttribute("disabled", "");
+        for (i = 0; i < radios.length; i += 1) {
+          if (name) {
+            radios[i].setAttribute("name", name);
+          }
+          if (required) {
+            radios[i].setAttribute("required", ""); //required attribute has accessiblity issues
+            cloneLegend.className = "required";
+          }
+          if (disabled) {
+            radios[i].setAttribute("disabled", "");
+          }
         }
     }
     proto.createdCallback = function () {
