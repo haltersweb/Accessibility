@@ -16,13 +16,14 @@
   (function (doc) { // var doc = document.currentScript.ownerDocument;
     var proto = Object.create(HTMLElement.prototype),
         xComponent;
-    function completeFormElements(component, clone) {
+    function completeFormElements(component, guts, clone) {
         var legendText = component.getAttribute('label'),
             required = component.hasAttribute('required'),
             disabled = component.hasAttribute('disabled'),
             name = component.getAttribute('name'),
             cloneLegend = clone.querySelector('legend');
         cloneLegend.textContent = legendText;
+        clone.appendChild(guts);
         if (name) {
           //cloneInput.name = name;
         }
@@ -36,9 +37,10 @@
     }
     proto.createdCallback = function () {
       var root = this.createShadowRoot(),
+          guts = this.innerHTML(),
           template = doc.querySelector("#radioGroupTemplate"),
           clone = document.importNode(template.content, true);
-          completeFormElements(this, clone);
+          completeFormElements(this, guts, clone);
       root.appendChild(clone);
     }
     xComponent = document.registerElement('input-radio-group', {
