@@ -37,7 +37,7 @@
     }
     proto.createdCallback = function () {
       var root = this.createShadowRoot(),
-          guts = this.innerHTML(),
+          guts = this.innerHTML,
           template = doc.querySelector("#radioGroupTemplate"),
           clone = document.importNode(template.content, true);
           completeFormElements(this, guts, clone);
