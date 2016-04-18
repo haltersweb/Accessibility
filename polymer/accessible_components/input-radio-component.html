@@ -19,26 +19,29 @@
     var proto = Object.create(HTMLElement.prototype),
         xComponent;
     function completeFormElements(component, clone) {
-        var labelText = component.getAttribute('label'),
-            labelTextNode = document.createTextNode(labelText),
-            required = component.hasAttribute('required'),
-            disabled = component.hasAttribute('disabled'),
-            name = component.getAttribute('name'),
-            forId = component.getAttribute('for-id'),
-            cloneLabel = clone.querySelector('label'),
-            cloneInput = clone.querySelector('input');
-        cloneLabel.appendChild(labelTextNode);
-        cloneLabel.setAttribute("for", forId);
-        cloneInput.id = forId;
-        if (name) {
-          cloneInput.name = name;
-        }
-        if (required) {
-          cloneInput.setAttribute("aria-required", "true"); //required attribute has accessiblity issues
-        }
-        if (disabled) {
-          cloneInput.setAttribute("disabled", "");
-        }
+      var co = {
+        txtnode :  document.createTxtNode(component.getAttribute('label')),
+        req     :  component.hasAttribute('required'),
+        dis     :  component.hasAttribute('disabled'),
+        name    :  component.getAttribute('name'),
+        id      :  component.getAttribute('for-id')
+      },
+          cl = {
+        label   :  clone.querySelector('label'),
+        input   :  clone.querySelector('input')
+      }
+      cl.label.appendChild(co.txtnode);
+      cl.label.setAttribute("for", co.id);
+      cl.input.id = co.id;
+      if (co.name) {
+        cl.input.name = co.name;
+      }
+      if (co.req) {
+        cl.input.setAttribute("aria-required", "true"); //required attribute has accessiblity issues
+      }
+      if (co.dis) {
+        cl.input.setAttribute("disabled", "");
+      }
     }
     proto.createdCallback = function () {
       var root = this.createShadowRoot(),
