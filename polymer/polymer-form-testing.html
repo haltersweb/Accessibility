@@ -33,9 +33,15 @@
 					<input type="text" name="middleName" id="middleName" disabled />
 				</div>
 				<h3>Default in Shadow DOM</h3>
-				<input-text-component label="First Name" for-id="shadowFirstName"></input-text-component>
-				<input-text-component label="Last Name" for-id="shadowLastName" required></input-text-component>
-				<input-text-component label="Middle Name" for-id="shadowMiddleName" disabled></input-text-component>
+				<div class="form-row">
+					<input-text-component label="First Name" for-id="shadowFirstName"></input-text-component>
+				</div>
+				<div class="form-row">
+					<input-text-component label="Last Name" for-id="shadowLastName" required></input-text-component>
+				</div>
+				<div class="form-row">
+					<input-text-component label="Middle Name" for-id="shadowMiddleName" disabled></input-text-component>
+				</div>
 
 				<h2>Radio Groups</h2>
 				<h3>Default</h3>
@@ -58,9 +64,15 @@
 				</fieldset>
 				<h3>Default in Shadow DOM</h3>
 				<input-radio-group required name="shadow-eating-time" label="What is your favorite time to eat?">
-					<input-radio-button label="morning" for-id="morning"></input-radio-button>
-					<input-radio-button label="afternoon" for-id="afternoon" disabled></input-radio-button>
-					<input-radio-button label="evening" for-id="evening"></input-radio-button>
+					<div class="form-row">
+						<input-radio-button label="morning" for-id="morning"></input-radio-button>
+					</div>
+					<div class="form-row">
+						<input-radio-button label="afternoon" for-id="afternoon" disabled></input-radio-button>
+					</div>
+					<div class="form-row">
+						<input-radio-button label="evening" for-id="evening"></input-radio-button>
+					</div>
 				</input-radio-group>
 
 				<h3>Stylized</h3>
