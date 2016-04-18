@@ -33,17 +33,18 @@
             required = component.hasAttribute('required'),
             disabled = component.hasAttribute('disabled'),
             name = component.getAttribute('name'),
-            cloneLegend = clone.querySelector('legend');
+            cloneLegend = clone.querySelector('legend'),
+            radios = component.childNodes;
         cloneLegend.textContent = legendText;
         if (name) {
-          //cloneInput.name = name;
+          radios.setAttribute("name", name);
         }
         if (required) {
-          //cloneInput.setAttribute("aria-required", "true"); //required attribute has accessiblity issues
+          radios.setAttribute("required", ""); //required attribute has accessiblity issues
           cloneLegend.className = "required";
         }
         if (disabled) {
-          //cloneInput.setAttribute("disabled", "");
+          radio.setAttribute("disabled", "");
         }
     }
     proto.createdCallback = function () {
