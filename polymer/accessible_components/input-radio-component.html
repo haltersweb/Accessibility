@@ -20,7 +20,7 @@
         xComponent;
     function completeFormElements(component, clone) {
       var co = {
-        txtnode :  document.createTxtNode(component.getAttribute('label')),
+        txtnode :  document.createTextNode(component.getAttribute('label')),
         req     :  component.hasAttribute('required'),
         dis     :  component.hasAttribute('disabled'),
         name    :  component.getAttribute('name'),
