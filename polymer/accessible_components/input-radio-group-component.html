@@ -29,27 +29,23 @@
     var proto = Object.create(HTMLElement.prototype),
         xComponent;
     function completeFormElements(component, clone) {
-        var co = {
-          text    :  component.getAttribute('label'),
-          req     :  component.hasAttribute('required'),
-          dis     :  component.hasAttribute('disabled'),
-          name    :  component.getAttribute('name')
-        },
-            cl = {
-          legend  :  clone.querySelector('legend'),
-          radios  :  component.getElementsByTagName('input-radio-button');
-        }
-        cl.legend.textContent = co.text;
-        for (i = 0; i < cl.radios.length; i += 1) {
-          if (co.name) {
-            cl.radios[i].setAttribute("name", co.name);
+        var legendText = component.getAttribute('label'),
+            required = component.hasAttribute('required'),
+            disabled = component.hasAttribute('disabled'),
+            name = component.getAttribute('name'),
+            cloneLegend = clone.querySelector('legend'),
+            radios = component.getElementsByTagName('input-radio-button');
+        cloneLegend.textContent = legendText;
+        for (i = 0; i < radios.length; i += 1) {
+          if (name) {
+            radios[i].setAttribute("name", name);
           }
-          if (co.req) {
-            cl.radios[i].setAttribute("required", ""); //required attribute has accessiblity issues
-            cl.legend.className = "required";
+          if (required) {
+            radios[i].setAttribute("required", ""); //required attribute has accessiblity issues
+            cloneLegend.className = "required";
           }
-          if (co.dis) {
-            cl.radios[i].setAttribute("disabled", "");
+          if (disabled) {
+            radios[i].setAttribute("disabled", "");
           }
         }
     }
