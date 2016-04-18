@@ -69,9 +69,9 @@
           input  :  clone.querySelector('input')
         }
         cl.label.textContent = co.label;
-        cl.label.setAttribute("for", forId);
-        cl.input.id = forId;
-        cl.input.name = forId;
+        cl.label.setAttribute("for", co.id);
+        cl.input.id = co.id;
+        cl.input.name = co.id;
         if (co.required) {
           cl.input.setAttribute("aria-required", "true"); //required attribute has accessiblity issues
           cl.input.className = "required";
