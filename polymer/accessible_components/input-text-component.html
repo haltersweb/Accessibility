@@ -33,30 +33,6 @@
   (function (doc) { // var doc = document.currentScript.ownerDocument;
     var proto = Object.create(HTMLElement.prototype),
         xComponent;
-/*
-    function completeFormElements(component, clone) {
-        var labelText = component.getAttribute('label'),
-            required = component.hasAttribute('required'),
-            disabled = component.hasAttribute('disabled'),
-            forId = component.getAttribute('for-id'),
-            cloneLabel = clone.querySelector('label'),
-            cloneInput = clone.querySelector('input');
-        cloneLabel.textContent = labelText;
-        cloneLabel.setAttribute("for", forId);
-        cloneInput.id = forId;
-        cloneInput.name = forId;
-        if (required) {
-          cloneInput.setAttribute("aria-required", "true"); //required attribute has accessiblity issues
-          cloneLabel.className = "required";
-        }
-        if (disabled) {
-          cloneInput.setAttribute("disabled", "");
-        }
-    }
-*/
-
-
-
     function completeFormElements(component, clone) {
         var co = {
           label  :  component.getAttribute('label'),
@@ -64,7 +40,7 @@
           dis    :  component.hasAttribute('disabled'),
           id     :  component.getAttribute('for-id')
         },
-          cl = {
+            cl = {
           label  :  clone.querySelector('label'),
           input  :  clone.querySelector('input')
         }
