@@ -33,6 +33,7 @@
   (function (doc) { // var doc = document.currentScript.ownerDocument;
     var proto = Object.create(HTMLElement.prototype),
         xComponent;
+/*
     function completeFormElements(component, clone) {
         var labelText = component.getAttribute('label'),
             required = component.hasAttribute('required'),
@@ -50,6 +51,33 @@
         }
         if (disabled) {
           cloneInput.setAttribute("disabled", "");
+        }
+    }
+*/
+
+
+
+    function completeFormElements(component, clone) {
+        var co = {
+          label  :  component.getAttribute('label'),
+          req    :  component.hasAttribute('required'),
+          dis    :  component.hasAttribute('disabled'),
+          id     :  component.getAttribute('for-id')
+        },
+          cl = {
+          label  :  clone.querySelector('label'),
+          input  :  clone.querySelector('input')
+        }
+        cl.label.textContent = labelText;
+        cl.label.setAttribute("for", forId);
+        cl.input.id = forId;
+        cl.input.name = forId;
+        if (required) {
+          cl.input.setAttribute("aria-required", "true"); //required attribute has accessiblity issues
+          cl.input.className = "required";
+        }
+        if (disabled) {
+          cl.input.setAttribute("disabled", "");
         }
     }
     proto.createdCallback = function () {
