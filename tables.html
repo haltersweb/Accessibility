@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Accessible Tables</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<style>
+		table {
+		    margin-bottom: 3.5ex;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a href="#main" class="skip-link">Skip to main content</a>
+		<div class="page-wrapper" id="main" role="main" tabindex="-1">
+			<h1>Accessible Tables</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
+			<p>First and foremost, tables should only be used to present data. Never use tables for layout, not even for forms. Leverage your CSS super-powers to get the layout you want.</p>
+			<h2>Rules for accessible tables</h2>
+			<ul class="bullet">
+				<li>Assign the scope attribute to your &lt;th&gt; (col or row).</li>
+				<li>Use proportional sizing. Size your &lt;col&gt; with percentages.  Never style the &lt;table&gt; with absolute widths such as pixels.</li>
+				<li>Add a caption as the first child of the &lt;table&gt; (the summary attribute is depreated in HTML5).</li>
+				<li>Never use the rowspan.  It confuses screen readers.</li>
+				<li>Never nest tables.</li>
+				<li>Follow the K.I.S.S. rule &mdash; If you find yourself trying to nest tables, using too many colspans, solving for multiple rows of headings, it may be time for a new column or even a new table.</li>
+			</ul>
+			<div id="a11yTable">
+				<table>
+					<caption>
+						<h2>Who likes what flavors?</h2>
+					</caption>
+					<thead>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">Chocolate</th>
+							<th scope="col">Vanilla</th>
+							<th scope="col">Strawberry</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">Sally</th>
+							<td>yes</td>
+							<td>yes</td>
+							<td>yes</td>
+						</tr>
+						<tr>
+							<th scope="row">George</th>
+							<td>no</td>
+							<td>yes</td>
+							<td>no</td>
+						</tr>
+						<tr>
+							<th scope="row">Marian</th>
+							<td>no</td>
+							<td>yes</td>
+							<td>yes</td>
+						</tr>
+						<tr>
+							<th scope="row">Larry</th>
+							<td>yes</td>
+							<td>yes</td>
+							<td>no</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<h2>Code sample</h2>
+			<div data-code="a11yTable"></div>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+		<div aria-live="polite" class="accessibly-hidden"></div>
+		<div role="alert" class="accessibly-hidden"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+	<script type="text/javascript" src="js/show-code.js"></script>
+</body>
+</html>

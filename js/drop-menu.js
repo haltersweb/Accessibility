@@ -167,3 +167,8 @@
         $this.closest('li').addClass('active');
     });
 }(jQuery, NAME));
+
+
+/*
+    possibly do a feature detection for iOS collapsing menu.  Let's explore.
+*/
