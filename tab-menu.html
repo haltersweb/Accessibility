@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Tab Menu</title>
+	<title>Tab-like Page Navigation</title>
 	<link rel="stylesheet" href="css/normalization.css" />
 	<link rel="stylesheet" href="css/base.css" />
 	<link rel="stylesheet" href="css/tab-menu.css" />
@@ -11,13 +11,13 @@
 <body>
 	<div class="container">
 		<div class="page-wrapper">
-			<h1>Tab Menu&mdash;Two Versions</h1>
+			<h1>Tab-like Page Navigation&mdash;Two Versions</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
-			<p>These tab menu links are semantically in-page links and do not use an ARIA model. (<a href="#whyNotAria">See "Why not use Aria" for more info.</a>)</p>
+			<p>These tab-like navigation links are semantically in-page links and do not use an ARIA model. (<a href="#whyNotAria">See "Why not use ARIA" for more info.</a>)</p>
 			<p><em>Notice that after navigating to the requested in-page content, if you press the tab key focus goes to the first actionable element found in the DOM after the linked container's open tag.</em></p>
 			<p>This is important because engaging an in-page link should <strong>move focus to the corresponding container requested</strong>.</p>
 			<p>Unfortunately, this can be problematic in certain browsers.  Therefore, by assigning <strong>tabindex="-1"</strong> to the target container, the container now accepts focus when the in-page tab link is engaged.</p>
-			<p>These tab menu links can either:</p>
+			<p>These tab-like navigation links can either:</p>
 			<ul class="bullet singletons">
 				<li>Reveal a single content panel at a time.</li>
 				<li>Show all content and scroll to the content requested.</li>
@@ -60,8 +60,9 @@
 			</div>
 			<div id="whyNotAria" tabindex="-1">
 				<h2>Why not use ARIA?</h2>
-				<p>We don't use ARIA in this method since tab navigation is simply glorified in-page linking.</p>
-				<p>ARIA tab solutions are supposed to be used for complex web-based tools.  The ARIA methodology for tabs sprang out of the need for a web-based solution for the type of tab interface you find when, say, configuring PC settings.</p>
+				<p>We don't use ARIA in this method since this tab-like navigation is simply a list of in-page links configured horizontally rather than vertically.  It doesn't add much user value to the page.</p>
+				<p>The use of tab-like navigation most often serves marketers (above-the-fold content) and developers (cuts down on the need for session variables, heavy server calls, etc.).</p>
+				<p>ARIA tab solutions are best used for creating web-based tools that assist the user in navigation and content curation.  The ARIA methodology for tabs sprang out of the need for a web-based solution for the type of tab interface you find when, say, configuring PC settings.</p>
 				<p>ARIA was never meant to be used for simple website navigation.</p>
 				<p>Therefore, when creating simple website navigation ARIA should not be used. But when creating complex widgets such as web-mail interfaces an ARIA tab model would be used.</p>
 			</div>
