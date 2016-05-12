@@ -168,6 +168,9 @@ label {
     width: 7em;
     margin-right: 2em;
 }
+label.auto-length {
+	width: auto;
+}
 .inline-label {
 	width: auto;
 	}

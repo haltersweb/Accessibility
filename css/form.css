@@ -2,14 +2,21 @@
     border: 1px solid red;
     padding: 10px 15px 10px 30px;
 	}
+.error-msg {
+	color: #cc0000;
+	display: block;
+	margin-left: 9em;
+	}
 input[aria-invalid="true"],
 textarea[aria-invalid="true"] {
 	border: 1px solid red;
 	}
 button:disabled,
-button:disabled:hover {
-	color: #fff;
-	background-color: #aaa;
+button:disabled:hover,
+button[aria-disabled="true"],
+button[aria-disabled="true"]:hover {
+	color: #bbb;
+	background-color: #eee;
 	}
 input:disabled,
 select:disabled,
