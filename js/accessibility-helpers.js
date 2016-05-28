@@ -33,6 +33,7 @@
         }
     };
     NAME.general.debounce = function (func, delay, immediate) {
+        console.log('test');
         var timeout, result;
         return function () {
             var context = this,
@@ -153,7 +154,7 @@
         $ariaContainer.text(textToRead);
         setTimeout(function () {
             $ariaContainer.text('');
-        }, 1000);
+        }, 3000);
     };
 
     /*
