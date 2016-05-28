@@ -6,15 +6,16 @@
  */
 (function ($, NAME) {
     'use strict';
-    var $container = $('#autocomplete'),
+    var //$container = $('[data-widget="a11y-autocomplete"]'),
         $input = $('#search'),
         inputVal = "",
-        $clear = $('#clear'),
+        //$clear = $('#clear'),
         $results = $('#results'),
         results = [],
-        $submit = $('#submit'),
+        //$submit = $('#submit'),
         $live = $('[aria-live]'),
-        interval,
+        key = NAME.keyboard,
+        //interval,
         directions = "Keyboard users, use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.",
         liMarkup = '<li tabindex="-1" role="button" class="autocomplete-item">',
         fakeResults = [
@@ -32,82 +33,83 @@
                 'eggplant'
             ],
             [
-            	'cucumber'
+                'cucumber'
             ]
         ];
     // THE ARRAY WOULD REALLY COME IN VIA AJAX
     function fakeAjaxResults() {
-    		if ($input.val().length === 0 || $input.val().length > 3) {
-    			return [];
-    		}
-    		if ($input.val().length === 1) {
-    			return fakeResults[0];
-    		}
-    		if ($input.val().length === 2) {
-    			return fakeResults[1];
-    		}
-    		if ($input.val().length === 3) {
-    			return fakeResults[2];
-    		}
+        // no matter what character was typed...
+        if ($input.val().length === 0 || $input.val().length > 3) {
+            return [];
+        }
+        if ($input.val().length === 1) {
+            return fakeResults[0];
+        }
+        if ($input.val().length === 2) {
+            return fakeResults[1];
+        }
+        if ($input.val().length === 3) {
+            return fakeResults[2];
+        }
     }
     function buildListHtml(results) {
-    	var resultsMarkup = "";
-    	for (var i = 0; i < results.length; i += 1) {
-    		resultsMarkup += liMarkup + results[i] + "</li>";
-    	}
-    	$results.html(resultsMarkup);
-    	$results.show();
+        var resultsMarkup = "", i = 0;
+        for (i = 0; i < results.length; i += 1) {
+            resultsMarkup += liMarkup + results[i] + "</li>";
+        }
+        $results.html(resultsMarkup);
+        $results.show();
     }
     function announceResults() {
-    	var number = results.length,
-    		textToRead = number + " results are available. " + directions;
-//TO DO: add small time delay between results and directions.
-    	NAME.access.announcements($live, textToRead);
+        var number = results.length,
+            textToRead = number + " results are available. " + directions;
+        // if results length === 0 then say "no search results"
+        if (results.length === 0) {
+            textToRead = "No search results";
+        }
+// _TODO add small time delay between results and directions.
+        NAME.access.announcements($live, textToRead);
     }
-    function processAutocomplete($thisInput) {
-    	var thisResult = [];
-		// if input value didn't change, return
-		if ($thisInput.val() === inputVal) {
-			return false;
-		}
-		// save new input value and get autocomplete results
-		inputVal = $thisInput.val();
-		thisResult = fakeAjaxResults();
-
-		// if autocomplete results didn't change, return
-		/*
-		if (JSON.stringify(thisResult) === JSON.stringify(results)) {
-			return false;
-		}
-		*/
-		// save autocomplete results and build list HTML
-		results = thisResult;
-		buildListHtml(results);
-		// if list length === 0 then close results and don't say anything
-		if (results.length === 0) {
-			var announcement = ($input.val().length === 0) ? "" : "No search results";
-
-			$results.hide();
-			NAME.access.announcements($live, announcement);
-			return;
-		}
-		announceResults();
+    function autocomplete() {
+        // if input value didn't change, return
+        if ($input.val() === inputVal) {
+            return;
+        }
+        // save new input value
+        inputVal = $input.val();
+        // get and save autocomplete results
+        results = fakeAjaxResults();
+        // build list HTML
+        buildListHtml(results);
+        // aria-live results
+        announceResults();
     }
-// TO DO: on focus get value of input field
-// TO DO: need a debounce?
+    function arrowing(kc) {
+    	// don't do anything if nothing to arrow through
+        if (!results.length) {
+            console.log('DO NOTHING');
+            return;
+        }
+        console.log('DO SOMETHING');
+    }
+// _TODO on focus get value of input field
     function eventListeners() {
-    	$input.on('keyup', function (e) {
-// TO DO: return on return, tab, arrows
-			processAutocomplete($(this));
-
-
-
-    	});
+        $input.on('keydown', function (e) {
+            var kc = e.keyCode;
+            if (kc === key.up || kc === key.down) {
+                e.preventDefault();
+                arrowing(kc);
+            }
+        });
+        $input.on('keyup', function () {
+            autocomplete();
+        });
     }
     function init() {
-    	eventListeners();
+        eventListeners();
     }
     init();
+// _TODO create own aria-live container as part of input
     // focus reads aria-describedby (or maybe aria-live: polite) instructions
     // feature detect if mobile.  Change help text based on mobile or dt.
     // flag input to not to give hint again
