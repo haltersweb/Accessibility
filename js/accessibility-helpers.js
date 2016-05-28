@@ -154,7 +154,7 @@
         $ariaContainer.text(textToRead);
         setTimeout(function () {
             $ariaContainer.text('');
-        }, 3000);
+        }, 1000);
     };
 
     /*
