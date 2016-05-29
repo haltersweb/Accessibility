@@ -86,8 +86,7 @@
     }
     function arrowing(kc) {
         var $thisActiveItem = $(document.activeElement),
-            $nextMenuItem,
-            $previousMenuItem;
+            $nextMenuItem;
         // don't do anything if no results
         if (!results.length) {
             return;
@@ -97,28 +96,22 @@
             return;
         }
         if (kc === key.down) {
-            // find the next item to be arrowed to
+            // find the next list item to be arrowed to
             $nextMenuItem = ($thisActiveItem.is('li'))
                 ? $thisActiveItem.next('li')
-                : $results.children().eq(0); //first list item
-            if ($nextMenuItem.length === 0) {
-                $nextMenuItem = $input;
-            }
-            $nextMenuItem.focus();
-            return;
+                : $results.children().eq(0); //first item in list
         }
         if (kc === key.up) {
-            // find the previous item to be arrowed to
-            $previousMenuItem = ($thisActiveItem.is('li'))
+            // find the previous list to be arrowed to
+            $nextMenuItem = ($thisActiveItem.is('li'))
                 ? $thisActiveItem.prev('li')
-                : $results.children().eq(-1); //last list item
-            // if we were already at the beginning of the list then focus on input field
-            if ($previousMenuItem.length === 0) {
-                $previousMenuItem = $input;
-            }
-            $previousMenuItem.focus();
-            return;
+                : $results.children().eq(-1); //last item in list
         }
+        // if arrow moves us out of the list then the next item is the input field
+        if ($nextMenuItem.length === 0) {
+            $nextMenuItem = $input;
+        }
+        $nextMenuItem.focus();
     }
 // _TODO on focus get value of input field
     function eventListeners() {
