@@ -6,7 +6,7 @@
  */
 (function ($, NAME) {
     'use strict';
-    var //$container = $('[data-widget="a11y-autocomplete"]'),
+    var $widget = $('[data-widget="a11y-autocomplete"]'),
         $input = $('#search'),
         inputVal = "",
         //$clear = $('#clear'),
@@ -85,16 +85,44 @@
         announceResults();
     }
     function arrowing(kc) {
-    	// don't do anything if nothing to arrow through
+        var $thisActiveItem = $(document.activeElement),
+            $nextMenuItem,
+            $previousMenuItem;
+        // don't do anything if no results
         if (!results.length) {
-            console.log('DO NOTHING');
             return;
         }
-        console.log('DO SOMETHING');
+        // don't do anything if active item isn't the input field or a result
+        if (!($thisActiveItem.is('li') || $thisActiveItem.is('[type="text"]'))) {
+            return;
+        }
+        if (kc === key.down) {
+            // find the next item to be arrowed to
+            $nextMenuItem = ($thisActiveItem.is('li'))
+                ? $thisActiveItem.next('li')
+                : $results.children().eq(0); //first list item
+            if ($nextMenuItem.length === 0) {
+                $nextMenuItem = $input;
+            }
+            $nextMenuItem.focus();
+            return;
+        }
+        if (kc === key.up) {
+            // find the previous item to be arrowed to
+            $previousMenuItem = ($thisActiveItem.is('li'))
+                ? $thisActiveItem.prev('li')
+                : $results.children().eq(-1); //last list item
+            // if we were already at the beginning of the list then focus on input field
+            if ($previousMenuItem.length === 0) {
+                $previousMenuItem = $input;
+            }
+            $previousMenuItem.focus();
+            return;
+        }
     }
 // _TODO on focus get value of input field
     function eventListeners() {
-        $input.on('keydown', function (e) {
+        $widget.on('keydown', function (e) {
             var kc = e.keyCode;
             if (kc === key.up || kc === key.down) {
                 e.preventDefault();
