@@ -6,7 +6,7 @@
  */
 (function ($, NAME) {
     'use strict';
-    var $widget = $('[data-widget="a11y-autocomplete"]'),
+    var //$widget = $('[data-widget="a11y-autocomplete"]'),
         $input = $('#search'),
         inputVal = "",
         //$clear = $('#clear'),
@@ -84,46 +84,68 @@
         // aria-live results
         announceResults();
     }
-    function arrowing(kc) {
-        var $thisActiveItem = $(document.activeElement),
+    function arrowCycling(kc) {
+        var $thisActiveItem = $('[aria-selected="true"]'),
             $nextMenuItem;
         // don't do anything if no results
         if (!results.length) {
             return;
         }
-        // don't do anything if active item isn't the input field or a result
-        if (!($thisActiveItem.is('li') || $thisActiveItem.is('[type="text"]'))) {
-            return;
-        }
         if (kc === key.down) {
             // find the next list item to be arrowed to
-            $nextMenuItem = ($thisActiveItem.is('li'))
+            $nextMenuItem = ($thisActiveItem.length !== 0)
                 ? $thisActiveItem.next('li')
                 : $results.children().eq(0); //first item in list
         }
         if (kc === key.up) {
             // find the previous list to be arrowed to
-            $nextMenuItem = ($thisActiveItem.is('li'))
+            $nextMenuItem = ($thisActiveItem.length !== 0)
                 ? $thisActiveItem.prev('li')
                 : $results.children().eq(-1); //last item in list
         }
-        // if arrow moves us out of the list then the next item is the input field
-        if ($nextMenuItem.length === 0) {
-            $nextMenuItem = $input;
+        $thisActiveItem.attr('aria-selected', 'false');
+        $nextMenuItem.attr('aria-selected', 'true');
+        if (($results).is(':focus') && ($('[aria-selected="true"]').length === 0)) {
+            if (kc === key.down) {
+                $results.children(":first-child").attr('aria-selected', 'true');
+                return;
+            }
+            $results.children(":last-child").attr('aria-selected', 'true');
         }
-        $nextMenuItem.focus();
+    }
+    function populating() {
+        var selectedText = $('[aria-selected="true"]').text();
+        if (selectedText === "") {
+            selectedText = inputVal;
+        }
+        $input.val(selectedText);
+// _TODO: keep results open when $input value is changed by arrowing
+    }
+    function arrowing(e) {
+        var kc = e.keyCode;
+        if (kc === key.up || kc === key.down) {
+            e.preventDefault();
+            arrowCycling(kc);
+            populating();
+        }
+    }
+    function closeResults() {
+        $results.find('[aria-selected="true"]').attr('aria-selected', 'false');
+        $results.hide();
     }
 // _TODO on focus get value of input field
     function eventListeners() {
-        $widget.on('keydown', function (e) {
-            var kc = e.keyCode;
-            if (kc === key.up || kc === key.down) {
-                e.preventDefault();
-                arrowing(kc);
-            }
+        $input.on('keydown', function (e) {
+            arrowing(e);
         });
         $input.on('keyup', function () {
             autocomplete();
+        });
+        $results.on('focus', function () {
+            $(this).children(":first-child").attr('aria-selected', 'true');
+        });
+        $results.on('keydown', function (e) {
+            arrowing(e);
         });
     }
     function init() {
