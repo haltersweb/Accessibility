@@ -17,9 +17,9 @@
 			<form action="">
 				<div data-widget="a11y-autocomplete">
 					<label for="search">Search</label>
-					<input type="text" id="search" autocomplete="off" class="search-field" />
-					<button type="button" id="clear" style="display: none;" class="clear-input">clear</button>
-					<ul id="results" tabindex="0" style="display: none;" class="autocomplete-list"></ul>
+					<input type="text" id="search" autocomplete="off" class="search-field" aria-owns="results" aria-expanded="false" />
+					<button type="button" id="clear" class="clear-input" style="display: none;">clear</button>
+					<ul id="results" class="autocomplete-list" role="listbox" tabindex="0" style="display: none;"></ul>
 					<button type="submit" id="submit">Submit</button>
 				</div>
 			</form>

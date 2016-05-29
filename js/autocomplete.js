@@ -17,7 +17,7 @@
         key = NAME.keyboard,
         //interval,
         directions = "Keyboard users, use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.",
-        liMarkup = '<li tabindex="-1" role="button" class="autocomplete-item">',
+        liMarkup = '<li tabindex="-1" role="option" class="autocomplete-item">',
         fakeResults = [
             [
                 'apple',
