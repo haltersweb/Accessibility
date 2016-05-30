@@ -17,7 +17,8 @@
         right: 39,
         down: 40,
         back: 8,
-        del: 46
+        del: 46,
+        shift: 16
     };
     /*
     a string of selectors identifying focusable elements.
