@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>This is a Title</title>
+	<title>Accessible Autocomplete</title>
 	<link rel="stylesheet" href="css/normalization.css" />
 	<link rel="stylesheet" href="css/base.css" />
 	<link rel="stylesheet" href="css/autocomplete.css">
@@ -12,41 +12,54 @@
 	<div class="container">
 		<a href="#main" class="skip-link">Skip to main content</a>
 		<div class="page-wrapper" id="main" role="main" tabindex="-1">
-			<h1>Lorem ipsum dolor sit amet</h1>
+			<h1>Accessible Autocomplete</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
-
-			<form action="">
-				<div data-widget="a11y-autocomplete">
-					<label for="search">Search</label>
-					<input type="text" id="search" autocomplete="off" class="search-field" aria-owns="results" aria-expanded="false" aria-autocomplete="both" aria-activedescendant="selectedOption" />
-					<button type="button" id="clear" class="clear-input" style="display: none;">clear</button>
-					<ul id="results" class="autocomplete-list" role="listbox" tabindex="0" style="display: none;"></ul>
-					<button type="submit" id="submit">Submit</button>
-				</div>
-			</form>
-
-			<p>DOM order is: input field, clear results button, autolist</p>
-
-			<p>list of suggestions: ul has tabindex="0" li has role="button" and tabindex="-1" (not sure it needs this since list items never really get focus. NEVERMIND, yes it does)  When hovered/arrowed selected gets "aria-selected="true"</p>
-
-			<p>aria-describedby -- When results are available, use explore by touch, or close the virtual keyboard and swipe right from the search input. Double tap a result to select it. Double tap the "clear results" button to close result suggestions and return to the input.</p>
-
-			<p>type "a": opens a drop down and a clear results button appears. up/down arrows cycle through suggestions and "a". (left/right arrows act normal i.e. move cursor for text in input field)</p>
-
-			<p>note, focus doesn't change with up/down arrows.  cursor stays at the end of the text.  Text changes based on up/down arrows.  Left/right arrows when navigating through list give a new list of suggestion(s) that still fit the content of the input field.</p>
-
-			<p>In aria-live: assertive (and role="status" ???) -- 10 results are available. explore by touch, or close the virtual keyboard and swipe left and right.</p>
-
-			<p>hover through list shows but doesn't change text in input field.</p>
+			<p>This is an accessible autocomplete which works with keyboard, screen readers, switch devices, and touch screens.</p>
+			<h2>Example</h2>
+			<div id="a11yAutocomplete">
+				<form action="">
+					<div data-widget="accessible-autocomplete">
+						<label for="search">Search for:</label>
+						<input type="text" id="search" autocomplete="off" class="autocomplete-search-field" aria-owns="results" aria-expanded="false" aria-autocomplete="both" aria-activedescendant="" />
+						<ul id="results" class="autocomplete-list" role="listbox" tabindex=0 style="display: none;"></ul>
+						<button type="submit" id="submit">Search</button>
+						<div aria-live="assertive" class="accessibly-hidden"></div>
+					</div>
+				</form>
+			</div>
+			<h2>Keyboard Interaction</h2>
+			<ul class="bullet singletons">
+				<li><strong>UP and DOWN:</strong> Cycles through auto-suggestions and input field.</li>
+				<li><strong>ESC:</strong> Close the menu</li>
+				<li><strong>ENTER:</strong> Select the currently focused auto-suggestion and close the menu.</li>
+				<li><strong>TAB:</strong> Select the currently focused auto-suggestion, close the menu, and move focus to the next focusable element.</li>
+			</ul>
+			<h2>Screen-reader Interaction</h2>
+				<ul class="bullet singletons">
+					<li>when the search field gains focus an initial instruction is announced.</li>
+					<li>when search results are returned the count and instructions are announced.</li>
+				</ul>
+			<h2>Aria</h2>
+				<ul class="bullet singletons">
+					<li><strong>input:</strong> aria-owns="results" aria-expanded="false" aria-autocomplete="both" aria-activedescendant=""</li>
+					<li><strong>ul:</strong> id="results" role="listbox"</li>
+					<li><strong>li:</strong> id="" role="option" aria-selected="false"</li>
+				</ul>
+			<h2>Code Sample</h2>
+			<div data-code="a11yAutocomplete"></div>
 		</div>
+		<!--
+			<p>list of suggestions: ul has tabindex="0" li has role="button" and tabindex="-1" (not sure it needs this since list items never really get focus. NEVERMIND, yes it does)  When hovered/arrowed selected gets "aria-selected="true"</p>
+		-->
 		<div class="overlay"></div>
 		<div class="block-screen"></div>
-		<div aria-live="assertive" class="accessibly-hidden"></div>
+		<div aria-live="polite" class="accessibly-hidden"></div>
 		<div role="alert" class="accessibly-hidden"></div>
 	</div>
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/namespacing.js"></script>
 	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
 	<script type="text/javascript" src="js/autocomplete.js"></script>
+	<script type="text/javascript" src="js/show-code.js"></script>
 </body>
 </html>

@@ -1,3 +1,35 @@
+.autocomplete-search-field {
+	border: 1px solid #d5d5d5;
+}
+.autocomplete-list {
+	position: absolute;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #d5d5d5;
+	border-top: none;
+	background-color: #fff;
+	list-style: none;
+}
+.autocomplete-item {
+	box-sizing: border-box;
+	margin: 0;
+	padding: .2ex .1em;
+	border-top: 1px solid transparent;
+	cursor: pointer;
+}
+.autocomplete-item:first-child {
+	border-top: none;
+}
+.autocomplete-item:last-child {
+	border-bottom: none;
+}
+.autocomplete-item:hover,
 [aria-selected="true"] {
-	background-color: gray;
+	background-color: #ddd;
+	border-top-color: #d5d5d5;
+	border-bottom-color: #d5d5d5;
+}
+label {
+	font-weight: bold;
 }

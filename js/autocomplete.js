@@ -6,19 +6,15 @@
  */
 (function ($, NAME) {
     'use strict';
-    var //$widget = $('[data-widget="a11y-autocomplete"]'),
-        $input = $('#search'),
+    var $widget = $('[data-widget="accessible-autocomplete"]'),
+        $input = $widget.find('#search'),
         inputVal = "",
-        //$clear = $('#clear'),
-        $results = $('#results'),
+        $results = $widget.find('#results'),
         results = [],
-        //$submit = $('#submit'),
-        $live = $('[aria-live]'),
+        $live = $widget.find('[aria-live]'),
         key = NAME.keyboard,
-        //shiftKeyDown = false,
-        //interval,
         directions = "Keyboard users, use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.",
-        liMarkup = '<li tabindex="-1" role="option" class="autocomplete-item">',
+        liMarkup = '<li id="" class="autocomplete-item" role="option" aria-selected="false" tabindex="-1">',
         fakeResults = [
             [
                 'apple',
@@ -39,7 +35,7 @@
         ];
     // THE ARRAY WOULD REALLY COME IN VIA AJAX
     function fakeAjaxResults() {
-        // no matter what character was typed...
+        // this is fake content so no matter what character was typed...
         if ($input.val().length === 0 || $input.val().length > 3) {
             return [];
         }
@@ -53,6 +49,20 @@
             return fakeResults[2];
         }
     }
+    function positionResults() {
+        console.log('start');
+        // stop if this has already been set
+        if ($results.is('[style*="width"]')) {
+            return;
+        }
+        console.log('continue');
+        $results.css({
+            left: $input.position().left + "px",
+            top: $input.position().top + $input.outerHeight() + "px",
+            "min-width": $input.outerWidth() + "px"
+        });
+
+    }
     function buildListHtml(results) {
         var resultsMarkup = "", i = 0;
         for (i = 0; i < results.length; i += 1) {
@@ -60,6 +70,7 @@
         }
         $results.html(resultsMarkup);
         $results.show();
+        $input.attr('aria-expanded', 'true');
     }
     function announceResults() {
         var number = results.length,
@@ -68,10 +79,13 @@
         if (results.length === 0) {
             textToRead = "No search results";
         }
-// _TODO add small time delay between results and directions.
         NAME.access.announcements($live, textToRead);
     }
     function markSelected($selectionToMark) {
+        // don't mark anything on the results list if we're back at the input field
+        if ($selectionToMark.length === 0) {
+            return;
+        }
         var activeItemId = 'selectedOption';
         $selectionToMark.attr('aria-selected', 'true').attr('id', activeItemId);
         $input.attr('aria-activedescendant', activeItemId);
@@ -83,8 +97,7 @@
     function closeResults() {
         clearSelected();
         $results.hide();
-// _TODO: not sure I need the focus();
-        // $input.focus();
+        $input.attr('aria-expanded', 'false');
     }
     function autocomplete() {
         // if input value didn't change, return
@@ -104,7 +117,7 @@
         // aria-live results
         announceResults();
     }
-    function arrowCycling(kc) {
+    function arrowing(kc) {
         var $thisActiveItem = $results.find('[aria-selected="true"]'),
             $nextMenuItem;
         // don't do anything if no results
@@ -124,56 +137,23 @@
                 : $results.children().eq(-1); //last item in list
         }
         clearSelected();
-        if (($results).is(':focus') && ($nextMenuItem.length === 0)) {
-            if (kc === key.down) {
-                $nextMenuItem = $results.children(":first-child");
-            }
-            if (kc === key.up) {
-                $nextMenuItem = $results.children(":last-child");
-            }
-        }
         markSelected($nextMenuItem);
     }
-
     function populating() {
         var selectedText = $results.find('[aria-selected="true"]').text();
         if (selectedText === "") {
             selectedText = inputVal;
         }
         $input.val(selectedText);
-// _TODO: keep results open when $input value is changed by arrowing
     }
-    function arrowing(e, announceBoolean) { // set announceBoolean to true if you want the selected text aria-lived
-        var kc = e.keyCode;
-        if (kc === key.up || kc === key.down) {
-            e.preventDefault();
-            arrowCycling(kc);
-            populating();
-            if (announceBoolean) {
-                NAME.access.announcements($live, $results.find('[aria-selected="true"]').text());
-            }
-        }
-    }
-// _TODO on focus get value of input field
     function eventListeners() {
-/*
-        // track on shift press
-        $(window).on('keydown', function (e) {
-            if (e.keyCode === 16) {
-                shiftKeyDown = true;
-            }
+        $input.on('focus', function () {
+            var textToRead = 'When autocomplete results are available ' + directions;
+            NAME.access.announcements($live, textToRead);
         });
-        // reset on shift release
-        $(window).on('keyup', function (e) {
-            if (e.keyCode === 16) {
-                shiftKeyDown = false;
-            }
-        });
-*/
-
         $input.on('keyup', function (e) {
             var kc = e.keyCode;
-            if (kc === key.up || kc === key.down || kc === key.tab || kc === key.enter) {
+            if (kc === key.up || kc === key.down || kc === key.tab || kc === key.enter || kc === key.esc) {
                 return;
             }
             autocomplete();
@@ -181,54 +161,37 @@
         $input.on('keydown', function (e) {
             var kc = e.keyCode;
             if (kc === key.tab) {
-                clearSelected();
-                return;
-            }
-            arrowing(e);
-        });
-        $results.on('focus', function () {
-            var $firstChild = $(this).children(":first-child");
-            clearSelected();
-            markSelected($firstChild);
-            populating();
-            NAME.access.announcements($live, $firstChild.text());
-        });
-        $results.on('keydown', function (e) {
-            var kc = e.keyCode;
-            if (kc === key.tab) {
                 closeResults();
                 return;
             }
-            arrowing(e, true);
+            if (kc === key.enter) {
+                e.preventDefault();
+                closeResults();
+                return;
+            }
+            if (kc === key.up || kc === key.down) {
+                e.preventDefault();
+                arrowing(kc);
+                populating();
+                return;
+            }
+            if (kc === key.esc) {
+                $input.val(inputVal);
+                closeResults();
+            }
+        });
+        $results.on('click', function (e) {
+            $input.val(e.target.textContent);
+            closeResults();
+            $input.focus();
+        });
+        $results.hover(function () {
+            clearSelected();
         });
     }
     function init() {
         eventListeners();
+        positionResults();
     }
     init();
-// _TODO create own aria-live container as part of input
-    // focus reads aria-describedby (or maybe aria-live: polite) instructions
-    // feature detect if mobile.  Change help text based on mobile or dt.
-    // flag input to not to give hint again
-    // input of letter (not keystroke what about virtual keyboard or mobile text):
-        // opens autocomplete
-        // reveal clear results button
-        // gives number of results (from length) and hint (1 sec) on what to do (based on feature detect)
-    // additional text inputs only announces number of results
-    // closing autocomplete list clears aria-selected=true and aria-live
-    // IF focus is in input field:
-        // up/down arrow:
-            // cycles through suggestions and input field
-            // focus remains on input field
-            // populates text in input field
-            // adds aria-selected=true
-        // ESC closes autocomplete and restores text to latest text typed
-    // If ul has focus:
-        // up/down arrow:
-            // only travels up and down list items (doesn't cycle)
-            // each input field gets focus
-            // input field does not change
-        // ESC closes autocomplete, focus goes back to input field
-    // If autocomplete container (w/input, list, button) gets blur close autocomplete and hides clear button
-    // ENTER (and arrow) populates li that either has focus or has aria-selected=true
 }(jQuery, NAME));
