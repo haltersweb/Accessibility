@@ -20,9 +20,10 @@
 				<form action="">
 					<div data-widget="accessible-autocomplete">
 						<label for="search">Search for:</label>
-						<input type="text" id="search" autocomplete="off" class="autocomplete-search-field" aria-owns="results" aria-expanded="false" aria-autocomplete="both" aria-activedescendant="" />
+						<input type="text" id="search" autocomplete="off" class="autocomplete-search-field" aria-describedby="initInstr" aria-owns="results" aria-expanded="false" aria-autocomplete="both" aria-activedescendant="" />
 						<ul id="results" class="autocomplete-list" role="listbox" tabindex=0 style="display: none;"></ul>
 						<button type="submit" id="submit">Search</button>
+						<span id="initInstr" style="display: none;">When autocomplete results are available use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.</span>
 						<div aria-live="assertive" class="accessibly-hidden"></div>
 					</div>
 				</form>
@@ -41,7 +42,7 @@
 				</ul>
 			<h2>Aria</h2>
 				<ul class="bullet singletons">
-					<li><strong>input:</strong> aria-owns="results" aria-expanded="false" aria-autocomplete="both" aria-activedescendant=""</li>
+					<li><strong>input:</strong> aria-describedby="initInstr" aria-owns="results" aria-expanded="false" aria-autocomplete="both" aria-activedescendant=""</li>
 					<li><strong>ul:</strong> id="results" role="listbox"</li>
 					<li><strong>li:</strong> id="" role="option" aria-selected="false"</li>
 				</ul>

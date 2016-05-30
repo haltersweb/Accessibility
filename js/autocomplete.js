@@ -147,10 +147,6 @@
         $input.val(selectedText);
     }
     function eventListeners() {
-        $input.on('focus', function () {
-            var textToRead = 'When autocomplete results are available ' + directions;
-            NAME.access.announcements($live, textToRead);
-        });
         $input.on('keyup', function (e) {
             var kc = e.keyCode;
             if (kc === key.up || kc === key.down || kc === key.tab || kc === key.enter || kc === key.esc) {
