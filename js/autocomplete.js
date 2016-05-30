@@ -1,5 +1,5 @@
 /*global
-    jQuery, NAME
+    jQuery, NAME, window
 */
 /**
  * Accessibility Helpers
@@ -15,6 +15,7 @@
         //$submit = $('#submit'),
         $live = $('[aria-live]'),
         key = NAME.keyboard,
+        shiftKeyDown = false,
         //interval,
         directions = "Keyboard users, use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.",
         liMarkup = '<li tabindex="-1" role="option" class="autocomplete-item">',
@@ -85,7 +86,7 @@
         announceResults();
     }
     function arrowCycling(kc) {
-        var $thisActiveItem = $('[aria-selected="true"]'),
+        var $thisActiveItem = $results.find('[aria-selected="true"]'),
             $nextMenuItem;
         // don't do anything if no results
         if (!results.length) {
@@ -105,7 +106,7 @@
         }
         $thisActiveItem.attr('aria-selected', 'false');
         $nextMenuItem.attr('aria-selected', 'true');
-        if (($results).is(':focus') && ($('[aria-selected="true"]').length === 0)) {
+        if (($results).is(':focus') && ($results.find('[aria-selected="true"]').length === 0)) {
             if (kc === key.down) {
                 $results.children(":first-child").attr('aria-selected', 'true');
                 return;
@@ -114,7 +115,7 @@
         }
     }
     function populating() {
-        var selectedText = $('[aria-selected="true"]').text();
+        var selectedText = $results.find('[aria-selected="true"]').text();
         if (selectedText === "") {
             selectedText = inputVal;
         }
@@ -129,22 +130,53 @@
             populating();
         }
     }
-    function closeResults() {
+    function clearSelected() {
         $results.find('[aria-selected="true"]').attr('aria-selected', 'false');
+    }
+    function closeResults() {
+        clearSelected();
         $results.hide();
     }
 // _TODO on focus get value of input field
     function eventListeners() {
+        $(window).on('keydown', function (e) {
+            if (e.keyCode === 16) {
+                shiftKeyDown = true;
+            }
+        });
+        $(window).on('keyup', function (e) {
+            if (e.keyCode === 16) {
+                shiftKeyDown = false;
+            }
+        });
         $input.on('keydown', function (e) {
+            var kc = e.keyCode;
+            if (kc === key.tab) {
+                clearSelected();
+                return;
+            }
             arrowing(e);
         });
-        $input.on('keyup', function () {
+        $input.on('keyup', function (e) {
+            var kc = e.keyCode;
+            if (kc === key.up || kc === key.down || kc === key.tab || kc === key.enter || kc === key.esc) {
+                return;
+            }
             autocomplete();
         });
         $results.on('focus', function () {
             $(this).children(":first-child").attr('aria-selected', 'true');
         });
         $results.on('keydown', function (e) {
+            var kc = e.keyCode;
+            if (kc === key.tab) {
+                if (shiftKeyDown === false) {
+                    closeResults();
+                } else {
+                    clearSelected();
+                }
+                return;
+            }
             arrowing(e);
         });
     }
