@@ -71,20 +71,6 @@
 // _TODO add small time delay between results and directions.
         NAME.access.announcements($live, textToRead);
     }
-    function autocomplete() {
-        // if input value didn't change, return
-        if ($input.val() === inputVal) {
-            return;
-        }
-        // save new input value
-        inputVal = $input.val();
-        // get and save autocomplete results
-        results = fakeAjaxResults();
-        // build list HTML
-        buildListHtml(results);
-        // aria-live results
-        announceResults();
-    }
     function markSelected($selectionToMark) {
         var activeItemId = 'selectedOption';
         $selectionToMark.attr('aria-selected', 'true').attr('id', activeItemId);
@@ -97,6 +83,26 @@
     function closeResults() {
         clearSelected();
         $results.hide();
+// _TODO: not sure I need the focus();
+        // $input.focus();
+    }
+    function autocomplete() {
+        // if input value didn't change, return
+        if ($input.val() === inputVal) {
+            return;
+        }
+        // save new input value
+        inputVal = $input.val();
+        // get and save autocomplete results
+        results = fakeAjaxResults();
+        // build list HTML
+        if (results.length === 0) {
+            closeResults();
+        } else {
+            buildListHtml(results);
+        }
+        // aria-live results
+        announceResults();
     }
     function arrowCycling(kc) {
         var $thisActiveItem = $results.find('[aria-selected="true"]'),
@@ -137,12 +143,15 @@
         $input.val(selectedText);
 // _TODO: keep results open when $input value is changed by arrowing
     }
-    function arrowing(e) {
+    function arrowing(e, announceBoolean) { // set announceBoolean to true if you want the selected text aria-lived
         var kc = e.keyCode;
         if (kc === key.up || kc === key.down) {
             e.preventDefault();
             arrowCycling(kc);
             populating();
+            if (announceBoolean) {
+                NAME.access.announcements($live, $results.find('[aria-selected="true"]').text());
+            }
         }
     }
 // _TODO on focus get value of input field
@@ -178,8 +187,11 @@
             arrowing(e);
         });
         $results.on('focus', function () {
+            var $firstChild = $(this).children(":first-child");
             clearSelected();
-            markSelected($(this).children(":first-child"));
+            markSelected($firstChild);
+            populating();
+            NAME.access.announcements($live, $firstChild.text());
         });
         $results.on('keydown', function (e) {
             var kc = e.keyCode;
@@ -187,7 +199,7 @@
                 closeResults();
                 return;
             }
-            arrowing(e);
+            arrowing(e, true);
         });
     }
     function init() {
