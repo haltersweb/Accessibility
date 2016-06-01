@@ -33,3 +33,18 @@
 label {
 	font-weight: bold;
 }
+/* mobile styles */
+.mobi .autocomplete-list {
+	position: relative;
+	width: 100vw;
+}
+.mobi .autocomplete-list[style] {
+	left: 50% !important;
+	transform: translateX(-50%) !important;
+	top: 0 !important;
+	min-width: auto !important;
+}
+.mobi .autocomplete-item {
+	border-top: 1px solid #d5d5d5;
+	padding: 1ex 1em;
+}
