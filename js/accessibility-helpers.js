@@ -30,9 +30,11 @@
     NAME.general = {};
     NAME.general.senseClickOutside = function ($evtTarget, $container) {
         if (($evtTarget).closest($container).length === 0) {
+            // click target is outside
             return true;
         }
     };
+// _TODO THIS NEEDS TO BE CLEANED UP.  WHAT IS arguments FOR?
     NAME.general.debounce = function (func, delay, immediate) {
         console.log('test');
         var timeout, result;
