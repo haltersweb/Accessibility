@@ -8,6 +8,7 @@
     'use strict';
     var $widget = $('[data-widget="accessible-autocomplete"]'),
         $input = $widget.find('#search'),
+        $clearText = $('#clearText'),
         inputVal = "",
         $results = $widget.find('#results'),
         results = [],
@@ -50,12 +51,10 @@
         }
     }
     function positionResults() {
-        console.log('start');
         // stop if this has already been set
         if ($results.is('[style*="width"]')) {
             return;
         }
-        console.log('continue');
         $results.css({
             left: $input.position().left + "px",
             top: $input.position().top + $input.outerHeight() + "px",
@@ -147,6 +146,14 @@
         $input.val(selectedText);
     }
     function eventListeners() {
+        // close results if click outside $input and $results
+        $(document).on('click', function (e) {
+            var $container = $input.add($results);
+            if (NAME.general.senseClickOutside($(e.target), $container)) {
+                closeResults();
+                return;
+            }
+        });
         $input.on('keyup', function (e) {
             var kc = e.keyCode;
             if (kc === key.up || kc === key.down || kc === key.tab || kc === key.enter || kc === key.esc) {
@@ -183,6 +190,10 @@
         });
         $results.hover(function () {
             clearSelected();
+        });
+        $clearText.on('click', function () {
+            inputVal = '';
+            $input.val(inputVal);
         });
     }
     function init() {
