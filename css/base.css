@@ -388,7 +388,7 @@ i.svg {
 	outline: none;
 	box-shadow: none;
 }
-[data-code] {
+[data-code], .code {
 	background-color: #eee;
     padding: 0.3ex 2.5em;
     border-radius: 12px;

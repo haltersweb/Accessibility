@@ -15,31 +15,15 @@
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
 			<p>This method is light on aria. Aria tagging used is:</p>
 			<ul class="bullet singletons">
-				<li>aria-owns or aria-controls</li>
+				<li>aria-owns (preferred method) or aria-controls</li>
 				<li>aria-expanded</li>
 				<li>aria-hidden</li>
 			</ul>
 			<p>I chose to use internal links for the markup even though the JS prevents default so that focus stays on the blind trigger.  Using anchor tags made the most semantic sense since if I turned off css and js the link would take you directly to the content that the link is pointing too.  A button would just be confusing.</p>
 			<p>Notice that the aria-expanded is on the trigger, not on the expandable container.  Also, if there is no DOM ownership or if aria-owns is not used then use aria-controls.</p>
-			<h2>Using aria-controls</h2>
-			<p>Example where blind reveals new content but it is unnecessary to use aria to define ownership. The <strong>aria-controls</strong> attribute is used to tie trigger and expandable content together.</p>
-			<div class="book-of-armaments">
-				<h3>
-					<a href="#armaments_2_9" class="accordion-trigger" aria-controls="armaments_2_9" aria-expanded="false">
-						Armaments 2:9&ndash;10
-					</a>
-				</h3>
-				<p id="armaments_2_9" class="accordion">And Saint Attila raised the hand grenade up on high, saying, "O Lord, bless this thy hand grenade, that with it thou mayst blow thine enemies to tiny bits, in thy mercy." And the Lord did grin. And the people did feast upon the lambs, and sloths, and carp, and anchovies, and orangutans, and breakfast cereals, and fruit bats, and large chu&hellip;</p>
-				<h3>
-					<a href="#armaments_2_19" class="accordion-trigger" aria-controls="armaments_2_19" aria-expanded="false">
-						Armaments 2:19&ndash;21
-					</a>
-				</h3>
-				<p id="armaments_2_19" class="accordion">And the Lord spake, saying, "First shalt thou take out the Holy Pin. Then shalt thou count to three, no more, no less. Three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out. Once the number three, being the third number, be reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, being naughty in My sight, shall snuff it.</p>
-			</div>
-			<h2>Using aria-owns</h2>
+			<h2>Using aria-owns (preferred method)</h2>
 			<p>Example with a parent/child relationship between the content trigger and the content in the blind. In this case <strong>aria-owns</strong> is assigned to the trigger to tie it to its expandable container.  Therefore aria-controls is unnecessary.</p>
-			<div class="expenses">
+			<div class="expenses" id="test">
 				<div class="itemization">
 					<a href="#oldWomanBreakdown" class="accordion-trigger" aria-owns="oldWomanBreakdown" aria-expanded="false">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" role="presentation" focusable="false" class="svg-collapsed">
@@ -107,6 +91,34 @@
 					</div>
 				</div>
 			</div>
+			<h3>Code Sample</h3>
+<div class="code"><pre><code>
+&lt;div&gt;
+    &lt;a href="#oldWomanBreakdown" class="accordion-trigger" aria-owns="oldWomanBreakdown" aria-expanded="false"&gt;Old Woman &lt;span class="cost"&gt;$100&lt;/span&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;div id="oldWomanBreakdown" class="accordion"&gt;
+    &lt;div class="itemization"&gt;2 coconuts &lt;span class="cost"&gt;$30&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="itemization"&gt;4 African swallows &lt;span class="cost"&gt;$60&lt;/span&gt;&lt;/div&gt;
+    &lt;div class="itemization"&gt;Some lovely filth &lt;span class="cost"&gt;$10&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre></div>
+			<h2>Using aria-controls (alternate method)</h2>
+			<p>Example where blind reveals new content but it is unnecessary to use aria to define ownership. The <strong>aria-controls</strong> attribute is used to tie trigger and expandable content together.</p>
+			<p>Screen readers don't give comprehensive hints with this method.  Therefore I prefer the aria-owns method.</p>
+			<div class="book-of-armaments">
+				<h3>
+					<a href="#armaments_2_9" class="accordion-trigger" aria-controls="armaments_2_9" aria-expanded="false">
+						Armaments 2:9&ndash;10
+					</a>
+				</h3>
+				<p id="armaments_2_9" class="accordion">And Saint Attila raised the hand grenade up on high, saying, "O Lord, bless this thy hand grenade, that with it thou mayst blow thine enemies to tiny bits, in thy mercy." And the Lord did grin. And the people did feast upon the lambs, and sloths, and carp, and anchovies, and orangutans, and breakfast cereals, and fruit bats, and large chu&hellip;</p>
+				<h3>
+					<a href="#armaments_2_19" class="accordion-trigger" aria-controls="armaments_2_19" aria-expanded="false">
+						Armaments 2:19&ndash;21
+					</a>
+				</h3>
+				<p id="armaments_2_19" class="accordion">And the Lord spake, saying, "First shalt thou take out the Holy Pin. Then shalt thou count to three, no more, no less. Three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out. Once the number three, being the third number, be reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, being naughty in My sight, shall snuff it.</p>
+			</div>
 			<p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing</a> elit. Facere iure dolorum ipsum veniam officiis iusto laborum commodi qui reprehenderit nobis aperiam alias sunt natus porro, consequatur hic facilis magnam provident?</p>
 		</div>
 		<div class="overlay"></div>
@@ -117,5 +129,6 @@
 	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
 	<script type="text/javascript" src="js/tab-menu.js"></script>
 	<script type="text/javascript" src="js/accordion.js"></script>
+	<script type="text/javascript" src="js/show-code.js"></script>
 </body>
 </html>
