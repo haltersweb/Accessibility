@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Business Demographic Study</title>
+	<style>
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		.form-row {
+			margin-bottom: 1ex;
+		}
+		.form-row .label {
+			display: inline-block;
+			width: 15%;
+			margin-right: 1em;
+		}
+		[type="text"] {
+			width: 30%;
+		}
+		[type="radio"] {
+			display: none;
+		}
+		[type="radio"]+span {
+			position: relative;
+			display: inline-block;
+			box-sizing: border-box;
+			margin-left: 3%;
+			border: 1px solid gray;
+			width: 14px;
+			height: 14px;
+			border-radius: 7px;
+		}
+
+		[type="radio"]:checked+span::before {
+			content: "";
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translateX(-50%) translateY(-50%);
+			display: block;
+			width: 8px;
+			height: 8px;
+			border-radius: 4px;
+			background-color: green;
+		}
+		:focus {
+			outline: none;
+		}
+		.required::after {
+			content: "*";
+			color: red;
+		}
+		.btn {
+			display: inline-block;
+    		box-sizing: border-box;
+			padding: 1ex 1em;
+			background-color: #339;
+			color: white;
+			font-size: 1rem;
+		}
+	</style>
+</head>
+<body>
+	<form action="">
+		<h1>Business Demographic Study</h1>
+		<p>Fill out and then submit this form.</p>
+		<div class="form-row">
+			<div class="label required">First Name</div>
+			<input type="text" id="firstName" />
+		</div>
+		<div class="form-row">
+			<div class="label">Middle Name</div>
+			<input type="text" id="middleName" />
+		</div>
+		<div class="form-row">
+			<div class="label required">Last Name</div>
+			<input type="text" id="lastName" />
+		</div>
+		<p class="required">Employment Status</p>
+		<div class="form-row">
+			<input type="radio" name="status" id="fullTime" checked />
+			<span class="radio"></span>
+			Employed Full Time
+		</div>
+		<div class="form-row">
+			<input type="radio" name="status" id="partTime" />
+			<span class="radio"></span>
+			Employed Part Time
+		</div>
+		<div class="form-row">
+			<input type="radio" name="status" id="contractor" />
+			<span class="radio"></span>
+			Contractor
+		</div>
+		<div class="form-row">
+			<input type="radio" name="status" id="selfEmployed" />
+			<span class="radio"></span>
+			Self Employed
+		</div>
+		<div class="form-row">
+			<div class="label">Relocate?</div>
+			<input type="text" id="relocate" />
+		</div>
+		<div class="form-row">
+			<a class="btn">Submit</a>
+			<a class="btn">Reset</a>
+		</div>
+	</form>
+</body>
+</html>
