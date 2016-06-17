@@ -3,10 +3,48 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Font Sizing and Contrast</title>
+	<title>This is a Title</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
 	<style>
-		body {
-			font-family: arial, helvetica, sans-serif;
+		table {
+			border: 1px solid black;
+		}
+		th {
+			background-color: black;
+			color: white;
+			text-align: center;
+		}
+		td {
+			text-align: center;
+			padding: 1ex 1em !important;
+		}
+		tr:not(tr:first-child) {
+			border-top: 1px solid red;
+		}
+		td:nth-child(4) {
+			color: #767676;
+		}
+		td:nth-child(5) {
+			color: #949494;
+		}
+		td:nth-child(6) {
+			color: #969696;
+		}
+		td:nth-child(7) {
+			font-family: Arial;
+		}
+		td:nth-child(8) {
+			font-family: Verdana;
+		}
+		td:nth-child(9) {
+			font-family: Tahoma;
+		}
+		.pt-14 {
+			font-size: 1.92rem;
+		}
+		.pt-18 {
+			font-size: 2.4rem;
 		}
 	</style>
 </head>
@@ -14,14 +52,98 @@
 	<div class="container">
 		<a href="#main" class="skip-link">Skip to main content</a>
 		<div class="page-wrapper" id="main" role="main" tabindex="-1">
-			<h1>Font Sizing and Contrast</h1>
+			<h1>Lorem ipsum dolor sit amet</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
-			<p>12pt is 1em of default font size</p>
-			<p style="font-size: 1.2em;">14pt is 1.2em of default font size</p>
-			<p style="font-size: 1.2em;">14pt is 1.2em of default font size</p>
-			<p style="font-size: 1.2em; font-weight: bold;">14pt is 1.2em of default font size</p>
-			<p style="font-size: 1.5em;">18pt is 1.5em of default font size</p>
+			<p style="font-size: 1.6rem;">12pt is 1em of browser default font size. It equates to 16px.</p>
+			<p style="font-size: 1.6rem; font-weight: bold;">12pt is 1em of browser default font size. This is it in bold.</p>
+			<p style="font-size: 1.92rem;">14pt is 1.2em of browser default font size. It equates to 19.2px.</p>
+			<p style="font-size: 1.92rem; font-weight: bold;">14pt is 1.2em of browser default font size. This is it in bold.</p>
+			<p style="font-size: 2.4rem;">18pt is 1.5em of browser default font size. It equates to 24px.</p>
+			<table>
+				<caption>
+					<h2>Contrast and point to pixel relationships</h2>
+				</caption>
+				<colgroup>
+					<col class="col-1" />
+					<col class="col-2" />
+					<col class="col-3" />
+					<col class="col-4" />
+					<col class="col-5" />
+					<col class="col-6" />
+					<col class="col-7" />
+					<col class="col-8" />
+					<col class="col-9" />
+				</colgroup>
+				<thead>
+					<tr>
+						<th>pt</th>
+						<th>em*</th>
+						<th>px</th>
+						<th>&ge;4.5:1</th>
+						<th>&ge;3:1</th>
+						<th>&lt;3:1</th>
+						<th>Arial</th>
+						<th>Verdana</th>
+						<th>Tahoma</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="pt-12">
+						<td>12pt</td>
+						<td>1em</td>
+						<td>16px</td>
+						<td>Test</td>
+						<td>Test</td>
+						<td>Test</td>
+						<td>Sky</td>
+						<td>Sky</td>
+						<td>Sky</td>
+					</tr>
+					<tr class="pt-14">
+						<td>14pt</td>
+						<td>1.2em</td>
+						<td>19.2px</td>
+						<td>Test</td>
+						<td>Test</td>
+						<td>Test</td>
+						<td>Sky</td>
+						<td>Sky</td>
+						<td>Sky</td>
+					</tr>
+					<tr class="pt-18">
+						<td>18pt</td>
+						<td>1.5em</td>
+						<td>24px</td>
+						<td>Test</td>
+						<td>Test</td>
+						<td>Test</td>
+						<td>Sky</td>
+						<td>Sky</td>
+						<td>Sky</td>
+					</tr>
+				</tbody>
+			</table>
+			<p>*this em measurement is relative to browser default</p>
+			<h2>Same Size, Different Properties</h2>
+			<p>Font size is an inexact science when it comes to readability.</p>
+			<p><img src="images/typographic-example.png" alt="Illustration of three font-families with the same font-size but having different x-heights, ascenders, letter-widths, and letter-spacing" /></p>
+			<p>The image above shows the same word written in Arial, Verdana, and Tahoma.  These three words are the exact same font size and the same cap height and descender height. Yet they vary in:</p>
+			<ul class="bullet singletons">
+				<li>lower-case height (x-height)</li>
+				<li>height of their ascenders</li>
+				<li>width of the letters</li>
+				<li>spacing between the letters</li>
+			</ul>
+			<p>Additionally, fonts with the same weight can have very different thickness in the letter stroke.</p>
+			<p>These differences can make the same font size more, or less readable to someone with low vision.</p>
 		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+		<div aria-live="polite" class="accessibly-hidden"></div>
+		<div role="alert" class="accessibly-hidden"></div>
 	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
 </body>
 </html>
