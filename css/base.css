@@ -19,7 +19,6 @@ body {
     font-size: 1.4rem; /* =14px */
 	font-weight: normal;
 	color: #161e25;
-	overflow-x: hidden;
     }
 img, embed, object, video { max-width: 100%; vertical-align: middle; }
 p, ul, ol, dl { margin-top: 0; }
