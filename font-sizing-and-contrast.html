@@ -3,21 +3,27 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>This is a Title</title>
+	<title>Point Sizing and Font Characteristics</title>
 	<link rel="stylesheet" href="css/normalization.css" />
 	<link rel="stylesheet" href="css/base.css" />
 	<style>
 		table {
 			border: 1px solid black;
 		}
+		caption {
+			text-align: left;
+		}
+		th, td {
+			text-align: center;
+			vertical-align: middle;
+		}
 		th {
+			padding: 2ex 1em !important;
 			background-color: black;
 			color: white;
-			text-align: center;
 		}
 		td {
-			text-align: center;
-			padding: 1ex 1em !important;
+			padding: 1ex .25em !important;
 		}
 		tr:not(tr:first-child) {
 			border-top: 1px solid red;
@@ -40,13 +46,13 @@
 		td:nth-child(9) {
 			font-family: Tahoma;
 		}
-		.pt-14 {
+		.pt-14 td {
 			font-size: 1.92rem;
 		}
-		.pt-18 {
+		.pt-18 td {
 			font-size: 2.4rem;
 		}
-		.bold {
+		.bold td {
 			fong-weight: bold;
 		}
 	</style>
@@ -55,16 +61,13 @@
 	<div class="container">
 		<a href="#main" class="skip-link">Skip to main content</a>
 		<div class="page-wrapper" id="main" role="main" tabindex="-1">
-			<h1>Lorem ipsum dolor sit amet</h1>
+			<h1>Understanding Point Sizing and Font Characteristics</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
-			<p style="font-size: 1.6rem;">12pt is 1em of browser default font size. It equates to 16px.</p>
-			<p style="font-size: 1.6rem; font-weight: bold;">12pt is 1em of browser default font size. This is it in bold.</p>
-			<p style="font-size: 1.92rem;">14pt is 1.2em of browser default font size. It equates to 19.2px.</p>
-			<p style="font-size: 1.92rem; font-weight: bold;">14pt is 1.2em of browser default font size. This is it in bold.</p>
-			<p style="font-size: 2.4rem;">18pt is 1.5em of browser default font size. It equates to 24px.</p>
+			<p>Point rather than pixel size is the unit of measure WCAG 2.0 refers to when considering contrast.  Points and pixels do not equate 1:1.  In fact 14pt is 19.2px.</p>
+			<p>This means that a 14px bold font will actually fail contrast requirements if the contrast falls below 4.5:1; while a 19.2px bold font will just pass the 3:1 requirement.</p>
 			<table>
 				<caption>
-					<h2>Contrast and point to pixel relationships</h2>
+					<h2>Point Sizes in relation to pixels and contrast ratios</h2>
 				</caption>
 				<colgroup>
 					<col class="col-1" />
@@ -79,77 +82,77 @@
 				</colgroup>
 				<thead>
 					<tr>
-						<th>pt</th>
-						<th>em*</th>
-						<th>px</th>
-						<th>4.54:1</th>
-						<th>3.11:1</th>
-						<th>2.96:1</th>
-						<th>Arial</th>
-						<th>Verdana</th>
-						<th>Tahoma</th>
+						<th scope="col">pt</th>
+						<th scope="col">em*</th>
+						<th scope="col">px</th>
+						<th scope="col">4.54:1</th>
+						<th scope="col">3.11:1</th>
+						<th scope="col">2.96:1</th>
+						<th scope="col">Arial</th>
+						<th scope="col">Verdana</th>
+						<th scope="col">Tahoma</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr class="pt-12">
-						<td>12pt</td>
+						<th scope="row">12pt</th>
 						<td>1em</td>
 						<td>16px</td>
 						<td>Pass</td>
 						<td>Fail</td>
 						<td>Fail</td>
-						<td>Sky</td>
-						<td>Sky</td>
-						<td>Sky</td>
+						<td>Sphinx</td>
+						<td>Sphinx</td>
+						<td>Sphinx</td>
 					</tr>
 					<tr class="pt-12 bold">
-						<td>12pt</td>
+						<th scope="row">12pt</th>
 						<td>1em</td>
 						<td>16px</td>
 						<td>Pass</td>
 						<td>Fail</td>
 						<td>Fail</td>
-						<td>Sky</td>
-						<td>Sky</td>
-						<td>Sky</td>
+						<td>Sphinx</td>
+						<td>Sphinx</td>
+						<td>Sphinx</td>
 					</tr>
 					<tr class="pt-14">
-						<td>14pt</td>
+						<th scope="row">14pt</th>
 						<td>1.2em</td>
 						<td>19.2px</td>
 						<td>Pass</td>
 						<td>Fail</td>
 						<td>Fail</td>
-						<td>Sky</td>
-						<td>Sky</td>
-						<td>Sky</td>
+						<td>Sphinx</td>
+						<td>Sphinx</td>
+						<td>Sphinx</td>
 					</tr>
 					<tr class="pt-14 bold">
-						<td>14pt</td>
+						<th scope="row">14pt</th>
 						<td>1.2em</td>
 						<td>19.2px</td>
 						<td>Pass</td>
 						<td>Pass</td>
 						<td>Fail</td>
-						<td>Sky</td>
-						<td>Sky</td>
-						<td>Sky</td>
+						<td>Sphinx</td>
+						<td>Sphinx</td>
+						<td>Sphinx</td>
 					</tr>
 					<tr class="pt-18">
-						<td>18pt</td>
+						<th scope="row">18pt</th>
 						<td>1.5em</td>
 						<td>24px</td>
 						<td>Pass</td>
 						<td>Pass</td>
 						<td>Fail</td>
-						<td>Sky</td>
-						<td>Sky</td>
-						<td>Sky</td>
+						<td>Sphinx</td>
+						<td>Sphinx</td>
+						<td>Sphinx</td>
 					</tr>
 				</tbody>
 			</table>
 			<p>*this em measurement is relative to browser default</p>
-			<h2>Same Size, Different Properties</h2>
+			<h2>Same size, different properties</h2>
 			<p>Font size is an inexact science when it comes to readability.</p>
 			<p><img src="images/typographic-example.png" alt="Illustration of three font-families with the same font-size but having different x-heights, ascenders, letter-widths, and letter-spacing" /></p>
 			<p>The image above shows the same word written in Arial, Verdana, and Tahoma.  These three words are the exact same font size and the same cap height and descender height. Yet they vary in:</p>
