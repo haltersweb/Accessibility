@@ -7,7 +7,6 @@
 	<style>
 		body {
 			font-family: Arial, Helvetica, sans-serif;
-			color: #777;
 		}
 		.wrapper {
 			width: 50%;
@@ -16,15 +15,17 @@
 		h1 {
 			font-size: 24px;
 			font-weight: normal;
+			color: #777;
 		}
 		h2 {
 			font-size: 18px;
 			font-weight: normal;
+			color: #666;
 		}
 		p, li {
 			font-size: 13px;
-			color: #777;
 			margin-bottom: 2ex;
+			color: #666;
 		}
 		.btn {
 			display: inline-block;
@@ -32,7 +33,7 @@
 			padding: .5ex .5em;
 			border: 1px solid #200;
 			border-radius: 4px;
-			background: #b66;
+			background: #b55;
 			color: #fff;
 			text-decoration: none;
 		}
@@ -40,12 +41,17 @@
 			padding: .25ex 1em 1ex;
 			border: 3px solid black;
 			border-radius: 5px;
-			background-color: #eee;
+			background-color: #ddd;
+		}
+		.cta p,
+		.cta li,
+		.cta h2 {
+			color: #555;
 		}
 		.offscreen {
 			margin-left: -9999px;
 		}
-		.accessibly-hidden {
+		.acc-hidden {
 			position: absolute !important;
 			display: block;
 			visibility: visible;
@@ -67,11 +73,11 @@
 		<div class="cta">
 			<h2>Cast of Characters</h2>
 			<ul>
-				<li>Spanky (1932–1942) <a href="https://en.wikipedia.org/wiki/George_McFarland" class="btn">more</a></li>
-				<li>Alfalfa (1935–1940) <a href="https://en.wikipedia.org/wiki/Carl_Switzer" class="btn">more</a></li>
-				<li>Farina (1922-1931) <a href="https://en.wikipedia.org/wiki/Allen_Hoskins" class="btn">more</a></li>
-				<li>Buckwheat (1934–1944) <a href="https://en.wikipedia.org/wiki/Billie_Thomas" class="btn">more</a></li>
-				<li>Darla (1935–1941) <a href="https://en.wikipedia.org/wiki/Darla_Hood" class="btn">more</a></li>
+				<li>Spanky (1932–1942) <a href="https://en.wikipedia.org/wiki/George_McFarland" class="btn"><span class="acc-hidden">learn </span>more<span class="acc-hidden"> about Spanky</span></a></li>
+				<li>Alfalfa (1935–1940) <a href="https://en.wikipedia.org/wiki/Carl_Switzer" class="btn"><span class="acc-hidden">learn </span>more<span class="acc-hidden"> about Alfalfa</span></a></li>
+				<li>Farina (1922-1931) <a href="https://en.wikipedia.org/wiki/Allen_Hoskins" class="btn"><span class="acc-hidden">learn </span>more<span class="acc-hidden"> about Farina</span></a></li>
+				<li>Buckwheat (1934–1944) <a href="https://en.wikipedia.org/wiki/Billie_Thomas" class="btn"><span class="acc-hidden">learn </span>more<span class="acc-hidden"> about Buckwheat</span></a></li>
+				<li>Darla (1935–1941) <a href="https://en.wikipedia.org/wiki/Darla_Hood" class="btn"><span class="acc-hidden">learn </span>more<span class="acc-hidden"> about Darla</span></a></li>
 			</ul>
 		</div>
 	</div>
