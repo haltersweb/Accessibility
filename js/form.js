@@ -67,7 +67,7 @@
             strOffendingAriaDescribedby;
         $.each(formErrors, function (i, val) {
             //create error message list item
-            $errorList.append('<li><a href="#' + val.inputId + '" id="' + val.inputId + 'Error"><span class="accessibly-hidden">Error ' + (i + 1) + ' of ' + numErrors + ': </span>' + val.errorMsg + '</a></li>');
+            $errorList.append('<li><a href="#' + val.inputId + '" id="' + val.inputId + 'Error"><span class="screen-reader-text">Error ' + (i + 1) + ' of ' + numErrors + ': </span>' + val.errorMsg + '</a></li>');
             $offendingField = $('#' + val.inputId);
             //add aria-invalid attribute
             $offendingField.attr('aria-invalid', 'true');

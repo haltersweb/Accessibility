@@ -340,7 +340,7 @@ i.svg {
 	display: block !important;
 	visibility: visible;
 	}
-.accessibly-hidden { /* Hide only visually, but have it available for screenreaders */
+.screen-reader-text { /* Hide only visually, but have it available for screenreaders */
     position: absolute !important;
 	display: block;
 	visibility: visible;

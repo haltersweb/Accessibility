@@ -17,7 +17,7 @@
 			<p>How to tie the &lt;thead&gt; contents to the tbody cells when the &lt;thead&gt; is hidden and &lt;thead&gt; content has been moved to &lt;tfoot&gt;.</p>
 			<h3>What didn't work</h3>
 			<ul class="bullet singletons">
-				<li>Hiding the &lt;thead&gt; with .accessibly-hidden</li>
+				<li>Hiding the &lt;thead&gt; with .screen-reader-text</li>
 				<li>Using &lt;tfoot&gt; contents by themselves.  &lt;tfoot&gt; content doesn't map to cells it relates to.</li>
 				<li>Giving &lt;thead&gt; a display: table-footer-group</li>
 				<li>Using position: absolute and moving &lt;thead&gt; the bottom (if it stays at the top it's OK)</li>
@@ -26,7 +26,7 @@
 			</ul>
 			<h3>What does work: K.I.S.S.</h3>
 			<ul class="bullet singletons">
-				<li>Don't try to hide the &lt;thead&gt; with .accessibly-hidden.</li>
+				<li>Don't try to hide the &lt;thead&gt; with .screen-reader-text.</li>
 				<li>Write special style for &lt;thead&gt; th with height: 1px, etc.</li>
 				<li>Don't use &lt;tfoot&gt; at all.</li>
 				<li>Create a div to hold a copy of the &lt;thead&gt; content at the bottom of the table.</li>

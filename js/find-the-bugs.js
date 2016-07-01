@@ -16,6 +16,6 @@
         alert("Well, go ahead and have a lie down, then.");
     });
     $('.blind-trigger').on('click', function () {
-        $('.blind-container').toggleClass('accessibly-hidden');
+        $('.blind-container').toggleClass('screen-reader-text');
     });
 }(jQuery, NAME));

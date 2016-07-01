@@ -96,7 +96,7 @@
 			}
 			$(element).find('thead')
 			// Hides the table head
-			.addClass('accessibly-hidden')
+			.addClass('screen-reader-text')
 			// Copies the contents of the table head into a new table foot that becomes the X axis labels
 			.after('<tfoot role="presentation">' + $(element).find('thead').html() + '</tfoot>');
 			// Disable tabs on the head links and hide from screen readers
@@ -137,7 +137,7 @@
 				.css('margin-top', $(element).height() - $(this).height());
 				//.css('margin-top', scaleValue(max - value));
 				// Wrap the value label so we can style it
-				$(this).wrapInner('<span class="label accessibly-hidden"></span>');
+				$(this).wrapInner('<span class="label screen-reader-text"></span>');
 			});
 		}
 
@@ -205,7 +205,7 @@
 								$(element).find('.cui-barchart-bg').append('<span class="planlimit" style="margin-bottom:' + barHeight + 'px;"><span class="label">' + planlimit + yUnit + '</span></span>')
 								//$(element).find('.cui-barchart-bg').append('<span class="planlimit" style="margin-bottom:' + scaleValue(planlimit) + 'px;"><span class="label">' + planlimit + yUnit + '</span></span>')
 								// Hide border and label for increments that duplicate the plan limit
-								.find('[data-grid-value=' + planlimit + ']').css('border', 'none').find('.label').addClass('accessibly-hidden');
+								.find('[data-grid-value=' + planlimit + ']').css('border', 'none').find('.label').addClass('screen-reader-text');
 							}
 						}
 						// Highlight the overage area
