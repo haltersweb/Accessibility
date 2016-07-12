@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Screen Reader Training</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+</head>
+<body>
+	<div class="container">
+		<a href="#main" class="skip-link">Skip to main content</a>
+		<div class="page-wrapper" id="main" role="main" tabindex="-1">
+			<h1>Screen Reader Training</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
+			<p>Whether the weather be cold or whether the weather be hot, we'll be together whatever the weather, whether we like it or not.</p>
+			<p>Whether the weather be hot or whether the weather be cold, we'll be together whatever the weather, whether we're young or we're old.</p>
+			<h2>Sing a Song of Six Pence</h2>
+			<ul class="bullet singletons">
+				<li>Pocket full of rye</li>
+				<li>Four and twenty blackbirds</li>
+				<li>Pie</li>
+			</ul>
+			<h2>Favorite Nursery Rhyme</h2>
+			<form action="">
+				<div class="form-row"><label for="first">First Name</label><input type="text" id="first" /></div>
+				<div class="form-row"><label for="last">Last Name</label><input type="text" id="last" /></div>
+				<fieldset>
+					<legend>My favorite rhyme is:</legend>
+					<label for="humpty" class="inline-label"><input type="radio" name="rhyme" id="humpty"> Humpty Dumpty</label>
+					<label for="hubbard" class="inline-label"><input type="radio" name="rhyme" id="hubbard"> Old Mother Hubbard</label>
+					<label for="cake" class="inline-label"><input type="radio" name="rhyme" id="cake"> Patty Cake</label>
+					<div class="form-row"><button type="button">Submit</button></div>
+				</fieldset>
+			</form>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+		<div aria-live="polite" class="screen-reader-text"></div>
+		<div role="alert" class="screen-reader-text"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+</body>
+</html>
