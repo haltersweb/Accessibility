@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Point Sizing and Font Characteristics</title>
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" href="css/normalization.css" />
 	<link rel="stylesheet" href="css/base.css" />
 	<style>
@@ -28,22 +29,22 @@
 		tr:not(tr:first-child) {
 			border-top: 1px solid red;
 		}
-		td:nth-child(4) {
+		.point-sizes-chart td:nth-child(4) {
 			color: #767676;
 		}
-		td:nth-child(5) {
+		.point-sizes-chart td:nth-child(5) {
 			color: #929292;
 		}
-		td:nth-child(6) {
+		.point-sizes-chart td:nth-child(6) {
 			color: #969696;
 		}
-		td:nth-child(7) {
+		.point-sizes-chart td:nth-child(7) {
 			font-family: Arial;
 		}
-		td:nth-child(8) {
+		.point-sizes-chart td:nth-child(8) {
 			font-family: Verdana;
 		}
-		td:nth-child(9) {
+		.point-sizes-chart td:nth-child(9) {
 			font-family: Tahoma;
 		}
 		.pt-14 td {
@@ -53,7 +54,44 @@
 			font-size: 2.4rem;
 		}
 		.bold td {
-			fong-weight: bold;
+			font-weight: bold;
+		}
+		.bw td {
+			color: #000!important;
+		}
+		[class^="fw"] {
+			font-family: 'Open Sans', Verdana, Tahoma, Arial, Helvetica, sans-serif;
+		}
+		.fw100 {
+			font-weight: 100;
+		}
+		.fw200 {
+			font-weight: 200;
+		}
+		.fw300 {
+			font-weight: 300;
+		}
+		.fw400 {
+			font-weight: 400;
+		}
+		.fw500 {
+			font-weight: 500;
+		}
+		.fw600 {
+			font-weight: 600;
+		}
+		.fw700 {
+			font-weight: 700;
+		}
+		.fw800 {
+			font-weight: 800;
+		}
+		.fw900 {
+			font-weight: 900;
+		}
+		.fw {
+			font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+			font-weight: normal;
 		}
 	</style>
 </head>
@@ -65,9 +103,9 @@
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
 			<p>Point rather than pixel size is the unit of measure WCAG 2.0 refers to when considering contrast.  Points and pixels do not equate 1:1.  In fact 14pt is 19.2px.</p>
 			<p>This means that a 14px bold font will actually fail contrast requirements if the contrast falls below 4.5:1; while a 19.2px bold font will just pass the 3:1 requirement.</p>
-			<table>
+			<table class="point-sizes-chart">
 				<caption>
-					<h2>Point Sizes in relation to pixels and contrast ratios</h2>
+					<h2>Point Sizes in relation to pixels and contrast ratios <button type="button" class="btn btn-primary bw">black &amp; white chart text</button></h2>
 				</caption>
 				<colgroup>
 					<col class="col-1" />
@@ -83,8 +121,8 @@
 				<thead>
 					<tr>
 						<th scope="col">pt</th>
-						<th scope="col">em*</th>
 						<th scope="col">px</th>
+						<th scope="col">em*</th>
 						<th scope="col">4.54:1</th>
 						<th scope="col">3.11:1</th>
 						<th scope="col">2.96:1</th>
@@ -96,8 +134,8 @@
 				<tbody>
 					<tr class="pt-12">
 						<th scope="row">12pt</th>
-						<td>1em</td>
 						<td>16px</td>
+						<td>1em</td>
 						<td>Pass</td>
 						<td>Fail</td>
 						<td>Fail</td>
@@ -107,8 +145,8 @@
 					</tr>
 					<tr class="pt-12 bold">
 						<th scope="row">12pt</th>
-						<td>1em</td>
 						<td>16px</td>
+						<td>1em</td>
 						<td>Pass</td>
 						<td>Fail</td>
 						<td>Fail</td>
@@ -118,8 +156,8 @@
 					</tr>
 					<tr class="pt-14">
 						<th scope="row">14pt</th>
-						<td>1.2em</td>
 						<td>19.2px</td>
+						<td>1.2em</td>
 						<td>Pass</td>
 						<td>Fail</td>
 						<td>Fail</td>
@@ -129,8 +167,8 @@
 					</tr>
 					<tr class="pt-14 bold">
 						<th scope="row">14pt</th>
-						<td>1.2em</td>
 						<td>19.2px</td>
+						<td>1.2em</td>
 						<td>Pass</td>
 						<td>Pass</td>
 						<td>Fail</td>
@@ -140,8 +178,8 @@
 					</tr>
 					<tr class="pt-18">
 						<th scope="row">18pt</th>
-						<td>1.5em</td>
 						<td>24px</td>
+						<td>1.5em</td>
 						<td>Pass</td>
 						<td>Pass</td>
 						<td>Fail</td>
@@ -164,109 +202,110 @@
 			</ul>
 			<p>Additionally, fonts with the same weight can have very different thickness in the letter stroke.</p>
 			<p>These differences can make the same font size more or less readable to someone with low vision.</p>
-<table>
-	<caption><h2>Font Weight and Contrast</h2></caption>
-	<colgroup>
-		<col class="col-1" />
-		<col class="col-2" />
-		<col class="col-3" />
-		<col class="col-4" />
-		<col class="col-5" />
-	</colgroup>
-	<thead>
-		<tr>
-			<th>font-weight</th>
-			<th>typeface weight</th>
-			<th>&lt;14pt</th>
-			<th>&ge;14pt</th>
-			<th>&ge;18pt</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>100</td>
-			<td>
-				Extra Light, Ultra Light
-			</td>
-			<td>do not use</td>
-			<td>do not use</td>
-			<td>do not use</td>
-		</tr>
-		<tr>
-			<td>200</td>
-			<td>
-				Light, Thin
-			</td>
-			<td>do not use</td>
-			<td>do not use</td>
-			<td>do not use</td>
-		</tr>
-		<tr>
-			<td>300</td>
-			<td>
-				Book, Demi
-			</td>
-			<td>do not use</td>
-			<td>do not use</td>
-			<td>4.5:1</td>
-		</tr>
-		<tr>
-			<td>400, regular</td>
-			<td>
-				Normal, Regular
-			</td>
-			<td>4.5:1</td>
-			<td>4.5:1</td>
-			<td>3:1</td>
-		</tr>
-		<tr>
-			<td>500</td>
-			<td>
-				Medium
-			</td>
-			<td>4.5:1</td>
-			<td>4.5:1</td>
-			<td>3:1</td>
-		</tr>
-		<tr>
-			<td>600</td>
-			<td>
-				Semibold, Demibold
-			</td>
-			<td>4.5:1</td>
-			<td>4.5:1</td>
-			<td>3:1</td>
-		</tr>
-		<tr>
-			<td>700, bold</td>
-			<td>
-				Bold
-			</td>
-			<td>4.5:1</td>
-			<td>3:1</td>
-			<td>3:1</td>
-		</tr>
-		<tr>
-			<td>800</td>
-			<td>
-				Black, Extra Bold, Heavy
-			</td>
-			<td>4.5:1</td>
-			<td>3:1</td>
-			<td>3:1</td>
-		</tr>
-		<tr>
-			<td>900</td>
-			<td>
-				Extra Black, Fat, Poster, Ultra Black
-			</td>
-			<td>4.5:1</td>
-			<td>3:1</td>
-			<td>3:1</td>
-		</tr>
-	</tbody>
-</table>
-
+			<table clas="font-weight-chart">
+				<caption>
+					<h2>Font Weight and Contrast <button type="button" class="btn btn-primary fw">normal font weight</button></h2>
+				</caption>
+				<colgroup>
+					<col class="col-1" />
+					<col class="col-2" />
+					<col class="col-3" />
+					<col class="col-4" />
+					<col class="col-5" />
+				</colgroup>
+				<thead>
+					<tr>
+						<th>font-weight</th>
+						<th>typeface weight</th>
+						<th>&lt;14pt<br/>(&lt;19.2px)</th>
+						<th>&ge;14pt<br/>(&ge;19.2px)</th>
+						<th>&ge;18pt<br/>(&ge;24px)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="fw100">
+						<td>100</td>
+						<td>
+							Extra Light, Ultra Light
+						</td>
+						<td>do not use</td>
+						<td>do not use</td>
+						<td>do not use</td>
+					</tr>
+					<tr class="fw200">
+						<td>200</td>
+						<td>
+							Light, Thin
+						</td>
+						<td>do not use</td>
+						<td>do not use</td>
+						<td>do not use</td>
+					</tr>
+					<tr class="fw300">
+						<td>300</td>
+						<td>
+							Book, Demi
+						</td>
+						<td>do not use</td>
+						<td>do not use</td>
+						<td>4.5:1</td>
+					</tr>
+					<tr class="fw400">
+						<td>400, regular</td>
+						<td>
+							Normal, Regular
+						</td>
+						<td>4.5:1</td>
+						<td>4.5:1</td>
+						<td>3:1</td>
+					</tr>
+					<tr class="fw500">
+						<td>500</td>
+						<td>
+							Medium
+						</td>
+						<td>4.5:1</td>
+						<td>4.5:1</td>
+						<td>3:1</td>
+					</tr>
+					<tr class="fw600">
+						<td>600</td>
+						<td>
+							Semibold, Demibold
+						</td>
+						<td>4.5:1</td>
+						<td>4.5:1</td>
+						<td>3:1</td>
+					</tr>
+					<tr class="fw700">
+						<td>700, bold</td>
+						<td>
+							Bold
+						</td>
+						<td>4.5:1</td>
+						<td>3:1</td>
+						<td>3:1</td>
+					</tr>
+					<tr class="fw800">
+						<td>800</td>
+						<td>
+							Black, Extra Bold, Heavy
+						</td>
+						<td>4.5:1</td>
+						<td>3:1</td>
+						<td>3:1</td>
+					</tr>
+					<tr class="fw900">
+						<td>900</td>
+						<td>
+							Extra Black, Fat, Poster, Ultra Black
+						</td>
+						<td>4.5:1</td>
+						<td>3:1</td>
+						<td>3:1</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		<div class="overlay"></div>
 		<div class="block-screen"></div>
@@ -276,5 +315,29 @@
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/namespacing.js"></script>
 	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+	<script>
+		(function () {
+			$('button.bw').on('click', function (evt) {
+				var $table = $(this).closest('table');
+				if($table.hasClass('bw')) {
+					$table.removeClass('bw');
+					$(this).html('black &amp; white chart text');
+					return;
+				}
+				$table.addClass('bw');
+				$(this).html('restore chart text color');
+			});
+			$('button.fw').on('click', function (evt) {
+				var $table = $(this).closest('table');
+				if($table.hasClass('fw')) {
+					$table.removeClass('fw');
+					$(this).html('normal font weight');
+					return;
+				}
+				$table.addClass('fw');
+				$(this).html('restore font weight');
+			});
+		}());
+	</script>
 </body>
 </html>
