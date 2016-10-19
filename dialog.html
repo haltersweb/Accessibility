@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Accessible Modals</title>
+	<title>Accessible Dialog Boxes</title>
 	<link rel="stylesheet" href="css/normalization.css" />
 	<link rel="stylesheet" href="css/base.css" />
 	<link rel="stylesheet" href="css/dialog.css" />
@@ -11,15 +11,30 @@
 <body>
 	<div class="container">
 		<div class="page-wrapper">
-			<h1>Creating Modal Windows</h1>
+			<h1>Creating Modal Windows and Interstitials</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
-			<p><button type="button" class="btn" data-controls="modal" aria-controls="myModalWindow">Launch modal window</button></p>
-			<h2>Focus when a modal opens</h2>
-			<p>Focus should go to the first actionable element when the modal is opened.  This is most often the close modal button.</p>
+			<p>A modal window, aka a dialog box, appears upon a user action which launches it.  An interstitial is a modal-like window which appears on page load.</p>
+			<p><button type="button" class="btn" data-controls="modal" aria-controls="myModalWindow">Launch modal window example</button></p>
+			<h2>Managing Focus</h2>
+			<h3>Modal Windows</h3>
+			<p>Focus should go to the first actionable element when the modal is opened.  This should be the close modal button.</p>
+			<h3>Interstitials</h3>
+			<p>Focus should go to the dialog box itself.  This will cause the screen reader to read the entire intersitial content.</p>
+			<h3>Upon closing the dialog box</h3>
+			<p>If the box is a modal, focus should go to the triggering mechanism if it still exists.  Otherwise it should go to the &lt;body&gt;.</p>
+			<p>If the box is an interstitial, focus should go to the &lt;body&gt;.</p>
 			<h2>The use of role="dialog" and role="document"</h2>
-			<p>You will notice the modal window has a role="dialog".</p>
-			<p>When using role="dialog" it is imperative that you place all content within a nested container having a role="document".  Otherwise, in some browsers content that doesn't gain focus will not be read.</p>
-			<p><button type="button" class="btn" data-controls="modal" aria-controls="myModalWindow">Launch modal window</button></p>
+			<p>The dialog window should have a role="dialog".</p>
+			<p>When using role="dialog" it is imperative that you place all dialog content within a nested container having a role="document".  Otherwise, in some browsers content that doesn't gain focus will not be read.</p>
+			<h2>Escaping the Dialog Box</h2>
+			<p>You are mimicking an operating system dialog wherein there is no way to leave the dialog without either:</p>
+			<ul class="bullet">
+				<li>engaging the actionable items in the dialog box, or</li>
+				<li>hitting the ESC key.</li>
+			</ul>
+			<p>A web dialog box should mimic this behavior.  As long as the user has a way out either by using the close button or by hitting “ESC” the modal is fine. It is acceptable that the user is unable to reach the browser chrome while the modal window is active.</p>
+			<h3>The Close Button</h3>
+			<p>Make sure the close button has descriptive screen-reader-text which says something like "close dialog box" (just "close" or "close window" is too confusing).</p>
 		</div>
 		<div id="myModalWindow" class="modal" role="dialog" data-widget="modal" aria-hidden="true">
 			<div role="document">
@@ -33,13 +48,8 @@
 						</svg>
 					</button>
 				</div>
-				<h2>Escaping the Modal Window</h2>
-				<p>With a modal you are mimicking an operating system dialog box wherein there is no way to leave the dialog without either:</p>
-				<ul class="bullet">
-					<li>engaging the actionable items in the dialog box, or</li>
-					<li>hitting the ESC key.</li>
-				</ul>
-				<p>A modal window should mimic this behavior.  As long as the user has a way out either by using the close button or by hitting “ESC” the modal is fine. It is acceptable that the user is unable to reach the browser chrome while the modal window is active.</p>
+				<h2>Welcome to the Modal Window</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ipsam deleniti maiores minus, suscipit sunt fuga, eius aperiam labore ratione eaque rerum in impedit est, nulla accusantium quasi. Nihil, rerum!</p>
 				<p><a href="#">Fake link</a></p>
 			</div>
 		</div>
