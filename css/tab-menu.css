@@ -1,7 +1,13 @@
+[data-widget="tab-menu"] {
+	position: relative;
+	margin: 0;
+	z-index: 1;
+}
 .tab-menu-item {
 	display: inline-block;
 	width: 33.3%;
 	margin-left: -0.5rem;
+	margin-bottom: 0;
 }
 .tab-menu-item:first-child {
 	margin-left: 0;
@@ -33,13 +39,18 @@
 }
 .single-container-view .content-panel {
 	display: none;
+	padding-top: 7.5ex;
+	position: relative;
+	top: -6ex;
+	overflow: hidden;
+	margin-bottom: -6ex;
 }
 .single-container-view .content-panel.current {
 	display: block;
 }
 .single-container-view {
 	border: 1px solid red;
-    padding: 20px;
+	padding: 20px;
 }
 .content-panel:focus {
 	outline: none;
