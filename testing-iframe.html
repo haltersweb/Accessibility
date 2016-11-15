@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Testing hidden iFrames</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+</head>
+<body>
+	<div class="container">
+		<a href="#main" class="skip-link">Skip to main content</a>
+		<div class="page-wrapper" id="main" role="main" tabindex="-1">
+			<h1>Testing Hidden iFrames</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
+			<p>iFrames are difficult to hide from screen readers.  Just using display: none will often not keep screen readers from caching and reading the content inside. (https://www.paciellogroup.com/blog/2010/04/making-sure-hidden-frames-are-hidden/)</p>
+			<p>Back in 2010 Steve Faulkner mentioned someday being able to use the HTML5 hidden attribute.  The <a href="http://www.caniuse.com">caniuse.com</a> site says hidden is now fully supported.</p>
+			<p>This page is a test to see if it is truly the answer.  Following is a hidden iframe with content injected from <a href="sample-iframe-content.html">sample-iframe-content.html</a>.  Note, in css I have styled [hidden] with display: none;</p>
+			<iframe src="sample-iframe-content.html" frameborder="0" hidden></iframe>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+		<div aria-live="polite" class="screen-reader-text"></div>
+		<div role="alert" class="screen-reader-text"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+</body>
+</html>
