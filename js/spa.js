@@ -27,7 +27,7 @@
                 title: 'When New Content Loads',
                 h1: 'What Must Happen When New Content is Loaded',
                 //content: '<label for="flavor">Favorite Flavor</label><select name="flavor" id="flavor"><option value="chocolate">chocolate</option><option value="vanilla">vanilla</option><option value="strawberry">strawberry</option></select>'
-                content: '<ul class="bullet singletons"><li>the document title must change</li><li>a screen-reader announcement must be made stating that there was a content change</li><li>focus must move to the container holding the new content in order to prompt the screen-reader to read the new content.</li></ul>'
+                content: '<ul class="bullet singletons"><li>the document title must change</li><li>a screen-reader announcement must be made stating that there was a content change</li><li>focus must move to the container holding the new content in order to prompt the screen-reader to read the new content.</li><li>The current step breadcrumb must contain the .screen-reader-text "current".</li></ul>'
             },
             {
                 title: 'Container Focus',
@@ -54,15 +54,23 @@
     function enableStepLinks() {
         var i = $stepLinks.length - 1,
             $link;
+        //remove everything from placeholder anchor tags
         $('[data-href]').each(function () {
             var $this = $(this);
-            $this.attr('href', $this.attr('data-href')).removeAttr('data-href').removeClass('not-active');
+            $this.attr('href', $this.attr('data-href')).removeAttr('data-href').removeAttr('role').removeClass('not-active');
         });
+        //for all step links that follow the current link: change to placeholder anchor tag and add necessaries
         while (i > step) {
             $link = $stepLinks.eq(i);
-            $link.attr('data-href', $link.attr('href')).removeAttr('href').addClass('not-active');
+            $link.attr('data-href', $link.attr('href')).removeAttr('href').addClass('not-active').attr('role', 'presentation');
             i -= 1;
         }
+        //remove all screen reader text, then remove the current class
+        $stepLinks.children('.screen-reader-text').text('').end().filter('.current').removeClass('current');
+        //for the current link add the 'current' class and 'current' screen-reader-text
+        $stepLinks.eq(step).addClass('current').children('.screen-reader-text').text(' current');
+        //for not-active links add 'not active' screen-reader-text
+        $stepLinks.filter('.not-active').children('.screen-reader-text').text(' not active');
     }
     function announceChange() {
         NAME.access.announcements($('[aria-live]'), "new page content has been loaded");
