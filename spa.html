@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Lorem</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<style>
+		.not-active { color: gray; }
+		nav li {
+			display: inline-block;
+		}
+		.step-link:after {
+			content: "";
+			display: inline-block;
+			width: 7px;
+			height: 7px;
+			border: 2px solid gray;
+			border-left-width: 0px;
+			border-bottom-width: 0px;
+			transform: rotate(45deg);
+		}
+		nav li:last-child .step-link:after {
+			content: none;
+		}
+		[tabindex="-1"]:focus {
+			outline: none;
+    		box-shadow: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a href="#stepContainer" class="skip-link">Skip to main content</a>
+		<div class="page-wrapper">
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
+			<nav>
+				<ul>
+					<li><a href="#stepContainer" data-step-link="1" class="step-link">Step One</a></li>
+					<li><a href="#stepContainer" data-step-link="2" class="step-link">Step Two</a></li>
+					<li><a href="#stepContainer" data-step-link="3" class="step-link">Step Three</a></li>
+					<li><a href="#stepContainer" data-step-link="4" class="step-link">Step Four</a></li>
+				</ul>
+			</nav>
+			<form action="post" id="stepContainer" tabindex="-1">
+				<h1>Ipsum</h1>
+				<div id="stepContent" class="form-row"></div>
+				<div class="form-row">
+					<button type="button" id="previous" class="step-control">Previous</button>
+					<button type="button" id="next" class="step-control">Next</button>
+				</div>
+			</form>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+		<div aria-live="polite" class="screen-reader-text"></div>
+		<div role="alert" class="screen-reader-text"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+	<script type="text/javascript" src="js/spa.js"></script>
+</body>
+</html>
