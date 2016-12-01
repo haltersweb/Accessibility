@@ -70,6 +70,10 @@ a.current {
 a.current:hover {
 	text-decoration: none;
 	}
+.not-active {
+    pointer-events: none;
+    cursor: default;
+    }
 button {
 	cursor: pointer;
 	}
