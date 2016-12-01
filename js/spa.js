@@ -21,7 +21,7 @@
                 title: 'SPA Introduction',
                 h1: 'Single-page Application Introduction',
                 //content: '<label for="name">Name</label><input id="name" type="text" />'
-                content: '<p>When creating a single-page application several things must happen when new content is loaded</p>'
+                content: '<p>When creating an accessible single-page application (SPA) several things must happen when new content is loaded and focus must be managed correctly.</p><p>Continue through this single-page application to learn more.</p>'
             },
             {
                 title: 'When New Content Loads',
