@@ -27,7 +27,7 @@
                 title: 'When New Content Loads',
                 h1: 'What Must Happen When New Content is Loaded',
                 //content: '<label for="flavor">Favorite Flavor</label><select name="flavor" id="flavor"><option value="chocolate">chocolate</option><option value="vanilla">vanilla</option><option value="strawberry">strawberry</option></select>'
-                content: '<ul class="bullet singletons"><li>the document title must change</li><li>a screen-reader announcement must be made stating that there was a content change</li><li>focus must move to the container holding the new content in order to prompt the screen-reader to read the new content.</li><li>The current step breadcrumb must contain the .screen-reader-text "current".</li></ul>'
+                content: '<ul class="bullet singletons"><li>the document title must change</li><li>a screen-reader announcement must be made stating that there was a content change</li><li>focus must move to the container holding the new content in order to prompt the screen-reader to read the new content.</li><li>The current step breadcrumb must contain the .screen-reader-text "current". Inactive breadcrumbs should also contain .screen-reader-text to identify their state.</li></ul>'
             },
             {
                 title: 'Container Focus',
