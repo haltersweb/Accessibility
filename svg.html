@@ -13,15 +13,13 @@
 			<h1>Inline SVG used for buttons and links</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
 			<h2>What about using title and desc?</h2>
-			<p>SVGs are currently still very problematic with all screen readers.  Therefore I do not suggest using the svg title and desc elements for accessibility.</p>
-			<p>Nor do I suggest assigning role="img" to an SVG.</p>
+			<p>SVGs are currently still very problematic with most screen readers.  Therefore I do not suggest using the svg title and desc elements for accessibility.</p>
+			<p>If we consider a nested image tag as the gold standard to be mimicked by the svg tag we should stay away from the svg  desc or title tags. Use aria-label for the button and screen-reader-text for the link.</p>
+			<p>Nor do I suggest using role="img", assuming you want to mimic a nested image tag.  Using role="presentation" gives a more consistent result.</p>
 			<p>Also, stay away from using aria-labeledby and aria-describedby.  This causes repeating phrases.</p>
+			<p>The following findings are based on tests done in December 2016.  Find the test <a href="http://codepen.io/haltersweb/pen/eByVMK">codepen page</a> to do your own research.</p>
 			<h2>Known issues:</h2>
 			<p>Below are just some of the issues when using nested <strong>title and desc</strong> elements as well as using <strong>role="img"</strong>.</p>
-			<h3>Problems with JAWS:</h3>
-			<ul class="bullet">
-				<li>JAWS will run the title and the word "icon" together as one word causing pronunciation issues.</li>
-			</ul>
 			<h3>Problems with NVDA:</h3>
 			<ul class="bullet">
                 <li>NVDA doesn't recognize the desc element</li>
@@ -39,20 +37,18 @@
 			<ul class="bullet">
 				<li>Assign the attribute <strong>role="presentation"</strong> to the SVG element. Unlike role="img", using "presentation" gives a result consistent with actually using a nested image inside of a button or link.</li>
 				<li>Assign the attribute <strong>focusable="false"</strong> to the SVG element.</li>
-				<li>Use aria-label on buttons and <strong>hidden screen-reader-text</strong> for links to give the button or link meaning for those using a screen reader. See the "screen-reader-text" class in <a href="css/base.css">base.css</a>.</li>
+				<li>Use either <strong>aria-label</strong> for buttons and <strong>hidden screen-reader-text</strong> for links to give the button or link meaning for those using a screen reader. See the "screen-reader-text" class in <a href="css/base.css">base.css</a>.</li>
 			</ul>
 			<h3>Button example:</h3>
 			<div>
-				<button type="button" style="width: 50px; height: 50px;">
-					<span class="screen-reader-text">Reveal navigation</span>
+				<button type="button" style="width: 50px; height: 50px;" aria-label="Reveal navigation">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" role="presentation" focusable="false">
 						<circle cx="45" cy="45" r="40" stroke="black" stroke-width="3" fill="red" />
 					</svg>
 				</button>
 			</div>
 			<pre class="code-snippet" style="width: 700px;"><code>
-&lt;button type="button" style="width: 50px; height: 50px;"&gt;
-  &lt;span class="screen-reader-text"&gt;Reveal navigation&lt;/span&gt;
+&lt;button type="button" style="width: 50px; height: 50px;" aria-label="Reveal navigation"&gt;
   &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="00 0 90 90" role="presentation" focusable="false"&gt;
     &lt;circle cx="45" cy="45" r="40" stroke="black" stroke-width="3" fill="red"&gt;
   &lt;/svg&gt;
