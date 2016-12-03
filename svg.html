@@ -13,16 +13,13 @@
 			<h1>Inline SVG used for buttons and links</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
 			<h2>What about using title and desc?</h2>
-			<p>SVGs are currently still very problematic with all screen readers.  Therefore I do not suggest using nested title and desc elements within an SVG element.</p>
-			<p>Nor do I suggest assigning role="img" to an SVG.</p>
+			<p>SVGs are currently still very problematic with many screen readers.  Therefore I do not suggest using nested title and desc elements within an SVG element. Nor do I suggest </p>
+			<p>If we consider a nested image tag as the gold standard to be mimicked by the svg tag we should stay away from the svg  desc or title tags.  Use aria-label for the button and screen-reader-text for the link.</p>
+			<p>Nor do I suggest assigning role="img" to an SVG, assuming we want to mimic a button or link with a nested image tag.</p>
 			<p>Also, stay away from using aria-labeledby and aria-describedby.  This causes repeating phrases.</p>
+			<p>The following findings are based on tests done in December 2016.  Find the test <a href="http://codepen.io/haltersweb/pen/eByVMK">codepen page</a> to do your own research.</p>
 			<h2>Known issues:</h2>
 			<p>Below are just some of the issues when using nested <strong>title and desc</strong> elements as well as using <strong>role="img"</strong>.</p>
-			<h3>Problems with JAWS:</h3>
-			<ul class="bullet">
-				<li>JAWS will run the title and the word "icon" together as one word causing pronunciation issues.</li>
-				<li>JAWS announces a link with an SVG assigned a role="img" as a "link graphic".  This does not add anything to the semantics of the link.</li>
-			</ul>
 			<h3>Problems with NVDA:</h3>
 			<ul class="bullet">
 				<li>NVDA will read the title text multiple times when an SVG is nested in an anchor or a button</li>
