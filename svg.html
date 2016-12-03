@@ -12,12 +12,12 @@
 		<div class="page-wrapper">
 			<h1>Inline SVG used for buttons and links</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
-			<h2>What about using title and desc?</h2>
-			<p>SVGs are currently still very problematic with most screen readers.  Therefore I do not suggest using the svg title and desc elements for accessibility.</p>
+			<p>The following findings are based on tests done in December 2016.  Find the test <a href="http://codepen.io/haltersweb/pen/eByVMK">codepen page</a> to do your own research.</p>
+			<h2>Stay away from the svg title and desc elements</h2>
+			<p>The SVG title and desc elements are currently still very problematic with most screen readers.  Therefore I do not suggest using the svg title and desc elements for accessibility.</p>
 			<p>If we consider a nested image tag as the gold standard to be mimicked by the svg tag we should stay away from the svg  desc or title tags. Use aria-label for the button and screen-reader-text for the link.</p>
 			<p>Nor do I suggest using role="img", assuming you want to mimic a nested image tag.  Using role="presentation" gives a more consistent result.</p>
 			<p>Also, stay away from using aria-labeledby and aria-describedby.  This causes repeating phrases.</p>
-			<p>The following findings are based on tests done in December 2016.  Find the test <a href="http://codepen.io/haltersweb/pen/eByVMK">codepen page</a> to do your own research.</p>
 			<h2>Known issues:</h2>
 			<p>Below are just some of the issues when using nested <strong>title and desc</strong> elements as well as using <strong>role="img"</strong>.</p>
 			<h3>Problems with NVDA:</h3>
