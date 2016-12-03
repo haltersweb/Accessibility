@@ -13,13 +13,16 @@
 			<h1>Inline SVG used for buttons and links</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
 			<p>The following findings have been updated based on tests done in December 2016.  Find the <a href="http://codepen.io/haltersweb/pen/eByVMK">test codepen page</a> to do your own tests and review the table of screen-reader findings.</p>
+			<h2>Why use SVG instead background image</h2>
+			<p>SVG is preferable for icons over background images/sprites because if PC is in High Contrast Mode, SVGs are still visible.  Background images are not rendered.</p>
+			<p>SVGs can be scaled to their parent container (as long as you don't set width and height to SVG).</p>
 			<h2>Stay away from the svg title and desc elements</h2>
 			<p>The SVG title and desc elements are currently still very problematic with most screen readers.  Therefore I do not suggest using the svg title and desc elements for accessibility.</p>
 			<p>If we consider a nested image tag as the gold standard to be mimicked by the svg tag we should stay away from the svg  desc or title tags. Use aria-label for the button and screen-reader-text for the link.</p>
 			<p>Nor do I suggest using role="img", assuming you want to mimic a nested image tag.  Using role="presentation" gives a more consistent result.</p>
 			<p>Also, stay away from using aria-labeledby and aria-describedby.  This causes repeating phrases.</p>
 			<h2>Known issues:</h2>
-			<p>Below are just some of the issues when using nested <strong>title and desc</strong> elements as well as using <strong>role="img"</strong>.</p>
+			<p>Below are just some of the issues when using nested <strong>title and desc</strong> elements.</p>
 			<h3>Problems with NVDA:</h3>
 			<ul class="bullet">
                 <li>NVDA doesn't recognize the desc element</li>
@@ -27,11 +30,9 @@
 			</ul>
 			<h3>Problems with VoiceOver:</h3>
 			<ul class="bullet">
-				<li>VoiceOver does not recognize the title or desc element.</li>
+				<li>VoiceOver on iOS does not recognize the title or desc element.</li>
+				<li>VoiceOver on Mac does not recognize the desc element.</li>
 			</ul>
-			<h3>Why use SVG instead background image</h3>
-			<p>SVG is preferable for icons over background images/sprites because if PC is in High Contrast Mode, SVGs are still visible.  Background images are not rendered.</p>
-			<p>SVGs can be scaled to their parent container (as long as you don't set width and height to SVG).</p>
 			<h2>Preferred method:</h2>
             <p>I suggest trying to match the screen-reader output of a button or link with a nested image element.</p>
 			<ul class="bullet">
