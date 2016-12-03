@@ -13,8 +13,8 @@
 			<h1>Inline SVG used for buttons and links</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
 			<h2>What about using title and desc?</h2>
-			<p>SVGs are currently still very problematic with many screen readers.  Therefore I do not suggest using nested title and desc elements within an SVG element. Nor do I suggest </p>
-			<p>If we consider a nested image tag as the gold standard to be mimicked by the svg tag we should stay away from the svg  desc or title tags.  Use aria-label for the button and screen-reader-text for the link.</p>
+			<p>SVGs are currently still very problematic with many screen readers.  Therefore I do not suggest using nested title and desc elements within an SVG element. Nor do I suggest using role="img", assuming you want to mimic a nested image tag.</p>
+			<p>If we consider a nested image tag as the gold standard to be mimicked by the svg tag we should stay away from the svg  desc or title tags and, believe it or not, the role="img" attribute.  Use aria-label for the button and screen-reader-text for the link. Use role="presentation" on the svg tag itself.</p>
 			<p>Nor do I suggest assigning role="img" to an SVG, assuming we want to mimic a button or link with a nested image tag.</p>
 			<p>Also, stay away from using aria-labeledby and aria-describedby.  This causes repeating phrases.</p>
 			<p>The following findings are based on tests done in December 2016.  Find the test <a href="http://codepen.io/haltersweb/pen/eByVMK">codepen page</a> to do your own research.</p>
