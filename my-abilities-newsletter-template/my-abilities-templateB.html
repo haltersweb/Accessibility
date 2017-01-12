@@ -23,7 +23,7 @@
             text-size-adjust: 100%;
             -ms-text-size-adjust: 100%;
             -webkit-text-size-adjust: 100%;
-            line-height: 100%;
+            line-height: 170%;
         }
         table, td {
             mso-table-lspace: 0pt;
@@ -54,16 +54,32 @@
         /* end email-client-specific styles */
         /* Rounded corners for advanced mail clients only */
         .rounded-corners {
+            border-radius: 10px;
+            -khtml-border-radius: 10px;
+        }
+        .button {
             border-radius: 6px;
             -khtml-border-radius: 6px;
         }
-        @media all and (min-width: 670px) {
+        .button[style]:hover {
+            background-color: #0E383C !important;
+            color: #FFF8CC !important;
+        }
+        @media all and (min-width: 775px) {
             .container {
-                border-radius: 6px;
-                -khtml-border-radius: 6px;
+                border-radius: 10px;
+                -khtml-border-radius: 10px;
+                -webkit-box-shadow: 2px 2px 10px 0 rgba(00,00,00,.3);
+                box-shadow: 2px 2px 10px 0 rgba(00,00,00,.3);
             }
         }
-        @media all and (max-width: 550px) {
+        @media all and (min-width: 601px) {
+            .right-column {
+                border-top-left-radius: 14px;
+                -khtml-border-top-left-radius: 14px;
+            }
+        }
+        @media all and (max-width: 600px) {
             .main table, .main table tbody, .main table tr, .main table td {
                 display: block;
                 box-sizing: border-box;
@@ -75,7 +91,7 @@
         }
         /* Set color for auto links (addresses, dates, etc.) */
         a, a:hover {
-            color: #127DB3;
+            color: #2e8189;
         }
         .footer a, .footer a:hover {
             color: #999999;
@@ -97,8 +113,8 @@
     text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
-    line-height: 100%;
-    background-color: #A8A58F;
+    line-height: 170%;
+    background-color: #C4C3B9;
     color: #000;">
     <!-- SECTION / BACKGROUND -->
     <!-- Set message background color one again -->
@@ -109,28 +125,28 @@
         padding: 0;
         width: 100%;
         height: 100vh;
-        background-color: #A8A58F;
+        background-color: #C4C3B9;
         color: #000;
         font-size: 14px;
         font-weight: normal;
         font-weight: 500;
-        line-height: 160%;
+        line-height: 170%;
         font-family: Verdana, Arial, sans-serif;">
         <tr>
-            <td align="center" valign="top" bgcolor="#A8A58F" style="
+            <td align="center" valign="top" bgcolor="C4C3B9" style="
                 border-collapse: collapse;
                 border-spacing: 0;
                 margin: 0;
                 padding: 0;">
                 <!-- EMAIL CONTAINER -->
-                <table class="container" role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="650" style="
+                <table class="container" role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" width="750" style="
                     border-collapse: collapse;
                     border-spacing: 0;
                     margin: 2ex 0;
                     padding: 0;
                     width: 100%;
-                    max-width: 650px;
-                    background-color: #0E383C;">
+                    max-width: 750px;
+                    background-color: #2e8189;">
                     <tr>
                         <td align="center" valign="top" style="
                             border-collapse: collapse;
@@ -149,7 +165,7 @@
                                 height: 0;
                                 max-height: 0;
                                 max-width: 0;
-                                color: #F0F0F0;">
+                                color: #FFF;">
                                 <!-- ADD YOUR PREHEADER TEXT HERE:
                                 A preheader is the short summary text that follows the subject line when an email is viewed in the inbox. Many mobile, desktop and web email clients provide them to tip you off on what the email contains before you open it.
                                 -->
@@ -173,15 +189,15 @@
                                                     border-collapse: collapse;
                                                     border-spacing: 0;
                                                     margin: 0;
-                                                    padding: 2ex 5% 2ex 5%;">
-                                                    <img src="MYAB_2C-150w.png" alt="MyAbilities Logo" />
+                                                    padding: 2ex 0 1ex 5%;">
+                                                    <img src="https://gallery.mailchimp.com/f8f4539952b4ff458b28c7310/images/a3beb1e3-f17a-4adc-96bc-513970862781.png" alt="MyAbilities Logo" />
                                                 </td>
                                                 <td align="right" valign="middle" style="
                                                     border-collapse: collapse;
                                                     border-spacing: 0;
                                                     margin: 0;
-                                                    padding: 2ex 5% 2ex 5%;">
-                                                    <h1 style="color: #FFF8CC; font-size: 12px; font-weight: normal;">
+                                                    padding: 0ex 5% 0ex 0;">
+                                                    <h1 style="color: #FFF; font-size: 12px; font-weight: normal;">
                                                         <span style="display: block;">MyAbilities Newsletter</span>
                                                         <span style="display: block;">January 10, 2017</span>
                                                     </h1>
@@ -198,22 +214,92 @@
                                             padding: 0;
                                             width: 100%;">
                                             <tr>
-                                                <td align="left" valign="top" style="
+                                                <td class="left-column" align="left" valign="top" style="
                                                     border-collapse: collapse;
                                                     border-spacing: 0;
                                                     margin: 0;
-                                                    padding: 2ex 5% 2ex 5%;
-                                                    width: 25%;">
-                                                    lorem
+                                                    padding: 2ex 2% 2ex 5%;
+                                                    width: 27%;
+                                                    color: #FFF;">
+                                                    <h2 style="color: #FFF; font-size: 15px; font-weight: bold;">In this edition</h2>
+                                                    <ul style="padding: 0; margin: 0; list-style: none;">
+                                                        <li style="padding: 0; margin: 0; margin-bottom: 0.5ex;"><a href="#MAB1" style="color: #FFF; font-size: 12px;">Network with Comcast Leaders</a></li>
+                                                        <li><a href="#MAB2" style="color: #FFF; font-size: 12px;">Coffee Meet-&amp-Greet</a></li>
+                                                        <li><a href="#MAB3" style="color: #FFF; font-size: 12px;">Beyond Celiac</a></li>
+                                                    </ul>
                                                 </td>
-                                                <td align="right" valign="middle" style="
+                                                <td class="right-column" align="left" valign="top" style="
                                                     border-collapse: collapse;
                                                     border-spacing: 0;
                                                     margin: 0;
                                                     padding: 2ex 5% 2ex 5%;
-                                                    width: 58%;
-                                                    background-color: #fff;">
-                                                    lorem
+                                                    width: 56%;
+                                                    background-color: #fff;
+                                                    color: #000;">
+                                                    <!-- ONE -->
+                                                    <h2 id="MAB1" style="color: #2e8189; font-size: 17px; font-weight: bold;">Inviting You to Network with Comcast Leaders</h2>
+                                                    <img src="https://gallery.mailchimp.com/f8f4539952b4ff458b28c7310/images/512c0c9e-0a30-44b3-8a54-6f2f731ab013.jpg" alt="picture of people networking" style="float: left; width: 120px; padding: 10px; padding-left: 0;" />
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit modi voluptatem facilis laboriosam saepe esse dolorum culpa deserunt a adipisci aspernatur, sapiente provident similique temporibus earum natus et mollitia id?</p>
+                                                    <h3 style="color: #0E383C; font-size: 14px; font-weight: bold;">Why Attend?</h3>
+                                                    <ul>
+                                                        <li>lorem ipsum dolor sit amet</li>
+                                                        <li>sed umini apscing sem elit</li>
+                                                        <li>Impedit modi volumtatem facilis laborism</li>
+                                                        <li>saepe esse dolorum culpa derunt a dipsi</li>
+                                                    </ul>
+                                                    <h3 style="color: #0E383C; font-size: 14px; font-weight: bold;">When and Where?</h3>
+                                                    <p>
+                                                        Thursday, November 10 @ 4:00PM<br/>
+                                                        Comcast Center, 3rd Floor Room B
+                                                    </p>
+                                                    <p style="text-align: center;">
+                                                        <a class="button" href="http://www.google.com" style="padding: 0.75ex 0.75em 1ex; background-color: #964171; color: #fff; font-weight: bold; font-size: 16px; text-decoration: none;">Register for this Networking Event</a>
+                                                    </p>
+                                                    <hr style="margin: 3ex 0; border: none; border-bottom: 1px solid #0E383C;" />
+                                                    <!-- TWO -->
+                                                    <h2 id="MAB2" style="color: #2e8189; font-size: 17px; font-weight: bold;">Coffee Meet-&amp;-Greet</h2>
+                                                    <p>Join our monthly <strong>Coffee Meet &amp; Greet</strong> with <strong>BEN</strong> as we spotlight influential Comcast employees and the impact they have on their business and Comcast overall, while providing an opportunity for you to develop your professional network.</p>
+                                                    <img src="https://gallery.mailchimp.com/f8f4539952b4ff458b28c7310/images/e212f342-98eb-4ae6-881c-0923cc296678.jpg" alt="Leslie Knope headshot" style="float: right; width: 120px; padding: 10px; padding-right: 0;" />
+                                                    <h3 style="color: #0E383C; font-size: 14px; font-weight: bold;">Speaker</h3>
+                                                    <p>
+                                                        Leslie Knope<br/>
+                                                        <em>VP, Parks and Recreation</em>
+                                                    </p>
+                                                    <h3 style="color: #0E383C; font-size: 14px; font-weight: bold;">When and Where?</h3>
+                                                    <p>
+                                                        Thursday, November 17th, 2016<br />
+                                                        8:30 - 9:30 AM<br />
+                                                        Ralph's Cafe - 44th Floor<br />
+                                                        **Coffee &amp; Tea Provided**
+                                                    </p>
+                                                    <p>
+                                                        <a class="" href="http://www.google.com" style="font-weight: bold;">Register for Coffee Meet-&amp;-Greet</a>
+                                                    </p>
+                                                    <hr style="margin: 3ex 0; border: none; border-bottom: 1px solid #0E383C;" />
+                                                    <!-- THREE -->
+                                                    <h2 id="MAB3" style="color: #2e8189; font-size: 17px; font-weight: bold; overflow: hidden;">
+                                                        Beyond Celiac
+                                                        <img src="https://gallery.mailchimp.com/f8f4539952b4ff458b28c7310/images/ce0e3b2b-19e9-48c2-a147-b324523cb76b.png" alt="Beyond Celiac Logo" style="width: 150px; float: right;" />
+                                                    </h2>
+                                                    <h3 style="color: #0E383C; font-size: 14px; font-weight: bold;">Join us to learn more about Celiac Disease.</h3>
+                                                    <p>
+                                                        December 15th<br />
+                                                        9:00am<br />
+                                                        42nd Floor Amphitheatre, Comcast Center
+                                                    </p>
+                                                    <h3 style="color: #0E383C; font-size: 14px; font-weight: bold;">Speaker</h3>
+                                                    <p>Alice Bast, CEO, Beyond Celiac</p>
+                                                    <img src="https://gallery.mailchimp.com/f8f4539952b4ff458b28c7310/images/2e0fb94a-0970-43df-bd5f-9d7df632e29b.jpg" alt="Alice Bast headshot" style="float: right; width: 120px; padding: 10px; padding-right: 0;" />
+                                                    <h3 style="color: #0E383C; font-size: 14px; font-weight: bold;">Discussion Highlights</h3>
+                                                    <ul>
+                                                        <li>Be aware that more and more people are eating gluten-free, but for some, it's more than a lifestyle choice, it's a medical necessity.</li>
+                                                        <li>Learn about the numerous symptoms that can be attributed to gluten that can affect workplace productivity.</li>
+                                                        <li>Discover workplace accommodations and get some tangible takeaways that could help employees with celiac disease, gluten sensitivity and other gluten-related disorders.</li>
+                                                    </ul>
+                                                    <p>
+                                                        <a class="" href="http://www.google.com" style="font-weight: bold;">RSVP for Beyond Celiac</a>
+                                                    </p>
+                                                    <hr style="margin: 3ex 0; border: none; border-bottom: 1px solid #0E383C;" />
                                                 </td>
                                             </tr>
                                         </table>
