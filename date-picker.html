@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Accessible Date Picker</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+</head>
+<body>
+	<div class="container">
+		<a href="#main" class="skip-link">Skip to main content</a>
+		<div class="page-wrapper" id="main" role="main" tabindex="-1">
+			<h1>Accessible Date Picker</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
+			<p><strong>NOTE: This solution is written using ES2015 and is not compatible with IE11.</strong></p>
+			<form action="">
+				<p>
+					<!-- USE TYPE=DATE FOR MOBILE <label for="date">Date</label><input type="date" id="date" /> -->
+					<label for="date">Date</label><input id="date" />
+					<button type="button" id="launchDatePicker" aria-owns="datePickerModal" aria-expanded="false"><span class="screen-reader-text">date picker to </span>Choose Date</button>
+				</p>
+				<p>
+					<!-- USE TYPE=TIME FOR MOBILE <label for="time">Time</label><input type="time" id="time" /> -->
+				</p>
+				<div id="datePicker" style="display: none;">
+					<div>
+						<button id="closeDatePicker" type="button">Close<span class="screen-reader-text"> date picker</span></button>
+					</div>
+					<div>
+						<button id="backOneMonth" type="button">previous month</button>
+						<button id="forwardOneMonth" type="button">next month</button>
+					</div>
+					<div>
+						<button id="backOneYear" type="button">previous year</button>
+						<button id="forwardOneYear" type="button">next year</button>
+					</div>
+					<table id="datePickerCalendar" role="presentation">
+						<caption>
+							<h2 id="monthYear"></h2>
+						</caption>
+						<thead>
+							<tr>
+								<th scope="col"><span aria-hidden="true">SUN</span><span class="screen-reader-text">Sunday</span></th>
+								<th scope="col"><span aria-hidden="true">MON</span><span class="screen-reader-text">Monday</span></th>
+								<th scope="col"><span aria-hidden="true">TUE</span><span class="screen-reader-text">Tuesday</span></th>
+								<th scope="col"><span aria-hidden="true">WED</span><span class="screen-reader-text">Wednesday</span></th>
+								<th scope="col"><span aria-hidden="true">THR</span><span class="screen-reader-text">Thursday</span></th>
+								<th scope="col"><span aria-hidden="true">FRI</span><span class="screen-reader-text">Friday</span></th>
+								<th scope="col"><span aria-hidden="true">SAT</span><span class="screen-reader-text">Saturday</span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<!--
+							<tr>
+								<td tabindex="-1" role="button" data-day="1" aria-hidden="false">1</td>
+								<td tabindex="-1" role="button" data-day="2" aria-hidden="false">2</td>
+								<td tabindex="-1" role="button" data-day="3" aria-hidden="false">3</td>
+								<td tabindex="-1" role="button" data-day="4" aria-hidden="false">4</td>
+								<td tabindex="-1" role="button" data-day="5" aria-hidden="false">5</td>
+								<td tabindex="-1" role="button" data-day="6" aria-hidden="false">6</td>
+								<td tabindex="-1" role="button" data-day="7" aria-hidden="false">7</td>
+							</tr>
+							<tr>
+								<td tabindex="-1" role="button" data-day="8" aria-hidden="false">8</td>
+								<td tabindex="-1" role="button" data-day="9" aria-hidden="false">9</td>
+								<td tabindex="-1" role="button" data-day="10" aria-hidden="false">10</td>
+								<td tabindex="-1" role="button" data-day="11" aria-hidden="false">11</td>
+								<td tabindex="-1" role="button" data-day="12" aria-hidden="false">12</td>
+								<td tabindex="-1" role="button" data-day="13" aria-hidden="false">13</td>
+								<td tabindex="-1" role="button" data-day="14" aria-hidden="false">14</td>
+							</tr>
+							<tr>
+								<td tabindex="-1" role="button" data-day="15" aria-hidden="false">15</td>
+								<td tabindex="-1" role="button" data-day="16" aria-hidden="false">16</td>
+								<td tabindex="-1" role="button" data-day="17" aria-hidden="false">17</td>
+								<td tabindex="-1" role="button" data-day="18" aria-hidden="false">18</td>
+								<td tabindex="-1" role="button" data-day="19" aria-hidden="false">19</td>
+								<td tabindex="-1" role="button" data-day="20" aria-hidden="false">20</td>
+								<td tabindex="-1" role="button" data-day="21" aria-hidden="false">21</td>
+							</tr>
+							<tr>
+								<td tabindex="-1" role="button" data-day="22" aria-hidden="false">22</td>
+								<td tabindex="-1" role="button" data-day="23" aria-hidden="false">23</td>
+								<td tabindex="-1" role="button" data-day="24" aria-hidden="false">24</td>
+								<td tabindex="-1" role="button" data-day="25" aria-hidden="false">25</td>
+								<td tabindex="-1" role="button" data-day="26" aria-hidden="false">26</td>
+								<td tabindex="-1" role="button" data-day="27" aria-hidden="false">27</td>
+								<td tabindex="-1" role="button" data-day="28" aria-hidden="false">28</td>
+							</tr>
+							<tr>
+								<td tabindex="-1" role="button" data-day="29" aria-hidden="false">29</td>
+								<td tabindex="-1" role="button" data-day="30" aria-hidden="false">30</td>
+								<td tabindex="-1" role="button" data-day="31" aria-hidden="false">31</td>
+								<td tabindex="-1" role="button" data-day="0" aria-hidden="true"></td>
+								<td tabindex="-1" role="button" data-day="0" aria-hidden="true"></td>
+								<td tabindex="-1" role="button" data-day="0" aria-hidden="true"></td>
+								<td tabindex="-1" role="button" data-day="0" aria-hidden="true"></td>
+							</tr>
+								<td tabindex="-1" role="button" data-day="0" aria-hidden="true"></td>
+								<td tabindex="-1" role="button" data-day="0" aria-hidden="true"></td>
+								<td tabindex="-1" role="button" data-day="0" aria-hidden="true"></td>
+								<td tabindex="-1" role="button" data-day="0" aria-hidden="true"></td>
+								<td tabindex="-1" role="button" data-day="0" aria-hidden="true"></td>
+								<td tabindex="-1" role="button" data-day="0" aria-hidden="true"></td>
+								<td tabindex="-1" role="button" data-day="0" aria-hidden="true"></td>
+							</tr>
+							-->
+						</tbody>
+					</table>
+				</div>
+
+<p><a href="http://www.google.com">Lorem ipsum</a> dolor sit amet, consectetur adipisicing elit. Cupiditate ab dolor mollitia ut, quibusdam quod repellendus numquam, temporibus reiciendis aperiam recusandae architecto sunt maiores eaque sit ipsum adipisci, aspernatur atque!</p>
+
+<!--
+1) Date in field should match date on picker
+2) button should say "choose date from date picker"
+3) aria-describedby should say "type date or choose date from date picker using date picker button"
+4) button should say collapsed / expanded
+5) upon launch widget should say "date picker widget"
+6) there should be a close button on the date picker
+7) up and down arrows should navigate by week even if it jumps to previous month or year
+8) arrow should navigate by day
+9) shift right/left arrow should navigate by month
+10) shift up/down arrow should navigate by year
+11) hint should be given when date picker launches
+12) H for hint
+13) ESC to dismiss
+14) tabbing out dismisses (may also go to close button and month/year buttons)
+15) full word for day and month (i.e. not "sa" for saturday)
+16) aria-live for "13 May, 2016" rather than reading number in cell (polite to cut off and read new date) <span aria-hidden="true">13</span>
+17) TD role="link" tabindex="-1" for focusability
+18) TR role="presentation" ?
+19) Table role="application" ?  and aria-label="Calendar" ? (can I use table caption?)
+20) table as role="grid"?????? instead
+-->
+
+
+
+
+			</form>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+		<div aria-live="polite" class="screen-reader-text"></div>
+		<div role="alert" class="screen-reader-text"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+	<script type="text/javascript" src="js/date-picker.js"></script>
+</body>
+</html>
