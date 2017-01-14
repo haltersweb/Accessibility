@@ -25,7 +25,6 @@
                 month: d.getMonth(), //month as a number (0-11)
                 year: d.getFullYear() //four digit year (yyyy)
             };
-        //console.log(day);
         return day;
     }
     function setTheDate() {
@@ -35,8 +34,6 @@
         return ((year % 4 === 0) && ((year % 100 !== 0) || (year % 400 === 0)));
     }
     function daysInMonth({month, year} = {}) {
-        //console.log(month);
-        //console.log(year);
         switch (month) {
         case (1):
             return (leapYear(year)) ? 29 : 28;
@@ -69,8 +66,15 @@
                     dayIndex += 1;
                 }
                 emptyCell = (dayIndex === 0 || dayIndex > DAYS_IN_MONTH);
-                //tdHtml += '<td tabindex="0" role="button" aria-label="' + days[date.day] + ' ' + date.date + ' ' + months[date.month] + ' ' + date.year + '" data-day="' + (emptyCell ? 0 : dayIndex) + '" aria-hidden="' + emptyCell + '">' + (emptyCell ? '' : dayIndex) + '</td>';
-                tdHtml += '<td tabindex="0" role="button" aria-label="' + (emptyCell ? '' : (days[j] + ', ' + dayIndex + ' ' + months[date.month] + ', ' + date.year)) + '" data-day="' + (emptyCell ? 0 : dayIndex) + '" aria-hidden="' + emptyCell + '">' + (emptyCell ? '' : dayIndex) + '</td>';
+                tdHtml += '<td tabindex="0" role="button" '
+                        + 'class="' + ((dayIndex === date.date) ? 'selected' : '') + '" '
+                        + 'aria-label="' + (emptyCell ? '' : (days[j] + ', ' + dayIndex + ' ' + months[date.month] + ', ' + date.year))
+                        + '" data-date="' + (emptyCell ? 0 : dayIndex)
+                        + '" data-month="' + (emptyCell ? 0 : date.month)
+                        + '" data-year="' + (emptyCell ? 0 : date.year)
+                        + '" aria-hidden="' + emptyCell + '">'
+                        + (emptyCell ? '' : dayIndex)
+                        + '</td>';
             }
             tr.innerHTML = tdHtml;
             fragment.append(tr);
@@ -83,24 +87,46 @@
         let $datePickerGrid = $datePicker.find('tbody');
         $datePickerGrid.empty();
     }
+    function focusOnSelectedDate() {
+        document.querySelectorAll('.selected[data-date]')[0].focus();
+    }
     // opening calendar announces hint with aria-live
-    // esc triggers close button
-    // date focus announces date with aria-live
-    // on close (or maybe on selection) date populates in input field
-    // focus on current date
     // arrow keys change day focus
     // arrow keys may need to generate previous or next calendar
     // shift arrow keys change month/year by triggering <- -> <= =>
-    $launchDatePicker.on('click', function () {
-        $(this).attr('aria-expanded', 'true');
-        clearCalendar();
-        createCalendar();
-        $datePicker.show();
-    });
-    $closeDatePicker.on('click', function () {
-        $(this).attr('aria-expanded', 'false');
-        $datePicker.hide();
-        clearCalendar();
-    });
+    // tabbing away closes the widget
+    // when closes via esc focus goes back to trigger
+    // when closes via date select focus goes to date input field
+    function bindEvents() {
+        $launchDatePicker.on('click', function () {
+            $(this).attr('aria-expanded', 'true');
+            clearCalendar();
+            createCalendar();
+            $datePicker.show();
+            focusOnSelectedDate();
+        });
+        $closeDatePicker.on('click', function () {
+            $(this).attr('aria-expanded', 'false');
+            $datePicker.hide();
+            clearCalendar();
+        });
+        $('#datePicker').on('keydown', function (evt) {
+            if (evt.keyCode === NAME.keyboard.esc) {
+                $closeDatePicker.click();
+            }
+        });
+        $('#datePicker').on('click', '[data-date]', function () {
+            let $this = $(this),
+                dateQueryString = ($this.attr('data-month') + 1) + '/' + $this.attr('data-date') + '/' + $this.attr('data-year');
+            $dateInput.val(dateQueryString);
+            $closeDatePicker.click();
+        });
+        $('#datePicker').on('keydown', '[data-date]', function (evt) {
+            if (evt.keyCode === NAME.keyboard.space || evt.keyCode === NAME.keyboard.enter) {
+                $(this).click();
+            }
+        });
+    }
+    bindEvents();
 //TO DO: WRITE WITH VANILLA JS
 }(jQuery, NAME));
