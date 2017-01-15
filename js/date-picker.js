@@ -101,7 +101,7 @@
     // tabbing away closes the widget
     // when closes via esc focus goes back to trigger
     // when closes via date select focus goes to date input field
-    function bindEvents() {
+    function bindClickEvents() {
         $launchDatePicker.on('click', function () {
             $(this).attr('aria-expanded', 'true');
             clearCalendar();
@@ -114,26 +114,36 @@
             $datePicker.hide();
             clearCalendar();
         });
-        $('#datePicker').on('keydown', function (evt) {
-            if (evt.keyCode === NAME.keyboard.esc) {
-                $closeDatePicker.click();
-            }
-        });
         $('#datePicker').on('click', '[data-date]', function () {
             let $this = $(this),
                 dateQueryString = ($this.attr('data-month') + 1) + '/' + $this.attr('data-date') + '/' + $this.attr('data-year');
             $dateInput.val(dateQueryString);
             $closeDatePicker.click();
         });
-        $('#datePicker').on('keydown', '[data-date]', function (evt) {
+        $('#backOneMonth').on('click', function () {
+            let $this = $(this);
+            // calculate and retreat one month
+        });
+        $('#forwardOneMonth').on('click', function () {
+            let $this = $(this);
+            // calculate and forward one month
+        });
+    }
+    function bindKeyEvents() {
+        $('#datePicker').on('keydown', function (evt) {
+            // ESC key closes date picker
+            if (evt.keyCode === NAME.keyboard.esc) {
+                $closeDatePicker.click();
+            }
+        });
+        $('#datePicker').on('keydown', 'button', function (evt) {
+            // ENTER and SPACE clicks all buttons in the date picker
             if (evt.keyCode === NAME.keyboard.space || evt.keyCode === NAME.keyboard.enter) {
                 $(this).click();
             }
         });
-        // ARROW KEYS CHANGE DATE
-        // RIGHT/LEFT CHANGES BY DAY
-        // UP/DOWN CHANGES BY WEEK
         $('#datePicker').on('keydown', '[data-date]', function (evt) {
+            // ARROW keys change date.  right/left changes by day.  up/down changes by week
             let $this = $(this),
                 date = parseInt($this.attr('data-date')),
                 month = parseInt($this.attr('data-month')),
@@ -174,8 +184,7 @@
                 }
                 const DAYS_IN_MONTH = daysInMonth({month, year});
                 targetDate = DAYS_IN_MONTH + targetDate;
-            }
-            if (targetDate > DAYS_IN_MONTH) {
+            } else if (targetDate > DAYS_IN_MONTH) {
                 targetDate = targetDate - DAYS_IN_MONTH;
                 month = month + 1;
                 if (month === 12) {
@@ -190,6 +199,7 @@
         });
         // SHIFT+ARROW KEYS CLICK THE ADVANCE BY MONTH AND ADVANCE BY YEAR
     }
-    bindEvents();
+    bindClickEvents();
+    bindKeyEvents();
 //TO DO: WRITE WITH VANILLA JS
 }(jQuery, NAME));
