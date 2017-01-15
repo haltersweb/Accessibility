@@ -72,7 +72,7 @@
                     dayIndex += 1;
                 }
                 emptyCell = (dayIndex === 0 || dayIndex > DAYS_IN_MONTH);
-                tdHtml += '<td tabindex="0" role="button" '
+                tdHtml += '<td tabindex="-1" role="button" '
                         + 'class="' + ((dayIndex === date.date) ? 'selected' : '') + '" '
                         + 'aria-label="' + (emptyCell ? '' : (days[j] + ', ' + dayIndex + ' ' + months[date.month] + ', ' + date.year))
                         + '" data-date="' + (emptyCell ? '' : dayIndex)
@@ -97,8 +97,6 @@
         document.querySelectorAll('.selected[data-date]')[0].focus();
     }
     // opening calendar announces hint with aria-live
-    // arrow keys change day focus
-    // arrow keys may need to generate previous or next calendar
     // shift arrow keys change month/year by triggering <- -> <= =>
     // tabbing away closes the widget
     // when closes via esc focus goes back to trigger
@@ -132,6 +130,9 @@
                 $(this).click();
             }
         });
+        // ARROW KEYS CHANGE DATE
+        // RIGHT/LEFT CHANGES BY DAY
+        // UP/DOWN CHANGES BY WEEK
         $('#datePicker').on('keydown', '[data-date]', function (evt) {
             let $this = $(this),
                 date = parseInt($this.attr('data-date')),
@@ -166,12 +167,13 @@
                 return;
             }
             if (targetDate <= 0) {
-                targetDate = DAYS_IN_MONTH - targetDate;
                 month = month - 1;
                 if (month < 0) {
                     month = 11;
                     year = year - 1;
                 }
+                const DAYS_IN_MONTH = daysInMonth({month, year});
+                targetDate = DAYS_IN_MONTH + targetDate;
             }
             if (targetDate > DAYS_IN_MONTH) {
                 targetDate = targetDate - DAYS_IN_MONTH;
@@ -186,6 +188,7 @@
             $datePicker.show();
             focusOnSelectedDate();
         });
+        // SHIFT+ARROW KEYS CLICK THE ADVANCE BY MONTH AND ADVANCE BY YEAR
     }
     bindEvents();
 //TO DO: WRITE WITH VANILLA JS
