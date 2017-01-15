@@ -14,18 +14,25 @@
         $dateInput = $('#date'),
         days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    function getTheDate() {
-        // d is either the date in the input field or today's date
-        let d = ($dateInput.val() !== '')
+    function getTheDate(dateQueryString = '') {
+        let d, date;
+        // d is a Date object of the dateQueryString if passed.
+        // if no dateQueryString is passed then the Date object is created from:
+        // a) either the input field value or b) today's date
+        if (dateQueryString) {
+            d = new Date(dateQueryString);
+        } else {
+            d = ($dateInput.val())
                 ? new Date($dateInput.val())
-                : new Date(),
-            day = {
-                day: d.getDay(), //weekday as a number (0-6)
-                date: d.getDate(), //day as a number (1-31)
-                month: d.getMonth(), //month as a number (0-11)
-                year: d.getFullYear() //four digit year (yyyy)
-            };
-        return day;
+                : new Date();
+        }
+        date = {
+            day: d.getDay(), //weekday as a number (0-6)
+            date: d.getDate(), //day as a number (1-31)
+            month: d.getMonth(), //month as a number (0-11)
+            year: d.getFullYear() //four digit year (yyyy)
+        };
+        return date;
     }
     function setTheDate() {
 
@@ -46,11 +53,10 @@
             return 31;
         }
     }
-    function createCalendar() {
+    function createCalendar(date = {}) {
         let $monthAndYear = $datePicker.find('#monthAndYear'),
             $datePickerGrid = $datePicker.find('tbody'),
             dayIndex = 0,
-            date = getTheDate(),
             firstDayOfMonth = new Date((date.month + 1) + '/1/' + date.year).getDay();
         const DAYS_IN_MONTH = daysInMonth(date),
             DAYS_IN_WEEK = 7,
@@ -69,9 +75,9 @@
                 tdHtml += '<td tabindex="0" role="button" '
                         + 'class="' + ((dayIndex === date.date) ? 'selected' : '') + '" '
                         + 'aria-label="' + (emptyCell ? '' : (days[j] + ', ' + dayIndex + ' ' + months[date.month] + ', ' + date.year))
-                        + '" data-date="' + (emptyCell ? 0 : dayIndex)
-                        + '" data-month="' + (emptyCell ? 0 : date.month)
-                        + '" data-year="' + (emptyCell ? 0 : date.year)
+                        + '" data-date="' + (emptyCell ? '' : dayIndex)
+                        + '" data-month="' + (emptyCell ? '' : date.month)
+                        + '" data-year="' + (emptyCell ? '' : date.year)
                         + '" aria-hidden="' + emptyCell + '">'
                         + (emptyCell ? '' : dayIndex)
                         + '</td>';
@@ -101,7 +107,7 @@
         $launchDatePicker.on('click', function () {
             $(this).attr('aria-expanded', 'true');
             clearCalendar();
-            createCalendar();
+            createCalendar(getTheDate());
             $datePicker.show();
             focusOnSelectedDate();
         });
@@ -128,12 +134,13 @@
         });
         $('#datePicker').on('keydown', '[data-date]', function (evt) {
             let $this = $(this),
-                date = $this.attr('data-date'),
-                month = $this.attr('data-month'),
-                year = $this.attr('data-year'),
-                daysInMonth = daysInMonth({month, year}),
+                date = parseInt($this.attr('data-date')),
+                month = parseInt($this.attr('data-month')),
+                year = parseInt($this.attr('data-year')),
                 addend,
-                targetDate;
+                targetDate,
+                targetCell;
+            const DAYS_IN_MONTH = daysInMonth({month, year});
             switch (evt.keyCode) {
             case (NAME.keyboard.left):
                 addend = -1;
@@ -151,23 +158,33 @@
                 return false;
             }
             targetDate = date + addend;
+            targetCell = $('#datePicker').find('[data-date="' + targetDate + '"]');
+            $this.removeClass('selected');
+            if (targetCell[0]) {
+                targetCell.addClass('selected');
+                focusOnSelectedDate();
+                return;
+            }
             if (targetDate <= 0) {
-                targetDate = daysInMonth - targetDate;
+                targetDate = DAYS_IN_MONTH - targetDate;
                 month = month - 1;
                 if (month < 0) {
                     month = 11;
                     year = year - 1;
                 }
             }
-            if (targetDate > daysInMonth) {
-                targetDate = targetDate - daysInMonth;
+            if (targetDate > DAYS_IN_MONTH) {
+                targetDate = targetDate - DAYS_IN_MONTH;
                 month = month + 1;
                 if (month === 12) {
                     month = 0;
                     year = year + 1;
                 }
             }
-
+            clearCalendar();
+            createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
+            $datePicker.show();
+            focusOnSelectedDate();
         });
     }
     bindEvents();
