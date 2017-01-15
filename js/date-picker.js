@@ -13,7 +13,13 @@
         $closeDatePicker = $('#closeDatePicker'),
         $dateInput = $('#date'),
         days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-        months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        selected = {
+            date: undefined,
+            day: undefined,
+            month: undefined,
+            year: undefined
+        };
     function getTheDate(dateQueryString = '') {
         let d, date;
         // d is a Date object of the dateQueryString if passed.
@@ -33,9 +39,6 @@
             year: d.getFullYear() //four digit year (yyyy)
         };
         return date;
-    }
-    function setTheDate() {
-
     }
     function leapYear(year) {
         return ((year % 4 === 0) && ((year % 100 !== 0) || (year % 400 === 0)));
@@ -93,6 +96,14 @@
         let $datePickerGrid = $datePicker.find('tbody');
         $datePickerGrid.empty();
     }
+    function getSelectedDate() {
+        let $currentCell = $('.selected[data-date]');
+        selected = {
+            date: parseInt($currentCell.attr('data-date')),
+            month: parseInt($currentCell.attr('data-month')),
+            year: parseInt($currentCell.attr('data-year'))
+        };
+    }
     function focusOnSelectedDate() {
         document.querySelectorAll('.selected[data-date]')[0].focus();
     }
@@ -121,11 +132,42 @@
             $closeDatePicker.click();
         });
         $('#backOneMonth').on('click', function () {
-            let $this = $(this);
-            // calculate and retreat one month
+            getSelectedDate();
+            let $currentCell = $('.selected[data-date]'),
+                date = selected.date,
+                month = selected.month,
+                year = selected.year,
+                targetDate,
+                $targetCell;
+
+            // month = month - 1
+            // if month - 1 < 0 then month = 11
+            // if month === 11 then year = year - 1
+            // get num days in month of this prior month
+            /*
+
+                month = month - 1;
+                if (month < 0) {
+                    month = 11;
+                    year = year - 1;
+                }
+                const DAYS_IN_MONTH = daysInMonth({month, year});
+            */
+
+
+            // if date > num days in prior month date = num days in prior month
+
+
+            // clear calendar
+            // createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
+            // focus on selected
+            /*
+                clearCalendar();
+                createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
+                focusOnSelectedDate();
+            */
         });
         $('#forwardOneMonth').on('click', function () {
-            let $this = $(this);
             // calculate and forward one month
         });
     }
@@ -144,13 +186,14 @@
         });
         $('#datePicker').on('keydown', '[data-date]', function (evt) {
             // ARROW keys change date.  right/left changes by day.  up/down changes by week
-            let $this = $(this),
-                date = parseInt($this.attr('data-date')),
-                month = parseInt($this.attr('data-month')),
-                year = parseInt($this.attr('data-year')),
+            getSelectedDate();
+            let $currentCell = $('.selected[data-date]'),
+                date = selected.date,
+                month = selected.month,
+                year = selected.year,
                 addend,
                 targetDate,
-                targetCell;
+                $targetCell;
             const DAYS_IN_MONTH = daysInMonth({month, year});
             switch (evt.keyCode) {
             case (NAME.keyboard.left):
@@ -169,10 +212,10 @@
                 return false;
             }
             targetDate = date + addend;
-            targetCell = $('#datePicker').find('[data-date="' + targetDate + '"]');
-            $this.removeClass('selected');
-            if (targetCell[0]) {
-                targetCell.addClass('selected');
+            $targetCell = $('#datePicker').find('[data-date="' + targetDate + '"]');
+            $currentCell.removeClass('selected');
+            if ($targetCell[0]) {
+                $targetCell.addClass('selected');
                 focusOnSelectedDate();
                 return;
             }
@@ -194,7 +237,6 @@
             }
             clearCalendar();
             createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
-            $datePicker.show();
             focusOnSelectedDate();
         });
         // SHIFT+ARROW KEYS CLICK THE ADVANCE BY MONTH AND ADVANCE BY YEAR
