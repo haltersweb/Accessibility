@@ -47,7 +47,7 @@
         }
     }
     function createCalendar() {
-        let $monthYear = $datePicker.find('#monthYear'),
+        let $monthAndYear = $datePicker.find('#monthAndYear'),
             $datePickerGrid = $datePicker.find('tbody'),
             dayIndex = 0,
             date = getTheDate(),
@@ -81,7 +81,7 @@
             $datePickerGrid.append(fragment);
         }
         // populate month and year
-        $monthYear.text(months[date.month] + ' ' + date.year);
+        $monthAndYear.text(months[date.month] + ' ' + date.year);
     }
     function clearCalendar() {
         let $datePickerGrid = $datePicker.find('tbody');
@@ -125,6 +125,49 @@
             if (evt.keyCode === NAME.keyboard.space || evt.keyCode === NAME.keyboard.enter) {
                 $(this).click();
             }
+        });
+        $('#datePicker').on('keydown', '[data-date]', function (evt) {
+            let $this = $(this),
+                date = $this.attr('data-date'),
+                month = $this.attr('data-month'),
+                year = $this.attr('data-year'),
+                daysInMonth = daysInMonth({month, year}),
+                addend,
+                targetDate;
+            switch (evt.keyCode) {
+            case (NAME.keyboard.left):
+                addend = -1;
+                break;
+            case (NAME.keyboard.right):
+                addend = 1;
+                break;
+            case (NAME.keyboard.up):
+                addend = -7;
+                break;
+            case (NAME.keyboard.down):
+                addend = 7;
+                break;
+            default:
+                return false;
+            }
+            targetDate = date + addend;
+            if (targetDate <= 0) {
+                targetDate = daysInMonth - targetDate;
+                month = month - 1;
+                if (month < 0) {
+                    month = 11;
+                    year = year - 1;
+                }
+            }
+            if (targetDate > daysInMonth) {
+                targetDate = targetDate - daysInMonth;
+                month = month + 1;
+                if (month === 12) {
+                    month = 0;
+                    year = year + 1;
+                }
+            }
+
         });
     }
     bindEvents();
