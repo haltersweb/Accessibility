@@ -13,13 +13,7 @@
         $closeDatePicker = $('#closeDatePicker'),
         $dateInput = $('#date'),
         days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-        months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        selected = {
-            date: undefined,
-            day: undefined,
-            month: undefined,
-            year: undefined
-        };
+        months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     function getTheDate(dateQueryString = '') {
         let d, date;
         // d is a Date object of the dateQueryString if passed.
@@ -97,15 +91,22 @@
         $datePickerGrid.empty();
     }
     function getSelectedDate() {
-        let $currentCell = $('.selected[data-date]');
-        selected = {
-            date: parseInt($currentCell.attr('data-date')),
-            month: parseInt($currentCell.attr('data-month')),
-            year: parseInt($currentCell.attr('data-year'))
-        };
+        let $currentCell = $('.selected[data-date]'),
+            date = parseInt($currentCell.attr('data-date')),
+            month = parseInt($currentCell.attr('data-month')),
+            year = parseInt($currentCell.attr('data-year'));
+        return {$currentCell, date, month, year};
     }
     function focusOnSelectedDate() {
         document.querySelectorAll('.selected[data-date]')[0].focus();
+    }
+    function backOneMonth(m, y) {
+        m = m - 1;
+        if (m < 0) {
+            m = 11;
+            y = y - 1;
+        }
+        return {m, y};
     }
     // opening calendar announces hint with aria-live
     // shift arrow keys change month/year by triggering <- -> <= =>
@@ -132,14 +133,12 @@
             $closeDatePicker.click();
         });
         $('#backOneMonth').on('click', function () {
-            getSelectedDate();
-            let $currentCell = $('.selected[data-date]'),
-                date = selected.date,
-                month = selected.month,
-                year = selected.year,
+            let {date, month, year} = getSelectedDate(),
                 targetDate,
-                $targetCell;
-
+                $targetCell,
+                {m, y} = backOneMonth(month, year);
+            month = m;
+            year = y;
             // month = month - 1
             // if month - 1 < 0 then month = 11
             // if month === 11 then year = year - 1
@@ -186,11 +185,7 @@
         });
         $('#datePicker').on('keydown', '[data-date]', function (evt) {
             // ARROW keys change date.  right/left changes by day.  up/down changes by week
-            getSelectedDate();
-            let $currentCell = $('.selected[data-date]'),
-                date = selected.date,
-                month = selected.month,
-                year = selected.year,
+            let {$currentCell, date, month, year} = getSelectedDate(),
                 addend,
                 targetDate,
                 $targetCell;
@@ -220,11 +215,16 @@
                 return;
             }
             if (targetDate <= 0) {
+                let {m, y} = backOneMonth(month, year);
+                month = m;
+                year = y;
+                /*
                 month = month - 1;
                 if (month < 0) {
                     month = 11;
                     year = year - 1;
                 }
+                */
                 const DAYS_IN_MONTH = daysInMonth({month, year});
                 targetDate = DAYS_IN_MONTH + targetDate;
             } else if (targetDate > DAYS_IN_MONTH) {
