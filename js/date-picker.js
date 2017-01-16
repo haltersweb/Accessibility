@@ -37,7 +37,7 @@
     function leapYear(year) {
         return ((year % 4 === 0) && ((year % 100 !== 0) || (year % 400 === 0)));
     }
-    function daysInMonth({month, year} = {}) {
+    function daysInMonth(month, year) {
         switch (month) {
         case (1):
             return (leapYear(year)) ? 29 : 28;
@@ -54,10 +54,12 @@
         let $monthAndYear = $datePicker.find('#monthAndYear'),
             $datePickerGrid = $datePicker.find('tbody'),
             dayIndex = 0,
-            firstDayOfMonth = new Date((date.month + 1) + '/1/' + date.year).getDay();
-        const DAYS_IN_MONTH = daysInMonth(date),
-            DAYS_IN_WEEK = 7,
+            firstDayOfMonth = new Date((date.month + 1) + '/1/' + date.year).getDay(),
+            numDaysInMo = daysInMonth(date.month, date.year);
+        const DAYS_IN_WEEK = 7,
             NUM_ROWS = 6;
+        // always clear calendar first
+        clearCalendar();
         // create days grid
         for (let i = 0; i < NUM_ROWS; i += 1) {
             let tr = document.createElement('tr'),
@@ -68,7 +70,7 @@
                 if ((dayIndex !== 0) || (j >= firstDayOfMonth)) {
                     dayIndex += 1;
                 }
-                emptyCell = (dayIndex === 0 || dayIndex > DAYS_IN_MONTH);
+                emptyCell = (dayIndex === 0 || dayIndex > numDaysInMo);
                 tdHtml += '<td tabindex="-1" role="button" '
                         + 'class="' + ((dayIndex === date.date) ? 'selected' : '') + '" '
                         + 'aria-label="' + (emptyCell ? '' : (days[j] + ', ' + dayIndex + ' ' + months[date.month] + ', ' + date.year))
@@ -100,23 +102,40 @@
     function focusOnSelectedDate() {
         document.querySelectorAll('.selected[data-date]')[0].focus();
     }
-    function backOneMonth(month, year) {
-        month = month - 1;
-        if (month < 0) {
-            month = 11;
-            year = year - 1;
+    function changeByMonth(month, year, back = false) {
+        let numDaysInMo,
+            addend = 1;
+        if (back) {
+            addend = -1;
         }
-        return {month, year};
+        month = month + addend;
+        if ((month < 0) || (month === 12)) {
+            month = (month < 0) ? (month = 11) : month = 0;
+            year = year + addend;
+        }
+        numDaysInMo = daysInMonth(month, year);
+        return {month, year, numDaysInMo};
+    }
+
+    function changeByYear(month, year, back = false) {
+        let numDaysInMo,
+            addend = 1;
+        if (back) {
+            addend = -1;
+        }
+        year = year + addend;
+        numDaysInMo = daysInMonth(month, year);
+        return {year, numDaysInMo};
     }
     // opening calendar announces hint with aria-live
-    // shift arrow keys change month/year by triggering <- -> <= =>
+    // shift L/R arrow keys change month by triggering <- ->
+    // shift U/D arrow keys change year by triggering <= =>
     // tabbing away closes the widget
     // when closes via esc focus goes back to trigger
     // when closes via date select focus goes to date input field
     function bindClickEvents() {
         $launchDatePicker.on('click', function () {
             $(this).attr('aria-expanded', 'true');
-            clearCalendar();
             createCalendar(getTheDate());
             $datePicker.show();
             focusOnSelectedDate();
@@ -124,7 +143,6 @@
         $closeDatePicker.on('click', function () {
             $(this).attr('aria-expanded', 'false');
             $datePicker.hide();
-            clearCalendar();
         });
         $('#datePicker').on('click', '[data-date]', function () {
             let $this = $(this),
@@ -132,41 +150,29 @@
             $dateInput.val(dateQueryString);
             $closeDatePicker.click();
         });
-        $('#backOneMonth').on('click', function () {
+        $('#backOneMonth, #forwardOneMonth').on('click', function () {
             let {date, month, year} = getSelectedDate(),
                 targetDate,
-                $targetCell;
-            ({month, year} = backOneMonth(month, year));
-
-            // month = month - 1
-            // if month - 1 < 0 then month = 11
-            // if month === 11 then year = year - 1
-            // get num days in month of this prior month
-            /*
-
-                month = month - 1;
-                if (month < 0) {
-                    month = 11;
-                    year = year - 1;
-                }
-                const DAYS_IN_MONTH = daysInMonth({month, year});
-            */
-
-
-            // if date > num days in prior month date = num days in prior month
-
-
-            // clear calendar
-            // createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
-            // focus on selected
-            /*
-                clearCalendar();
-                createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
-                focusOnSelectedDate();
-            */
+                numDaysInMo,
+                back = (this.id === 'backOneMonth') ? true : false;
+            // get the prior month, year, and num days in this prior month
+            ({month, year, numDaysInMo} = changeByMonth(month, year, back));
+            // if date > # days in prior month, target date = # days in prior month (else same as date)
+            targetDate = (date > numDaysInMo) ? numDaysInMo : date;
+            createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
+            focusOnSelectedDate();
         });
-        $('#forwardOneMonth').on('click', function () {
-            // calculate and forward one month
+        $('#backOneYear, #forwardOneYear').on('click', function () {
+            let {date, month, year} = getSelectedDate(),
+                targetDate,
+                numDaysInMo,
+                back = (this.id === 'backOneYear') ? true : false;
+            // get the prior year, and num days in the month of the year (aka Feb)
+            ({year, numDaysInMo} = changeByYear(month, year, back));
+            // if date > # days in prior year's month (aka Feb), target date = # days in year's month (else same as date)
+            targetDate = (date > numDaysInMo) ? numDaysInMo : date;
+            createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
+            focusOnSelectedDate();
         });
     }
     function bindKeyEvents() {
@@ -187,8 +193,8 @@
             let {$currentCell, date, month, year} = getSelectedDate(),
                 addend,
                 targetDate,
-                $targetCell;
-            const DAYS_IN_MONTH = daysInMonth({month, year});
+                $targetCell,
+                numDaysInMo = daysInMonth(month, year);
             switch (evt.keyCode) {
             case (NAME.keyboard.left):
                 addend = -1;
@@ -214,29 +220,17 @@
                 return;
             }
             if (targetDate <= 0) {
-                ({month, year} = backOneMonth(month, year));
-                /*
-                month = month - 1;
-                if (month < 0) {
-                    month = 11;
-                    year = year - 1;
-                }
-                */
-                const DAYS_IN_MONTH = daysInMonth({month, year});
-                targetDate = DAYS_IN_MONTH + targetDate;
-            } else if (targetDate > DAYS_IN_MONTH) {
-                targetDate = targetDate - DAYS_IN_MONTH;
-                month = month + 1;
-                if (month === 12) {
-                    month = 0;
-                    year = year + 1;
-                }
+                ({month, year, numDaysInMo} = changeByMonth(month, year, true));
+                targetDate = numDaysInMo + targetDate;
+            } else if (targetDate > numDaysInMo) {
+                targetDate = targetDate - numDaysInMo;
+                ({month, year} = changeByMonth(month, year));
             }
-            clearCalendar();
             createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
             focusOnSelectedDate();
         });
-        // SHIFT+ARROW KEYS CLICK THE ADVANCE BY MONTH AND ADVANCE BY YEAR
+        // SHIFT+R/L KEYS CLICK THE ADVANCE BY MONTH
+        // SHIFT+U/D KEYS CLICK THE ADVANCE BY YEAR
     }
     bindClickEvents();
     bindKeyEvents();
