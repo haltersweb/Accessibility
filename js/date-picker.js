@@ -133,22 +133,26 @@
     // tabbing away closes the widget
     // when closes via esc focus goes back to trigger
     // when closes via date select focus goes to date input field
+    // if tab to picker controls and then tab forward back into calendar, should focus on selected
     function bindClickEvents() {
         $launchDatePicker.on('click', function () {
             $(this).attr('aria-expanded', 'true');
             createCalendar(getTheDate());
             $datePicker.show();
             focusOnSelectedDate();
+            return;
         });
         $closeDatePicker.on('click', function () {
             $(this).attr('aria-expanded', 'false');
             $datePicker.hide();
+            return;
         });
         $('#datePicker').on('click', '[data-date]', function () {
             let $this = $(this),
                 dateQueryString = ($this.attr('data-month') + 1) + '/' + $this.attr('data-date') + '/' + $this.attr('data-year');
             $dateInput.val(dateQueryString);
             $closeDatePicker.click();
+            return;
         });
         $('#backOneMonth, #forwardOneMonth').on('click', function () {
             let {date, month, year} = getSelectedDate(),
@@ -161,6 +165,7 @@
             targetDate = (date > numDaysInMo) ? numDaysInMo : date;
             createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
             focusOnSelectedDate();
+            return;
         });
         $('#backOneYear, #forwardOneYear').on('click', function () {
             let {date, month, year} = getSelectedDate(),
@@ -173,6 +178,7 @@
             targetDate = (date > numDaysInMo) ? numDaysInMo : date;
             createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
             focusOnSelectedDate();
+            return;
         });
     }
     function bindKeyEvents() {
@@ -180,12 +186,14 @@
             // ESC key closes date picker
             if (evt.keyCode === NAME.keyboard.esc) {
                 $closeDatePicker.click();
+                return;
             }
         });
         $('#datePicker').on('keydown', 'button', function (evt) {
             // ENTER and SPACE clicks all buttons in the date picker
             if (evt.keyCode === NAME.keyboard.space || evt.keyCode === NAME.keyboard.enter) {
                 $(this).click();
+                return;
             }
         });
         $('#datePicker').on('keydown', '[data-date]', function (evt) {
@@ -195,6 +203,9 @@
                 targetDate,
                 $targetCell,
                 numDaysInMo = daysInMonth(month, year);
+            if (evt.shiftKey) {
+                return;
+            }
             switch (evt.keyCode) {
             case (NAME.keyboard.left):
                 addend = -1;
@@ -228,9 +239,30 @@
             }
             createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
             focusOnSelectedDate();
+            return;
         });
         // SHIFT+R/L KEYS CLICK THE ADVANCE BY MONTH
+        $('#datePicker').on('keydown', '[data-date]', function (evt) {
+            if (evt.shiftKey && (evt.keyCode === NAME.keyboard.right || evt.keyCode === NAME.keyboard.left)) {
+                if (evt.keyCode === NAME.keyboard.left) {
+                    $('#backOneMonth').click();
+                    return;
+                }
+                $('#forwardOneMonth').click();
+                return;
+            }
+        });
         // SHIFT+U/D KEYS CLICK THE ADVANCE BY YEAR
+        $('#datePicker').on('keydown', '[data-date]', function (evt) {
+            if (evt.shiftKey && (evt.keyCode === NAME.keyboard.up || evt.keyCode === NAME.keyboard.down)) {
+                if (evt.keyCode === NAME.keyboard.up) {
+                    $('#backOneYear').click();
+                    return;
+                }
+                $('#forwardOneYear').click();
+                return;
+            }
+        });
     }
     bindClickEvents();
     bindKeyEvents();
