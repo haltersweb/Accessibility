@@ -100,13 +100,13 @@
     function focusOnSelectedDate() {
         document.querySelectorAll('.selected[data-date]')[0].focus();
     }
-    function backOneMonth(m, y) {
-        m = m - 1;
-        if (m < 0) {
-            m = 11;
-            y = y - 1;
+    function backOneMonth(month, year) {
+        month = month - 1;
+        if (month < 0) {
+            month = 11;
+            year = year - 1;
         }
-        return {m, y};
+        return {month, year};
     }
     // opening calendar announces hint with aria-live
     // shift arrow keys change month/year by triggering <- -> <= =>
@@ -135,10 +135,9 @@
         $('#backOneMonth').on('click', function () {
             let {date, month, year} = getSelectedDate(),
                 targetDate,
-                $targetCell,
-                {m, y} = backOneMonth(month, year);
-            month = m;
-            year = y;
+                $targetCell;
+            ({month, year} = backOneMonth(month, year));
+
             // month = month - 1
             // if month - 1 < 0 then month = 11
             // if month === 11 then year = year - 1
@@ -215,9 +214,7 @@
                 return;
             }
             if (targetDate <= 0) {
-                let {m, y} = backOneMonth(month, year);
-                month = m;
-                year = y;
+                ({month, year} = backOneMonth(month, year));
                 /*
                 month = month - 1;
                 if (month < 0) {
