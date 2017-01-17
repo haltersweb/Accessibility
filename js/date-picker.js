@@ -34,9 +34,11 @@
         };
         return date;
     }
+    // returns true if the year is a leap year
     function leapYear(year) {
         return ((year % 4 === 0) && ((year % 100 !== 0) || (year % 400 === 0)));
     }
+    // get the number of days in a particular month for particular year (feb leap year)
     function daysInMonth(month, year) {
         switch (month) {
         case (1):
@@ -88,10 +90,12 @@
         // populate month and year
         $monthAndYear.text(months[date.month] + ' ' + date.year);
     }
+    // remove all markup from the tbody of the calendar grid table
     function clearCalendar() {
         let $datePickerGrid = $datePicker.find('tbody');
         $datePickerGrid.empty();
     }
+    // which date on the grid is currently selected?  returns the grid cell and mo, date, yr
     function getSelectedDate() {
         let $currentCell = $('.selected[data-date]'),
             date = parseInt($currentCell.attr('data-date')),
@@ -99,9 +103,11 @@
             year = parseInt($currentCell.attr('data-year'));
         return {$currentCell, date, month, year};
     }
+    // focus on the td[role=button] grid cell that is currently selected (assumes only one)
     function focusOnSelectedDate() {
         document.querySelectorAll('.selected[data-date]')[0].focus();
     }
+    // returns the next or prior month, year, and the number of days in that month
     function changeByMonth(month, year, back = false) {
         let numDaysInMo,
             addend = 1;
@@ -116,7 +122,7 @@
         numDaysInMo = daysInMonth(month, year);
         return {month, year, numDaysInMo};
     }
-
+    // returns the next or prior year and the number of days in the month during that year (i.e. feb leap)
     function changeByYear(month, year, back = false) {
         let numDaysInMo,
             addend = 1;
@@ -127,144 +133,197 @@
         numDaysInMo = daysInMonth(month, year);
         return {year, numDaysInMo};
     }
-    // opening calendar announces hint with aria-live
-    // shift L/R arrow keys change month by triggering <- ->
-    // shift U/D arrow keys change year by triggering <= =>
-    // tabbing away closes the widget
-    // when closes via esc focus goes back to trigger
-    // when closes via date select focus goes to date input field
-    // if tab to picker controls and then tab forward back into calendar, should focus on selected
     function bindClickEvents() {
+        // when button to launch date picker is clicked:
+            //change its aria-expanded state
+            //show the date picker
+            //focus on either the date in the input field or the current date if input field is empty
         $launchDatePicker.on('click', function () {
             $(this).attr('aria-expanded', 'true');
             createCalendar(getTheDate());
             $datePicker.show();
             focusOnSelectedDate();
-            return;
+            return false;
         });
+        // when button to close the date picker is clicked:
+            // change the launcher button's aria-expanded state
+            // hide the date picker
+            // focus on the launcher button
         $closeDatePicker.on('click', function () {
-            $(this).attr('aria-expanded', 'false');
+            $launchDatePicker.attr('aria-expanded', 'false');
             $datePicker.hide();
-            return;
+            $launchDatePicker.focus();
+            return false;
         });
-        $('#datePicker').on('click', '[data-date]', function () {
+        // when a date cell (with a date in it) is clicked on:
+            // get the date assigned to this cell
+            // put that value into the date input field
+            // close the date picker
+            //focus on the date input field
+        $('#datePicker').on('click', '[data-date]:not([data-date=""])', function () {
             let $this = $(this),
                 dateQueryString = ($this.attr('data-month') + 1) + '/' + $this.attr('data-date') + '/' + $this.attr('data-year');
             $dateInput.val(dateQueryString);
             $closeDatePicker.click();
-            return;
+            $dateInput.focus();
+            return false;
         });
+        // when the back/forward month button is clicked
+            // decide whether it is forward or backward
+            // get the new month date
+            // generate new calendar
+            // focus on new date
         $('#backOneMonth, #forwardOneMonth').on('click', function () {
             let {date, month, year} = getSelectedDate(),
                 targetDate,
                 numDaysInMo,
                 back = (this.id === 'backOneMonth') ? true : false;
-            // get the prior month, year, and num days in this prior month
+            // get the prior/next month, year, and num days in this prior/next month
             ({month, year, numDaysInMo} = changeByMonth(month, year, back));
-            // if date > # days in prior month, target date = # days in prior month (else same as date)
+            // if date > # days in this new month, target date = # days in new month (else same as prior date)
             targetDate = (date > numDaysInMo) ? numDaysInMo : date;
             createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
             focusOnSelectedDate();
-            return;
+            return false;
         });
+        // when the back/forward year button is clidked
+            // decide whether it is forward or backward
+            // get the new year date
+            // generate new calendar
+            // focus on new date
         $('#backOneYear, #forwardOneYear').on('click', function () {
             let {date, month, year} = getSelectedDate(),
                 targetDate,
                 numDaysInMo,
                 back = (this.id === 'backOneYear') ? true : false;
-            // get the prior year, and num days in the month of the year (aka Feb)
+            // get the prior/next year, and num days in the month of the year (aka Feb)
             ({year, numDaysInMo} = changeByYear(month, year, back));
-            // if date > # days in prior year's month (aka Feb), target date = # days in year's month (else same as date)
+            // if date > # days in new year's month (aka Feb), target date = # days in new year's month (else same as date)
             targetDate = (date > numDaysInMo) ? numDaysInMo : date;
             createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
             focusOnSelectedDate();
-            return;
+            return false;
+        });
+        // if the area outside the date picker is clicked
+            // (figure this out by seeing if the target clicked is within the date picker)
+            // then close the date picker if it is currently opened
+        $(document).on('click', function (evt) {
+            if (($(evt.target).closest($datePicker).length === 0) && ($launchDatePicker.attr('aria-expanded') === 'true')) {
+                $closeDatePicker.click();
+                return false;
+            }
         });
     }
     function bindKeyEvents() {
+        // ESC key clicks close date picker
         $('#datePicker').on('keydown', function (evt) {
-            // ESC key closes date picker
             if (evt.keyCode === NAME.keyboard.esc) {
                 $closeDatePicker.click();
-                return;
-            }
-        });
-        $('#datePicker').on('keydown', 'button', function (evt) {
-            // ENTER and SPACE clicks all buttons in the date picker
-            if (evt.keyCode === NAME.keyboard.space || evt.keyCode === NAME.keyboard.enter) {
-                $(this).click();
-                return;
-            }
-        });
-        $('#datePicker').on('keydown', '[data-date]', function (evt) {
-            // ARROW keys change date.  right/left changes by day.  up/down changes by week
-            let {$currentCell, date, month, year} = getSelectedDate(),
-                addend,
-                targetDate,
-                $targetCell,
-                numDaysInMo = daysInMonth(month, year);
-            if (evt.shiftKey) {
-                return;
-            }
-            switch (evt.keyCode) {
-            case (NAME.keyboard.left):
-                addend = -1;
-                break;
-            case (NAME.keyboard.right):
-                addend = 1;
-                break;
-            case (NAME.keyboard.up):
-                addend = -7;
-                break;
-            case (NAME.keyboard.down):
-                addend = 7;
-                break;
-            default:
                 return false;
             }
-            targetDate = date + addend;
-            $targetCell = $('#datePicker').find('[data-date="' + targetDate + '"]');
-            $currentCell.removeClass('selected');
-            if ($targetCell[0]) {
-                $targetCell.addClass('selected');
-                focusOnSelectedDate();
-                return;
-            }
-            if (targetDate <= 0) {
-                ({month, year, numDaysInMo} = changeByMonth(month, year, true));
-                targetDate = numDaysInMo + targetDate;
-            } else if (targetDate > numDaysInMo) {
-                targetDate = targetDate - numDaysInMo;
-                ({month, year} = changeByMonth(month, year));
-            }
-            createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
-            focusOnSelectedDate();
-            return;
         });
-        // SHIFT+R/L KEYS CLICK THE ADVANCE BY MONTH
+        // ENTER and SPACE clicks all buttons in the date picker
+        $('#datePicker').on('keydown', '[data-date]', function (evt) {
+            if (evt.keyCode === NAME.keyboard.space || evt.keyCode === NAME.keyboard.enter) {
+                $(this).click();
+                return false;
+            }
+        });
+        // ARROW keys change date.  right/left changes by day.  up/down changes by week
+        $('#datePicker').on('keydown', '[data-date]', function (evt) {
+            if (!evt.shiftKey &&
+                    (evt.keyCode === NAME.keyboard.right ||
+                        evt.keyCode === NAME.keyboard.left ||
+                        evt.keyCode === NAME.keyboard.up ||
+                        evt.keyCode === NAME.keyboard.down)) {
+                let {$currentCell, date, month, year} = getSelectedDate(),
+                    addend,
+                    targetDate,
+                    $targetCell,
+                    numDaysInMo = daysInMonth(month, year);
+                switch (evt.keyCode) {
+                case (NAME.keyboard.left):
+                    addend = -1;
+                    break;
+                case (NAME.keyboard.right):
+                    addend = 1;
+                    break;
+                case (NAME.keyboard.up):
+                    addend = -7;
+                    break;
+                case (NAME.keyboard.down):
+                    addend = 7;
+                    break;
+                default:
+                    return false;
+                }
+                targetDate = date + addend;
+                $targetCell = $('#datePicker').find('[data-date="' + targetDate + '"]');
+                $currentCell.removeClass('selected');
+                if ($targetCell[0]) {
+                    $targetCell.addClass('selected');
+                    focusOnSelectedDate();
+                    return false;
+                }
+                if (targetDate <= 0) {
+                    ({month, year, numDaysInMo} = changeByMonth(month, year, true));
+                    targetDate = numDaysInMo + targetDate;
+                } else if (targetDate > numDaysInMo) {
+                    targetDate = targetDate - numDaysInMo;
+                    ({month, year} = changeByMonth(month, year));
+                }
+                createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
+                focusOnSelectedDate();
+                return false;
+            }
+        });
+        // SHIFT+R/L keys click the forward/back by month buttons when the picker cells have focus
         $('#datePicker').on('keydown', '[data-date]', function (evt) {
             if (evt.shiftKey && (evt.keyCode === NAME.keyboard.right || evt.keyCode === NAME.keyboard.left)) {
                 if (evt.keyCode === NAME.keyboard.left) {
                     $('#backOneMonth').click();
-                    return;
+                    return false;
                 }
                 $('#forwardOneMonth').click();
-                return;
+                return false;
             }
         });
-        // SHIFT+U/D KEYS CLICK THE ADVANCE BY YEAR
+        // SHIFT+U/D keys click the forward/back by year buttons when the picker cells have focus
         $('#datePicker').on('keydown', '[data-date]', function (evt) {
             if (evt.shiftKey && (evt.keyCode === NAME.keyboard.up || evt.keyCode === NAME.keyboard.down)) {
                 if (evt.keyCode === NAME.keyboard.up) {
                     $('#backOneYear').click();
-                    return;
+                    return false;
                 }
                 $('#forwardOneYear').click();
-                return;
+                return false;
+            }
+        });
+        // TAB on last calendar control (#forwardOneMonth) takes focus back into calendar grid
+        $('#datePicker').on('keydown', '#forwardOneMonth', function (evt) {
+            if (!evt.shiftKey && evt.keyCode === NAME.keyboard.tab) {
+                focusOnSelectedDate();
+                return false;
+            }
+        });
+        // SHIFT TAB on first calendar control (#close) closes date picker
+        $('#datePicker').on('keydown', '#closeDatePicker', function (evt) {
+            if (evt.shiftKey && evt.keyCode === NAME.keyboard.tab) {
+                $closeDatePicker.click();
+                return false;
+            }
+        });
+        // TAB on last calendar control (.selected) closes date picker
+        $('#datePicker').on('keydown', '.selected[data-date]', function (evt) {
+            if (!evt.shiftKey && evt.keyCode === NAME.keyboard.tab) {
+                $closeDatePicker.click();
+                return false;
             }
         });
     }
-    bindClickEvents();
     bindKeyEvents();
+    bindClickEvents();
+// TO DO: focus on launch picker button announces hint with aria-live
+// TO DO: create hints button
 //TO DO: WRITE WITH VANILLA JS
 }(jQuery, NAME));

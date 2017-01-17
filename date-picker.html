@@ -18,9 +18,10 @@
 			<form action="">
 				<p>
 					<!-- USE TYPE=DATE FOR MOBILE <label for="date">Date</label><input type="date" id="date" /> -->
-					<label for="date">Date</label><input id="date" aria-describedby="launchDatePickerDesc" />
-					<button type="button" id="launchDatePicker" aria-owns="datePickerModal" aria-expanded="false">Choose Date <span class="screen-reader-text">using the date picker</span></button>
-					<div id="launchDatePickerDesc">Type in format of MM/DD/YYYY or use the date picker to select a date</div>
+					<label for="date">Date</label><input id="date" aria-describedby="dateDesc" />
+					<button type="button" id="launchDatePicker" aria-describedby="launchDatePickerDesc" aria-owns="datePickerModal" aria-expanded="false">Choose Date <span class="screen-reader-text">using the date picker</span></button>
+					<div id="dateDesc">Type in format of MM/DD/YYYY or use the date picker to select a date</div>
+					<div id="launchDatePickerDesc" style="display: none;">If using date picker left and right arrows advance by day. Up and down arrows advance by week. Shift left and right advance by month. Shift up and down advance by year.</div>
 				</p>
 				<p>
 					<!-- USE TYPE=TIME FOR MOBILE <label for="time">Time</label><input type="time" id="time" /> -->
@@ -30,19 +31,19 @@
 						<button id="closeDatePicker" type="button">Close<span class="screen-reader-text"> date picker</span></button>
 					</div>
 					<div>
-						<button id="backOneMonth" type="button">previous month</button>
-						<button id="forwardOneMonth" type="button">next month</button>
-					</div>
-					<div>
 						<button id="backOneYear" type="button">previous year</button>
 						<button id="forwardOneYear" type="button">next year</button>
+					</div>
+					<div>
+						<button id="backOneMonth" type="button">previous month</button>
+						<button id="forwardOneMonth" type="button">next month</button>
 					</div>
 					<table id="datePickerCalendar" role="presentation">
 						<caption>
 							<h2 id="monthAndYear"></h2>
 						</caption>
 						<thead>
-							<tr>
+							<tr role="application">
 								<th scope="col"><span aria-hidden="true">SUN</span><span class="screen-reader-text">Sunday</span></th>
 								<th scope="col"><span aria-hidden="true">MON</span><span class="screen-reader-text">Monday</span></th>
 								<th scope="col"><span aria-hidden="true">TUE</span><span class="screen-reader-text">Tuesday</span></th>
