@@ -14,6 +14,7 @@
 			<h1>Accessible Date Picker</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
 			<p><strong>NOTE: This solution is written using ES2015 and is not compatible with IE11.</strong></p>
+			<p>This is also written with a mixture of vanilla JS and jQuery.  I would like to eventually write in all vanilla.</p>
 			<p>For mobile I suggest overriding this with the native date input functionality.</p>
 			<form action="">
 				<p>
@@ -40,8 +41,9 @@
 					</div>
 					<div>
 						<button id="goToToday" type="button">today</button>
-						<button id="keyboardShortcuts" type="button">keyboard shortcuts</button>
+						<button id="showKeyboardShortcuts" type="button" aria-owns="keyboardShortcuts" aria-expanded="false">keyboard shortcuts</button>
 					</div>
+					<p id="keyboardShortcuts" tabindex="-1" style="display: none;">left and right arrows advance by day. Up and down arrows advance by week. Shift left and right advance by month. Shift up and down advance by year.</p>
 					<table id="datePickerCalendar" role="application">
 						<caption>
 							<h2 id="monthAndYear"></h2>

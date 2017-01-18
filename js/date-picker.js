@@ -8,6 +8,7 @@
 */
 (function ($, NAME) {
     'use strict';
+    //TO DO: WRITE WITH VANILLA JS
     var $datePicker = $('#datePicker'),
         $launchDatePicker = $('#launchDatePicker'),
         $closeDatePicker = $('#closeDatePicker'),
@@ -220,6 +221,17 @@
                 return false;
             }
         });
+        $('#showKeyboardShortcuts').on('click', function () {
+            let $this = $(this),
+                $content = $('#' + $this.attr('aria-owns'));
+            $content.toggle();
+            if ($content.is(':visible')) {
+                $this.attr('aria-expanded', 'true');
+                return false;
+            }
+            $this.attr('aria-expanded', 'false');
+            return false;
+        });
     }
     function bindKeyEvents() {
         // ESC key clicks close date picker
@@ -306,30 +318,31 @@
                 return false;
             }
         });
-        // TAB on last calendar control (#forwardOneMonth) takes focus back into calendar grid
-        $('#datePicker').on('keydown', '#forwardOneMonth', function (evt) {
+        // TAB on last picker control (#forwardOneMonth) takes focus into calendar grid's currently selected date
+            // assign event to last button inside picker. This assumes that all buttons are before the picker grid.
+        $('#datePicker').find('button').last().on('keydown', function (evt) {
             if (!evt.shiftKey && evt.keyCode === NAME.keyboard.tab) {
                 focusOnSelectedDate();
                 return false;
             }
         });
-        // SHIFT TAB on first calendar control (#close) closes date picker
-        $('#datePicker').on('keydown', '#closeDatePicker', function (evt) {
+        // SHIFT+TAB on first calendar control closes date picker
+            // assign event to last button inside picker. This assumes that all buttons are before the picker grid.
+        $('#datePicker').find('button').first().on('keydown', function (evt) {
             if (evt.shiftKey && evt.keyCode === NAME.keyboard.tab) {
                 $closeDatePicker.click();
                 return false;
             }
         });
-        // TAB on last calendar control (.selected) closes date picker
+        // TAB on last date in picker grid (.selected) closes date picker
         $('#datePicker').on('keydown', '.selected[data-date]', function (evt) {
             if (!evt.shiftKey && evt.keyCode === NAME.keyboard.tab) {
-                $closeDatePicker.click();
-                return false;
+                $launchDatePicker.attr('aria-expanded', 'false');
+                $datePicker.hide();
+                return true; // true instead of false so tab carries on
             }
         });
     }
     bindKeyEvents();
     bindClickEvents();
-// TO DO: create hints button
-//TO DO: WRITE WITH VANILLA JS
 }(jQuery, NAME));
