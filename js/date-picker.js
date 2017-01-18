@@ -204,6 +204,13 @@
             focusOnSelectedDate();
             return false;
         });
+        // button generates this month's calendar and takes you to today's date on the calendar
+        $('#goToToday').on('click', function () {
+            let d = new Date();
+            createCalendar(getTheDate((d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear()));
+            focusOnSelectedDate();
+            return false;
+        });
         // if the area outside the date picker is clicked
             // (figure this out by seeing if the target clicked is within the date picker)
             // then close the date picker if it is currently opened
@@ -323,7 +330,6 @@
     }
     bindKeyEvents();
     bindClickEvents();
-// TO DO: focus on launch picker button announces hint with aria-live
 // TO DO: create hints button
 //TO DO: WRITE WITH VANILLA JS
 }(jQuery, NAME));
