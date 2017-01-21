@@ -7,18 +7,24 @@
 (function ($) {
     'use strict';
     NAME.keyboard = {
-        ctrl: 17,
+        back: 8, // delete key on mac
         tab: 9,
         enter: 13,
+        shift: 16, // shiftKey = true
+        ctrl: 17, // ctrlKey = true
+        alt: 18, // (a.k.a. option on Mac) altKey = true
         esc: 27,
         space: 32,
+        pageUp: 33, // fn + up on mac
+        pageDown: 34, // fn + down on mac
+        end: 35, // fn + right on mac
+        home: 36, // fn + left on mac
         left: 37,
         up: 38,
         right: 39,
         down: 40,
-        back: 8,
-        del: 46,
-        shift: 16
+        del: 46, // fn + delete on mac
+        command: 91 // metaKey = true (mac and sun machines)
     };
     /*
     a string of selectors identifying focusable elements.
