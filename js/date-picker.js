@@ -248,7 +248,8 @@
                 return false;
             }
         });
-        // ARROW keys change date.  right/left changes by day.  up/down changes by week
+        // Change date
+            // ARROW keys change date.  right/left changes by day.  up/down changes by week
         $('#datePicker').on('keydown', '[data-date]', function (evt) {
             if (!evt.shiftKey &&
                     (evt.keyCode === NAME.keyboard.right ||
@@ -296,10 +297,11 @@
                 return false;
             }
         });
-        // SHIFT+R/L keys click the forward/back by month buttons when the picker cells have focus
+        // Change Month
+            // PageUp/PageDown (fn + up/fn + dn) click the previous/next month buttons when the picker cells have focus
         $('#datePicker').on('keydown', '[data-date]', function (evt) {
-            if (evt.shiftKey && (evt.keyCode === NAME.keyboard.right || evt.keyCode === NAME.keyboard.left)) {
-                if (evt.keyCode === NAME.keyboard.left) {
+            if ((!evt.ctrlKey && !evt.metaKey) && (evt.keyCode === NAME.keyboard.pageUp || evt.keyCode === NAME.keyboard.pageDown)) {
+                if (evt.keyCode === NAME.keyboard.pageUp) {
                     $('#backOneMonth').click();
                     return false;
                 }
@@ -307,10 +309,11 @@
                 return false;
             }
         });
-        // SHIFT+U/D keys click the forward/back by year buttons when the picker cells have focus
+        // Change Year
+            // CTRL+PageUp/CTRL+PageDown (PC) || CMD+fn+up/CMD+fn+down (Mac) click the prev/next year buttons when the picker cells have focus
         $('#datePicker').on('keydown', '[data-date]', function (evt) {
-            if (evt.shiftKey && (evt.keyCode === NAME.keyboard.up || evt.keyCode === NAME.keyboard.down)) {
-                if (evt.keyCode === NAME.keyboard.up) {
+            if ((evt.ctrlKey || evt.metaKey) && (evt.keyCode === NAME.keyboard.pageUp || evt.keyCode === NAME.keyboard.pageDown)) {
+                if (evt.keyCode === NAME.keyboard.pageUp) {
                     $('#backOneYear').click();
                     return false;
                 }
@@ -318,24 +321,64 @@
                 return false;
             }
         });
+        // HOME (fn + left) takes you to the first day of the month
+        $('#datePicker').on('keydown', '[data-date]', function (evt) {
+            if (evt.keyCode === NAME.keyboard.home) {
+                let {$currentCell} = getSelectedDate(),
+                    $targetCell = $('#datePicker').find('[data-date="' + 1 + '"]');
+                $currentCell.removeClass('selected');
+                $targetCell.addClass('selected');
+                focusOnSelectedDate();
+                return false;
+            }
+        });
+        // END (fn + right) takes you to the last day of the month
+        $('#datePicker').on('keydown', '[data-date]', function (evt) {
+            if (evt.keyCode === NAME.keyboard.end) {
+                let {$currentCell, month, year} = getSelectedDate(),
+                    targetDate = daysInMonth(month, year),
+                    $targetCell = $('#datePicker').find('[data-date="' + targetDate + '"]');
+                $currentCell.removeClass('selected');
+                $targetCell.addClass('selected');
+                focusOnSelectedDate();
+                return false;
+            }
+        });
         // TAB on last picker control (#forwardOneMonth) takes focus into calendar grid's currently selected date
             // assign event to last button inside picker. This assumes that all buttons are before the picker grid.
-        $('#datePicker').find('button').last().on('keydown', function (evt) {
+        $('#AAAdatePicker').find('button').last().on('keydown', function (evt) {
             if (!evt.shiftKey && evt.keyCode === NAME.keyboard.tab) {
                 focusOnSelectedDate();
                 return false;
             }
         });
-        // SHIFT+TAB on first calendar control closes date picker
-            // assign event to last button inside picker. This assumes that all buttons are before the picker grid.
+        // TAB on last button before grid takes focus into calendar grid's currently selected date
+            // assign event to last button found in divs before the picker grid's div. This assumes that there are buttons before the picker grid.
+        $('#datePicker').find('[role="application"]').prevAll('div').find('button').last().on('keydown', function (evt) {
+            if (!evt.shiftKey && evt.keyCode === NAME.keyboard.tab) {
+                focusOnSelectedDate();
+                return false;
+            }
+        });
+        // SHIFT+TAB on first button after grid takes focus into calendar grid's currently selected date
+            // assign event to first button found in divs after the picker grid's div. This assumes that there are buttons after the picker grid.
+        $('#datePicker').find('[role="application"]').nextAll('div').find('button').first().on('keydown', function (evt) {
+            if (evt.shiftKey && evt.keyCode === NAME.keyboard.tab) {
+                focusOnSelectedDate();
+                return false;
+            }
+        });
+        // SHIFT+TAB on first calendar control (button) closes date picker
+            // assign event to first button inside picker. This assumes that there are buttons such as the close button at the beginning of the widget.
         $('#datePicker').find('button').first().on('keydown', function (evt) {
             if (evt.shiftKey && evt.keyCode === NAME.keyboard.tab) {
                 $closeDatePicker.click();
                 return false;
             }
         });
-        // TAB on last date in picker grid (.selected) closes date picker
-        $('#datePicker').on('keydown', '.selected[data-date]', function (evt) {
+        // TAB on last calendar control (button or selected date) closes date picker
+            // assign event to either the last button or the selected date inside picker, whichever is the last of this group.
+        $('#datePicker').find('button, .selected[role="button"]').last().on('keydown', function (evt) {
             if (!evt.shiftKey && evt.keyCode === NAME.keyboard.tab) {
                 $launchDatePicker.attr('aria-expanded', 'false');
                 $datePicker.hide();

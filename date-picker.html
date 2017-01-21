@@ -31,36 +31,47 @@
 					<div>
 						<button id="closeDatePicker" type="button">Close<span class="screen-reader-text"> date picker</span></button>
 					</div>
-					<div>
-						<button id="backOneYear" type="button">previous year</button>
-						<button id="forwardOneYear" type="button">next year</button>
-					</div>
-					<div>
-						<button id="backOneMonth" type="button">previous month</button>
-						<button id="forwardOneMonth" type="button">next month</button>
+					<div role="application">
+						<table id="datePickerCalendar" role="presentation">
+							<caption>
+								<h2 id="monthAndYear"></h2>
+							</caption>
+							<thead>
+								<tr>
+									<th scope="col"><abbr title="Sunday">Sun</abbr></th>
+									<th scope="col"><abbr title="Monday">Mon</abbr></th>
+									<th scope="col"><abbr title="Tuesday">Tue</abbr></th>
+									<th scope="col"><abbr title="Wednesday">Wed</abbr></th>
+									<th scope="col"><abbr title="Thursday">Thr</abbr></th>
+									<th scope="col"><abbr title="Friday">Fri</abbr></th>
+									<th scope="col"><abbr title="Saturday">Sat</abbr></th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
 					</div>
 					<div>
 						<button id="goToToday" type="button">today</button>
 						<button id="showKeyboardShortcuts" type="button" aria-owns="keyboardShortcuts" aria-expanded="false">keyboard shortcuts</button>
 					</div>
-					<p id="keyboardShortcuts" tabindex="-1" style="display: none;">left and right arrows advance by day. Up and down arrows advance by week. Shift left and right advance by month. Shift up and down advance by year.</p>
-					<table id="datePickerCalendar" role="application">
-						<caption>
-							<h2 id="monthAndYear"></h2>
-						</caption>
-						<thead>
-							<tr>
-								<th scope="col"><span aria-hidden="true">SUN</span><span class="screen-reader-text">Sunday</span></th>
-								<th scope="col"><span aria-hidden="true">MON</span><span class="screen-reader-text">Monday</span></th>
-								<th scope="col"><span aria-hidden="true">TUE</span><span class="screen-reader-text">Tuesday</span></th>
-								<th scope="col"><span aria-hidden="true">WED</span><span class="screen-reader-text">Wednesday</span></th>
-								<th scope="col"><span aria-hidden="true">THR</span><span class="screen-reader-text">Thursday</span></th>
-								<th scope="col"><span aria-hidden="true">FRI</span><span class="screen-reader-text">Friday</span></th>
-								<th scope="col"><span aria-hidden="true">SAT</span><span class="screen-reader-text">Saturday</span></th>
-							</tr>
-						</thead>
-						<tbody></tbody>
-					</table>
+					<ul id="keyboardShortcuts" class="bullet singletons" style="display: none;">
+						<li>left/right: previous/next day</li>
+						<li>up/down: previous/next week</li>
+						<li>page up/page down (fn + up/fn + down for mac): previous/next month</li>
+						<li>ctrl (cmd for mac) + page up/page down: previous/next year</li>
+						<li>home (fn + left for mac): first day of the month</li>
+						<li>end (fn + right for mac): last day of the month</li>
+						<li>enter or spacebar: accept the selected date</li>
+						<li>esc: close date picker without selection</li>
+					</ul>
+					<div>
+						<button id="backOneMonth" type="button">previous month</button>
+						<button id="forwardOneMonth" type="button">next month</button>
+					</div>
+					<div>
+						<button id="backOneYear" type="button">previous year</button>
+						<button id="forwardOneYear" type="button">next year</button>
+					</div>
 				</div>
 
 <p><a href="http://www.google.com">Lorem ipsum</a> dolor sit amet, consectetur adipisicing elit. Cupiditate ab dolor mollitia ut, quibusdam quod repellendus numquam, temporibus reiciendis aperiam recusandae architecto sunt maiores eaque sit ipsum adipisci, aspernatur atque!</p>
