@@ -344,11 +344,11 @@
                 return false;
             }
         });
-        // TAB on last picker control (#forwardOneMonth) takes focus into calendar grid's currently selected date
-            // assign event to last button inside picker. This assumes that all buttons are before the picker grid.
-        $('#AAAdatePicker').find('button').last().on('keydown', function (evt) {
-            if (!evt.shiftKey && evt.keyCode === NAME.keyboard.tab) {
-                focusOnSelectedDate();
+        // Go to today
+            // T clicks the previous/next month buttons when the picker cells have focus
+        $('#datePicker').on('keydown', '[data-date]', function (evt) {
+            if (evt.keyCode === 84) {
+                $('#goToToday').click();
                 return false;
             }
         });

@@ -6,6 +6,31 @@
 	<title>Accessible Date Picker</title>
 	<link rel="stylesheet" href="css/normalization.css" />
 	<link rel="stylesheet" href="css/base.css" />
+	<style>
+		#datePicker {
+			position: absolute;
+			width: 50%;
+			border: 2px solid #999;
+			padding: 1em;
+			background: #eee;
+		}
+		table {
+			margin-bottom: 1em;
+		}
+		tr:last-child {
+			border: none;
+		}
+		col {
+			width: 14%;
+		}
+		col:first,
+		col:last {
+			width: 15%;
+		}
+		th, td {
+			text-align: center;
+		}
+	</style>
 </head>
 <body>
 	<div class="container">
@@ -21,58 +46,67 @@
 					<!-- USE TYPE=DATE FOR MOBILE <label for="date">Date</label><input type="date" id="date" /> -->
 					<label for="date">Date</label><input id="date" aria-describedby="dateDesc" />
 					<button type="button" id="launchDatePicker" aria-describedby="launchDatePickerDesc" aria-owns="datePicker" aria-expanded="false">Choose Date <span class="screen-reader-text">using the date picker</span></button>
+					<div id="datePicker" style="display: none;">
+						<div>
+							<button id="closeDatePicker" type="button">Close<span class="screen-reader-text"> date picker</span></button>
+						</div>
+						<div role="application">
+							<table id="datePickerCalendar" role="presentation">
+								<caption>
+									<h2 id="monthAndYear"></h2>
+								</caption>
+								<colgroup>
+									<col class="col-1">
+									<col class="col-2">
+									<col class="col-3">
+									<col class="col-4">
+									<col class="col-5">
+									<col class="col-6">
+									<col class="col-7">
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col"><abbr title="Sunday">Sun</abbr></th>
+										<th scope="col"><abbr title="Monday">Mon</abbr></th>
+										<th scope="col"><abbr title="Tuesday">Tue</abbr></th>
+										<th scope="col"><abbr title="Wednesday">Wed</abbr></th>
+										<th scope="col"><abbr title="Thursday">Thr</abbr></th>
+										<th scope="col"><abbr title="Friday">Fri</abbr></th>
+										<th scope="col"><abbr title="Saturday">Sat</abbr></th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+						<div>
+							<button id="goToToday" type="button">today</button>
+							<button id="showKeyboardShortcuts" type="button" aria-owns="keyboardShortcuts" aria-expanded="false">keyboard shortcuts</button>
+						</div>
+						<ul id="keyboardShortcuts" class="bullet singletons" style="display: none;">
+							<li>left/right: previous/next day</li>
+							<li>up/down: previous/next week</li>
+							<li>page up/page down (fn + up/fn + down for mac): previous/next month</li>
+							<li>ctrl (cmd for mac) + page up/page down: previous/next year</li>
+							<li>home (fn + left for mac): first day of the month</li>
+							<li>end (fn + right for mac): last day of the month</li>
+							<li>enter or spacebar: accept the selected date</li>
+							<li>esc: close date picker without selection</li>
+						</ul>
+						<div>
+							<button id="backOneMonth" type="button">previous month</button>
+							<button id="forwardOneMonth" type="button">next month</button>
+						</div>
+						<div>
+							<button id="backOneYear" type="button">previous year</button>
+							<button id="forwardOneYear" type="button">next year</button>
+						</div>
+					</div>
 					<div id="dateDesc">Type in format of MM/DD/YYYY or use the date picker to select a date</div>
 					<div id="launchDatePickerDesc" style="display: none;">If using date picker left and right arrows advance by day. Up and down arrows advance by week. Shift left and right advance by month. Shift up and down advance by year.</div>
 				</p>
 				<p>
 					<!-- USE TYPE=TIME FOR MOBILE <label for="time">Time</label><input type="time" id="time" /> -->
 				</p>
-				<div id="datePicker" style="display: none;">
-					<div>
-						<button id="closeDatePicker" type="button">Close<span class="screen-reader-text"> date picker</span></button>
-					</div>
-					<div role="application">
-						<table id="datePickerCalendar" role="presentation">
-							<caption>
-								<h2 id="monthAndYear"></h2>
-							</caption>
-							<thead>
-								<tr>
-									<th scope="col"><abbr title="Sunday">Sun</abbr></th>
-									<th scope="col"><abbr title="Monday">Mon</abbr></th>
-									<th scope="col"><abbr title="Tuesday">Tue</abbr></th>
-									<th scope="col"><abbr title="Wednesday">Wed</abbr></th>
-									<th scope="col"><abbr title="Thursday">Thr</abbr></th>
-									<th scope="col"><abbr title="Friday">Fri</abbr></th>
-									<th scope="col"><abbr title="Saturday">Sat</abbr></th>
-								</tr>
-							</thead>
-							<tbody></tbody>
-						</table>
-					</div>
-					<div>
-						<button id="goToToday" type="button">today</button>
-						<button id="showKeyboardShortcuts" type="button" aria-owns="keyboardShortcuts" aria-expanded="false">keyboard shortcuts</button>
-					</div>
-					<ul id="keyboardShortcuts" class="bullet singletons" style="display: none;">
-						<li>left/right: previous/next day</li>
-						<li>up/down: previous/next week</li>
-						<li>page up/page down (fn + up/fn + down for mac): previous/next month</li>
-						<li>ctrl (cmd for mac) + page up/page down: previous/next year</li>
-						<li>home (fn + left for mac): first day of the month</li>
-						<li>end (fn + right for mac): last day of the month</li>
-						<li>enter or spacebar: accept the selected date</li>
-						<li>esc: close date picker without selection</li>
-					</ul>
-					<div>
-						<button id="backOneMonth" type="button">previous month</button>
-						<button id="forwardOneMonth" type="button">next month</button>
-					</div>
-					<div>
-						<button id="backOneYear" type="button">previous year</button>
-						<button id="forwardOneYear" type="button">next year</button>
-					</div>
-				</div>
 
 <p><a href="http://www.google.com">Lorem ipsum</a> dolor sit amet, consectetur adipisicing elit. Cupiditate ab dolor mollitia ut, quibusdam quod repellendus numquam, temporibus reiciendis aperiam recusandae architecto sunt maiores eaque sit ipsum adipisci, aspernatur atque!</p>
 
