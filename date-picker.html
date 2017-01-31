@@ -42,7 +42,7 @@
 			<p>This is also written with a mixture of vanilla JS and jQuery.  I would like to eventually write in all vanilla.</p>
 			<p>For mobile I suggest overriding this with the native date input functionality.</p>
 			<form action="">
-				<p>
+				<div class="form-row">
 					<!-- USE TYPE=DATE FOR MOBILE <label for="date">Date</label><input type="date" id="date" /> -->
 					<label for="date">Date</label><input id="date" aria-describedby="dateDesc" />
 					<button type="button" id="launchDatePicker" aria-describedby="launchDatePickerDesc" aria-owns="datePicker" aria-expanded="false">Choose Date <span class="screen-reader-text">using the date picker</span></button>
@@ -105,13 +105,31 @@
 					</div>
 					<div id="dateDesc">Type in format of MM/DD/YYYY or use the date picker to select a date</div>
 					<div id="launchDatePickerDesc" style="display: none;">If using date picker left and right arrows advance by day. Up and down arrows advance by week. Shift left and right advance by month. Shift up and down advance by year.</div>
-				</p>
-				<p>
+				</div>
+				<div class="form-row">
 					<!-- USE TYPE=TIME FOR MOBILE <label for="time">Time</label><input type="time" id="time" /> -->
-				</p>
+				</div>
 
-<p><a href="http://www.google.com">Lorem ipsum</a> dolor sit amet, consectetur adipisicing elit. Cupiditate ab dolor mollitia ut, quibusdam quod repellendus numquam, temporibus reiciendis aperiam recusandae architecto sunt maiores eaque sit ipsum adipisci, aspernatur atque!</p>
+				<p><a href="http://www.google.com">Lorem ipsum</a> dolor sit amet, consectetur adipisicing elit. Cupiditate ab dolor mollitia ut, quibusdam quod repellendus numquam, temporibus reiciendis aperiam recusandae architecto sunt maiores eaque sit ipsum adipisci, aspernatur atque!</p>
 
+
+
+
+
+
+			</form>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+		<div aria-live="polite" class="screen-reader-text"></div>
+		<div role="alert" class="screen-reader-text"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+	<script type="text/javascript" src="js/date-picker.js"></script>
+</body>
+</html>
 <!--
 1) Date in field should match date on picker
 2) button should say "choose date from date picker"
@@ -134,20 +152,3 @@
 19) Table role="application" ?  and aria-label="Calendar" ? (can I use table caption?)
 20) table as role="grid"?????? instead
 -->
-
-
-
-
-			</form>
-		</div>
-		<div class="overlay"></div>
-		<div class="block-screen"></div>
-		<div aria-live="polite" class="screen-reader-text"></div>
-		<div role="alert" class="screen-reader-text"></div>
-	</div>
-	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="js/namespacing.js"></script>
-	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
-	<script type="text/javascript" src="js/date-picker.js"></script>
-</body>
-</html>
