@@ -10,6 +10,7 @@
     'use strict';
     //TO DO: WRITE WITH VANILLA JS
     var $datePicker = $('#datePicker'),
+        $calendar = $('#datePickerCalendar'),
         $launchDatePicker = $('#launchDatePicker'),
         $closeDatePicker = $('#closeDatePicker'),
         $dateInput = $('#date'),
@@ -55,7 +56,7 @@
     }
     function createCalendar(date = {}) {
         let $monthAndYear = $datePicker.find('#monthAndYear'),
-            $datePickerGrid = $datePicker.find('tbody'),
+            $datePickerGrid = $calendar.find('tbody'),
             dayIndex = 0,
             firstDayOfMonth = new Date((date.month + 1) + '/1/' + date.year).getDay(),
             numDaysInMo = daysInMonth(date.month, date.year);
@@ -93,7 +94,7 @@
     }
     // remove all markup from the tbody of the calendar grid table
     function clearCalendar() {
-        let $datePickerGrid = $datePicker.find('tbody');
+        let $datePickerGrid = $calendar.find('tbody');
         $datePickerGrid.empty();
     }
     // which date on the grid is currently selected?  returns the grid cell and mo, date, yr

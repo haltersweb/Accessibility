@@ -11,24 +11,75 @@
 			position: absolute;
 			width: 50%;
 			border: 2px solid #999;
-			padding: 1em;
+			padding: 0 1em;
 			background: #eee;
 		}
-		table {
-			margin-bottom: 1em;
+		#datePicker .form-row {
+			overflow: hidden;
+			padding: .15em;
 		}
-		tr:last-child {
+		#datePicker .svg {
+			width: 25px;
+			height: 25px;
+			margin: 0;
+			padding: 0;
+			border: none;
+			background-color: transparent;
+			font-size: 0;
+		}
+		#closeDatePicker,
+		#forwardOneMonth,
+		#forwardOneYear {
+			float: right;
+		}
+		#backOneMonth,
+		#backOneYear {
+			float: left;
+		}
+		#datePickerCalendar h2 {
+			margin-top: 0;
+		}
+		#datePickerCalendar td {
+			padding: 2ex 0 2ex 0;
+		}
+		#datePickerCalendar th {
+			padding: 0;
+		}
+		#datePickerCalendar tbody tr:last-child {
 			border: none;
 		}
-		col {
+		#datePickerCalendar tbody tr:last-child td,
+		#datePickerCalendar th {
+			padding-bottom: 0;
+		}
+		#datePickerCalendar col {
 			width: 14%;
 		}
-		col:first,
-		col:last {
+		#datePickerCalendar col:first,
+		#datePickerCalendar col:last {
 			width: 15%;
 		}
-		th, td {
+		#datePickerCalendar th, #datePickerCalendar td {
 			text-align: center;
+		}
+		#datePickerCalendar [data-date=""] {
+			padding: 0;
+		}
+		#keyboardShortcuts {
+			margin: 1ex 0;
+		}
+		#keyboardShortcuts caption {
+			text-align: left;
+		}
+		#keyboardShortcuts tr {
+			border: none;
+		}
+		#keyboardShortcuts td {
+			border: 1px solid #b5b5a8;
+			padding: .5ex .5em;
+		}
+		#keyboardShortcuts th {
+			padding: .5ex .5em;
 		}
 	</style>
 </head>
@@ -47,8 +98,13 @@
 					<label for="date">Date</label><input id="date" aria-describedby="dateDesc" />
 					<button type="button" id="launchDatePicker" aria-describedby="launchDatePickerDesc" aria-owns="datePicker" aria-expanded="false">Choose Date <span class="screen-reader-text">using the date picker</span></button>
 					<div id="datePicker" style="display: none;">
-						<div>
-							<button id="closeDatePicker" type="button">Close<span class="screen-reader-text"> date picker</span></button>
+						<div class="form-row">
+							<button id="closeDatePicker" type="button" aria-label="close date picker" class="svg">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" focusable="false" role="presentation" class="svg-close">
+									<circle cx="35" cy="35" r="35"/>
+									<path fill="#FFFFFF" d="M43.7,54.9L39,47.7c-1.9-2.8-3.1-4.8-4.5-7.2h-0.2c-1.1,2.3-2.3,4.4-3.9,7.2l-4.1,7.2H13l14.7-20.2 L13.5,15.1h13.2l4.5,7.3c1.6,2.5,2.6,4.4,3.9,6.7h0.2c1.2-2.5,2.2-4.4,3.4-6.7l4.4-7.3h13.2L41.8,34.5L57,54.9H43.7z"/>
+								</svg>
+							</button>
 						</div>
 						<div role="application">
 							<table id="datePickerCalendar" role="presentation">
@@ -56,13 +112,13 @@
 									<h2 id="monthAndYear"></h2>
 								</caption>
 								<colgroup>
-									<col class="col-1">
-									<col class="col-2">
-									<col class="col-3">
-									<col class="col-4">
-									<col class="col-5">
-									<col class="col-6">
-									<col class="col-7">
+									<col />
+									<col />
+									<col />
+									<col />
+									<col />
+									<col />
+									<col />
 								</colgroup>
 								<thead>
 									<tr>
@@ -78,29 +134,107 @@
 								<tbody></tbody>
 							</table>
 						</div>
-						<div>
+						<div class="form-row">
 							<button id="showKeyboardShortcuts" type="button" aria-owns="keyboardShortcuts" aria-expanded="false">keyboard shortcuts</button>
 						</div>
-						<ul id="keyboardShortcuts" class="bullet singletons" style="display: none;">
-							<li>left/right: previous/next day</li>
-							<li>up/down: previous/next week</li>
-							<li>page up/page down (fn + up/fn + down for mac): previous/next month</li>
-							<li>ctrl (cmd for mac) + page up/page down: previous/next year</li>
-							<li>home (fn + left for mac): first day of the month</li>
-							<li>end (fn + right for mac): last day of the month</li>
-							<li>enter or spacebar: accept the selected date</li>
-							<li>esc: close date picker without selection</li>
-						</ul>
-						<div>
+						<table id="keyboardShortcuts" style="display: none;">
+							<caption>
+								<h3>Keyboard Shortcuts</h3>
+								<p>While inside the calendar use the following shortcuts to navigate to different dates:</p>
+							</caption>
+							<colgroup>
+								<col />
+								<col />
+							</colgroup>
+							<thead>
+								<tr>
+									<th scope="col">shortcut</th>
+									<th scope="col">navigates to</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>left/right</td>
+									<td>previous/next day</td>
+								</tr>
+								<tr>
+									<td>up/down</td>
+									<td>previous/next week</td>
+								</tr>
+								<tr>
+									<td>
+										page up/page down<br />
+										(fn + up/fn + down for mac)
+									</td>
+									<td>previous/next month</td>
+								</tr>
+								<tr>
+									<td>
+										ctrl + page up/page down<br />
+										(cmd + page up/page down for mac)
+									</td>
+									<td>previous/next year</td>
+								</tr>
+								<tr>
+									<td>
+										home<br />
+										(fn + left for mac)
+									</td>
+									<td>first day of the month</td>
+								</tr>
+								<tr>
+									<td>
+										end
+										(fn + right for mac)
+									</td>
+									<td>last day of the month</td>
+								</tr>
+								<tr>
+									<td>T</td>
+									<td>today's date</td>
+								</tr>
+								<tr>
+									<td>enter or spacebar</td>
+									<td>accept the selected date</td>
+								</tr>
+								<tr>
+									<td>esc</td>
+									<td>close date picker without selection</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="form-row" style="display: none;">
 							<button id="goToToday" type="button">today</button>
 						</div>
-						<div>
-							<button id="backOneMonth" type="button">previous month</button>
-							<button id="forwardOneMonth" type="button">next month</button>
+						<div class="form-row">
+							<button id="backOneMonth" type="button" aria-label="previous month" class="svg">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" role="presentation" focusable="false" class="svg-single-left">
+									<circle cx="35" cy="35" r="35"/>
+									<path fill="#FFFFFF" d="M18.2,35l23.1-21c1.7-1.5,4.3-1.4,5.9,0.3c1.5,1.7,1.4,4.3-0.3,5.9L30.8,35 l16.1,14c1.7,1.5,2,4.2,0.4,5.9s-4.2,2-5.9,0.4L18.2,35z"/>
+								</svg>
+							</button>
+							<button id="backOneYear" type="button" aria-label="previous year" class="svg">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" role="presentation" focusable="false" class="svg-double-left">
+								<circle cx="35" cy="35" r="35"/>
+								<path fill="#FFFFFF" d="M25.9,35L49,14c1.7-1.5,4.3-1.4,5.9,0.3c1.5,1.7,1.4,4.3-0.3,5.9L38.5,35l16.1,14 c1.7,1.5,2,4.2,0.4,5.9s-4.2,2-5.9,0.4L25.9,35z"/>
+								<path fill="#FFFFFF" d="M6,35l23.1-21c1.7-1.5,4.3-1.4,5.9,0.3c1.5,1.7,1.4,4.3-0.3,5.9L18.6,35l16.1,14 c1.7,1.5,2,4.2,0.4,5.9s-4.2,2-5.9,0.4L6,35z"/>
+								</svg>
+							</button>
+							<button id="forwardOneMonth" type="button" aria-label="next month" class="svg">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" role="presentation" focusable="false" class="svg-single-right">
+									<circle cx="35" cy="35" r="35"/>
+									<path fill="#FFFFFF" d="M51.8,35L28.7,56c-1.7,1.5-4.3,1.4-5.9-0.3c-1.5-1.7-1.4-4.3,0.3-5.9 L39.2,35L23.1,21c-1.7-1.5-2-4.2-0.4-5.9c1.5-1.7,4.2-2,5.9-0.4L51.8,35z"/>
+								</svg>
+							</button>
+							<button id="forwardOneYear" type="button" aria-label="next year" class="svg">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" role="presentation" focusable="false" class="svg-double-right">
+									<circle cx="35" cy="35" r="35"/>
+									<path fill="#FFFFFF" d="M44.1,35L21,56c-1.7,1.5-4.3,1.4-5.9-0.3c-1.5-1.7-1.4-4.3,0.3-5.9 L31.5,35L15.4,21c-1.7-1.5-2-4.2-0.4-5.9c1.5-1.7,4.2-2,5.9-0.4L44.1,35z"/>
+									<path fill="#FFFFFF" d="M64,35L40.9,56c-1.7,1.5-4.3,1.4-5.9-0.3c-1.5-1.7-1.4-4.3,0.3-5.9 L51.4,35L35.3,21c-1.7-1.5-2-4.2-0.4-5.9c1.5-1.7,4.2-2,5.9-0.4L64,35z"/>
+								</svg>
+							</button>
 						</div>
-						<div>
-							<button id="backOneYear" type="button">previous year</button>
-							<button id="forwardOneYear" type="button">next year</button>
+						<div class="form-row">
 						</div>
 					</div>
 					<p id="dateDesc">Type in format of MM/DD/YYYY or use the date picker to select a date</p>
