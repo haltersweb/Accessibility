@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" role="presentation" focusable="false" class="svg-double-left">
+    <circle cx="35" cy="35" r="35"/>
+    <path fill="#FFFFFF" d="M25.9,35L49,14c1.7-1.5,4.3-1.4,5.9,0.3c1.5,1.7,1.4,4.3-0.3,5.9L38.5,35l16.1,14 c1.7,1.5,2,4.2,0.4,5.9s-4.2,2-5.9,0.4L25.9,35z"/>
+    <path fill="#FFFFFF" d="M6,35l23.1-21c1.7-1.5,4.3-1.4,5.9,0.3c1.5,1.7,1.4,4.3-0.3,5.9L18.6,35l16.1,14 c1.7,1.5,2,4.2,0.4,5.9s-4.2,2-5.9,0.4L6,35z"/>
+</svg>
