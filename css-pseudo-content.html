@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CSS Pseudo Text and Screen Readers</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<style>
+		.pseudo-text:before {
+			content: "Bacon ";
+			font-weight: bold;
+			color: #900;
+		}
+		.pseudo-text:after {
+			content: " bacon.";
+			font-weight: bold;
+			color: #900;
+		}
+		.pseudo-button:before {
+			content: "do something";
+			font-weight: bold;
+			color: #900;
+		}
+		.pseudo-link:before {
+			content: "visit google";
+			font-weight: bold;
+			color: #900;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a href="#main" class="skip-link">Skip to main content</a>
+		<div class="page-wrapper" id="main" role="main" tabindex="-1">
+			<h1>CSS Pseudo Text and Screen Readers</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
+			<p>The words <em>bacon</em> in the next paragraph is css pseudo content.</p>
+			<p class="pseudo-text">spicy jalapeno shankle jowl short loin, pig pork chop drumstick tri-tip porchetta</p>
+			<p>The following button's text is css pseudo content: <button type="button" class="pseudo-button"></button></p>
+			<p>The following link's text is css pseudo content: <a href="www.google.com" class="pseudo-link"></a></p>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+		<div aria-live="polite" class="screen-reader-text"></div>
+		<div role="alert" class="screen-reader-text"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+</body>
+</html>
