@@ -120,6 +120,14 @@
 				<p id="armaments_2_19" class="accordion">And the Lord spake, saying, "First shalt thou take out the Holy Pin. Then shalt thou count to three, no more, no less. Three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out. Once the number three, being the third number, be reached, then lobbest thou thy Holy Hand Grenade of Antioch towards thy foe, who, being naughty in My sight, shall snuff it.</p>
 			</div>
 			<p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing</a> elit. Facere iure dolorum ipsum veniam officiis iusto laborum commodi qui reprehenderit nobis aperiam alias sunt natus porro, consequatur hic facilis magnam provident?</p>
+			<h2>Using HTML5 &lt;details&gt; and &lt;summary&gt; elements</h2>
+			<p>I suggest staying away from using HTML5 details and summary elements to drive expand/collapse.  This is because both browser and screen-reader support is spotty at best.</p>
+			<p>Some of the issues found as of February 2017:</p>
+			<ul class="bullet singletons">
+				<li>IE doesn't support details/summary. JAWS still runs best on IE11 (Edge not so much).  And currently Edge doesn't support details/summary either.</li>
+				<li>Voice Over on iOS will not allow a user to focus on and engage expand/collapse with this markup.</li>
+				<li>NVDA does not announce the state change when expanding or collapsing.</li>
+			</ul>
 		</div>
 		<div class="overlay"></div>
 		<div class="block-screen"></div>
