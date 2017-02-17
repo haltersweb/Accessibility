@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Business Demographic Study</title>
 	<style>
 		body {
@@ -67,10 +68,10 @@
 		</div>
 		<div class="form-row">
 			<label for="lastName" class="required">Last Name</label>
-			<input type="text" id="lastName" />
+			<input type="text" id="lastName" aria-required="true" />
 		</div>
 		<fieldset>
-			<legend><span class="required">Employment Status</span></legend>
+			<legend><span>Employment Status</span></legend>
 			<label for="fullTime" class="form-row">
 				<input type="radio" name="status" id="fullTime" checked />
 				Employed Full Time
@@ -90,12 +91,14 @@
 		</fieldset>
 		<div class="form-row">
 			<label for="relocate">Relocate?</label>
-			<input type="text" id="relocate" />
+			<input type="text" id="relocate" aria-describedby="relocateDetails" />
+			<span id="relocateDetails">All locations are within the contiguous 48 states.</span>
 		</div>
 		<div class="form-row">
 			<button type="submit" class="btn">Submit</button>
 			<button type="reset" class="btn">Reset</button>
 		</div>
 	</form>
+	<p><a href="http://www.google.com/">Visit Google</a> to do a search.</p>
 </body>
 </html>

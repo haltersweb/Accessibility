@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Business Demographic Study</title>
 	<style>
 		body {
@@ -22,7 +23,7 @@
 		[type="radio"] {
 			display: none;
 		}
-		[type="radio"]+span {
+		[type="radio"]+.stylized-radio {
 			position: relative;
 			display: inline-block;
 			box-sizing: border-box;
@@ -33,7 +34,7 @@
 			border-radius: 7px;
 		}
 
-		[type="radio"]:checked+span::before {
+		[type="radio"]:checked+.stylized-radio::before {
 			content: "";
 			position: absolute;
 			left: 50%;
@@ -63,9 +64,9 @@
 	</style>
 </head>
 <body>
+	<h1>Business Demographic Study</h1>
+	<p>Fill out and then submit this form.</p>
 	<form action="">
-		<h1>Business Demographic Study</h1>
-		<p>Fill out and then submit this form.</p>
 		<div class="form-row">
 			<div class="label required">First Name</div>
 			<input type="text" id="firstName" />
@@ -78,35 +79,37 @@
 			<div class="label required">Last Name</div>
 			<input type="text" id="lastName" />
 		</div>
-		<p class="required">Employment Status</p>
+		<p>Employment Status</p>
 		<div class="form-row">
 			<input type="radio" name="status" id="fullTime" checked />
-			<span class="radio"></span>
+			<span class="stylized-radio"></span>
 			Employed Full Time
 		</div>
 		<div class="form-row">
 			<input type="radio" name="status" id="partTime" />
-			<span class="radio"></span>
+			<span class="stylized-radio"></span>
 			Employed Part Time
 		</div>
 		<div class="form-row">
 			<input type="radio" name="status" id="contractor" />
-			<span class="radio"></span>
+			<span class="stylized-radio"></span>
 			Contractor
 		</div>
 		<div class="form-row">
 			<input type="radio" name="status" id="selfEmployed" />
-			<span class="radio"></span>
+			<span class="stylized-radio"></span>
 			Self Employed
 		</div>
 		<div class="form-row">
 			<div class="label">Relocate?</div>
 			<input type="text" id="relocate" />
+			<span>All locations are within the contiguous 48 states.</span>
 		</div>
 		<div class="form-row">
 			<a class="btn">Submit</a>
 			<a class="btn">Reset</a>
 		</div>
 	</form>
+	<p><a href="http://www.google.com/">Visit Google</a> to do a search.</p>
 </body>
 </html>
