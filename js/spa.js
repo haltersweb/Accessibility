@@ -39,7 +39,7 @@
                 title: 'Known Issues',
                 h1: 'Known Screen-reader Issues',
                 //content: '<label for="petName">Pet Name</label><input id="petName" type="text" />'
-                content: '<p>NVDA has a bug wherein a container\'s contents aren\'t read if the control that triggers the focus is a descendant of the container receiving focus. <a href="https://github.com/nvaccess/nvda/issues/6606">NVDA bug #6606 in GitHub</a> has been filed but the chance of fixing this is unknown.  Therefore the announcement is all the more important to allow someone using a screen-reader to know to arrow through new content.</p><p>Voice Over on iOS does not handle in-page linked content at all.  It will skip reading the content when focus is moved to the container.  Apple bug #29450975 has been filed.</p>'
+                content: '<p>NVDA has a bug wherein a container\'s contents aren\'t read if the control that triggers the focus is a descendant of the container receiving focus. A bug has been filed but the chance of fixing this is unknown.  Therefore the announcement is all the more important to allow someone using a screen-reader to know to arrow through new content.</p><p>Voice Over on iOS does not handle in-page linked content at all.  It will skip reading the content when focus is moved to the container.  A bug has been filed.</p>'
             }
         ];
     function enableStepControls() {
