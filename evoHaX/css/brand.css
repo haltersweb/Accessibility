@@ -359,3 +359,11 @@ input[disabled] {
 	margin: 0 auto 10ex;
 	background-color: #1C303E;
 	}
+.tiles {
+	display:flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.tile {
+	width: 18%;
+}

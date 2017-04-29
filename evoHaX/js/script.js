@@ -154,14 +154,16 @@
                 figure = document.createElement('figure'),
                 img = document.createElement('img'),
                 caption = document.createElement('figcaption');
-            tile.setAttribute('id', person.id);
-            img.setAttribute('src', 'img/' + person.id + '.jpg');
-            img.setAttribute('alt', 'picture of ' + person.name);
+            tile.id = person.id;
+            tile.className = 'tile';
+            img.src = 'img/' + person.id + '.jpg';
+            img.alt = 'picture of ' + person.name;
             caption.textContent = person.name;
             figure.appendChild(img);
             figure.appendChild(caption);
             tile.appendChild(figure);
             fragment.appendChild(tile);
+            console.log('run');
         });
         tiles.appendChild(fragment);
     }
