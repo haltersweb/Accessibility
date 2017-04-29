@@ -18,7 +18,7 @@ body {
 	background-color: #1C303E;
     font-size: 1.4rem; /* =14px */
 	font-weight: normal;
-	color: #161e25;
+	color: #DAc3AF;
     }
 img, embed, object, video { max-width: 100%; vertical-align: middle; }
 p, ul, ol, dl { margin-top: 0; }
@@ -60,8 +60,8 @@ a:hover,
 	text-decoration: underline;
 	}
 :focus {
-	outline: #3279bf solid 1px;
-	box-shadow: 0px 0px 2px 2px #5FFF6D;
+	outline: #DAc3AF solid 1px;
+	box-shadow: 0px 0px 2px 2px #DAc3AF;
 	}
 a.current {
 	color: #747075;
@@ -105,7 +105,7 @@ td:last-child {
 	padding-right: 0;
 	}
 th {
-	color: #4f0100;
+	color: #DAc3AF;
 	}
 td ul,
 td li:last-child {
