@@ -15,7 +15,7 @@ html {
 body {
 	height: 100%;
     margin: 0 auto;
-	background-color: #fff;
+	background-color: #1C303E;
     font-size: 1.4rem; /* =14px */
 	font-weight: normal;
 	color: #161e25;
@@ -44,7 +44,7 @@ p, li {
 	}
 a,
 .a {
-	color: #3279bf;
+	color: #5FFF6D;
 	text-decoration: none;
 	cursor: pointer;
 	}
@@ -61,10 +61,10 @@ a:hover,
 	}
 :focus {
 	outline: #3279bf solid 1px;
-	box-shadow: 0px 0px 2px 2px #3279bf;
+	box-shadow: 0px 0px 2px 2px #5FFF6D;
 	}
 a.current {
-	color: #4f0100;
+	color: #747075;
 	cursor: text;
 	}
 a.current:hover {
@@ -95,7 +95,7 @@ td, th {
 	text-align: left;
 	}
 tbody tr {
-	border-bottom: 1px solid #b5b5a8;
+	border-bottom: 1px solid #FFF500;
 	}
 tbody tr:first-child th,
 tbody tr:first-child td {
@@ -357,5 +357,5 @@ input[disabled] {
 .page-wrapper {
 	width: 80%;
 	margin: 0 auto 10ex;
-	background-color: #fff;
+	background-color: #1C303E;
 	}
