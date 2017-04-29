@@ -294,21 +294,6 @@ input[disabled] {
     border: none;
     background-color: transparent;
 	}
-/* Icons
----------------------------------------- */
-i {
-	display: inline-block;
-	vertical-align: middle;
-	width: 10px;
-	height: 10px;
-	}
-i.svg {
-	}
-.svg.external {
-	width: 20px;
-	height: 13px;
-	margin-top: -5px;
-	}
 /* General Helpers
 -------------------------------------------------- */
 .center-text {
@@ -367,36 +352,6 @@ i.svg {
 		display: none;
 		}
 	}
-/* Code snippets
----------------------------------------- */
-.code-snippet {
-    box-sizing: border-box;
-	padding: 0 1.5em;
-	background-color: #ccc;
-	}
-/* Skip link
----------------------------------------- */
-.skip-link {
-	display: block;
-    height: 1px;
-    margin-top: -11px;
-    padding: 5px;
-    overflow: hidden;
-
-	}
-.skip-link:focus {
-	height: auto;
-	margin: auto;
-	}
-#main {
-	outline: none;
-	box-shadow: none;
-}
-[data-code], .code {
-	background-color: #eee;
-    padding: 0.3ex 2.5em;
-    border-radius: 12px;
-}
 /* Page component structure
 ---------------------------------------- */
 .page-wrapper {
