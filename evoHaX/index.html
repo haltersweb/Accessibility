@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/normalization.css" />
-    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="../css/base.css" />
     <link rel="stylesheet" href="../css/accordion.css">
     <title>Knowing Alexia</title>
 </head>
@@ -18,12 +18,14 @@
         </ul>
     </nav>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque ipsum ut tenetur veniam voluptates provident, inventore quaerat, quas accusantium et repellat libero impedit nisi amet facilis laudantium ratione. Voluptatibus, quis.</p>
-    <h2>Hello there</h2>
-    <ul>
-        <li>one</li>
-        <li>two</li>
-        <li>three</li>
-    </ul>
+    <div>
+        <a href="#blindOne" class="accordion-trigger" aria-owns="blindOne" aria-expanded="false">Look at this info</a>
+    </div>
+    <div id="blindOne" class="accordion">
+        <div class="itemization">Aliquid asperiores nihil omnis dicta tempore.</div>
+        <div class="itemization">Qui repellendus, cupiditate eligendi maiores.</div>
+        <div class="itemization">Repudiandae dolorum, obcaecati veniam.</div>
+    </div>
     <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="../js/namespacing.js"></script>
     <script type="text/javascript" src="../js/accessibility-helpers.js"></script>
