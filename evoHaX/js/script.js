@@ -13,12 +13,12 @@
             id: 'einstein',
             name: 'Einstein',
             height: 'medium', // tall, medium, short, kid
-            weight: 'medium', // heavy, medium, thin
+            weight: 'normal', // heavy, normal
             hair_color: 'gray', // gray, brown, blond, red
             hair_style: 'full', // long, short, full
             skin: 'white', // white, black
             eye_color: 'brown', // blue, brown
-            age: 'old', // old, middle, young
+            age: 'elderly', // elderly, middle, young
             gender: 'male',
             profession: 'scientist'
         },
@@ -26,12 +26,12 @@
             id: 'martin',
             name: 'Steve Martin',
             height: 'medium',
-            weight: 'medium',
+            weight: 'normal',
             hair_color: 'gray',
             hair_style: 'short',
             skin: 'white',
             eye_color: 'blue',
-            age: 'old',
+            age: 'elderly',
             gender: 'male',
             profession: 'comedian'
         },
@@ -39,7 +39,7 @@
             id: 'sinatra',
             name: 'Frank Sinatra',
             height: 'medium',
-            weight: 'medium',
+            weight: 'normal',
             hair_color: 'brown',
             hair_style: 'short',
             skin: 'white',
@@ -52,7 +52,7 @@
             id: 'elvis',
             name: 'Elvis',
             height: 'tall',
-            weight: 'medium',
+            weight: 'normal',
             hair_color: 'brown',
             hair_style: 'short',
             eye_color: 'blue',
@@ -66,7 +66,7 @@
             id: 'obama',
             name:'Obama',
             height: 'tall',
-            weight: 'thin',
+            weight: 'normal',
             hair_color: 'brown',
             hair_style: 'short',
             eye_color: 'brown',
@@ -80,7 +80,7 @@
             id: 'gaga',
             name:'Lady Gaga',
             height: 'short',
-            weight: 'thin',
+            weight: 'normal',
             hair_color: 'blond',
             hair_style: 'long',
             eye_color: 'brown',
@@ -106,12 +106,12 @@
             id: 'freeman',
             name: 'Morgan Freeman',
             height: 'tall',
-            weight: 'medium',
+            weight: 'normal',
             hair_color: 'gray',
             hair_style: 'short',
             eye_color: 'brown',
             skin: 'black',
-            age: 'old',
+            age: 'elderly',
             gender: 'male',
             profession: 'actor'
         },
@@ -119,7 +119,7 @@
             id: 'diana',
             name: 'Princess Diana',
             height: 'tall',
-            weight: 'thin',
+            weight: 'normal',
             hair_color: 'blond',
             hair_style: 'short',
             eye_color: 'blue',
@@ -133,7 +133,7 @@
             id: 'streep',
             name: 'Meryl Streep',
             height: 'short',
-            weight: 'thin',
+            weight: 'normal',
             hair_color: 'blond',
             hair_style: 'long',
             eye_color: 'blue',
@@ -147,7 +147,7 @@
             id: 'beyonce',
             name: 'Beyonce',
             height: 'tall',
-            weight: 'thin',
+            weight: 'normal',
             hair_color: 'blond',
             hair_style: 'long',
             eye_color: 'brown',
@@ -174,7 +174,7 @@
             id: 'wonder',
             name: 'Stevie Wonder',
             height: 'tall',
-            weight: 'medium',
+            weight: 'normal',
             hair_color: 'brown',
             hair_style: 'long',
             eye_color: 'brown',

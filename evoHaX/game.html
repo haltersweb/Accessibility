@@ -19,90 +19,120 @@
                 <li><a href="game">Alexia Game</a></li>
             </ul>
         </nav>
-        <p>Eli is a college student with alexia and two associated conditions: agnosia and prosopagnosia.</p>
-        <h2>Alexia</h2>
-        <h2>with anomia and agnosia</h2>
-        <h2>with prosopagnosia</h2>
-        <h3>limitations</h3>
-        <p>As someone with prosopagnosia he doesn't recognize faces. He relies on categorization to guess who the person is. But due to the limitations of his prospagnosia he can only process certain attributes.</p>
-        <h3>scenario</h3>
-        <p>Eli is sitting in a coffee shop. Lucky guy: He knows several celebrities!</p>
-        <p>One of these very famous people sits down at Eli's table to chat.</p>
-        <p>Eli tries to figure out which of his celeb friends is sitting across from him so that he can greet his friend.</p>
-        <h3>challenge</h3>
-        <p>Pick a celebrity, then choose attributes about that celebrity from the following categories to see if Eli can figure out which one of these famous people are sitting across from him.</p>
-        <div class="tiles" id="peopleTiles"></div>
-        <div id="extraInfo" class="is-hidden">
-            <h3>Did you know?</h3>
-            <p>Eli cannot differentiate skin color or eye color?</p>
-            <p>Also, the friend's profession won't help Eli because it is out of context.  (Although, Eli may ask some questions about work to get more clues as to who his friend is.)</p>
-            <h3>What can Eli's friends do to help?</h3>
-            <p>When greeting Eli, his friends can mention their own name.</p>
+        <p>Eli is a college student with the cognitive disability alexia and two associated conditions: agnosia and prosopagnosia.</p>
+        <p>Help Eli work through his challenges with the following game.</p>
+
+        <div>
+            <a href="#challenge_1" class="accordion-trigger" aria-owns="challenge_1" aria-expanded="false"><h2>Challenge 1: Alexia</h2></a>
         </div>
-        <form action="post" data-cull="peopleTiles">
-        <!--
-            <fieldset>
-                <legend>Height</legend>
-                <label><input id="height_tall" name="height" type="radio" value="tall"/>tall</label>
-                <label><input id="height_medium" name="height" type="radio" value="medium" />medium</label>
-                <label><input id="height_short" name="height" type="radio" value="short" />short</label>
-            </fieldset>
-        -->
-            <fieldset>
-                <legend>Weight</legend>
-                <label><input id="weight_heavy" name="weight" type="radio" value="heavy"/>heavy</label>
-                <label><input id="weight_medium" name="weight" type="radio" value="medium" />medium</label>
-                <label><input id="weight_thin" name="weight" type="radio" value="thin" />thin</label>
-            </fieldset>
-            <fieldset>
-                <legend>Hair Color</legend>
-                <label><input id="hair_color_blond" name="hair_color" type="radio" value="blond"/>blond</label>
-                <label><input id="hair_color_brown" name="hair_color" type="radio" value="brown" />brown</label>
-                <label><input id="hair_color_gray" name="hair_color" type="radio" value="gray" />gray</label>
-            </fieldset>
-        <!--
-            <fieldset>
-                <legend>Hair Style</legend>
-                <label><input id="hair_style_long" name="hair_style" type="radio" value="long"/>long</label>
-                <label><input id="hair_style_short" name="hair_style" type="radio" value="short" />short</label>
-                <label><input id="hair_style_full" name="hair_style" type="radio" value="full" />full</label>
-            </fieldset>
-        -->
-            <fieldset>
-                <legend>Eye Color</legend>
-                <label><input id="eye_color_blue" name="eye_color" type="radio" value="blue"/>blue</label>
-                <label><input id="eye_color_brown" name="eye_color" type="radio" value="brown" />brown</label>
-                <label><input id="eye_color_green" name="eye_color" type="radio" value="green" />green</label>
-            </fieldset>
-            <fieldset>
-                <legend>Skin Color</legend>
-                <label><input id="skin_black" name="skin" type="radio" value="black"/>black</label>
-                <label><input id="skin_white" name="skin" type="radio" value="white" />white</label>
-            </fieldset>
-            <fieldset>
-                <legend>Age</legend>
-                <label><input id="age_old" name="age" type="radio" value="old"/>old</label>
-                <label><input id="age_middle" name="age" type="radio" value="middle"/>middle age</label>
-                <label><input id="age_young" name="age" type="radio" value="young" />young</label>
-            </fieldset>
-            <fieldset>
-                <legend>Gender</legend>
-                <label><input id="gender_male" name="gender" type="radio" value="male"/>male</label>
-                <label><input id="gender_female" name="gender" type="radio" value="female"/>female</label>
-            </fieldset>
-            <fieldset>
-                <legend>Profession</legend>
-                <label><input id="profession_actor" name="profession" type="radio" value="actor"/>actor</label>
-                <label><input id="profession_scientist" name="profession" type="radio" value="scientist"/>scientist</label>
-                <label><input id="profession_singer" name="profession" type="radio" value="singer" />singer</label>
-                <label><input id="profession_comedian" name="profession" type="radio" value="comedian"/>comedian</label>
-                <label><input id="profession_president" name="profession" type="radio" value="president"/>president</label>
-                <label><input id="profession_princess" name="profession" type="radio" value="princess" />princess</label>
-                <label><input id="profession_tv_host" name="profession" type="radio" value="tv_host"/>tv host</label>
-            </fieldset>
-            <button type="button" class="btn">Submit</button>
-            <button type="reset" class="btn">Reset</button>
-        </form>
+        <div id="challenge_1" class="accordion">
+            <p>Eli is sitting in a diner. He's working on his homework while waiting for a table.</p>
+        </div>
+        <div>
+            <a href="#challenge_2" class="accordion-trigger" aria-owns="challenge_2" aria-expanded="false"><h2>Challenge 2: Agnosia</h2></a>
+        </div>
+        <div id="challenge_2" class="accordion">
+            <h3>scenario</h3>
+            <p>Eli's table is ready.  He is confident because he has memorized basic table settings and what each item does.</p>
+            <!-- PUT TABLE EXAMPLE HERE -->
+            <p>Unfortunately for him, the bus boy was new and didn't set the table up properly.</p>
+            <h3>limitations</h3>
+            <p>As someone with agnosia, Eli does not know what an item is when it's out of context.  Also, if an item is placed in the wrong context Eli will identify the item incorrectly.</p>
+            <h3>challenge</h3>
+            <form action="">
+                <fieldset>
+                    <legend>Pick all of the following that Eli is most likely to do?</legend>
+                    <label>
+                        <input type="checkbox" name="table" id="table_napkin" />
+                        Eli asks for a napkin.
+                    </label>
+                    <label>
+                        <input type="checkbox" name="table" id="table_spoon" />
+                        Eli asks for a spoon.
+                    </label>
+                    <label>
+                        <input type="checkbox" name="table" id="table_water" />
+                        Eli asks for a glass of water.
+                    </label>
+                    <label>
+                        <input type="checkbox" name="table" id="table_what" />
+                        Eli asks what the glass of water currently on the table is.
+                    </label>
+                    <label>
+                        <input type="checkbox" name="table" id="table_fork" />
+                        Eli tries to eat his soup with his fork.
+                    </label>
+                </fieldset>
+            </form>
+        </div>
+        <div>
+            <a href="#challenge_3" class="accordion-trigger" aria-owns="challenge_3" aria-expanded="false"><h2>Challenge 3: Prosopagnosia</h2></a>
+        </div>
+        <div id="challenge_3" class="accordion">
+            <h3>scenario</h3>
+            <p>Lucky guy: Eli knows several celebrities!</p>
+            <p>One of his famous friends sits down at Eli's table to chat.</p>
+            <p>Eli tries to figure out which of his celeb friends is sitting across from him so that he can greet his friend properly.</p>
+            <h3>limitations</h3>
+            <p>As someone with prosopagnosia he doesn't recognize faces. He relies on categorization to guess who the person is. But due to the limitations of his prospagnosia he can only process certain attributes.</p>
+            <h3>challenge</h3>
+            <p>Pick a celebrity, then choose attributes about that celebrity from the following categories to see if Eli can figure out which one of these famous people are sitting across from him.</p>
+            <div class="tiles" id="peopleTiles"></div>
+            <div id="extraInfo" class="is-hidden">
+                <h3>Did you know?</h3>
+                <p>Eli cannot differentiate skin color or eye color?</p>
+                <p>Also, the friend's profession won't help Eli because it is out of context.  (Although, Eli may ask some questions about work to get more clues as to who his friend is.)</p>
+                <h3>What can Eli's friends do to help?</h3>
+                <p>When greeting Eli, his friends can mention their own name.</p>
+            </div>
+            <form action="post" data-cull="peopleTiles">
+                <fieldset>
+                    <legend>Weight</legend>
+                    <label><input id="weight_heavy" name="weight" type="radio" value="heavy"/>heavy</label>
+                    <label><input id="weight_normal" name="weight" type="radio" value="normal" />normal</label>
+                </fieldset>
+                <fieldset>
+                    <legend>Hair Color</legend>
+                    <label><input id="hair_color_blond" name="hair_color" type="radio" value="blond"/>blond</label>
+                    <label><input id="hair_color_brown" name="hair_color" type="radio" value="brown" />brown</label>
+                    <label><input id="hair_color_gray" name="hair_color" type="radio" value="gray" />gray</label>
+                </fieldset>
+                <fieldset>
+                    <legend>Eye Color</legend>
+                    <label><input id="eye_color_blue" name="eye_color" type="radio" value="blue"/>blue</label>
+                    <label><input id="eye_color_brown" name="eye_color" type="radio" value="brown" />brown</label>
+                    <label><input id="eye_color_green" name="eye_color" type="radio" value="green" />green</label>
+                </fieldset>
+                <fieldset>
+                    <legend>Skin Color</legend>
+                    <label><input id="skin_black" name="skin" type="radio" value="black"/>black</label>
+                    <label><input id="skin_white" name="skin" type="radio" value="white" />white</label>
+                </fieldset>
+                <fieldset>
+                    <legend>Age</legend>
+                    <label><input id="age_elderly" name="age" type="radio" value="elderly"/>elderly</label>
+                    <label><input id="age_middle" name="age" type="radio" value="middle"/>middle age</label>
+                    <label><input id="age_young" name="age" type="radio" value="young" />young</label>
+                </fieldset>
+                <fieldset>
+                    <legend>Gender</legend>
+                    <label><input id="gender_male" name="gender" type="radio" value="male"/>male</label>
+                    <label><input id="gender_female" name="gender" type="radio" value="female"/>female</label>
+                </fieldset>
+                <fieldset>
+                    <legend>Profession</legend>
+                    <label><input id="profession_actor" name="profession" type="radio" value="actor"/>actor</label>
+                    <label><input id="profession_scientist" name="profession" type="radio" value="scientist"/>scientist</label>
+                    <label><input id="profession_singer" name="profession" type="radio" value="singer" />singer</label>
+                    <label><input id="profession_comedian" name="profession" type="radio" value="comedian"/>comedian</label>
+                    <label><input id="profession_president" name="profession" type="radio" value="president"/>president</label>
+                    <label><input id="profession_princess" name="profession" type="radio" value="princess" />princess</label>
+                    <label><input id="profession_tv_host" name="profession" type="radio" value="tv_host"/>tv host</label>
+                </fieldset>
+                <button type="button" class="btn">Submit</button>
+                <button type="reset" class="btn">Reset</button>
+            </form>
+        </div>
     </div>
     <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="../js/namespacing.js"></script>
