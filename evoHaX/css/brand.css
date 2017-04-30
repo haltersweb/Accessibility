@@ -396,6 +396,14 @@ label {
 	margin-bottom: .5ex;
 }
 .indented { float: left; margin-right: 1em; width:15vw }
+#challenge_1 label {
+	white-space: normal;
+	width: 100%;
+	display: inline-block;
+}
+#challenge_1 input {
+	float: right;
+}
 #challenge_2 label {
 	white-space: normal;
 	display: block;

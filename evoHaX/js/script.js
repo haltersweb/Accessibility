@@ -156,19 +156,6 @@
             'Coremod Chlppod Boot',
             'Bnewnlos'
         ];
-    function createWordForm() {
-        var fragment = document.createDocumentFragment(),
-            i;
-        for (i = 0; i < correctWords.length; i += 1) {
-            var label = document.createElement('label'),
-                input = document.createElement('input'),
-                labelText = '';
-            input.type = 'text';
-            input.addAttribute('data-correct', correctWords[i]);
-            //labelText =
-        }
-
-    }
     function createTiles(tilesId, group) {
         var tiles = document.getElementById(tilesId),
             fragment = document.createDocumentFragment();
@@ -237,12 +224,15 @@
         falseText.focus();
     }
     createTiles('peopleTiles', people);
+    //createWordForm();
     document.getElementById('challenge_3_Submit').addEventListener('click', function () {
         cullTiles(this.parentNode);
     });
     document.getElementById('challenge_2_Submit').addEventListener('click', function () {
         meal(this.parentNode);
     });
+    document.getElementById('challenge_2_Submit').addEventListener('click', function () {
+    })
 }(jQuery, NAME));
 
 
