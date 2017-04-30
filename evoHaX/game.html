@@ -23,16 +23,31 @@
         <h2>Alexia</h2>
         <h2>with anomia and agnosia</h2>
         <h2>with prosopagnosia</h2>
-        <p>You're sitting in a coffee shop.  A very famous person sits down at your table.  Try to figure out which of the celebrities is sitting across from you.</p>
-        <p>As someone with prosopagnosia you don't recognize faces. You rely on categorizing people. Some categories won't help you due to your prospagnosia.</p>
-        <p>See if you can figure out who is in front of you.</p>
-        <form action="post">
+        <h3>limitations</h3>
+        <p>As someone with prosopagnosia he doesn't recognize faces. He relies on categorization to guess who the person is. But due to the limitations of his prospagnosia he can only process certain attributes.</p>
+        <h3>scenario</h3>
+        <p>Eli is sitting in a coffee shop. Lucky guy: He knows several celebrities!</p>
+        <p>One of these very famous people sits down at Eli's table to chat.</p>
+        <p>Eli tries to figure out which of his celeb friends is sitting across from him so that he can greet his friend.</p>
+        <h3>challenge</h3>
+        <p>Pick a celebrity, then choose attributes about that celebrity from the following categories to see if Eli can figure out which one of these famous people are sitting across from him.</p>
+        <div class="tiles" id="peopleTiles"></div>
+        <div id="extraInfo" class="is-hidden">
+            <h3>Did you know?</h3>
+            <p>Eli cannot differentiate skin color or eye color?</p>
+            <p>Also, the friend's profession won't help Eli because it is out of context.  (Although, Eli may ask some questions about work to get more clues as to who his friend is.)</p>
+            <h3>What can Eli's friends do to help?</h3>
+            <p>When greeting Eli, his friends can mention their own name.</p>
+        </div>
+        <form action="post" data-cull="peopleTiles">
+        <!--
             <fieldset>
                 <legend>Height</legend>
                 <label><input id="height_tall" name="height" type="radio" value="tall"/>tall</label>
                 <label><input id="height_medium" name="height" type="radio" value="medium" />medium</label>
                 <label><input id="height_short" name="height" type="radio" value="short" />short</label>
             </fieldset>
+        -->
             <fieldset>
                 <legend>Weight</legend>
                 <label><input id="weight_heavy" name="weight" type="radio" value="heavy"/>heavy</label>
@@ -45,21 +60,23 @@
                 <label><input id="hair_color_brown" name="hair_color" type="radio" value="brown" />brown</label>
                 <label><input id="hair_color_gray" name="hair_color" type="radio" value="gray" />gray</label>
             </fieldset>
+        <!--
             <fieldset>
                 <legend>Hair Style</legend>
                 <label><input id="hair_style_long" name="hair_style" type="radio" value="long"/>long</label>
                 <label><input id="hair_style_short" name="hair_style" type="radio" value="short" />short</label>
                 <label><input id="hair_style_full" name="hair_style" type="radio" value="full" />full</label>
             </fieldset>
+        -->
             <fieldset>
                 <legend>Eye Color</legend>
                 <label><input id="eye_color_blue" name="eye_color" type="radio" value="blue"/>blue</label>
                 <label><input id="eye_color_brown" name="eye_color" type="radio" value="brown" />brown</label>
+                <label><input id="eye_color_green" name="eye_color" type="radio" value="green" />green</label>
             </fieldset>
             <fieldset>
                 <legend>Skin Color</legend>
                 <label><input id="skin_black" name="skin" type="radio" value="black"/>black</label>
-                <label><input id="skin_brown" name="skin" type="radio" value="brown"/>brown</label>
                 <label><input id="skin_white" name="skin" type="radio" value="white" />white</label>
             </fieldset>
             <fieldset>
@@ -83,12 +100,9 @@
                 <label><input id="profession_princess" name="profession" type="radio" value="princess" />princess</label>
                 <label><input id="profession_tv_host" name="profession" type="radio" value="tv_host"/>tv host</label>
             </fieldset>
-            <div>
-                <button type="button" class="btn">Submit</button>
-                <button type="reset" class="btn">Reset</button>
-            </div>
+            <button type="button" class="btn">Submit</button>
+            <button type="reset" class="btn">Reset</button>
         </form>
-        <div class="tiles" id="peopleTiles"></div>
     </div>
     <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="../js/namespacing.js"></script>

@@ -362,12 +362,13 @@ input[disabled] {
 .tiles {
 	display:flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	/* justify-content: space-between; */
 	margin-top: 3ex;
 }
 .tile {
-	width: 18%;
+	width: 17%;
 	padding-bottom: 2ex;
+	margin-right: 2ex;
 }
 fieldset {
 	border: 1px solid;

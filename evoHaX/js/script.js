@@ -13,7 +13,7 @@
             id: 'einstein',
             name: 'Einstein',
             height: 'medium', // tall, medium, short, kid
-            weight: 'heavy', // heavy, regular, thin
+            weight: 'medium', // heavy, medium, thin
             hair_color: 'gray', // gray, brown, blond, red
             hair_style: 'full', // long, short, full
             skin: 'white', // white, black
@@ -26,7 +26,7 @@
             id: 'martin',
             name: 'Steve Martin',
             height: 'medium',
-            weight: 'regular',
+            weight: 'medium',
             hair_color: 'gray',
             hair_style: 'short',
             skin: 'white',
@@ -39,12 +39,12 @@
             id: 'sinatra',
             name: 'Frank Sinatra',
             height: 'medium',
-            weight: 'regular',
-            hair_color: 'gray',
+            weight: 'medium',
+            hair_color: 'brown',
             hair_style: 'short',
             skin: 'white',
             eye_color: 'blue',
-            age: 'old',
+            age: 'middle',
             gender: 'male',
             profession: 'singer'
         },
@@ -52,15 +52,16 @@
             id: 'elvis',
             name: 'Elvis',
             height: 'tall',
-            weight: 'regular',
+            weight: 'medium',
             hair_color: 'brown',
             hair_style: 'short',
             eye_color: 'blue',
             skin: 'white',
-            age: 'young',
+            age: 'middle',
             gender: 'male',
             profession: 'singer'
         },
+        /*
         {
             id: 'obama',
             name:'Obama',
@@ -74,6 +75,20 @@
             gender: 'male',
             profession: 'president'
         },
+        */
+        {
+            id: 'gaga',
+            name:'Lady Gaga',
+            height: 'short',
+            weight: 'thin',
+            hair_color: 'blond',
+            hair_style: 'long',
+            eye_color: 'brown',
+            skin: 'white',
+            age: 'young',
+            gender: 'female',
+            profession: 'singer'
+        },
         {
             id: 'oprah',
             name: 'Oprah',
@@ -83,7 +98,7 @@
             hair_style: 'full',
             eye_color: 'brown',
             skin: 'black',
-            age: 'medium',
+            age: 'middle',
             gender: 'female',
             profession: 'tv host'
         },
@@ -92,7 +107,7 @@
             name: 'Morgan Freeman',
             height: 'tall',
             weight: 'medium',
-            hair_color: 'white',
+            hair_color: 'gray',
             hair_style: 'short',
             eye_color: 'brown',
             skin: 'black',
@@ -113,32 +128,62 @@
             gender: 'female',
             profession: 'princess'
         },
+        /*
         {
             id: 'streep',
             name: 'Meryl Streep',
             height: 'short',
-            weight: 'medium',
+            weight: 'thin',
             hair_color: 'blond',
             hair_style: 'long',
             eye_color: 'blue',
             skin: 'white',
-            age: 'medium',
+            age: 'middle',
             gender: 'female',
             profession: 'actor'
         },
+        */
+        {
+            id: 'beyonce',
+            name: 'Beyonce',
+            height: 'tall',
+            weight: 'thin',
+            hair_color: 'blond',
+            hair_style: 'long',
+            eye_color: 'brown',
+            skin: 'black',
+            age: 'young',
+            gender: 'female',
+            profession: 'singer'
+        },
+        {
+            id: 'mccarthy',
+            name: 'Melissa McCarthy',
+            height: 'medium',
+            weight: 'heavy',
+            hair_color: 'brown',
+            hair_style: 'long',
+            eye_color: 'green',
+            skin: 'white',
+            age: 'middle',
+            gender: 'female',
+            profession: 'actor'
+        }
+        /*
         {
             id: 'wonder',
             name: 'Stevie Wonder',
             height: 'tall',
             weight: 'medium',
-            hair_color: 'black',
+            hair_color: 'brown',
             hair_style: 'long',
             eye_color: 'brown',
             skin: 'black',
-            age: 'medium',
+            age: 'middle',
             gender: 'male',
             profession: 'singer'
         }
+        */
     ]/*,
         objects = [
             'bowl', 'flower', 'pen', 'bottle', 'laptop'
@@ -166,7 +211,39 @@
         });
         tiles.appendChild(fragment);
     }
+    function cullTiles(form) {
+        var profile = {
+                //height: form.height.value,
+                weight: form.weight.value,
+                hair_color: form.hair_color.value,
+                //hair_style: form.hair_style.value,
+                age: form.age.value,
+                gender: form.gender.value
+            },
+            attributes = Object.keys(profile);
+
+        people.forEach(function(person) {
+            var hideFlag = false,
+                tile = document.getElementById(person.id),
+                i;
+            for (i = 0; i < attributes.length; i += 1) {
+                if (profile[attributes[i]] !== person[attributes[i]]) {
+                    hideFlag = true;
+                    break;
+                }
+            }
+            if (hideFlag) {
+                tile.classList.add('is-hidden');
+            } else {
+                tile.classList.remove('is-hidden');
+            }
+        });
+        document.getElementById('extraInfo').classList.remove('is-hidden');
+    }
     createTiles('peopleTiles', people);
+    document.querySelectorAll('[type="button"]')[0].addEventListener('click', function () {
+        cullTiles(this.parentNode);
+    });
 }(jQuery, NAME));
 
 
