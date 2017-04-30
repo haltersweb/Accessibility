@@ -28,6 +28,10 @@ ul {
 	list-style: none;
 	}
 ol { padding-left: 1.5em; }
+
+nav a { padding: .5em 1ex; display: block}
+nav li { background-color: gray; display: inline-block; }
+
 li {
 	margin-left: 0;
 	padding-left: 0;
@@ -393,7 +397,7 @@ label {
 	vertical-align: top;
 	margin-bottom: .5ex;
 }
-.indented { float: left; width: 15vw; margin-right: 1em; }
+.indented { float: left; margin-right: 1em; width:15vw }
 #challenge_2 label {
 	white-space: normal;
 	display: block;
