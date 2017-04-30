@@ -10,19 +10,86 @@
     <title>Experience Alexia</title>
 </head>
 <body>
-    <h1>Experience Alexia</h1>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Alexia</a></li>
-            <li><a href="game">Alexia Game</a></li>
-        </ul>
-    </nav>
-    <h2>Alexia</h2>
-    <h2>with anomia and agnosia</h2>
-    <h2>with prosopagnosia</h2>
-    <p>You're sitting in a coffee shop.  A very famous person sits down at your table.  Try to figure out which of the celebrities is sitting across from you.</p>
-    <div class="tiles" id="peopleTiles"></div>
+    <div class="page-wrapper">
+        <h1>Experience Alexia</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Alexia</a></li>
+                <li><a href="game">Alexia Game</a></li>
+            </ul>
+        </nav>
+        <p>Eli is a college student with alexia and two associated conditions: agnosia and prosopagnosia.</p>
+        <h2>Alexia</h2>
+        <h2>with anomia and agnosia</h2>
+        <h2>with prosopagnosia</h2>
+        <p>You're sitting in a coffee shop.  A very famous person sits down at your table.  Try to figure out which of the celebrities is sitting across from you.</p>
+        <p>As someone with prosopagnosia you don't recognize faces. You rely on categorizing people. Some categories won't help you due to your prospagnosia.</p>
+        <p>See if you can figure out who is in front of you.</p>
+        <form action="post">
+            <fieldset>
+                <legend>Height</legend>
+                <label><input id="height_tall" name="height" type="radio" value="tall"/>tall</label>
+                <label><input id="height_medium" name="height" type="radio" value="medium" />medium</label>
+                <label><input id="height_short" name="height" type="radio" value="short" />short</label>
+            </fieldset>
+            <fieldset>
+                <legend>Weight</legend>
+                <label><input id="weight_heavy" name="weight" type="radio" value="heavy"/>heavy</label>
+                <label><input id="weight_medium" name="weight" type="radio" value="medium" />medium</label>
+                <label><input id="weight_thin" name="weight" type="radio" value="thin" />thin</label>
+            </fieldset>
+            <fieldset>
+                <legend>Hair Color</legend>
+                <label><input id="hair_color_blond" name="hair_color" type="radio" value="blond"/>blond</label>
+                <label><input id="hair_color_brown" name="hair_color" type="radio" value="brown" />brown</label>
+                <label><input id="hair_color_gray" name="hair_color" type="radio" value="gray" />gray</label>
+            </fieldset>
+            <fieldset>
+                <legend>Hair Style</legend>
+                <label><input id="hair_style_long" name="hair_style" type="radio" value="long"/>long</label>
+                <label><input id="hair_style_short" name="hair_style" type="radio" value="short" />short</label>
+                <label><input id="hair_style_full" name="hair_style" type="radio" value="full" />full</label>
+            </fieldset>
+            <fieldset>
+                <legend>Eye Color</legend>
+                <label><input id="eye_color_blue" name="eye_color" type="radio" value="blue"/>blue</label>
+                <label><input id="eye_color_brown" name="eye_color" type="radio" value="brown" />brown</label>
+            </fieldset>
+            <fieldset>
+                <legend>Skin Color</legend>
+                <label><input id="skin_black" name="skin" type="radio" value="black"/>black</label>
+                <label><input id="skin_brown" name="skin" type="radio" value="brown"/>brown</label>
+                <label><input id="skin_white" name="skin" type="radio" value="white" />white</label>
+            </fieldset>
+            <fieldset>
+                <legend>Age</legend>
+                <label><input id="age_old" name="age" type="radio" value="old"/>old</label>
+                <label><input id="age_middle" name="age" type="radio" value="middle"/>middle age</label>
+                <label><input id="age_young" name="age" type="radio" value="young" />young</label>
+            </fieldset>
+            <fieldset>
+                <legend>Gender</legend>
+                <label><input id="gender_male" name="gender" type="radio" value="male"/>male</label>
+                <label><input id="gender_female" name="gender" type="radio" value="female"/>female</label>
+            </fieldset>
+            <fieldset>
+                <legend>Profession</legend>
+                <label><input id="profession_actor" name="profession" type="radio" value="actor"/>actor</label>
+                <label><input id="profession_scientist" name="profession" type="radio" value="scientist"/>scientist</label>
+                <label><input id="profession_singer" name="profession" type="radio" value="singer" />singer</label>
+                <label><input id="profession_comedian" name="profession" type="radio" value="comedian"/>comedian</label>
+                <label><input id="profession_president" name="profession" type="radio" value="president"/>president</label>
+                <label><input id="profession_princess" name="profession" type="radio" value="princess" />princess</label>
+                <label><input id="profession_tv_host" name="profession" type="radio" value="tv_host"/>tv host</label>
+            </fieldset>
+            <div>
+                <button type="button" class="btn">Submit</button>
+                <button type="reset" class="btn">Reset</button>
+            </div>
+        </form>
+        <div class="tiles" id="peopleTiles"></div>
+    </div>
     <script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="../js/namespacing.js"></script>
     <script type="text/javascript" src="../js/accessibility-helpers.js"></script>

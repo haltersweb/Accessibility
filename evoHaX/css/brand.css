@@ -363,7 +363,23 @@ input[disabled] {
 	display:flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
+	margin-top: 3ex;
 }
 .tile {
 	width: 18%;
+	padding-bottom: 2ex;
+}
+fieldset {
+	border: 1px solid;
+	padding: 1ex 1em;
+	margin-bottom: 2ex;
+}
+legend {
+	font-weight: bold;
+}
+label {
+	width: 15%;
+	white-space: nowrap;
+	vertical-align: top;
+	margin-bottom: .5ex;
 }
