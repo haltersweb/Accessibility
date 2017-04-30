@@ -194,7 +194,7 @@
             }
         });
         document.getElementById('extraInfo').classList.remove('is-hidden');
-        document.getElementById('extraInfo').focus();
+        document.getElementById('challenge_3_results').focus();
     }
     function meal(form) {
         var trueText = document.getElementById('challenge_2_true'),
