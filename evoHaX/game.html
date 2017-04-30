@@ -39,30 +39,32 @@
             <h3>limitations</h3>
             <p>As someone with agnosia, Eli does not know what an item is when it's out of context.  Also, if an item is placed in the wrong context Eli will identify the item incorrectly.</p>
             <h3>challenge</h3>
-            <form action="">
+            <form action="post" id="challenge_2_form">
                 <fieldset>
                     <legend>Pick all of the following that Eli is most likely to do?</legend>
                     <label>
-                        <input type="checkbox" name="table" id="table_napkin" />
+                        <input type="checkbox" name="table_napkin" id="table_napkin" />
                         Eli asks for a napkin.
                     </label>
                     <label>
-                        <input type="checkbox" name="table" id="table_spoon" />
+                        <input type="checkbox" name="table_spoon" id="table_spoon" />
                         Eli asks for a spoon.
                     </label>
                     <label>
-                        <input type="checkbox" name="table" id="table_water" />
+                        <input type="checkbox" name="table_water" id="table_water" />
                         Eli asks for a glass of water.
                     </label>
                     <label>
-                        <input type="checkbox" name="table" id="table_what" />
+                        <input type="checkbox" name="table_what" id="table_what" />
                         Eli asks what the glass of water currently on the table is.
                     </label>
                     <label>
-                        <input type="checkbox" name="table" id="table_fork" />
+                        <input type="checkbox" name="table_fork" id="table_fork" />
                         Eli tries to eat his soup with his fork.
                     </label>
                 </fieldset>
+                <button type="button" class="btn" id="challenge_2_Submit">Submit</button>
+                <button type="reset" class="btn" id="challenge_2_Reset">Reset</button>
             </form>
         </div>
         <div>
@@ -85,7 +87,7 @@
                 <h3>What can Eli's friends do to help?</h3>
                 <p>When greeting Eli, his friends can mention their own name.</p>
             </div>
-            <form action="post" data-cull="peopleTiles">
+            <form action="post" id="challenge_3_form" data-cull="peopleTiles">
                 <fieldset>
                     <legend>Weight</legend>
                     <label><input id="weight_heavy" name="weight" type="radio" value="heavy"/>heavy</label>
@@ -129,8 +131,8 @@
                     <label><input id="profession_princess" name="profession" type="radio" value="princess" />princess</label>
                     <label><input id="profession_tv_host" name="profession" type="radio" value="tv_host"/>tv host</label>
                 </fieldset>
-                <button type="button" class="btn">Submit</button>
-                <button type="reset" class="btn">Reset</button>
+                <button type="button" class="btn" id="challenge_3_Submit">Submit</button>
+                <button type="reset" class="btn" id="challenge_3_Reset">Reset</button>
             </form>
         </div>
     </div>

@@ -394,3 +394,8 @@ label {
 	margin-bottom: .5ex;
 }
 .indented { padding-left: 25%; padding-right: 25%; }
+#challenge_2 label {
+	white-space: normal;
+	display: block;
+	width: auto;
+}

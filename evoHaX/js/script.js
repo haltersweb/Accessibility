@@ -61,21 +61,6 @@
             gender: 'male',
             profession: 'singer'
         },
-        /*
-        {
-            id: 'obama',
-            name:'Obama',
-            height: 'tall',
-            weight: 'normal',
-            hair_color: 'brown',
-            hair_style: 'short',
-            eye_color: 'brown',
-            skin: 'black',
-            age: 'middle',
-            gender: 'male',
-            profession: 'president'
-        },
-        */
         {
             id: 'gaga',
             name:'Lady Gaga',
@@ -128,21 +113,6 @@
             gender: 'female',
             profession: 'princess'
         },
-        /*
-        {
-            id: 'streep',
-            name: 'Meryl Streep',
-            height: 'short',
-            weight: 'normal',
-            hair_color: 'blond',
-            hair_style: 'long',
-            eye_color: 'blue',
-            skin: 'white',
-            age: 'middle',
-            gender: 'female',
-            profession: 'actor'
-        },
-        */
         {
             id: 'beyonce',
             name: 'Beyonce',
@@ -169,21 +139,6 @@
             gender: 'female',
             profession: 'actor'
         }
-        /*
-        {
-            id: 'wonder',
-            name: 'Stevie Wonder',
-            height: 'tall',
-            weight: 'normal',
-            hair_color: 'brown',
-            hair_style: 'long',
-            eye_color: 'brown',
-            skin: 'black',
-            age: 'middle',
-            gender: 'male',
-            profession: 'singer'
-        }
-        */
     ]/*,
         objects = [
             'bowl', 'flower', 'pen', 'bottle', 'laptop'
@@ -240,10 +195,25 @@
         });
         document.getElementById('extraInfo').classList.remove('is-hidden');
     }
+    function meal(form) {
+        //form.yada.checked
+        if(form.table_napkin.checked &&
+            !form.table_spoon.checked &&
+            form.table_water.checked &&
+            form.table_what.checked &&
+            form.table_fork.checked) {
+            console.log('truth');
+            return;
+        }
+        console.log('try again');
+    }
     createTiles('peopleTiles', people);
-    document.querySelectorAll('[type="button"]')[0].addEventListener('click', function () {
+    document.getElementById('challenge_3_Submit').addEventListener('click', function () {
         cullTiles(this.parentNode);
     });
+    document.getElementById('challenge_2_Submit').addEventListener('click', function () {
+        meal(this.parentNode);
+    })
 }(jQuery, NAME));
 
 
