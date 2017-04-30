@@ -399,3 +399,7 @@ label {
 	display: block;
 	width: auto;
 }
+[tabindex="-1"] {
+	outline: none;
+	box-shadow: none;
+}

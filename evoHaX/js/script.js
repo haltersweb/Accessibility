@@ -194,6 +194,7 @@
             }
         });
         document.getElementById('extraInfo').classList.remove('is-hidden');
+        document.getElementById('extraInfo').focus();
     }
     function meal(form) {
         var trueText = document.getElementById('challenge_2_true'),
@@ -206,9 +207,11 @@
             form.table_what.checked &&
             form.table_fork.checked) {
             trueText.classList.remove('is-hidden');
+            trueText.focus();
             return;
         }
         falseText.classList.remove('is-hidden');
+        falseText.focus();
     }
     createTiles('peopleTiles', people);
     document.getElementById('challenge_3_Submit').addEventListener('click', function () {
