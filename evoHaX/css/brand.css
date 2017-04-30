@@ -28,10 +28,8 @@ ul {
 	list-style: none;
 	}
 ol { padding-left: 1.5em; }
-
 nav a { padding: .5em 1ex; display: block}
-nav li { background-color: gray; display: inline-block; }
-
+nav li { border: 2px solid; display: inline-block; }
 li {
 	margin-left: 0;
 	padding-left: 0;
