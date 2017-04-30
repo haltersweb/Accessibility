@@ -116,7 +116,7 @@ td li:last-child {
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	display: block;
 	margin: 1.3ex 0 1ex;
-	color: #DAC3AF;
+	color: #DAc3AF;
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: bold;
 	letter-spacing: .02em;
@@ -362,7 +362,6 @@ input[disabled] {
 .tiles {
 	display:flex;
 	flex-wrap: wrap;
-	/* justify-content: space-between; */
 	margin-top: 3ex;
 }
 .tile {
@@ -384,3 +383,4 @@ label {
 	vertical-align: top;
 	margin-bottom: .5ex;
 }
+.indented { padding-left: 25%; padding-right: 25%; }
