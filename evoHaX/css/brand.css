@@ -393,7 +393,7 @@ label {
 	vertical-align: top;
 	margin-bottom: .5ex;
 }
-.indented { padding-left: 25%; padding-right: 25%; }
+.indented { float: left; width: 15vw; margin-right: 1em; }
 #challenge_2 label {
 	white-space: normal;
 	display: block;
