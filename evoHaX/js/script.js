@@ -139,13 +139,36 @@
             gender: 'female',
             profession: 'actor'
         }
-    ]/*,
-        objects = [
-            'bowl', 'flower', 'pen', 'bottle', 'laptop'
         ],
-        words = [
-            'plough', 'pen', 'bonus', 'brownies', 'transcend', 'transitioned', 'temperature', 'tend'
-        ]*/;
+        correctWords = [
+            'Orange Juice',
+            'Pineapple Juice',
+            'Bacon and Eggs',
+            'Cajun French Fries',
+            'Creamed Chipped Beef',
+            'Brownies'
+        ],
+        incorrectWords = [
+            'Ormogo Juloc',
+            'Blnoeppto Juloc',
+            'Bonce emd Rpps',
+            'Cepun Frconh Frlso',
+            'Coremod Chlppod Boot',
+            'Bnewnlos'
+        ];
+    function createWordForm() {
+        var fragment = document.createDocumentFragment(),
+            i;
+        for (i = 0; i < correctWords.length; i += 1) {
+            var label = document.createElement('label'),
+                input = document.createElement('input'),
+                labelText = '';
+            input.type = 'text';
+            input.addAttribute('data-correct', correctWords[i]);
+            //labelText =
+        }
+
+    }
     function createTiles(tilesId, group) {
         var tiles = document.getElementById(tilesId),
             fragment = document.createDocumentFragment();
@@ -219,7 +242,7 @@
     });
     document.getElementById('challenge_2_Submit').addEventListener('click', function () {
         meal(this.parentNode);
-    })
+    });
 }(jQuery, NAME));
 
 
