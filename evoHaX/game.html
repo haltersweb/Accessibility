@@ -16,7 +16,7 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Alexia</a></li>
-                <li><a href="game">Alexia Game</a></li>
+                <li><a href="game.html">Alexia Game</a></li>
             </ul>
         </nav>
         <p>Eli is a college student with the cognitive disability alexia and two associated conditions: agnosia and prosopagnosia.</p>
@@ -63,6 +63,15 @@
                         Eli tries to eat his soup with his fork.
                     </label>
                 </fieldset>
+                <div id="challenge_2_true" class="is-hidden" tabindex="-1">
+                    <p class="h2">You are correct!</p>
+                    <h3>Did you know?</h3>
+                    <p>Eli wouldn't ask for a spoon because as far as he is concerned the utensil on the right is the spoon.  He will only find out that it is a fork when he tries to eat his soup with it.</p>
+                    <p>Eli won't recognize the water glass misplaced to the top left of the plate.  But if it is moved to the top right he will instantly recognize it as his water glass.</p>
+                </div>
+                <div id="challenge_2_false" class="is-hidden" tabindex="-1">
+                    <p class="h2">Sorry.  Try again.</p>
+                </div>
                 <button type="button" class="btn" id="challenge_2_Submit">Submit</button>
                 <button type="reset" class="btn" id="challenge_2_Reset">Reset</button>
             </form>
@@ -80,7 +89,7 @@
             <h3>challenge</h3>
             <p>Pick a celebrity, then choose attributes about that celebrity from the following categories to see if Eli can figure out which one of these famous people are sitting across from him.</p>
             <div class="tiles" id="peopleTiles"></div>
-            <div id="extraInfo" class="is-hidden">
+            <div id="extraInfo" class="is-hidden" tabindex="-1">
                 <h3>Did you know?</h3>
                 <p>Eli cannot differentiate skin color or eye color?</p>
                 <p>Also, the friend's profession won't help Eli because it is out of context.  (Although, Eli may ask some questions about work to get more clues as to who his friend is.)</p>

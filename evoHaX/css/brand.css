@@ -393,9 +393,13 @@ label {
 	vertical-align: top;
 	margin-bottom: .5ex;
 }
-.indented { float: left; margin-right: 1em; width:15vw }
+.indented { float: left; width: 15vw; margin-right: 1em; }
 #challenge_2 label {
 	white-space: normal;
 	display: block;
 	width: auto;
+}
+[tabindex="-1"] {
+	outline: none;
+	box-shadow: none;
 }

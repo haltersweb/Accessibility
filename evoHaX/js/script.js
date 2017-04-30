@@ -194,18 +194,24 @@
             }
         });
         document.getElementById('extraInfo').classList.remove('is-hidden');
+        document.getElementById('extraInfo').focus();
     }
     function meal(form) {
-        //form.yada.checked
+        var trueText = document.getElementById('challenge_2_true'),
+            falseText = document.getElementById('challenge_2_false');
+        trueText.classList.add('is-hidden');
+        falseText.classList.add('is-hidden');
         if(form.table_napkin.checked &&
             !form.table_spoon.checked &&
             form.table_water.checked &&
             form.table_what.checked &&
             form.table_fork.checked) {
-            console.log('truth');
+            trueText.classList.remove('is-hidden');
+            trueText.focus();
             return;
         }
-        console.log('try again');
+        falseText.classList.remove('is-hidden');
+        falseText.focus();
     }
     createTiles('peopleTiles', people);
     document.getElementById('challenge_3_Submit').addEventListener('click', function () {
