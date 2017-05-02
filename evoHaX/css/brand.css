@@ -29,7 +29,7 @@ ul {
 	}
 ol { padding-left: 1.5em; }
 nav a { padding: .5em 1ex; display: block}
-nav li { border: 2px solid; display: inline-block; }
+nav li {border: 2px solid #C9E1F2;display: inline-block;}
 li {
 	margin-left: 0;
 	padding-left: 0;
@@ -62,8 +62,8 @@ a:hover,
 	text-decoration: underline;
 	}
 :focus {
-	outline: #DAc3AF solid 1px;
-	box-shadow: 0px 0px 2px 2px #DAc3AF;
+	outline: #5FFF6D solid 1px;
+	box-shadow: 0px 0px 2px 2px #5FFF6D;
 	}
 a.current {
 	color: #747075;
@@ -134,7 +134,7 @@ h1, .h1 {
 	}
 h2, .h2 {
 	font-size: 2.3rem;
-	overflow: hidden
+	overflow: hidden;
 	}
 h2:after {
     content:"";
@@ -267,9 +267,12 @@ input[disabled] {
 	text-decoration: none;
 	}
 .btn-primary {
-	border: none;
-	background: #3279bf;
-	color: #fff;
+	font-weight: normal;
+    background-color: transparent;
+    border: 2px solid #C9E1F2;
+    color: #5FFF6D;
+    padding: 2ex 1em;
+    line-height: 0;
 	}
 .btn-primary:hover,
 .btn-primary:focus,
@@ -369,8 +372,14 @@ input[disabled] {
 .page-wrapper {
 	width: 80%;
 	margin: 0 auto 10ex;
-	background-color: #1C303E;
 	}
+.accordion-trigger:hover {
+	text-decoration: none;
+}
+.accordion-trigger:focus h2 {
+	outline: #5FFF6D solid 1px;
+	box-shadow: 0px 0px 2px 2px #5FFF6D;
+}
 .tiles {
 	display:flex;
 	flex-wrap: wrap;
@@ -395,14 +404,42 @@ label {
 	vertical-align: top;
 	margin-bottom: .5ex;
 }
-.indented { float: left; margin-right: 1em; width:15vw }
 #challenge_1 label {
 	white-space: normal;
 	width: 100%;
-	display: inline-block;
+	display: block;
+	margin: 1ex 0 3ex;
+	position: relative;
 }
 #challenge_1 input {
-	float: right;
+	display: block;
+	width: 100%;
+	min-width: 242px;
+	margin: 1ex 0;
+}
+.challenge-1-help {
+	position: absolute;
+    right: .5em;
+    bottom: .7ex;
+    font-weight: normal;
+    font-size: .8em;
+    padding: 1ex .5em;
+    height: auto;
+    line-height: 1;
+    box-sizing: border-box;
+}
+.challenge-1-help:focus {
+    background-color: #5FFF6D;
+    color: #1C303E;
+	outline: #1C303E solid 1px;
+	box-shadow: 0px 0px 2px 2px #1C303E;
+}			
+.answer {
+	color: #f9e540;
+	display: block;
+}
+.answer.incorrect {
+	color: #ffa384;
 }
 #challenge_2 label {
 	white-space: normal;
@@ -413,5 +450,8 @@ label {
 	outline: none;
 	box-shadow: none;
 }
-Contact GitHub API Training Shop Blog About
-© 2017 GitHub, Inc. Terms Privacy Security Status Help
+.indented {
+	float: left;
+	margin-right: 1em;
+	width:15vw
+}

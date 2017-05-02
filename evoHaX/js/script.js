@@ -6,7 +6,7 @@
 /*global
     NAME, jQuery
 */
-(function ($, NAME) {
+(function () {
     'use strict';
     var people = [
         {
@@ -223,6 +223,24 @@
         falseText.classList.remove('is-hidden');
         falseText.focus();
     }
+    function alexia(form) {
+        var inputs = form.getElementsByTagName('input'),
+            i;
+        for(i = 0; i < inputs.length; i += 1) {
+            var answerSpan = inputs[i].previousElementSibling,
+                correct = inputs[i].getAttribute('data-correct');
+            if (inputs[i].value.toLowerCase() === correct.toLowerCase()) {
+                answerSpan.textContent = 'Correct: ' + correct;
+                answerSpan.classList.remove('incorrect');
+            } else {
+                answerSpan.textContent = 'Incorrect: Try Again';
+                answerSpan.classList.add('incorrect');
+            }
+        }
+    }
+    function alexiaHelp() {
+        console.log('hello');
+    }
     createTiles('peopleTiles', people);
     //createWordForm();
     document.getElementById('challenge_3_Submit').addEventListener('click', function () {
@@ -231,8 +249,15 @@
     document.getElementById('challenge_2_Submit').addEventListener('click', function () {
         meal(this.parentNode);
     });
-    document.getElementById('challenge_2_Submit').addEventListener('click', function () {
-    })
+    document.getElementById('challenge_1_Submit').addEventListener('click', function () {
+        alexia(this.parentNode);
+    });
+    document.getElementById('challenge_1_form').addEventListener('click', function (e) {
+        if (e.target.className.includes('challenge-1-help')) {
+            alexiaHelp(e.currentTarget);
+            return false;
+        }
+    });
 }(jQuery, NAME));
 
 
