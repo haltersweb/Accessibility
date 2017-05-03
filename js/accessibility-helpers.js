@@ -157,7 +157,7 @@
 
     /*
     injects hidden announcement to be read by screen-readers
-    $ariaContainer is an existing, empty element with either aria-hidden="polite" or role="alert"
+    $ariaContainer is an existing, empty element with either aria-live="polite" or role="alert"
     */
     NAME.access.announcements = function ($ariaContainer, textToRead) {
         $ariaContainer.text(textToRead);
