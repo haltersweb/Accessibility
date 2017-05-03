@@ -230,16 +230,19 @@
             var answerSpan = inputs[i].previousElementSibling,
                 correct = inputs[i].getAttribute('data-correct');
             if (inputs[i].value.toLowerCase() === correct.toLowerCase()) {
+                inputs[i].removeAttribute('aria-invalid');
                 answerSpan.textContent = 'Correct: ' + correct;
                 answerSpan.classList.remove('incorrect');
             } else {
+                inputs[i].setAttribute('aria-invalid', 'true');
                 answerSpan.textContent = 'Incorrect: Try Again';
                 answerSpan.classList.add('incorrect');
             }
         }
     }
-    function alexiaHelp() {
-        console.log('hello');
+    function alexiaHelp(button) {
+        var input = button.previousElementSibling;
+        input.value = input.getAttribute('data-correct');
     }
     createTiles('peopleTiles', people);
     //createWordForm();
@@ -254,7 +257,7 @@
     });
     document.getElementById('challenge_1_form').addEventListener('click', function (e) {
         if (e.target.className.includes('challenge-1-help')) {
-            alexiaHelp(e.currentTarget);
+            alexiaHelp(e.target);
             return false;
         }
     });

@@ -79,11 +79,11 @@ a.current:hover {
 button {
 	cursor: pointer;
 	}
-fieldset {
-	position: relative;
-	margin: 0;
-	padding: 0;
-	border: 0;
+figure {
+	margin-bottom: 2ex;
+}
+figcaption {
+	color: #DAc3AF;
 }
 hr {
 	margin: 20px 0 15px;
@@ -166,8 +166,15 @@ h6, .h6 {
 }
 /* Forms
 ---------------------------------------- */
+fieldset {
+	position: relative;
+	border: 1px solid;
+	padding: 1ex 1em;
+	margin: 0 0 2ex 0;
+}
 legend {
 	overflow: hidden;
+	font-weight: bold;
 	}
 .legend {
 	display: block;
@@ -180,8 +187,10 @@ fieldset fieldset legend {
 	}
 label {
     display: inline-block;
-    width: 7em;
-    margin-right: 2em;
+	width: 15%;
+	white-space: nowrap;
+	vertical-align: top;
+	margin: 0 2em .5ex 0;
 }
 label.auto-length {
 	width: auto;
@@ -387,22 +396,11 @@ input[disabled] {
 }
 .tile {
 	width: 17%;
-	padding-bottom: 2ex;
 	margin-right: 2ex;
 }
-fieldset {
-	border: 1px solid;
-	padding: 1ex 1em;
-	margin-bottom: 2ex;
-}
-legend {
-	font-weight: bold;
-}
-label {
-	width: 15%;
-	white-space: nowrap;
-	vertical-align: top;
-	margin-bottom: .5ex;
+#challenge_1_form {
+	width: 100%;
+	max-width: 400px;
 }
 #challenge_1 label {
 	white-space: normal;
@@ -433,6 +431,7 @@ label {
     color: #1C303E;
 	outline: #1C303E solid 1px;
 	box-shadow: 0px 0px 2px 2px #1C303E;
+	font-weight: bold;
 }			
 .answer {
 	color: #f9e540;
@@ -454,4 +453,16 @@ label {
 	float: left;
 	margin-right: 1em;
 	width:15vw
+}
+.table-setting {
+	width: 30%;
+	min-width: 100px;
+	max-width: 250px;
+	vertical-align: top;
+}
+.table-setting + figcaption {
+	display: inline-block;
+	width: 60%;
+	margin-left: 1em;
+	font-style: italic;
 }
