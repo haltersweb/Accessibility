@@ -1,10 +1,10 @@
 /*global
-    jQuery, NAME, window, alert
+    jQuery, window, alert
 */
 /**
  * @author Adina Halter
  */
-(function ($, NAME) {
+(function ($) {
     'use strict';
     $('#birthMonth').on('focus', function () {
         $(this).attr('placeholder', '');
@@ -14,7 +14,7 @@
     });
     $('#submit').on('click', function () {
         if (!$('input#human').is(':checked')) {
-            $('#errorMsg').attr('for', 'human').text('We need to know if you are a human.').show();
+            $('#errorMsg').attr('for', 'human').text('We need to know if you are a human and not a kitty.').show();
         } else {
             $('#errorMsg').removeAttr('for').text('').hide();
             alert('This form validated nicely.  Thank you.');
@@ -33,4 +33,4 @@
         e.preventDefault();
         $('.modal, .block-screen').removeClass('active');
     });
-}(jQuery, NAME));
+}(jQuery));
