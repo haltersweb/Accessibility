@@ -20,26 +20,18 @@
 			<h3>Happy Kitty Pictures</h3>
 			<img src="http://dreamatico.com/data_images/kitten/kitten-1.jpg" width="200" />
 			<img src="http://theheightsanimalhospital.com/clients/15389/images/playful-kitten-6683.jpg" width="200" alt="" />
-			<p><a href="#" class="remove-outline">This is a test link which goes nowhere.</a></p>
-			<p><a href="#" class="launch-modal">Open more pics</a></p>
+			<p>Visit Google by clicking <a href="http://www.google.com" class="remove-outline">here</a>.</p>
+			<p><a href="#" class="launch-modal btn btn-primary">Open more pics</a></p>
 			<form>
-				<fieldset>
-					<input type="checkbox" name="foo" id="fooOne" />
-					<input type="checkbox" name="foo" id="fooTwo" />
-				</fieldset>
-				<fieldset>
-					<legend>What is bar?</legend>
-					<input type="checkbox" name="bar" id="barOne" />
-					<input type="checkbox" name="bar" id="barTwo" />
-				</fieldset>
-				<p class="h3">Tell us about yourself</p>
+				<p class="h3">What's your name?</p>
 				<label id="errorMsg"></label>
 				<div class="p">
-					<span>First Name</span><input id="firstName" type="text" />
+					<span style="display: inline-block; width: 7em; margin-right: 2em;">First Name</span><input id="firstName" type="text" />
 				</div>
 				<div class="p">
 					<label for="lastName">*Last Name</label><input id="lastName" type="text" class="remove-outline" />
 				</div>
+				<p class="h3">What month was your kitty born?</p>
 				<div class="p">
 					<input type="text" id="birthMonth" placeholder="Birth Month" data-placeholder="Birth Month" />
 					<p>Type out the month like "May".</p>
@@ -66,12 +58,13 @@
 						<input type="radio" name="howMany" id="four" />
 						<label>You can never have enough kitties</label>
 					</div>
+					<p class="h3">Prove you are not a kitty</p>
 					<div style="position: relative;" class="p">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29 29" role="presentation" focusable="false" class="svg-checkbox"  id="human">
 							<rect class="stroke" x="3" y="3" fill="#FFFFFF" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="23" height="23"></rect>
 							<polygon class="center" fill="#000000" points="13,13 4,5 3,5 3,6 12,23 14,23 29,1 29,0 28,0"></polygon>
 						</svg>
-						<label for="human">Yes, I am not a kitty.</label>
+						<label for="human">No, I am not a kitty.</label>
 						<input type="checkbox" id="human" name="human" style="display: none;" />
 					</div>
 				</div>
