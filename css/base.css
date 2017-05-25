@@ -361,6 +361,7 @@ i.svg {
 	padding: 0;
 	clip: rect(0px, 0px, 0px, 0px); /* deprecated */
 	clip-path: polygon(0px 0px, 0px 0px, 0px 0px, 0px 0px);
+    white-space: nowrap; /* wrap uses line feeds but LFs are not recognized as spaces by screen readers */
     }
 @media print {
 	.cui-not-printed { /* Will not appear on printouts */
