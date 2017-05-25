@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Accessible Dollars and Cents Patterns</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<style>
+		.style-A .currency {
+		    font-size: 1.4em;
+		    display: inline-block;
+		    position: relative;
+		    top: -1ex;
+		}
+		.style-A .dollars {
+		    font-size: 2em;
+		}
+		.style-B .currency,
+		.style-B .cents {
+		    display: inline-block;
+		    position: relative;
+		    top: -1.5ex;
+		}
+		.style-B .dollars {
+		    font-size: 2em;
+		}
+		.style-B .decimal {
+			position: absolute !important;
+			display: block;
+			visibility: visible;
+			overflow: hidden;
+			width: 1px;
+			height: 1px;
+			margin: -1px;
+			border: 0;
+			padding: 0;
+			clip: rect(0px, 0px, 0px, 0px); /* deprecated */
+			clip-path: polygon(0px 0px, 0px 0px, 0px 0px, 0px 0px);
+			white-space: nowrap; /* wrap uses line feeds but LFs are not recognized as spaces by screen readers */
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a href="#main" class="skip-link">Skip to main content</a>
+		<div class="page-wrapper" id="main" role="main" tabindex="-1">
+			<h1>Accessible Dollars and Cents</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
+			<p>Page design will often show currency amounts stylistically.  This often requires spans which can be styled.</p>
+			<p>Depending on the browser, spans can pause reading when arrowing through content.  This is not a problem as long as certain expectations are maintained.</p>
+			<ul class="bullet singletons">
+				<li>the currency character is spoken.</li>
+				<li>the '.' exists even if only visible with a screen reader.</li>
+				<li>there are no spaces injected between characters within the currency amount string.</li>
+			</ul>
+			<p>Following are some approaches and pitfalls when marking up currency amounts.</p>
+			<h2>Approach 1: straightforward text</h2>
+			<div id="approach1">
+				<p class="h3">$33.95</p>
+			</div>
+			<p>This approach is a simple string of text with the currency character followed by dollars, a ".", and then cents. But this approach is limited stylistically.</p>
+			<h3>Code sample</h3>
+			<div data-code="approach1"></div>
+			<h2>Approach 2: spanned content</h2>
+			<div id="approach2" style="display: inline-block;">
+				<p class="h3">
+					<span class="currency">$</span><span class="dollars">33</span><span class="decimal">.</span><span class="cents">95</span>
+				</p>
+			</div>
+			<p style="display: inline-block; margin-left: 1em;">
+				<button type="button" id="styleA" class="btn btn-primary">style A</button>
+				<button type="button" id="styleB" class="btn btn-primary">style B</button>
+				<button type="button" id="noStyle" class="btn btn-primary">no style</button>
+			</p>
+			<p>This approach wraps content in spans to allow for stylization.  I can even make the "." visible only to screen-readers via css.</p>
+			<p>The use of spans may pause reading at each span element in a screen reader when arrowing through content.  This is perfectly acceptable.</p>
+			<h3>Code sample</h3>
+			<div data-code="approach2"></div>
+			<h2>Pitfall: spaces between spans</h2>
+			<div id="pitfall">
+				<p class="h3">
+					<span class="currency">$</span>
+					<span class="dollars">33</span>
+					<span class="decimal">.</span>
+					<span class="cents">95</span>
+				</p>
+			</div>
+			<p>This example is practically the same markup as Approach 2.  The difference is by putting the spans on different lines in the HTML it injects space between each bit of content.  This is unacceptible because it changes the audial meaning of the text.</p>
+			<h3>Code sample</h3>
+			<div data-code="pitfall"></div>
+
+			<!-- SHOW USING GRAPHICS FOR $ -->
+			<!-- SHOW ELEGANT SOLUTION -->
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+		<div aria-live="polite" class="screen-reader-text"></div>
+		<div role="alert" class="screen-reader-text"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+	<script type="text/javascript" src="js/show-code.js"></script>
+	<script>
+document.getElementById('styleA').addEventListener('click', function () {
+    document.getElementById('approach2').classList.remove('style-B');
+    document.getElementById('approach2').classList.add('style-A');
+});
+document.getElementById('styleB').addEventListener('click', function () {
+    document.getElementById('approach2').classList.remove('style-A');
+    document.getElementById('approach2').classList.add('style-B');
+});
+document.getElementById('noStyle').addEventListener('click', function () {
+    document.getElementById('approach2').classList.remove('style-A', 'style-B');
+});
+	</script>
+</body>
+</html>
