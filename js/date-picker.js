@@ -151,11 +151,9 @@
     }
     function bindClickEvents() {
         // when button to launch date picker is clicked:
-            //change its aria-expanded state
             //show the date picker
             //focus on either the date in the input field or the current date if input field is empty
         $launchDatePicker.on('click', function () {
-            $(this).attr('aria-expanded', 'true');
             createCalendar(getTheDate());
             // Maintain tabbing within date picker
             NAME.dialog.addBookends($datePicker);
@@ -165,11 +163,9 @@
             return false;
         });
         // when button to close the date picker is clicked:
-            // change the launcher button's aria-expanded state
             // hide the date picker
             // focus on the launcher button
         $closeDatePicker.on('click', function () {
-            $launchDatePicker.attr('aria-expanded', 'false');
             $datePicker.hide();
             $launchDatePicker.focus();
             return false;
@@ -230,6 +226,7 @@
             focusOnSelectedDate();
             return false;
         });
+/* NEED TO DECIDE IF THIS IS EVEN NECESSARY. IF SO I'LL NEED TO DEAL WITH ARIA-EXPANDED LOGIC THAT IS NO LONGER THERE.
         // if the area outside the date picker is clicked
             // (figure this out by seeing if the target clicked is within the date picker)
             // then focus on
@@ -239,6 +236,7 @@
                 //return false;
             }
         });
+*/
         $('#showKeyboardShortcuts').on('click', function () {
             let $this = $(this),
                 $content = $('#' + $this.attr('aria-owns'));
