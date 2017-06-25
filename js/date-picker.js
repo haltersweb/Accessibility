@@ -8,7 +8,11 @@
 */
 (function ($, NAME) {
     'use strict';
-    //TO DO: WRITE WITH VANILLA JS
+    //TO DO:
+        //F6 to toggle between dialog and application
+        //click out to go to application
+        //click in to go to dialog
+        //WRITE WITH VANILLA JS
     var $datePicker = $('#datePicker'),
         $calendar = $('#datePickerCalendar'),
         $launchDatePicker = $('#launchDatePicker'),
@@ -135,6 +139,16 @@
         numDaysInMo = daysInMonth(month, year);
         return {year, numDaysInMo};
     }
+    function positionDatePicker(anchorElem, xLocale, yLocale) {
+        // anchorElem is the element that you want to place the date picker in reference to
+        // xLocale will be "left" or "right" to state which anchor element's corner you want date picker's 0,0 point to line up with
+        // yLocale will be "top" or "bottom" to state which anchor element's corner you want date picker's 0,0 point to line up with
+        // for example, if you want your date picker's top/left (0,0) point to align with a button's bottom/left point you would say 'left', 'bottom'
+        var picker = $datePicker[0],
+            bcr = anchorElem.getBoundingClientRect();
+        picker.style.left = bcr[xLocale] + 'px';
+        picker.style.top = bcr[yLocale] + 'px';
+    }
     function bindClickEvents() {
         // when button to launch date picker is clicked:
             //change its aria-expanded state
@@ -143,6 +157,9 @@
         $launchDatePicker.on('click', function () {
             $(this).attr('aria-expanded', 'true');
             createCalendar(getTheDate());
+            // Maintain tabbing within date picker
+            NAME.dialog.addBookends($datePicker);
+            positionDatePicker($launchDatePicker[0], 'left', 'bottom');
             $datePicker.show();
             focusOnSelectedDate();
             return false;
@@ -164,7 +181,7 @@
             //focus on the date input field
         $('#datePicker').on('click', '[data-date]:not([data-date=""])', function () {
             let $this = $(this),
-                dateQueryString = ($this.attr('data-month') + 1) + '/' + $this.attr('data-date') + '/' + $this.attr('data-year');
+                dateQueryString = (parseInt($this.attr('data-month')) + 1) + '/' + $this.attr('data-date') + '/' + $this.attr('data-year');
             $dateInput.val(dateQueryString);
             $closeDatePicker.click();
             $dateInput.focus();
@@ -215,11 +232,11 @@
         });
         // if the area outside the date picker is clicked
             // (figure this out by seeing if the target clicked is within the date picker)
-            // then close the date picker if it is currently opened
+            // then focus on
         $(document).on('click', function (evt) {
             if (($(evt.target).closest($datePicker).length === 0) && ($launchDatePicker.attr('aria-expanded') === 'true')) {
-                $closeDatePicker.click();
-                return false;
+                //$closeDatePicker.click();
+                //return false;
             }
         });
         $('#showKeyboardShortcuts').on('click', function () {
@@ -369,24 +386,9 @@
                 return false;
             }
         });
-        // SHIFT+TAB on first calendar control (button) closes date picker
-            // assign event to first button inside picker. This assumes that there are buttons such as the close button at the beginning of the widget.
-        $('#datePicker').find('button').first().on('keydown', function (evt) {
-            if (evt.shiftKey && evt.keyCode === NAME.keyboard.tab) {
-                $closeDatePicker.click();
-                return false;
-            }
-        });
-        // TAB on last calendar control (button or selected date) closes date picker
-            // assign event to either the last button or the selected date inside picker, whichever is the last of this group.
-        $('#datePicker').find('button, .selected[role="button"]').last().on('keydown', function (evt) {
-            if (!evt.shiftKey && evt.keyCode === NAME.keyboard.tab) {
-                $launchDatePicker.attr('aria-expanded', 'false');
-                $datePicker.hide();
-                return true; // true instead of false so tab carries on
-            }
-        });
     }
     bindKeyEvents();
     bindClickEvents();
+    NAME.drag.simpleDrag($datePicker[0]);
+
 }(jQuery, NAME));
