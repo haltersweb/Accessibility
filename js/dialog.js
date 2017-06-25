@@ -9,6 +9,10 @@
         $screenBlock = $('.block-screen'), // a reference to the dimmed layer that blocks what's behind it.
         $contentsToBlock = $('.page-wrapper'); // a reference to content containers that are blocked when dialog is visible.
     /*
+    namespacing dialog
+    */
+    NAME.dialog = {};
+    /*
         assign click event to open the modal window
     */
     $('[data-controls="modal"]').on('click', function (evt) {
@@ -110,7 +114,7 @@
         $currentDialog = null;
         $currentTrigger = null;
     }
-    function addBookends($container) {
+    NAME.dialog.addBookends = function ($container) {
         var bookendMarkup = '<div tabindex="0" data-bookends></div>';
         //first check to see if bookends already exist.  If so, don't do anything.
         if ($('[data-bookends]').length > 0) {
@@ -121,7 +125,10 @@
         $container.append(bookendMarkup);
         //constrain tabbing to bookends
         bookendFocus($container);
-    }
+    };
+    NAME.dialog.removeBookends = function ($container) {
+        $container.find('[data-bookends]').remove();
+    };
     function bookendFocus($container) {
         // Capture focus events on bookends to contain tabbing within a container
         // Note: We don't need to know the direction, because the only way to
