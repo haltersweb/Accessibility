@@ -20,8 +20,9 @@
         $dateInput = $('#date'),
         days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    function getTheDate(dateQueryString = '') {
-        let d, date;
+    function getTheDate(dateQueryString) {
+        dateQueryString = dateQueryString || '';
+        var d, date;
         // d is a Date object of the dateQueryString if passed.
         // if no dateQueryString is passed then the Date object is created from:
         // a) either the input field value or b) today's date
@@ -58,23 +59,24 @@
             return 31;
         }
     }
-    function createCalendar(date = {}) {
-        let $monthAndYear = $datePicker.find('#monthAndYear'),
+    function createCalendar(date) {
+        date = date || {};
+        var $monthAndYear = $datePicker.find('#monthAndYear'),
             $datePickerGrid = $calendar.find('tbody'),
             dayIndex = 0,
             firstDayOfMonth = new Date((date.month + 1) + '/1/' + date.year).getDay(),
-            numDaysInMo = daysInMonth(date.month, date.year);
-        const DAYS_IN_WEEK = 7,
+            numDaysInMo = daysInMonth(date.month, date.year),
+            DAYS_IN_WEEK = 7,
             NUM_ROWS = 6;
         // always clear calendar first
         clearCalendar();
         // create days grid
-        for (let i = 0; i < NUM_ROWS; i += 1) {
-            let tr = document.createElement('tr'),
+        for (var i = 0; i < NUM_ROWS; i += 1) {
+            var tr = document.createElement('tr'),
                 fragment = document.createDocumentFragment(),
                 tdHtml = '';
-            for (let j = 0; j < DAYS_IN_WEEK; j += 1) {
-                let emptyCell = true;
+            for (var j = 0; j < DAYS_IN_WEEK; j += 1) {
+                var emptyCell = true;
                 if ((dayIndex !== 0) || (j >= firstDayOfMonth)) {
                     dayIndex += 1;
                 }
@@ -98,24 +100,25 @@
     }
     // remove all markup from the tbody of the calendar grid table
     function clearCalendar() {
-        let $datePickerGrid = $calendar.find('tbody');
+        var $datePickerGrid = $calendar.find('tbody');
         $datePickerGrid.empty();
     }
     // which date on the grid is currently selected?  returns the grid cell and mo, date, yr
     function getSelectedDate() {
-        let $currentCell = $('.selected[data-date]'),
+        var $currentCell = $('.selected[data-date]'),
             date = parseInt($currentCell.attr('data-date')),
             month = parseInt($currentCell.attr('data-month')),
             year = parseInt($currentCell.attr('data-year'));
-        return {$currentCell, date, month, year};
+        return {$currentCell: $currentCell, date: date, month: month, year: year};
     }
     // focus on the td[role=button] grid cell that is currently selected (assumes only one)
     function focusOnSelectedDate() {
         document.querySelectorAll('.selected[data-date]')[0].focus();
     }
     // returns the next or prior month, year, and the number of days in that month
-    function changeByMonth(month, year, back = false) {
-        let numDaysInMo,
+    function changeByMonth(month, year, back) {
+        back = back || false;
+        var numDaysInMo,
             addend = 1;
         if (back) {
             addend = -1;
@@ -126,18 +129,19 @@
             year = year + addend;
         }
         numDaysInMo = daysInMonth(month, year);
-        return {month, year, numDaysInMo};
+        return {month: month, year: year, numDaysInMo: numDaysInMo};
     }
     // returns the next or prior year and the number of days in the month during that year (i.e. feb leap)
-    function changeByYear(month, year, back = false) {
-        let numDaysInMo,
+    function changeByYear(month, year, back) {
+        back = back || false;
+        var numDaysInMo,
             addend = 1;
         if (back) {
             addend = -1;
         }
         year = year + addend;
         numDaysInMo = daysInMonth(month, year);
-        return {year, numDaysInMo};
+        return {year: year, numDaysInMo: numDaysInMo};
     }
     function positionDatePicker(anchorElem, xLocale, yLocale) {
         // anchorElem is the element that you want to place the date picker in reference to
@@ -176,7 +180,7 @@
             // close the date picker
             //focus on the date input field
         $('#datePicker').on('click', '[data-date]:not([data-date=""])', function () {
-            let $this = $(this),
+            var $this = $(this),
                 dateQueryString = (parseInt($this.attr('data-month')) + 1) + '/' + $this.attr('data-date') + '/' + $this.attr('data-year');
             $dateInput.val(dateQueryString);
             $closeDatePicker.click();
@@ -189,12 +193,21 @@
             // generate new calendar
             // focus on new date
         $('#backOneMonth, #forwardOneMonth').on('click', function () {
-            let {date, month, year} = getSelectedDate(),
+            //var {date, month, year} = getSelectedDate(),
+            var selectedDate = getSelectedDate(),
+                date = selectedDate.date,
+                month = selectedDate.month,
+                year = selectedDate.year,
+                prevOrNextMonth,
                 targetDate,
                 numDaysInMo,
                 back = (this.id === 'backOneMonth') ? true : false;
             // get the prior/next month, year, and num days in this prior/next month
-            ({month, year, numDaysInMo} = changeByMonth(month, year, back));
+            //({month, year, numDaysInMo} = changeByMonth(month, year, back));
+            prevOrNextMonth = changeByMonth(month, year, back);
+            month = prevOrNextMonth.month;
+            year = prevOrNextMonth.year;
+            numDaysInMo = prevOrNextMonth.numDaysInMo;
             // if date > # days in this new month, target date = # days in new month (else same as prior date)
             targetDate = (date > numDaysInMo) ? numDaysInMo : date;
             createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
@@ -207,12 +220,20 @@
             // generate new calendar
             // focus on new date
         $('#backOneYear, #forwardOneYear').on('click', function () {
-            let {date, month, year} = getSelectedDate(),
+            //var {date, month, year} = getSelectedDate(),
+            var selectedDate = getSelectedDate(),
+                date = selectedDate.date,
+                month = selectedDate.month,
+                year = selectedDate.year,
+                prevOrNextYear,
                 targetDate,
                 numDaysInMo,
                 back = (this.id === 'backOneYear') ? true : false;
             // get the prior/next year, and num days in the month of the year (aka Feb)
-            ({year, numDaysInMo} = changeByYear(month, year, back));
+            //({year, numDaysInMo} = changeByYear(month, year, back));
+            prevOrNextYear = changeByYear(month, year, back);
+            year = prevOrNextYear.year;
+            numDaysInMo = prevOrNextYear.numDaysInMo;
             // if date > # days in new year's month (aka Feb), target date = # days in new year's month (else same as date)
             targetDate = (date > numDaysInMo) ? numDaysInMo : date;
             createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
@@ -221,7 +242,7 @@
         });
         // button generates this month's calendar and takes you to today's date on the calendar
         $('#goToToday').on('click', function () {
-            let d = new Date();
+            var d = new Date();
             createCalendar(getTheDate((d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear()));
             focusOnSelectedDate();
             return false;
@@ -238,7 +259,7 @@
         });
 */
         $('#showKeyboardShortcuts').on('click', function () {
-            let $this = $(this),
+            var $this = $(this),
                 $content = $('#' + $this.attr('aria-owns'));
             $content.toggle();
             if ($content.is(':visible')) {
@@ -272,10 +293,16 @@
                         evt.keyCode === NAME.keyboard.left ||
                         evt.keyCode === NAME.keyboard.up ||
                         evt.keyCode === NAME.keyboard.down)) {
-                let {$currentCell, date, month, year} = getSelectedDate(),
+                //var {$currentCell, date, month, year} = getSelectedDate(),
+                var selectedDate = getSelectedDate(),
+                    $currentCell = selectedDate.$currentCell,
+                    date = selectedDate.date,
+                    month = selectedDate.month,
+                    year = selectedDate.year,
                     addend,
                     targetDate,
                     $targetCell,
+                    newMonth,
                     numDaysInMo = daysInMonth(month, year);
                 switch (evt.keyCode) {
                 case (NAME.keyboard.left):
@@ -302,11 +329,18 @@
                     return false;
                 }
                 if (targetDate <= 0) {
-                    ({month, year, numDaysInMo} = changeByMonth(month, year, true));
+                    //({month, year, numDaysInMo} = changeByMonth(month, year, true));
+                    newMonth = changeByMonth(month, year, true);
+                    month = newMonth.month;
+                    year = newMonth.year;
+                    numDaysInMo = newMonth.numDaysInMo;
                     targetDate = numDaysInMo + targetDate;
                 } else if (targetDate > numDaysInMo) {
                     targetDate = targetDate - numDaysInMo;
-                    ({month, year} = changeByMonth(month, year));
+                    //({month, year} = changeByMonth(month, year));
+                    newMonth = changeByMonth(month, year);
+                    month = newMonth.month;
+                    year = newMonth.year;
                 }
                 createCalendar(getTheDate((month + 1) + '/' + targetDate + '/' + year));
                 focusOnSelectedDate();
@@ -340,7 +374,9 @@
         // HOME (fn + left) takes you to the first day of the month
         $('#datePicker').on('keydown', '[data-date]', function (evt) {
             if (evt.keyCode === NAME.keyboard.home) {
-                let {$currentCell} = getSelectedDate(),
+                //var {$currentCell} = getSelectedDate(),
+                var selectedDate = getSelectedDate(),
+                    $currentCell = selectedDate.$currentCell,
                     $targetCell = $('#datePicker').find('[data-date="' + 1 + '"]');
                 $currentCell.removeClass('selected');
                 $targetCell.addClass('selected');
@@ -351,7 +387,11 @@
         // END (fn + right) takes you to the last day of the month
         $('#datePicker').on('keydown', '[data-date]', function (evt) {
             if (evt.keyCode === NAME.keyboard.end) {
-                let {$currentCell, month, year} = getSelectedDate(),
+                //var {$currentCell, month, year} = getSelectedDate(),
+                var selectedDate = getSelectedDate(),
+                    $currentCell = selectedDate.$currentCell,
+                    month = selectedDate.month,
+                    year = selectedDate.year,
                     targetDate = daysInMonth(month, year),
                     $targetCell = $('#datePicker').find('[data-date="' + targetDate + '"]');
                 $currentCell.removeClass('selected');
