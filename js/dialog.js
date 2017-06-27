@@ -1,3 +1,6 @@
+/*global
+    jQuery, NAME
+*/
 /**
  * @author Adina Halter
  * Accessible Modal and Tooltips
@@ -66,7 +69,7 @@
             //show screen blocker
             $screenBlock.addClass('active');
             //add bookends to modal
-            addBookends($dialog);
+            NAME.dialog.addBookends($dialog);
             //position modal in center of screen
             positionModal($dialog);
             //block focus in blocked containers & hide page content from reader
@@ -81,7 +84,7 @@
         // show the dialog box
         $dialog.addClass('active');
         // reveal dialog content to screen reader
-        $dialog.attr("aria-hidden", "false");
+        $dialog.attr('aria-hidden', 'false');
         //bind ESC key to close the dialog box
         $dialog.on('keyup.esc-key', function (event) {
             escapeKeyClosesDialog(event);
@@ -105,7 +108,7 @@
         // hide the dialog box
         $dialog.removeClass('active');
         // hide dialog content from screen reader
-        $dialog.attr("aria-hidden", "true");
+        $dialog.attr('aria-hidden', 'true');
         // remove ESC key event
         $dialog.off('keyup.esc-key');
         // focus on the trigger that had opened the dialog
@@ -156,19 +159,19 @@
         // Position and show the modal window.
         var modalHeight = $modal.outerHeight();
         $modal.css({
-            "position": "fixed",
-            "z-index": "200",
-            "margin-left": -$modal.outerWidth() / 2,
-            "margin-top": -modalHeight / 2,
-            "left": "50%",
-            "top": "50%"
+            'position': 'fixed',
+            'z-index': '200',
+            'margin-left': -$modal.outerWidth() / 2,
+            'margin-top': -modalHeight / 2,
+            'left': '50%',
+            'top': '50%'
         });
         // Use absolute positioning for modal if it's too tall for viewport
         if ($(window).height() < modalHeight) {
             $modal.css({
-                "position": "absolute",
-                "top": $(document).scrollTop() + 10,
-                "margin-top": "0"
+                'position': 'absolute',
+                'top': $(document).scrollTop() + 10,
+                'margin-top': '0'
             });
         }
     }
