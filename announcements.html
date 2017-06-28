@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Announcements</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+</head>
+<body>
+	<div class="container">
+		<a href="#main" class="skip-link">Skip to main content</a>
+		<div class="page-wrapper" id="main" role="main" tabindex="-1">
+			<h1>Announcements Using aria-live and role="alert"</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of solutions.</a></p>
+			<p>There are two ways to have the screen reader announce something.  You can either use aria-live="polite" or role="alert".</p>
+		<button type="button" class="test-polite">Test a Polite Announcement</button>
+		<button type="button" class="test-alert">Test a Warning Announcement</button>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+		<div aria-live="polite" class="screen-reader-text"></div>
+		<div role="alert" class="screen-reader-text"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+	<script>
+		$('.test-polite').on('click', function (e) {
+			    NAME.access.announcements ($('[aria-live]'), "Hello there!!");
+		});
+		$('.test-alert').on('click', function (e) {
+			    NAME.access.announcements ($('[role="alert"]'), "Hide!  It's a twister!");
+		});
+	</script>
+</body>
+</html>
