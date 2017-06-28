@@ -42,7 +42,6 @@
     };
 // _TODO THIS NEEDS TO BE CLEANED UP.  WHAT IS arguments FOR?
     NAME.general.debounce = function (func, delay, immediate) {
-        console.log('test');
         var timeout, result;
         return function () {
             var context = this,
@@ -90,16 +89,16 @@
     aria tagging while expanding content
     */
     NAME.access.ariaExpand = function ($expander, $expandingContainer) {
-        $expander.attr("aria-expanded", "true");
-        $expandingContainer.attr("aria-hidden", "false");
+        $expander.attr('aria-expanded', 'true');
+        $expandingContainer.attr('aria-hidden', 'false');
     };
 
     /*
     aria tagging while contracting content
     */
     NAME.access.ariaContract = function ($expander, $expandingContainer) {
-        $expander.attr("aria-expanded", "false");
-        $expandingContainer.attr("aria-hidden", "true");
+        $expander.attr('aria-expanded', 'false');
+        $expandingContainer.attr('aria-hidden', 'true');
     };
 
     /*
@@ -113,7 +112,7 @@
         // hide the container with aria
         $hideContainers.attr('aria-hidden', 'true');
         // remove focusability from focusable elements
-        $focusableHiddenElems.attr('tabindex', "-1")
+        $focusableHiddenElems.attr('tabindex', '-1')
             // and add data attribute that flags the focusable elements for reset with ariaShowContent()
             .attr('data-focusable-hidden-elem', 'true');
     };
@@ -171,7 +170,7 @@
     $hasTextToBeRead is either a single or array of jQuery selector(s) with the text to be read
     */
     NAME.access.duplicateTextForReading = function ($ariaContainer, $hasTextToBeRead) {
-        var textToBeRead = "";
+        var textToBeRead = '';
         $.each($hasTextToBeRead, function () {
             textToBeRead += $(this).text();
             textToBeRead += ' ';
