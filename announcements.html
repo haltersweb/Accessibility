@@ -14,8 +14,23 @@
 			<h1>Announcements Using aria-live and role="alert"</h1>
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of solutions.</a></p>
 			<p>There are two ways to have the screen reader announce something.  You can either use aria-live="polite" or role="alert".</p>
-		<button type="button" class="test-polite">Test a Polite Announcement</button>
-		<button type="button" class="test-alert">Test a Warning Announcement</button>
+			<button type="button" class="test-polite">Test a Polite Announcement</button>
+			<button type="button" class="test-alert">Test a Warning Announcement</button>
+		<h2>Rules of Engagement</h2>
+		<ol>
+			<li>The container with aria-live or role="alert" must already exist in the DOM.  You can't create a container on the fly and expect the conents inside it to announce.</li>
+			<li>Showing and hiding an aria-live or role="alert" container does not trigger an announcement.  This is because the content inside the container hasn't changed.</li>
+		</ol>
+		<h2>Tips and tricks</h2>
+		<ul>
+			<li>Always keep an empty aria-live container and an empty role="alert" container at the bottom of your page and style it for screen-reader-text. Then it will always be there whenever you need to announce something.</li>
+			<li>When injecting content to be announced into these containers pull the content out a second later.  That way:
+				<ul>
+					<li>If you need to say the exact same thing your content has truly changed which will trigger the announcement</li>
+					<li>That prior content won't be discovered later on if a person using a screen reader is arrowing around your page.</li>
+				</ul>
+			</li>
+		</ul>
 		</div>
 		<div class="overlay"></div>
 		<div class="block-screen"></div>
@@ -27,10 +42,10 @@
 	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
 	<script>
 		$('.test-polite').on('click', function (e) {
-			    NAME.access.announcements ($('[aria-live]'), "Hello there!!");
+			NAME.access.announcements ($('[aria-live]'), "Hello there!!");
 		});
 		$('.test-alert').on('click', function (e) {
-			    NAME.access.announcements ($('[role="alert"]'), "Hide!  It's a twister!");
+			NAME.access.announcements ($('[role="alert"]'), "Hide!  It's a twister!");
 		});
 	</script>
 </body>
