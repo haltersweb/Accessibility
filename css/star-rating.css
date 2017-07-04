@@ -4,7 +4,6 @@
 }
 input[name="rating"] {
     position: absolute;
-    left: 0;
     bottom: 0;
     margin: 0;
     padding: 0;
@@ -19,16 +18,28 @@ input[name="rating"] {
     bottom: 0;
     background-color: #fff;
 }
-input.rate-2, .rate-2 + .svg-star {
+.svg-star polygon {
+    fill: #fff;
+    stroke: #666;
+}
+[aria-label="1 stars"] + [role="presentation"],
+[aria-label="1 stars"] {
+    left: 0;
+}
+[aria-label="2 stars"] + [role="presentation"],
+[aria-label="2 stars"] {
     left: 3rem;
 }
-input.rate-3, .rate-3 + .svg-star {
+[aria-label="3 stars"] + [role="presentation"],
+[aria-label="3 stars"] {
     left: 6rem;
 }
-input.rate-4, .rate-4 + .svg-star {
+[aria-label="4 stars"] + [role="presentation"],
+[aria-label="4 stars"] {
     left: 9rem;
 }
-input.rate-5, .rate-5 + .svg-star {
+[aria-label="5 stars"] + [role="presentation"],
+[aria-label="5 stars"] {
     left: 12rem;
 }
 .rating-radio:focus + .svg-star {
