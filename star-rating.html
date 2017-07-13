@@ -6,7 +6,8 @@
 	<title>Accessible Star Rating Options</title>
 	<link rel="stylesheet" href="css/normalization.css" />
 	<link rel="stylesheet" href="css/base.css" />
-	<link rel="stylesheet" href="css/star-rating.css">
+	<link rel="stylesheet" href="css/star-rating-radio.css">
+	<link rel="stylesheet" href="css/star-rating-aria.css">
 </head>
 <body>
 	<div class="container">
@@ -18,54 +19,51 @@
 			<form action="" id="radioRating">
 				<fieldset class="rating-set">
 					<legend><span class="legend">How would you rate your meal?</span></legend>
-					<input type="radio" name="rating" id="rate_1" class="rating-radio rate-1" aria-label="one star" />
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" role="presentation" focusable="false" class="svg-star">
-						<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#666666" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251  103,165 31,111 121,111"/>
-					</svg>
-					<input type="radio" name="rating" id="rate_2" class="rating-radio rate-2" aria-label="two star" />
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" role="presentation" focusable="false" class="svg-star">
-						<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#666666" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251  103,165 31,111 121,111"/>
-					</svg>
-					<input type="radio" name="rating" id="rate_3" class="rating-radio rate-3" aria-label="three star" />
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" role="presentation" focusable="false" class="svg-star">
-						<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#666666" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251  103,165 31,111 121,111"/>
-					</svg>
-					<input type="radio" name="rating" id="rate_4" class="rating-radio rate-4" aria-label="four star" />
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" role="presentation" focusable="false" class="svg-star">
-						<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#666666" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251  103,165 31,111 121,111"/>
-					</svg>
-					<input type="radio" name="rating" id="rate_5" class="rating-radio rate-5" aria-label="five star" />
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" role="presentation" focusable="false" class="svg-star">
-						<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#666666" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251  103,165 31,111 121,111"/>
-					</svg>
+					<div class="star-group">
+						<input type="radio" name="rating" id="rate_1" class="radio-rating rate-1" aria-label="1 star" />
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" role="presentation" focusable="false" class="svg-star">
+							<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#000000" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251 103,165 31,111 121,111"/>
+						</svg>
+						<input type="radio" name="rating" id="rate_2" class="radio-rating rate-2" aria-label="2 stars" />
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" role="presentation" focusable="false" class="svg-star">
+							<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#000000" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251 103,165 31,111 121,111"/>
+						</svg>
+						<input type="radio" name="rating" id="rate_3" class="radio-rating rate-3" aria-label="3 stars" />
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" role="presentation" focusable="false" class="svg-star">
+							<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#000000" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251 103,165 31,111 121,111"/>
+						</svg>
+						<input type="radio" name="rating" id="rate_4" class="radio-rating rate-4" aria-label="4 stars" />
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" role="presentation" focusable="false" class="svg-star">
+							<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#000000" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251 103,165 31,111 121,111"/>
+						</svg>
+						<input type="radio" name="rating" id="rate_5" class="radio-rating rate-5" aria-label="5 stars" />
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" role="presentation" focusable="false" class="svg-star">
+							<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#000000" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251 103,165 31,111 121,111"/>
+						</svg>
+					</div>
 				</fieldset>
 			</form>
 
 			<h2>Option 2: ARIA Solution</h2>
 			<form action="" id="ariaRating">
-				<fieldset class="rating-set">
-					<legend><span class="legend">How would you rate your dessert?</span></legend>
-					<input type="radio" name="rating" id="rate_1" class="rating-radio rate-1" aria-label="one star" />
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" role="presentation" focusable="false" class="svg-star">
-						<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#666666" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251  103,165 31,111 121,111"/>
+				<p id="ratingLegend" class="legend">How would you rate your dessert?</p>
+				<div class="star-group" role="radiogroup" aria-labelledby="ratingLegend">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" focusable="false" class="star-button" role="radio" aria-label="1 star" aria-checked="false" tabindex="0">
+						<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#000000" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251 103,165 31,111 121,111"/>
 					</svg>
-					<input type="radio" name="rating" id="rate_2" class="rating-radio rate-2" aria-label="two star" />
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" role="presentation" focusable="false" class="svg-star">
-						<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#666666" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251  103,165 31,111 121,111"/>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" focusable="false" class="star-button" role="radio" aria-label="2 stars" aria-checked="false" tabindex="-1">
+						<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#000000" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251 103,165 31,111 121,111"/>
 					</svg>
-					<input type="radio" name="rating" id="rate_3" class="rating-radio rate-3" aria-label="three star" />
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" role="presentation" focusable="false" class="svg-star">
-						<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#666666" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251  103,165 31,111 121,111"/>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" focusable="false" class="star-button" role="radio" aria-label="3 stars" aria-checked="false" tabindex="-1">
+						<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#000000" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251 103,165 31,111 121,111"/>
 					</svg>
-					<input type="radio" name="rating" id="rate_4" class="rating-radio rate-4" aria-label="four star" />
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" role="presentation" focusable="false" class="svg-star">
-						<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#666666" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251  103,165 31,111 121,111"/>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" focusable="false" class="star-button" role="radio" aria-label="4 stars" aria-checked="false" tabindex="-1">
+						<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#000000" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251 103,165 31,111 121,111"/>
 					</svg>
-					<input type="radio" name="rating" id="rate_5" class="rating-radio rate-5" aria-label="five star" />
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" role="presentation" focusable="false" class="svg-star">
-						<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#666666" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251  103,165 31,111 121,111"/>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 275" focusable="false" class="star-button" role="radio" aria-label="5 stars" aria-checked="false" tabindex="-1">
+						<polygon xmlns="http://www.w3.org/2000/svg" fill="#ffffff" stroke="#000000" stroke-width="15" points="150,25 179,111 269,111 197,165 223,251 150,200 77,251 103,165 31,111 121,111"/>
 					</svg>
-				</fieldset>
+				</div>
 			</form>
 		</div>
 		<div class="overlay"></div>

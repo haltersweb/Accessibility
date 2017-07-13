@@ -1,6 +1,11 @@
-.rating-set {
+.legend {
+    margin: 0;
+    line-height: 1.6;
+}
+.star-group {
     position: relative;
-    height: 6rem;
+    height: 2.8rem;
+    width: 15rem;
 }
 input[name="rating"] {
     position: absolute;
@@ -42,28 +47,23 @@ input[name="rating"] {
 [aria-label="5 stars"] {
     left: 12rem;
 }
-.rating-radio:focus + .svg-star {
+.radio-rating:focus + .svg-star {
     box-shadow: inset 0px 0px 3px 3px #cc3333;
+    outline: none;
 }
 .changed .svg-star polygon {
     fill: #900;
     stroke: #000;
 }
-.changed .rating-radio:checked ~ .rating-radio + .svg-star polygon {
+.changed .radio-rating:checked ~ .radio-rating + .svg-star polygon {
     fill: #fff;
     stroke: #666;
 }
-.hovering .svg-star polygon {
+.star-group:hover .svg-star polygon {
     fill: #900 !important;
     stroke: #000 !important;
 }
-.hovering .svg-star.hovered ~ .svg-star polygon {
+.star-group:hover .svg-star:hover ~ .svg-star polygon {
     fill: #fff !important;
     stroke: #666 !important;
 }
-
-
-
-
-
-

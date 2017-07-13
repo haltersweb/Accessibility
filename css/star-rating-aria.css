@@ -1,0 +1,62 @@
+.legend {
+    margin: 0;
+    line-height: 1.6;
+}
+.star-group {
+    position: relative;
+    height: 2.8rem;
+    width: 15rem;
+}
+.star-button {
+    width: 3rem;
+    height: 2.8rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+}
+.star-button polygon {
+    fill: #fff;
+    stroke: #666;
+}
+[aria-label="1 stars"] {
+    left: 0;
+}
+[aria-label="2 stars"] {
+    left: 3rem;
+}
+[aria-label="3 stars"] {
+    left: 6rem;
+}
+[aria-label="4 stars"] {
+    left: 9rem;
+}
+[aria-label="5 stars"] {
+    left: 12rem;
+}
+.star-button:focus {
+    box-shadow: inset 0px 0px 3px 3px #cc3333;
+    outline: none;
+}
+.star-button.clicked:focus {
+    box-shadow: none;
+}
+.star-button[tabindex="-1"]:focus {
+    box-shadow: none;
+}
+.changed .star-button polygon {
+    fill: #900;
+    stroke: #000;
+}
+.changed [aria-checked="true"] ~ .star-button polygon {
+    fill: #fff;
+    stroke: #666;
+}
+.star-group:hover .star-button polygon {
+    fill: #900 !important;
+    stroke: #000 !important;
+}
+.star-group:hover .star-button:hover ~ .star-button polygon {
+    fill: #fff !important;
+    stroke: #666 !important;
+}
