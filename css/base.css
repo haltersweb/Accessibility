@@ -88,6 +88,7 @@ hr {
 	}
 table {
 	width: 100%;
+    table-layout: fixed;
 	}
 td, th {
 	padding: 2ex 1em 2ex 0;
