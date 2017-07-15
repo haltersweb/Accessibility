@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Resolving Alternative Text</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<style>
+		col {
+			width: 10%;
+		}
+		input {
+			width: 75% !important;
+		}
+		.pseudo:before {
+			content: "Default Text";
+		}
+		.results,
+		.results th {
+			font-style: italic;
+			font-size: .75em;
+			color: #22872f;
+		}
+		button {
+			width: 100%;
+			height: 3em;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<a href="#main" class="skip-link">Skip to main content</a>
+		<div class="page-wrapper" id="main" role="main" tabindex="-1">
+			<h1>How Screen-readers Resolve Alternative Text</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
+			<table>
+				<caption>
+					<h2>Alternative Text Test</h2>
+					<p>"Default Text" is the default text node or pseudo content, "Labelled By" is the aria-labelledby text, "Label" is the aria-label</p>
+				</caption>
+				<colgroup>
+					<col class="col-1">
+					<col class="col-2">
+					<col class="col-3">
+					<col class="col-4">
+					<col class="col-5">
+					<col class="col-6">
+					<col class="col-7">
+				</colgroup>
+				<thead>
+					<tr>
+						<th></th>
+						<th scope="col">with text node</th>
+						<th scope="col">with text node + aria-labelledby</th>
+						<th scope="col">with text node + aria-labelledby + aria-label</th>
+						<th scope="col">with text node + aria-label</th>
+						<th scope="col">no text + aria-labelledby</th>
+						<th scope="col">no text + aria-labelledby + aria-label</th>
+						<th scope="col">no text + aria-label</th>
+						<th scope="col">pseudo element + aria-label</th>
+						<th scope="col">label elem with display: none</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">
+							using a span
+						</th>
+						<td>
+							<span>Default Text</span>
+						</td>
+						<td>
+							<span id="foo1" style="display: none;">Labelled By</span>
+							<span aria-labelledby="foo1">Default Text</span>
+						</td>
+						<td>
+							<span id="foo2" style="display: none;">Labelled By</span>
+							<span aria-labelledby="foo2" aria-label="Label">Default Text</span>
+						</td>
+						<td>
+							<span id="foo3" style="display: none;">Labelled By</span>
+							<span aria-label="Label">Default Text</span>
+						</td>
+						<td>
+							<span id="foo4" style="display: none;">Labelled By</span>
+							<span aria-labelledby="foo4"></span>
+						</td>
+						<td>
+							<span id="foo5" style="display: none;">Labelled By</span>
+							<span aria-labelledby="foo5" aria-label="Label"></span>
+						</td>
+						<td>
+							<span aria-label="Label"></span>
+						</td>
+						<td>
+							<span aria-label="Label" class="pseudo"></span>
+						</td>
+						<td></td>
+					</tr>
+					<tr class="results">
+						<th scope="row">
+							span results JAWS/IE
+						</th>
+						<td>"Default Text"</td>
+						<td>"Default Text"</td>
+						<td>"Default Text"</td>
+						<td>"Default Text"</td>
+						<td>"Labelled By"</td>
+						<td>"Label"</td>
+						<td>"Label"</td>
+						<td>"Label"</td>
+						<td></td>
+					</tr>
+					<tr class="results">
+						<th scope="row">
+							span results NVDA/FF
+						</th>
+						<td>"Default Text"</td>
+						<td>"Default Text"</td>
+						<td>"Default Text"</td>
+						<td>"Default Text"</td>
+						<td>"Labelled By"</td>
+						<td>"Labelled By"</td>
+						<td>"Label"</td>
+						<td>"Default Text"</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th scope="row">
+							span with tabindex
+						</th>
+						<td>
+							<span tabindex="0">Default Text</span>
+						</td>
+						<td>
+							<span id="zoo1" style="display: none;">Labelled By</span>
+							<span tabindex="0" aria-labelledby="zoo1">Default Text</span>
+						</td>
+						<td>
+							<span id="zoo2" style="display: none;">Labelled By</span>
+							<span tabindex="0" aria-labelledby="zoo2" aria-label="Label">Default Text</span>
+						</td>
+						<td>
+							<span id="zoo3" style="display: none;">Labelled By</span>
+							<span tabindex="0" aria-label="Label">Default Text</span>
+						</td>
+						<td>
+							<span id="zoo4" style="display: none;">Labelled By</span>
+							<span tabindex="0" aria-labelledby="zoo4"></span>
+						</td>
+						<td>
+							<span id="zoo5" style="display: none;">Labelled By</span>
+							<span tabindex="0" aria-labelledby="zoo5" aria-label="Label"></span>
+						</td>
+						<td>
+							<span tabindex="0" aria-label="Label"></span>
+						</td>
+						<td>
+							<span tabindex="0" aria-label="Label" class="pseudo"></span>
+						</td>
+						<td></td>
+					</tr>
+					<tr class="results">
+						<th scope="row">
+							span w/ tabindex results JAWS/IE
+						</th>
+						<td>"Default Text" / "Default Text"</td>
+						<td>"Default Text" / "Labelled By"</td>
+						<td>"Default Text" / "Label"</td>
+						<td>"Default Text" / "Label"</td>
+						<td>"Labelled By" / "Labelled By"</td>
+						<td>"Label" / "Label"</td>
+						<td>"Label" / "Label"</td>
+						<td>"Label" / "Label"</td>
+						<td></td>
+					</tr>
+					<tr class="results">
+						<th scope="row">
+							span w/ tabindex results NVDA/FF
+						</th>
+						<td>"Default Text" / "Default Text"</td>
+						<td>"Default Text" / "Default Text"</td>
+						<td>"Default Text" / "Default Text"</td>
+						<td>"Default Text" / "Default Text"</td>
+						<td>"Labelled By" / "Labelled By"</td>
+						<td>"Labelled By" / "Labelled By"</td>
+						<td>"Label" / "Label"</td>
+						<td>"Default Text" / "Default Text"</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th scope="row">
+							using a button
+						</th>
+						<td>
+							<button>Default Text</button>
+						</td>
+						<td>
+							<span id="bar1" style="display: none;">Labelled By</span>
+							<button aria-labelledby="bar1">Default Text</button>
+						</td>
+						<td>
+							<span id="bar2" style="display: none;">Labelled By</span>
+							<button aria-labelledby="bar2" aria-label="Label">Default Text</button>
+						</td>
+						<td>
+							<span id="bar3" style="display: none;">Labelled By</span>
+							<button aria-label="Label">Default Text</button>
+						</td>
+						<td>
+							<span id="bar4" style="display: none;">Labelled By</span>
+							<button aria-labelledby="bar4"></button>
+						</td>
+						<td>
+							<span id="bar5" style="display: none;">Labelled By</span>
+							<button aria-label="Label" aria-labelledby="bar5"></button>
+						</td>
+						<td>
+							<button aria-label="Label"></button>
+						</td>
+						<td>
+							<button aria-label="Label" class="pseudo"></button>
+						</td>
+						<td></td>
+					</tr>
+					<tr class="results">
+						<th scope="row">
+							button results JAWS/IE
+						</th>
+						<td>"Default Text" / "Default Text"</td>
+						<td>"Labelled By" / "Labelled By"</td>
+						<td>"Label" / "Label"</td>
+						<td>"Label" / "Label"</td>
+						<td>"Labelled By" / "Labelled By"</td>
+						<td>"Label" / "Label"</td>
+						<td>"Label" / "Label"</td>
+						<td>"Label" / "Label"</td>
+						<td></td>
+					</tr>
+					<tr class="results">
+						<th scope="row">
+							button results NVDA/FF
+						</th>
+						<td>"Default Text" / "Default Text"</td>
+						<td>"Labelled By" / "Labelled By"</td>
+						<td>"Labelled By" / "Labelled By"</td>
+						<td>"Label" / "Label"</td>
+						<td>"Labelled By" / "Labelled By"</td>
+						<td>"Labelled By" / "Labelled By"</td>
+						<td>"Label" / "Label"</td>
+						<td>"Label" / "Label"</td>
+						<td></td>
+					</tr>
+					<tr>
+						<th scope="row">
+							with input field
+						</th>
+						<td>
+							<label for="Default Text0">Default Text</label>
+							<span id="Labelled By1" style="display: none;">Labelled By</span>
+							<input type="text" id="Default Text0" />
+						</td>
+						<td>
+							<label for="Default Text1">Default Text</label>
+							<span id="Labelled By1" style="display: none;">Labelled By</span>
+							<input type="text" id="Default Text1" aria-labelledby="Labelled By1" />
+						</td>
+						<td>
+							<label for="Default Text2">Default Text</label>
+							<span id="Labelled By2" style="display: none;">Labelled By</span>
+							<input type="text" id="Default Text2" aria-label="Label" aria-labelledby="Labelled By2" />
+						</td>
+						<td>
+							<label for="Default Text3">Default Text</label>
+							<span id="Labelled By3" style="display: none;">Labelled By</span>
+							<input type="text" id="Default Text3" aria-label="Label" />
+						</td>
+						<td>
+							<span id="Labelled By4" style="display: none;">Labelled By</span>
+							<input type="text" id="Default Text4" aria-labelledby="Labelled By4" />
+						</td>
+						<td>
+							<span id="Labelled By5" style="display: none;">Labelled By</span>
+							<input type="text" id="Default Text5" aria-label="Label" aria-labelledby="Labelled By5" />
+						</td>
+						<td>
+							<span id="Labelled By6" style="display: none;">Labelled By</span>
+							<input type="text" id="Default Text6" aria-label="Label" />
+						</td>
+						<td></td>
+						<td>
+							<label for="Default Text7" style="display: none;">Default Text</label>
+							<input type="text" id="Default Text7" />
+						</td>
+					</tr>
+					<tr class="results">
+						<th scope="row">
+							input field results JAWS/IE
+						</th>
+						<td>"Default Text" / "Default Text"</td>
+						<td>"Default Text" / "Labelled By"</td>
+						<td>"Default Text" / "Label"</td>
+						<td>"Default Text" / "Label"</td>
+						<td>"&nbsp;&nbsp;" / "Labelled By"</td>
+						<td>"&nbsp;&nbsp;" / "Label"</td>
+						<td>"Label" / "Label"</td>
+						<td></td>
+						<td>"&nbsp;&nbsp;" / "&nbsp;&nbsp;"</td>
+					</tr>
+					<tr class="results">
+						<th scope="row">
+							input field results NVDA/FF
+						</th>
+						<td>"Default Text" / "Default Text"</td>
+						<td>"Default Text" / "Labelled By"</td>
+						<td>"Default Text" / "Labelled By"</td>
+						<td>"Default Text" / "Label"</td>
+						<td>"&nbsp;&nbsp;" / "Labelled By"</td>
+						<td>"&nbsp;&nbsp;" / "Labelled By"</td>
+						<td>"&nbsp;&nbsp;" / "Label"</td>
+						<td></td>
+						<td>"&nbsp;&nbsp;" / "&nbsp;&nbsp;"</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+		<div aria-live="polite" class="screen-reader-text"></div>
+		<div role="alert" class="screen-reader-text"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+</body>
+</html>
