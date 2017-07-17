@@ -16,8 +16,12 @@
             this.previousElementSibling.click();
         }, false);
         starRadio[i].addEventListener('change', function(){
-            this.parentNode.classList.add('changed');
+            this.parentNode.classList.add('rated');
         }, false);
+        //test for a rating radio that is checked already
+        if (starRadio[i].checked) {
+            starRadio[i].parentNode.classList.add('rated');
+        }
     }
 }());
 
@@ -30,11 +34,11 @@
 
     function checkStar(targetStar, clicked) {
         if (clicked) {
-            targetStar.classList.add('clicked');
+            targetStar.classList.add('clicked'); // classList DOESN'T WORK FOR SVG
         } else {
-            targetStar.classList.remove('clicked');
+            targetStar.classList.remove('clicked'); // classList DOESN'T WORK FOR SVG
         }
-        targetStar.parentNode.classList.add('changed');
+        targetStar.parentNode.classList.add('rated'); // classList DOES WORK FOR MPM-SVG
         targetStar.focus();
         for (var i = 0; i < ariaStars.length; i += 1) {
             ariaStars[i].setAttribute('aria-checked', 'false');
@@ -52,7 +56,7 @@
     function bindClickEvents() {
         for (var i = 0; i < ariaStars.length; i += 1) {
             ariaStars[i].addEventListener('click', function () {
-                this.classList.add('clicked');
+                this.classList.add('clicked'); // classList DOESN'T WORK FOR SVG
                 checkStar(this, true);
             });
         }

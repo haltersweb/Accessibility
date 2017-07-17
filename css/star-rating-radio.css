@@ -51,11 +51,11 @@ input[name="rating"] {
     box-shadow: inset 0px 0px 3px 3px #cc3333;
     outline: none;
 }
-.changed .svg-star polygon {
+.rated .svg-star polygon {
     fill: #900;
     stroke: #000;
 }
-.changed .radio-rating:checked ~ .radio-rating + .svg-star polygon {
+.rated .radio-rating:checked ~ .radio-rating + .svg-star polygon {
     fill: #fff;
     stroke: #666;
 }

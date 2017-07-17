@@ -44,11 +44,11 @@
 .star-button[tabindex="-1"]:focus {
     box-shadow: none;
 }
-.changed .star-button polygon {
+.rated .star-button polygon {
     fill: #900;
     stroke: #000;
 }
-.changed [aria-checked="true"] ~ .star-button polygon {
+.rated [aria-checked="true"] ~ .star-button polygon {
     fill: #fff;
     stroke: #666;
 }
