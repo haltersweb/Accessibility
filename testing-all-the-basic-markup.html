@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Testing All Basic Markup</title>
+    <link rel="stylesheet" href="css/normalization.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <style>
+        .humpty::before {
+            content: "Humpty";
+            color: darkblue;
+            font-weight: bold;
+        }
+        .fly::after {
+            content: "fly";
+            color: darkblue;
+            font-weight: bold;
+        }
+        .flavor {
+            display: inline-block;
+            width: 2em;
+            height: 2.7em;
+            background: url(https://image.shutterstock.com/z/stock-photo-strawberry-vanilla-chocolate-frozen-yogurt-or-soft-ice-cream-in-blank-paper-cup-isolated-on-white-589416617.jpg) no-repeat;
+            background-size: 6em;
+            margin-right: 2em;
+        }
+        .strawberry { background-position-x: 0em; }
+        .vanilla { background-position-x: -2em; }
+        .chocolate { background-position-x: -4em; }
+        [aria-label="Clap!"] {
+            background: url(https://vignette4.wikia.nocookie.net/hipstermeangirls/images/b/b1/Clap.png/revision/latest?cb=20130412001453) no-repeat;
+            width: 2.6em;
+            height: 2.4em;
+            background-size: 2em;
+        }
+        fieldset {
+            border: 1px solid #c0c0c0;
+            padding: .6ex .6em 1.2ex;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="#main" class="skip-link">Skip to main content</a>
+        <div class="page-wrapper" id="main" role="main" tabindex="-1">
+            <h1>Testing All Basic Markup</h1>
+            <p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
+            <p>Use this accessible page to test all basic markup with assistive technologies to see if it's just the AT or if it's you :-)</p>
+            <h2>Here are some lists</h2>
+            <h3>An ordered list</h3>
+            <ol>
+                <li>Purple</li>
+                <li>People</li>
+                <li>Eater</li>
+            </ol>
+            <h3>An unordered list</h3>
+            <ul>
+                <li>Purple</li>
+                <li>People</li>
+                <li>Eater</li>
+            </ul>
+            <h3>A definition list</h3>
+            <dl>
+                <dt>Color:</dt>
+                <dd>Purple</dd>
+                <dt>Food:</dt>
+                <dd>People</dd>
+                <dt>Being:</dt>
+                <dd>Eater</dd>
+            </dl>
+            <h2>Paragraphs</h2>
+            <p>Whether the weather be cold.</p>
+            <p>Whether the weather be hot.</p>
+            <p>We'll be together whatever the weather.</p>
+            <h2>Pseudo elements</h2>
+            <h3>::before</h3>
+            <p class="humpty"> Dumpty</p>
+            <h3>::after</h3>
+            <p class="fly">When pigs </p>
+            <h2>Forms</h2>
+            <form action="">
+                <h3>Input fields</h3>
+                <h4>Label + Input</h4>
+                <label for="lAndI">First Name</label> <input type="text" id="lAndI" />
+                <h4>Label with nested input</h4>
+                <label>First Name <input type="text" /></label>
+                <h4>Input with placeholder and aria-label</h4>
+                <input type="text" aria-label="First Name" placeholder="Type first name here." />
+                <h4>Input with label.screen-reader-text</h4>
+                <label for="sRT" class="screen-reader-text">First Name</label><input type="text" id="sRT" placeholder="Type first name here." />
+                <h4>Input with hidden label and aria-labelledby</h4>
+                <label for="aLB" id="aLBLabel">First Name</label><input type="text" id="aLB" aria-labelledby="aLBLabel" />
+                <h4>Input with label and aria-describedby</h4>
+                <label for="aDB">First Name</label>
+                <input type="text" id="aDB" aria-describedby="aDBDescr" />
+                <span id="aDBDescr">Type first name here.</span>
+                <h3>Select</h3>
+                <h4>Label + select</h4>
+                <label for="lAndS" style="display: block; width: auto;">What is your favorite state?</label>
+                <select name="state1" id="lAndS">
+                    <option value="default">pick an option</option>
+                    <option value="NY">New York</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="NC">North Carolina</option>
+                </select>
+                <h4>Input with aria-label</h4>
+                <label for="sAndA" style="display: block; width: auto;">What is your favorite state?</label>
+                <select name="state2" id="sAndA">
+                    <option value="default">pick an option</option>
+                    <option value="NY">New York</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="NC">North Carolina</option>
+                </select>
+                <h3>Text Area</h3>
+                <h4>Label + textarea</h4>
+                <label for="lAndT" style="display: block; width: auto;">Write something nice</label>
+                <textarea name="write1" id="lAndT" cols="30" rows="10"></textarea>
+                <h4>Textarea with aria-label</h4>
+                <textarea name="write2" cols="30" rows="10" aria-label="Write something nice" placeholder="This is where you would write something nice."></textarea>
+                <h3>Radios</h3>
+                <h4>Labels and radios</h4>
+                <fieldset>
+                    <legend>What's your favorite flavor?</legend>
+                    <label for="choc1" style="width: 7em;"><input type="radio" name="flavor1" id="choc1" /> Chocolate</label>
+                    <label for="van1" style="width: 5em;"><input type="radio" name="flavor1" id="van1" /> Vanilla</label>
+                    <label for="straw1" style="width: 8em;"><input type="radio" name="flavor1" id="straw1" /> Strawberry</label>
+                </fieldset>
+                <h4>Radios with aria-label</h4>
+                <fieldset>
+                    <legend>What's your favorite flavor?</legend>
+                    <input type="radio" name="flavor2" aria-label="Chocolate" />
+                    <span class="flavor chocolate"></span>
+                    <input type="radio" name="flavor2" aria-label="Vanilla" />
+                    <span class="flavor vanilla"></span>
+                    <input type="radio" name="flavor2" aria-label="Strawberry" />
+                    <span class="flavor strawberry"></span>
+                </fieldset>
+                <h3>Checkboxes</h3>
+                <h4>Labels and checkboxes</h4>
+                <fieldset>
+                    <legend>What flavors do you want in your sundae?</legend>
+                    <label for="choc2" style="width: 7em;"><input type="checkbox" name="like1" id="choc2" /> Chocolate</label>
+                    <label for="van2" style="width: 5em;"><input type="checkbox" name="like1" id="van2" /> Vanilla</label>
+                    <label for="straw2" style="width: 8em;"><input type="checkbox" name="like1" id="straw2" /> Strawberry</label>
+                </fieldset>
+                <h4>Checkboxes with aria-label</h4>
+                <fieldset>
+                    <legend>What flavors do you want in your sundae?</legend>
+                    <input type="checkbox" name="toppings2" aria-label="Chocolate" />
+                    <span class="flavor chocolate"></span>
+                    <input type="checkbox" name="toppings2" aria-label="Vanilla" />
+                    <span class="flavor vanilla"></span>
+                    <input type="checkbox" name="toppings2" aria-label="Strawberry" />
+                    <span class="flavor strawberry"></span>
+                </fieldset>
+                <h3>Buttons</h3>
+                <button type="button">Clap!</button>
+                <button type="button" aria-label="Clap!"></button>
+            </form>
+        </div>
+        <div class="overlay"></div>
+        <div class="block-screen"></div>
+        <div aria-live="polite" class="screen-reader-text"></div>
+        <div role="alert" class="screen-reader-text"></div>
+    </div>
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/namespacing.js"></script>
+    <script type="text/javascript" src="js/accessibility-helpers.js"></script>
+</body>
+</html>
