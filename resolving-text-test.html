@@ -36,8 +36,8 @@
 			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
 			<table>
 				<caption>
-					<h2>Alternative Text Test</h2>
-					<p>"Default Text" is the default text node or pseudo content, "Labelled By" is the aria-labelledby text, "Label" is the aria-label</p>
+					<h2>Alternative Text Screen Reader Resolution Test</h2>
+					<p><strong>KEY: "Default Text"</strong> is the default text node, label element text, or pseudo content. <strong>"Labelled By"</strong> is the aria-labelledby text. <strong>"Label"</strong> is the aria-label text.</p>
 				</caption>
 				<colgroup>
 					<col class="col-1">
@@ -51,7 +51,7 @@
 				<thead>
 					<tr>
 						<th></th>
-						<th scope="col">with text node</th>
+						<th scope="col">with text node (our control)</th>
 						<th scope="col">with text node + aria-labelledby</th>
 						<th scope="col">with text node + aria-labelledby + aria-label</th>
 						<th scope="col">with text node + aria-label</th>
@@ -96,11 +96,11 @@
 						<td>
 							<span aria-label="Label" class="pseudo"></span>
 						</td>
-						<td></td>
+						<td>N/A</td>
 					</tr>
 					<tr class="results">
 						<th scope="row">
-							span results JAWS/IE
+							span results JAWS+IE
 						</th>
 						<td>"Default Text"</td>
 						<td>"Default Text"</td>
@@ -110,11 +110,11 @@
 						<td>"Label"</td>
 						<td>"Label"</td>
 						<td>"Label"</td>
-						<td></td>
+						<td>N/A</td>
 					</tr>
 					<tr class="results">
 						<th scope="row">
-							span results NVDA/FF
+							span results NVDA+FF
 						</th>
 						<td>"Default Text"</td>
 						<td>"Default Text"</td>
@@ -124,7 +124,7 @@
 						<td>"Labelled By"</td>
 						<td>"Label"</td>
 						<td>"Default Text"</td>
-						<td></td>
+						<td>N/A</td>
 					</tr>
 					<tr>
 						<th scope="row">
@@ -159,11 +159,12 @@
 						<td>
 							<span tabindex="0" aria-label="Label" class="pseudo"></span>
 						</td>
-						<td></td>
+						<td>N/A</td>
 					</tr>
 					<tr class="results">
 						<th scope="row">
-							span w/ tabindex results JAWS/IE
+							span with tabindex results JAWS+IE<br />
+							(browse mode / focus mode)
 						</th>
 						<td>"Default Text" / "Default Text"</td>
 						<td>"Default Text" / "Labelled By"</td>
@@ -173,11 +174,12 @@
 						<td>"Label" / "Label"</td>
 						<td>"Label" / "Label"</td>
 						<td>"Label" / "Label"</td>
-						<td></td>
+						<td>N/A</td>
 					</tr>
 					<tr class="results">
 						<th scope="row">
-							span w/ tabindex results NVDA/FF
+							span with tabindex results NVDA+FF<br />
+							(browse mode / focus mode)
 						</th>
 						<td>"Default Text" / "Default Text"</td>
 						<td>"Default Text" / "Default Text"</td>
@@ -187,7 +189,7 @@
 						<td>"Labelled By" / "Labelled By"</td>
 						<td>"Label" / "Label"</td>
 						<td>"Default Text" / "Default Text"</td>
-						<td></td>
+						<td>N/A</td>
 					</tr>
 					<tr>
 						<th scope="row">
@@ -222,11 +224,12 @@
 						<td>
 							<button aria-label="Label" class="pseudo"></button>
 						</td>
-						<td></td>
+						<td>N/A</td>
 					</tr>
 					<tr class="results">
 						<th scope="row">
-							button results JAWS/IE
+							button results JAWS+IE<br />
+							(browse mode / focus mode)
 						</th>
 						<td>"Default Text" / "Default Text"</td>
 						<td>"Labelled By" / "Labelled By"</td>
@@ -236,11 +239,12 @@
 						<td>"Label" / "Label"</td>
 						<td>"Label" / "Label"</td>
 						<td>"Label" / "Label"</td>
-						<td></td>
+						<td>N/A</td>
 					</tr>
 					<tr class="results">
 						<th scope="row">
-							button results NVDA/FF
+							button results NVDA+FF<br />
+							(browse mode / focus mode)
 						</th>
 						<td>"Default Text" / "Default Text"</td>
 						<td>"Labelled By" / "Labelled By"</td>
@@ -250,11 +254,11 @@
 						<td>"Labelled By" / "Labelled By"</td>
 						<td>"Label" / "Label"</td>
 						<td>"Label" / "Label"</td>
-						<td></td>
+						<td>N/A</td>
 					</tr>
 					<tr>
 						<th scope="row">
-							with input field
+							with input field (default text is in a label elem)
 						</th>
 						<td>
 							<label for="Default Text0">Default Text</label>
@@ -288,7 +292,7 @@
 							<span id="Labelled By6" style="display: none;">Labelled By</span>
 							<input type="text" id="Default Text6" aria-label="Label" />
 						</td>
-						<td></td>
+						<td>N/A</td>
 						<td>
 							<label for="Default Text7" style="display: none;">Default Text</label>
 							<input type="text" id="Default Text7" />
@@ -296,7 +300,8 @@
 					</tr>
 					<tr class="results">
 						<th scope="row">
-							input field results JAWS/IE
+							input field results JAWS+IE<br />
+							(browse mode / focus mode)
 						</th>
 						<td>"Default Text" / "Default Text"</td>
 						<td>"Default Text" / "Labelled By"</td>
@@ -305,12 +310,13 @@
 						<td>"&nbsp;&nbsp;" / "Labelled By"</td>
 						<td>"&nbsp;&nbsp;" / "Label"</td>
 						<td>"Label" / "Label"</td>
-						<td></td>
+						<td>N/A</td>
 						<td>"&nbsp;&nbsp;" / "&nbsp;&nbsp;"</td>
 					</tr>
 					<tr class="results">
 						<th scope="row">
-							input field results NVDA/FF
+							input field results NVDA+FF<br />
+							(browse mode / focus mode)
 						</th>
 						<td>"Default Text" / "Default Text"</td>
 						<td>"Default Text" / "Labelled By"</td>
@@ -319,11 +325,22 @@
 						<td>"&nbsp;&nbsp;" / "Labelled By"</td>
 						<td>"&nbsp;&nbsp;" / "Labelled By"</td>
 						<td>"&nbsp;&nbsp;" / "Label"</td>
-						<td></td>
+						<td>N/A</td>
 						<td>"&nbsp;&nbsp;" / "&nbsp;&nbsp;"</td>
 					</tr>
 				</tbody>
 			</table>
+			<h2>Observations</h2>
+			<h3>aria-labelledby vs aria-label</h3>
+			<p>I assumed all browser/screen-reader combinations would follow the <a href="https://www.w3.org/TR/wai-aria/roles#namecalculation">W3C Accessible Name Calculation guidelines</a>, but this was not the case.  In IE + JAWS aria-label trumps aria-labelledby which is not the W3C standard.</p>
+			<h3>Form elements with browse mode vs focus mode</h3>
+			<p>Button elements read the same in both browse and focus mode.</p>
+			<p>Other form elements usually<strong>*</strong> announce differently if the element is being read in browse mode vs. focus mode.</p>
+			<p><strong>*</strong> the only consistency between browse vs focus mode is when:</p>
+			<ul class="bullet singletons">
+				<li>The input field solely relies on the label element. (Expected behavior)</li>
+				<li>In IE the input field solely relies on aria-label.</li>
+			</ul>
 		</div>
 		<div class="overlay"></div>
 		<div class="block-screen"></div>
