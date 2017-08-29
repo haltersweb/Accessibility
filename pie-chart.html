@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Accessible Table Pie Chart</title>
+  <link rel="stylesheet" href="css/normalization.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/pie-chart.css" />
+</head>
+<body>
+  <div class="container">
+    <p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
+    <div class="page-wrapper">
+    <h1>A CSS Pie Chart that is Simultaneously a Table</h1>
+    <p>No SVG solution here.  Pure CSS.</p>
+    <p>See below for known issues and possible solutions.*</p>
+    <p><button type="button" id="togglePie">Toggle Pie/Table</button></p>
+    <div class="aria-table" role="table" aria-readonly="true">
+      <table class="container" data-widget="pie chart"  role="presentation">
+        <caption>Number of trees on the farm.</caption>
+        <thead>
+          <tr role="row">
+            <th role="columnheader">Oak</th>
+            <th role="columnheader">Apple</th>
+            <th role="columnheader">Pine</th>
+            <th role="columnheader">Willow</th>
+            <th role="columnheader">Palm</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr role="row">
+            <td class="wedge" role="cell">60</td>
+            <td class="wedge" role="cell">450</td>
+            <td class="wedge" role="cell"><span>95</span></td>
+            <td class="wedge" role="cell"><span>220</span></td>
+            <td class="wedge" role="cell">20</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h2>Known problems ans possible solutions</h2>
+    <p>In FF with both NVDA and JAWS the absolutely positioned table data cells won't read.  Intead the content for the entire row is merged and read only under the first cell of the 2nd row. NVDA with IE reads fine.</p>
+    <p>The table reads fine with in IE with both JAWS and NVDA.</p>
+    <p>In VO with Safari (desktop) the table reads fine.</p>
+    <p>Best solution: supplement the table with ARIA.  Since FF supports ARIA 1.1 you can start using role="table", role="columnheader", role="row", and role="cell".  In addition, JAWS with IE and with FF work nicely with ARIA 1.1 role="table".  Note that 1) JAWS with FF doesn't read the caption automatically; 2) NVDA with IE doesn't work with ARIA 1.1 role="table" but that combination is not often used; 3) For the ARIA solution to work, role="table" must be in a div that wraps the table.  The table itself must have role="presentation".</p>
+  </div>
+    <div class="overlay"></div>
+    <div class="block-screen"></div>
+  </div>
+  <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="js/namespacing.js"></script>
+  <script type="text/javascript" src="js/accessibility-helpers.js"></script>
+  <script type="text/javascript" src="js/pie-chart.js"></script>
+</body>
+</html>

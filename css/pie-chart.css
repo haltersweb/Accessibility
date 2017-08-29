@@ -1,0 +1,142 @@
+html {
+  font-size: 62.5%;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  position: relative;
+}
+tbody tr {
+  border: none;
+}
+td, th {
+  padding: 1em;
+  border: 1px solid black;
+}
+/* basic pie styles */
+.pie-it {}
+.pie-it td,
+.pie-it th {
+  border: none;
+  padding: 0;
+}
+.pie-it .wedge {
+  position: absolute;
+  height: 20rem;
+  width: 20rem;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  cursor: crosshair;
+  overflow: hidden;
+}
+.pie-it .wedge::before,
+.pie-it .wedge::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 10rem;
+  pointer-events: auto;
+}
+.pie-it .acute {
+  height: 10rem;
+  transform-origin: center bottom;
+}
+.pie-it .acute::before {
+  content: none;
+}
+.pie-it .acute::after {
+  clip: rect(0, 10rem, 10rem, 0);
+}
+.pie-it .obtuse::before,
+.pie-it .obtuse::after {
+  clip: rect(0, 20rem, 10rem, 10rem);
+}
+.pie-it .super::before,
+.pie-it .super::after {
+  clip: rect(0, 20rem, 20rem, 10rem);
+}
+
+/* colors */
+.pie-it .wedge:nth-child(1)::before,
+.pie-it .wedge:nth-child(1)::after {
+  background-color: purple;
+}
+.pie-it .wedge:nth-child(2)::before,
+.pie-it .wedge:nth-child(2)::after {
+  background-color: green;
+}
+.pie-it .wedge:nth-child(3)::before,
+.pie-it .wedge:nth-child(3)::after {
+  background-color: orange;
+}
+.pie-it .wedge:nth-child(4)::before,
+.pie-it .wedge:nth-child(4)::after {
+  background-color: brown;
+}
+.pie-it .wedge:nth-child(5)::before,
+.pie-it .wedge:nth-child(5)::after {
+  background-color: blue;
+}
+.pie-it .wedge:nth-child(6)::before,
+.pie-it .wedge:nth-child(6)::after {
+  background-color: red;
+}
+
+/*
+PATTERNS for setting wedge angles and position
+ACUTE WEDGE:
+  .acute {
+    transform: rotate(90deg + sum of prior wedge angles);
+  }
+  .acute:after {
+    transform: rotate(wedge angle - 90deg);
+  }
+OBTUSE WEDGE:
+  .obtuse {
+    transform: rotate(sum of prior wedge angles);
+  }
+  .obtuse:after {
+    transform: rotate(wedge angle - 90deg);
+  }
+SUPER WEDGE:;
+  .super {
+    transform: rotate(sum of prior wedge angles);
+  }
+  .super:after {
+    transform: rotate(wedge angle - 180deg);
+  }
+*/
+
+
+/* example of specific styles for a 3-wedge pie chart with an acute, obtuse, and super wedge
+.wedge:nth-child(1) {
+  transform: rotate(90deg);
+}
+.wedge:nth-child(1)::after {
+  transform: rotate(-60deg);
+}
+.wedge:nth-child(2) {
+  transform: rotate(30deg);
+}
+.wedge:nth-child(2)::after {
+  transform: rotate(25deg);
+}
+.wedge:nth-child(3) {
+  transform: rotate(145deg);
+}
+.wedge:nth-child(3)::after {
+  transform: rotate(35deg);
+}
+ */
+
+
+/* for testing */
+.pie-it .toggle::before,
+.pie-it .toggle::after {
+  background-color: black !important;
+}
