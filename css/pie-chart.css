@@ -2,9 +2,9 @@ html {
   font-size: 62.5%;
 }
 table {
+  position: relative;
   border-collapse: collapse;
   border-spacing: 0;
-  position: relative;
 }
 tbody tr {
   border: none;
@@ -14,21 +14,41 @@ td, th {
   border: 1px solid black;
 }
 /* basic pie styles */
-.pie-it {}
+.pie-it {
+  width: 50%;
+  min-width: 40rem;
+  margin-top: 9rem;
+}
+.pie-it caption {
+  text-align: left;
+  white-space: nowrap;
+  margin-top: -9rem;
+}
 .pie-it td,
 .pie-it th {
   border: none;
   padding: 0;
 }
+.pie-it th::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: .2em;
+}
+.pie-it tbody tr {
+  height: 22rem;
+}
 .pie-it .wedge {
   position: absolute;
-  height: 20rem;
-  width: 20rem;
   left: 0;
   top: 0;
+  height: 20rem;
+  width: 20rem;
+  overflow: hidden;
+  line-height: 45rem;
   pointer-events: none;
   cursor: crosshair;
-  overflow: hidden;
 }
 .pie-it .wedge::before,
 .pie-it .wedge::after {
@@ -63,27 +83,33 @@ td, th {
 
 /* colors */
 .pie-it .wedge:nth-child(1)::before,
-.pie-it .wedge:nth-child(1)::after {
+.pie-it .wedge:nth-child(1)::after,
+.pie-it th:nth-child(1)::before {
   background-color: purple;
 }
 .pie-it .wedge:nth-child(2)::before,
-.pie-it .wedge:nth-child(2)::after {
+.pie-it .wedge:nth-child(2)::after,
+.pie-it th:nth-child(2)::before {
   background-color: green;
 }
 .pie-it .wedge:nth-child(3)::before,
-.pie-it .wedge:nth-child(3)::after {
+.pie-it .wedge:nth-child(3)::after,
+.pie-it th:nth-child(3)::before {
   background-color: orange;
 }
 .pie-it .wedge:nth-child(4)::before,
-.pie-it .wedge:nth-child(4)::after {
+.pie-it .wedge:nth-child(4)::after,
+.pie-it th:nth-child(4)::before {
   background-color: brown;
 }
 .pie-it .wedge:nth-child(5)::before,
-.pie-it .wedge:nth-child(5)::after {
+.pie-it .wedge:nth-child(5)::after,
+.pie-it th:nth-child(5)::before {
   background-color: blue;
 }
 .pie-it .wedge:nth-child(6)::before,
-.pie-it .wedge:nth-child(6)::after {
+.pie-it .wedge:nth-child(6)::after,
+.pie-it th:nth-child(6)::before {
   background-color: red;
 }
 
