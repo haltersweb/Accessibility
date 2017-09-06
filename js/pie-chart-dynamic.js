@@ -6,14 +6,6 @@
  */
 (function (console) {
     'use strict';
-    /* FOR TESTING
-    var wedges = document.getElementsByClassName('wedge');
-    Array.prototype.forEach.call(wedges, function(wedge) {
-        wedge.addEventListener('click', function() {
-            this.classList.toggle('toggle');
-        });
-    });
-     */
     /* CODE FOR TABLE PIE PATTERN */
     var pieTable = document.querySelector('[data-widget="pie chart"]'),
         pieTableCells = pieTable.querySelectorAll('.wedge');

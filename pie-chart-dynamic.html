@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Accessible Dynamic Table Pie Chart with JavaScript</title>
+  <link rel="stylesheet" href="css/normalization.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/pie-chart-dynamic.css" />
+  <style>
+    /* FOR TESTING ONLY.  Paired with the JS at the bottom of the page. */
+    .pie-it .toggle::before,
+    .pie-it .toggle::after {
+      background-color: black !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p><a href="http://haltersweb.github.io/Accessibility/">View the library of solutions.</a></p>
+    <div class="page-wrapper">
+    <h1>A Dynamic CSS Pie Chart that is Simultaneously a Table</h1>
+    <p>This is a dynamic version of the <a href="pie-chart.html">simple CSS Pie Chart</a>.  This version takes content from the table and calculates the CSS which it injects into a style element in the DOM.</p>
+    <p><a href="pie-chart.html">See the simple CSS Pie Chart page for known issues and possible solutions.</a></p>
+    <p><button type="button" id="togglePie">Toggle Pie/Table</button></p>
+    <div class="aria-table" role="table" aria-readonly="true">
+      <table class="container" data-widget="pie chart"  role="presentation">
+        <caption><h2>Number of trees on the farm</h2></caption>
+        <thead>
+          <tr role="row">
+            <th role="columnheader">Oak</th>
+            <th role="columnheader">Apple</th>
+            <th role="columnheader">Pine</th>
+            <th role="columnheader">Willow</th>
+            <th role="columnheader">Palm</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr role="row">
+            <td class="wedge" role="cell">60</td>
+            <td class="wedge" role="cell">490</td>
+            <td class="wedge" role="cell">40</td>
+            <td class="wedge" role="cell">230</td>
+            <td class="wedge" role="cell">20</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+    <div class="overlay"></div>
+    <div class="block-screen"></div>
+  </div>
+  <script type="text/javascript" src="js/pie-chart-dynamic.js"></script>
+  <script>
+    /* FOR TESTING ONLY -- not part of the JS for the solution.  This changes the wedges black if you click on them. */
+    var wedges = document.getElementsByClassName('wedge');
+    Array.prototype.forEach.call(wedges, function(wedge) {
+        wedge.addEventListener('click', function() {
+            this.classList.toggle('toggle');
+        });
+    });
+  </script>
+</body>
+</html>

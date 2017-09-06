@@ -139,7 +139,7 @@ SUPER WEDGE:;
 */
 
 
-/* example of specific styles for the 3-wedge pie chart which has an acute, obtuse, and super wedge */
+/* example of specific styles for a 3-wedge pie chart with an acute, obtuse, and super wedge
 .wedge:nth-child(1) {
   transform: rotate(90deg);
 }
@@ -158,4 +158,5 @@ SUPER WEDGE:;
 .wedge:nth-child(3)::after {
   transform: rotate(35deg);
 }
+ */
 
