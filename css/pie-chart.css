@@ -140,22 +140,22 @@ SUPER WEDGE:;
 
 
 /* example of specific styles for the 3-wedge pie chart which has an acute, obtuse, and super wedge */
-.wedge:nth-child(1) {
+.pie-it .wedge:nth-child(1) {
   transform: rotate(90deg);
 }
-.wedge:nth-child(1)::after {
+.pie-it .wedge:nth-child(1)::after {
   transform: rotate(-60deg);
 }
-.wedge:nth-child(2) {
+.pie-it .wedge:nth-child(2) {
   transform: rotate(30deg);
 }
-.wedge:nth-child(2)::after {
+.pie-it .wedge:nth-child(2)::after {
   transform: rotate(25deg);
 }
-.wedge:nth-child(3) {
+.pie-it .wedge:nth-child(3) {
   transform: rotate(145deg);
 }
-.wedge:nth-child(3)::after {
+.pie-it .wedge:nth-child(3)::after {
   transform: rotate(35deg);
 }
 

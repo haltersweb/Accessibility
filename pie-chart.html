@@ -52,12 +52,19 @@
     <div class="block-screen"></div>
   </div>
   <script>
-    /* FOR TESTING ONLY -- not part of the JS for the solution.  This changes the wedges black if you click on them. */
+    /* FOR TESTING ONLY -- not part of the JS for the solution. */
+    /* This changes the wedges black if you click on them. */
     var wedges = document.getElementsByClassName('wedge');
     Array.prototype.forEach.call(wedges, function(wedge) {
         wedge.addEventListener('click', function() {
             this.classList.toggle('toggle');
         });
+    });
+
+    /* Toggles between the pie and table css */
+    document.getElementById('togglePie').addEventListener('click', function() {
+      /* assigns the class to the table to apply the .pie-it css */
+        document.querySelector('[data-widget="pie chart"]').classList.toggle('pie-it');
     });
   </script>
 </body>
