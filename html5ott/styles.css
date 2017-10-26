@@ -1,0 +1,45 @@
+#stringView {
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: .5em .5em;
+  min-height: 3em;
+  width: 100%;
+  overflow: hidden;
+  background-color: black;
+  color: white;
+}
+h1 {
+  margin-top: 3em;
+}
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+button, [role="button"] {
+  border: 1px solid green;
+  padding: 1em;
+  min-width: 20%;
+  text-align: center;
+  background-color: white;
+  font-weight: bold;
+}
+h2 {
+  text-align: left;
+}
+td, [role="gridcell"] {
+  vertical-align: top;
+  padding: 1em;
+  border: 1px solid green;
+}
+[role="row"] {
+  display: flex;
+}
+.focus {
+  background-color: green;
+  color: white;
+}
+.hidden {display: none;}
+.invisible {visibility: hidden;}
