@@ -3,25 +3,49 @@
 */
 /* @author Adina Halter
 */
+
+/*
+TEXT TO SPEECH CODE TO SIMULATE SCREEN READER IN CHROME
+*/
+var SPEECH_SYNTH = SPEECH_SYNTH || {};
+(function () {
+    SPEECH_SYNTH.textToSpeech = function (string) {
+        var msg = new SpeechSynthesisUtterance(string);
+        window.speechSynthesis.speak(msg);
+    };
+    SPEECH_SYNTH.cancelSpeech = function () {
+        window.speechSynthesis.cancel();
+    };
+}());
+
+/*
+SCREEN READER CODE
+*/
+
+//var X1_REMOTE_EVENT_TRACKER = X1_REMOTE_EVENT_TRACKER || {};
+
 (function () {
     'use script';
     var keyboard = {
-            enter: 13,
             left: 37,
             up: 38,
             right: 39,
-            down: 40
+            down: 40,
+            enter: 13,
+            back: 8
         },
+        storeDpadEvent = null,
         ariaRolesFromNodeName = {
             'BUTTON': 'button',
             'A': 'link',
             'TD': 'cell',
             'TABLE': 'table',
-            'DIV': ''
-            // ADD ROLE FOR CHECKBOX AND RADIO USING 'INPUT'S TYPE
+            'DIV': '',
+            'INPUT': 'input'
+            // TO DO: ADD SUBTILTY FOR CHECKBOX AND RADIO USING 'INPUT'S TYPE
         },
-        focusables = document.querySelectorAll('a, button, [tabindex="0"]'),
-        stringView = document.getElementById('stringView');
+        stringView = document.getElementById('stringView'),
+        focusables = document.querySelectorAll('a, button, [tabindex="0"], input');
     function getRole(elem) {
         var role = null;
         role = elem.getAttribute('role');
@@ -72,25 +96,17 @@
     }
     function genString(map) {
         var announcedRole = (map.role === 'cell' || map.role === 'gridcell') ? '' : map.role + '.';
-        var gridTitle = getGridTitle(map);
+        var gridTitle = '';
+        if (storeDpadEvent === keyboard.up || storeDpadEvent === keyboard.down) {
+            gridTitle = getGridTitle(map);
+        }
         var string = gridTitle + map.title.trim() + '. ' + announcedRole;
         return string;
     }
     function sendString(string, target) {
         target.textContent = string;
-    }
-    function findThisSection(elem) {
-        while (
-            !elem.dataset.section
-            &&
-            elem.nodeName !== 'BODY'
-        ) {
-            elem = elem.parentElement;
-        }
-        if (elem.dataset.section) {
-            return elem;
-        }
-        return null;
+        SPEECH_SYNTH.cancelSpeech();
+        SPEECH_SYNTH.textToSpeech(string);
     }
     function getGridTitle(map) {
         var cell,
@@ -152,6 +168,18 @@
         return string;
     }
     for (var i = 0; i < focusables.length; i += 1) {
+        /* fetch and store the dPad Event */
+        focusables[i].addEventListener('keydown', function (evt) {
+            if (
+                evt.keyCode === keyboard.right ||
+                evt.keyCode === keyboard.left ||
+                evt.keyCode === keyboard.up ||
+                evt.keyCode === keyboard.down ||
+                evt.keyCode === keyboard.enter
+            ) {
+                storeDpadEvent = evt.keyCode;
+            }
+        });
         focusables[i].addEventListener('focus', function () {
             document.querySelector('.focus').classList.toggle('focus');
             this.classList.toggle('focus');
@@ -162,6 +190,36 @@
             string = tidySpaces(string);
             sendString(string, stringView);
         });
+    }
+}());
+
+
+/*
+ARROWING CODE
+*/
+(function () {
+    'use script';
+    var keyboard = {
+            left: 37,
+            up: 38,
+            right: 39,
+            down: 40
+        },
+        focusables = document.querySelectorAll('a, button, [tabindex="0"]');
+    function findThisSection(elem) {
+        while (
+            !elem.dataset.section
+            &&
+            elem.nodeName !== 'BODY'
+        ) {
+            elem = elem.parentElement;
+        }
+        if (elem.dataset.section) {
+            return elem;
+        }
+        return null;
+    }
+    for (var i = 0; i < focusables.length; i += 1) {
         focusables[i].addEventListener('keydown', function (evt) {
             if (
                 evt.keyCode === keyboard.right ||
@@ -199,6 +257,6 @@
                 }
             }
         });
-        document.querySelector('.focus').focus();
     }
+    document.querySelector('.focus').focus();
 }());
