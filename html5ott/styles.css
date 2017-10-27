@@ -14,9 +14,10 @@
 h1 {
   margin-top: 3em;
 }
-.button-group {
-  display: flex;
-  justify-content: space-between;
+.button-group > *{
+  width: 24%;
+  box-sizing: border-box;
+  display: inline-block;
 }
 button, [role="button"] {
   border: 1px solid green;
@@ -34,8 +35,10 @@ td, [role="gridcell"] {
   padding: 1em;
   border: 1px solid green;
 }
-[role="row"] {
-  display: flex;
+[role="row"] > * {
+  width: 33%;
+  box-sizing: border-box;
+  display: inline-block;
 }
 .focus {
   background-color: green;
