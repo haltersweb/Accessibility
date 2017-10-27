@@ -5,24 +5,8 @@
 */
 
 /*
-TEXT TO SPEECH CODE TO SIMULATE SCREEN READER IN CHROME
-*/
-var SPEECH_SYNTH = SPEECH_SYNTH || {};
-(function () {
-    SPEECH_SYNTH.textToSpeech = function (string) {
-        var msg = new SpeechSynthesisUtterance(string);
-        window.speechSynthesis.speak(msg);
-    };
-    SPEECH_SYNTH.cancelSpeech = function () {
-        window.speechSynthesis.cancel();
-    };
-}());
-
-/*
 SCREEN READER CODE
 */
-
-//var X1_REMOTE_EVENT_TRACKER = X1_REMOTE_EVENT_TRACKER || {};
 
 (function () {
     'use script';
@@ -45,7 +29,7 @@ SCREEN READER CODE
             // TO DO: ADD SUBTILTY FOR CHECKBOX AND RADIO USING 'INPUT'S TYPE
         },
         stringView = document.getElementById('stringView'),
-        focusables = document.querySelectorAll('a, button, [tabindex="0"], input');
+        focusables = document.querySelectorAll('a, button, [tabindex], input');
     function getRole(elem) {
         var role = null;
         role = elem.getAttribute('role');
@@ -75,10 +59,10 @@ SCREEN READER CODE
         }
 //TO DO: IF ELEM IS RADIO OR CHECKBOX AND HAS FIELDSET (label will be a composite of legend title and elem title)
         if (elem.textContent) { // will only be true if elem is block or inline element
-//IMPORTANT!!
-//FIRST COPY THE INNERHTML TO A TEMP CONTAINER
-//THEN REMOVE ALL "HIDDEN" TEXT ELEMENTS
-//FINALLY RETURN THE TEXT CONTENT FROM THE TEMP CONTAINER
+//TO DO: HIDE CERTAIN CONTENT FROM SCREEN READER
+    //FIRST COPY THE INNERHTML TO A TEMP CONTAINER
+    //THEN REMOVE ALL "HIDDEN" TEXT ELEMENTS
+    //FINALLY RETURN THE TEXT CONTENT FROM THE TEMP CONTAINER
             title = elem.textContent;
             return tidySpaces(title);
         }
@@ -97,7 +81,7 @@ SCREEN READER CODE
     function genString(map) {
         var announcedRole = (map.role === 'cell' || map.role === 'gridcell') ? '' : map.role + '.';
         var gridTitle = '';
-        if (storeDpadEvent === keyboard.up || storeDpadEvent === keyboard.down) {
+        if (storeDpadEvent === null || storeDpadEvent === keyboard.up || storeDpadEvent === keyboard.down) {
             gridTitle = getGridTitle(map);
         }
         var string = gridTitle + map.title.trim() + '. ' + announcedRole;
@@ -167,96 +151,33 @@ SCREEN READER CODE
         string = string.replace(extraSpaces, ' '); /* change space clusters to a single space */
         return string;
     }
-    for (var i = 0; i < focusables.length; i += 1) {
-        /* fetch and store the dPad Event */
-        focusables[i].addEventListener('keydown', function (evt) {
-            if (
-                evt.keyCode === keyboard.right ||
-                evt.keyCode === keyboard.left ||
-                evt.keyCode === keyboard.up ||
-                evt.keyCode === keyboard.down ||
-                evt.keyCode === keyboard.enter
-            ) {
-                storeDpadEvent = evt.keyCode;
-            }
-        });
-        focusables[i].addEventListener('focus', function () {
-            document.querySelector('.focus').classList.toggle('focus');
-            this.classList.toggle('focus');
-            var map = {};
-            var string;
-            map = buildMap(this);
-            string = genString(map);
-            string = tidySpaces(string);
-            sendString(string, stringView);
-        });
+    function getAndAnnounceText(evt, elem) {
+        var map = {};
+        var string;
+        elem = elem || this;
+        map = buildMap(elem);
+        string = genString(map);
+        string = tidySpaces(string);
+        sendString(string, stringView);
     }
-}());
-
-
-/*
-ARROWING CODE
-*/
-(function () {
-    'use script';
-    var keyboard = {
-            left: 37,
-            up: 38,
-            right: 39,
-            down: 40
-        },
-        focusables = document.querySelectorAll('a, button, [tabindex="0"]');
-    function findThisSection(elem) {
-        while (
-            !elem.dataset.section
-            &&
-            elem.nodeName !== 'BODY'
+    function captureDpadEvents (evt) {
+        if (
+            evt.keyCode === keyboard.right ||
+            evt.keyCode === keyboard.left ||
+            evt.keyCode === keyboard.up ||
+            evt.keyCode === keyboard.down ||
+            evt.keyCode === keyboard.enter
         ) {
-            elem = elem.parentElement;
+            storeDpadEvent = evt.keyCode;
+            console.log(storeDpadEvent);
         }
-        if (elem.dataset.section) {
-            return elem;
+    }
+    function eventBindings() {
+        for (var i = 0; i < focusables.length; i += 1) {
+            focusables[i].addEventListener('focus', getAndAnnounceText, false);
         }
-        return null;
+        document.addEventListener('keydown', captureDpadEvents, false);
     }
-    for (var i = 0; i < focusables.length; i += 1) {
-        focusables[i].addEventListener('keydown', function (evt) {
-            if (
-                evt.keyCode === keyboard.right ||
-                evt.keyCode === keyboard.left ||
-                evt.keyCode === keyboard.up ||
-                evt.keyCode === keyboard.down
-            ) {
-                var thisSection = findThisSection(this),
-                    newSection = null;
-                switch (evt.keyCode) {
-                case (keyboard.left):
-                    if (this.previousElementSibling) {
-                        this.previousElementSibling.focus();
-                    }
-                    break;
-                case (keyboard.right):
-                    if (this.nextElementSibling) {
-                        this.nextElementSibling.focus();
-                    }
-                    break;
-                case (keyboard.up):
-                    newSection = document.querySelector('[data-section="' + (parseInt(thisSection.dataset.section) - 1) + '"]');
-                    if (newSection) {
-                        newSection.querySelector('button, [tabindex="0"]').focus();
-                    }
-                    break;
-                case (keyboard.down):
-                    newSection = document.querySelector('[data-section="' + (parseInt(thisSection.dataset.section) + 1) + '"]');
-                    if (newSection) {
-                        newSection.querySelector('button, [tabindex="0"]').focus();
-                    }
-                    break;
-                default:
-                    return false;
-                }
-            }
-        });
-    }
-    document.querySelector('.focus').focus();
+    eventBindings();
+    getAndAnnounceText(null, document.activeElement); /* to announce the focused element on load */
 }());

@@ -8,78 +8,85 @@
 </head>
 <body>
     <p id="stringView"></p>
+    <h1>HTML5 SR SIMULATION - RUN ONLY IN CHROME</h1>
+    <div role="application">
+        <div class="button-group" data-section="1">
+          <button>Recommended for you</button>
+          <div role="button" tabindex="0">Trending Now</div>
+          <button aria-label="Music Selections">Music</button>
+          <div role="button" tabindex="0" aria-label="Here's what's new">New</div>
+        </div>
 
-    <h1>HTML5 SR SIM - RUN ONLY IN CHROME</h1>
-<div role="application">
-    <div class="button-group" data-section="1">
-      <button class="focus">Recommended for you</button>
-      <div role="button" tabindex="0">Trending Now</div>
-      <button aria-label="Music Selections">Music</button>
-      <div role="button" tabindex="0" aria-label="Here's what's new">New</div>
+        <table>
+          <caption><h2>Trending Videos</h2></caption>
+          <tr data-section="2">
+            <td class="focus" tabindex="0" data.launch="video">
+              <div>This incredible animation shows how deep the ocean really is</div>
+              <div>3:30</div>
+              <div>17,383,536 views</div>
+              <div>Tech Insider</div>
+              <div aria-hidden="true">6 months ago</div>
+              <div aria-hidden="true">HD</div>
+            </td>
+            <td tabindex="0" data.launch="video">
+              <div>LIVE Peppa Pig Episodes | Peppa Pig NEW 2017 | Cartoons for Children</div>
+              <div>3,853 watching</div>
+              <div>Peppa Pig - Official Channel</div>
+            </td>
+            <td tabindex="0" data.launch="video">
+              <div>Try Not To Laugh Watching America's Funniest Home Videos - Vine Age</div>
+              <div>12:45</div>
+              <div>53,174,837 views</div>
+              <div>Vine Age</div>
+              <div aria-hidden="true">1 year ago</div>
+              <div aria-hidden="true">HD</div>
+            </td>
+            <td tabindex="0" data.launch="video">
+              <div>Best Water Fails 2017 | Funny Vines</div>
+              <div>14:30</div>
+              <div>8,662,493 views</div>
+              <div>Funny Vines</div>
+              <div aria-hidden="true">4 months ago</div>
+              <div aria-hidden="true">HD</div>
+            </td>
+          </tr>
+        </table>
+
+        <div role="grid" aria-labelledby="grid1Label">
+          <h2 id="grid1Label">Fun Videos</h2>
+          <div role="row" data-section="3">
+            <div role="gridcell" tabindex="0" data.launch="video" aria-label="Best Water Fails 2017 | Funny Vines. 14:30. 8,662,493 views. Funny Vines">
+              <div>Best Water Fails 2017 | Funny Vines</div>
+              <div>14:30</div>
+              <div>8,662,493 views</div>
+              <div>Funny Vines</div>
+              <div aria-hidden="true">4 months ago</div>
+              <div aria-hidden="true">HD</div>
+            </div>
+            <div role="gridcell" tabindex="0" data.launch="video" aria-label="Try Not To Laugh Watching America's Funniest Home Videos - Vine Age. 12:45. 53,174,837 views. Vine Age">
+              <div>Try Not To Laugh Watching America's Funniest Home Videos - Vine Age</div>
+              <div>12:45</div>
+              <div>53,174,837 views</div>
+              <div>Vine Age</div>
+              <div aria-hidden="true">1 year ago</div>
+              <div aria-hidden="true">HD</div>
+            </div>
+            <div role="gridcell" tabindex="0" data.launch="video" aria-label="LIVE Peppa Pig Episodes | Peppa Pig NEW 2017 | Cartoons for Children. 3,853 watching. Peppa Pig - Official Channel">
+              <div>LIVE Peppa Pig Episodes | Peppa Pig NEW 2017 | Cartoons for Children</div>
+              <div>3,853 watching</div>
+              <div>Peppa Pig - Official Channel</div>
+            </div>
+          </div>
+        </div>
+
+        <div id="videoPlayer" aria-label="video player" class="hidden" tabindex="0">
+            <button>play</button>
+            <button>previous video</button>
+            <button>next video</button>
+        </div>
     </div>
-
-    <table>
-      <caption><h2>Trending Videos</h2></caption>
-      <tr data-section="2">
-        <td tabindex="0">
-          <div>This incredible animation shows how deep the ocean really is</div>
-          <div>3:30</div>
-          <div>17,383,536 views</div>
-          <div>Tech Insider</div>
-          <div aria-hidden="true">6 months ago</div>
-          <div aria-hidden="true">HD</div>
-        </td>
-        <td tabindex="0">
-          <div>LIVE Peppa Pig Episodes | Peppa Pig NEW 2017 | Cartoons for Children</div>
-          <div>3,853 watching</div>
-          <div>Peppa Pig - Official Channel</div>
-        </td>
-        <td tabindex="0">
-          <div>Try Not To Laugh Watching America's Funniest Home Videos - Vine Age</div>
-          <div>12:45</div>
-          <div>53,174,837 views</div>
-          <div>Vine Age</div>
-          <div aria-hidden="true">1 year ago</div>
-          <div aria-hidden="true">HD</div>
-        </td>
-        <td tabindex="0">
-          <div>Best Water Fails 2017 | Funny Vines</div>
-          <div>14:30</div>
-          <div>8,662,493 views</div>
-          <div>Funny Vines</div>
-          <div aria-hidden="true">4 months ago</div>
-          <div aria-hidden="true">HD</div>
-        </td>
-      </tr>
-    </table>
-
-    <div role="grid" aria-labelledby="grid1Label">
-      <h2 id="grid1Label">Fun Videos</h2>
-      <div role="row" data-section="3">
-        <div role="gridcell" tabindex="0" aria-label="Best Water Fails 2017 | Funny Vines. 14:30. 8,662,493 views. Funny Vines">
-          <div>Best Water Fails 2017 | Funny Vines</div>
-          <div>14:30</div>
-          <div>8,662,493 views</div>
-          <div>Funny Vines</div>
-          <div aria-hidden="true">4 months ago</div>
-          <div aria-hidden="true">HD</div>
-        </div>
-        <div role="gridcell" tabindex="0" aria-label="Try Not To Laugh Watching America's Funniest Home Videos - Vine Age. 12:45. 53,174,837 views. Vine Age">
-          <div>Try Not To Laugh Watching America's Funniest Home Videos - Vine Age</div>
-          <div>12:45</div>
-          <div>53,174,837 views</div>
-          <div>Vine Age</div>
-          <div aria-hidden="true">1 year ago</div>
-          <div aria-hidden="true">HD</div>
-        </div>
-        <div role="gridcell" tabindex="0" aria-label="LIVE Peppa Pig Episodes | Peppa Pig NEW 2017 | Cartoons for Children. 3,853 watching. Peppa Pig - Official Channel">
-          <div>LIVE Peppa Pig Episodes | Peppa Pig NEW 2017 | Cartoons for Children</div>
-          <div>3,853 watching</div>
-          <div>Peppa Pig - Official Channel</div>
-        </div>
-      </div>
-    </div>
-</div>
+    <script type="text/javascript" src="speech-synth.js"></script>
+    <script type="text/javascript" src="script2.js"></script>
     <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
