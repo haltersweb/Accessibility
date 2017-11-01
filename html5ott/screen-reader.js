@@ -1,5 +1,5 @@
 /*global
-    window, console
+    window, console, SPEECH_SYNTH
 */
 /* @author Adina Halter
 */
@@ -87,10 +87,19 @@ SCREEN READER CODE
         var string = gridTitle + map.title.trim() + '. ' + announcedRole;
         return string;
     }
-    function sendString(string, target) {
+    /*
+    sendStringToTextWindow() & sendStringToSynth() to be removed later
+    */
+    function sendStringToTextWindow(string, target) {
         target.textContent = string;
+    }
+    function sendStringToSynth(string) {
         SPEECH_SYNTH.cancelSpeech();
         SPEECH_SYNTH.textToSpeech(string);
+    }
+    function getTtsUrl(string) {
+        var ttsUrl = 'http://vrextts.g.comcast.net/tts?text=' + string;
+        return ttsUrl;
     }
     function getGridTitle(map) {
         var cell,
@@ -153,12 +162,14 @@ SCREEN READER CODE
     }
     function getAndAnnounceText(evt, elem) {
         var map = {};
-        var string;
+        var string = '';
         elem = elem || this;
         map = buildMap(elem);
         string = genString(map);
         string = tidySpaces(string);
-        sendString(string, stringView);
+        sendStringToTextWindow(string, stringView);
+        //sendStringToSynth(string);
+        window.location=getTtsUrl(string);
     }
     function captureDpadEvents (evt) {
         if (
@@ -169,7 +180,6 @@ SCREEN READER CODE
             evt.keyCode === keyboard.enter
         ) {
             storeDpadEvent = evt.keyCode;
-            console.log(storeDpadEvent);
         }
     }
     function eventBindings() {
