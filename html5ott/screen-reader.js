@@ -169,7 +169,6 @@ SCREEN READER CODE
         string = tidySpaces(string);
         sendStringToTextWindow(string, stringView);
         //sendStringToSynth(string);
-        window.location=getTtsUrl(string);
     }
     function captureDpadEvents (evt) {
         if (
@@ -189,5 +188,8 @@ SCREEN READER CODE
         document.addEventListener('keydown', captureDpadEvents, false);
     }
     eventBindings();
+    document.getElementById('useToTest').addEventListener('click', function () {
+        window.location=getTtsUrl('this is a text to speech test.');
+    });
     getAndAnnounceText(null, document.activeElement); /* to announce the focused element on load */
 }());
