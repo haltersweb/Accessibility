@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        td {
+            border: 1px solid black;
+            vertical-align: top;
+            padding: 1em;
+        }
+    </style>
+    <style>
+        .em td, .em li, .em p { font-size: .75em; }
+        .px td, .px li, .px p { font-size: 12px; }
+        .rem td, .rem li, .rem p { font-size: .75rem; }
+    </style>
+</head>
+<body>
+    <h1>Target: 12px for list items, table content, paragraphs </h1>
+    <div class="em">
+        <h2>Using em</h2>
+        default document size
+        <p>in a paragraph</p>
+        <ul><li>in a list item</li></ul>
+        <table>
+            <tr>
+                <td>in a table cell</td>
+                <td><p>in a paragraph in a table cell</p></td>
+                <td>
+                    <ul>
+                        <li>in a list item in a table cell</li>
+                        <li><p>In a paragraph in a list item in a table cell</p></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="px">
+        <h2>Using px</h2>
+        default document size
+        <p>in a paragraph</p>
+        <ul><li>in a list item</li></ul>
+        <table>
+            <tr>
+                <td>in a table cell</td>
+                <td><p>in a paragraph in a table cell</p></td>
+                <td>
+                    <ul>
+                        <li>in a list item in a table cell</li>
+                        <li><p>In a paragraph in a list item in a table cell</p></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="rem">
+        <h2>Using rem</h2>
+        default document size
+        <p>in a paragraph</p>
+        <ul><li>in a list item</li></ul>
+        <table>
+            <tr>
+                <td>in a table cell</td>
+                <td><p>in a paragraph in a table cell</p></td>
+                <td>
+                    <ul>
+                        <li>in a list item in a table cell</li>
+                        <li><p>In a paragraph in a list item in a table cell</p></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
