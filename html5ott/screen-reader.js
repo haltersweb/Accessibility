@@ -99,7 +99,7 @@ SCREEN READER CODE
     }
     function getTtsUrl(string) {
         //var ttsUrl = 'http://vrextts.g.comcast.net/tts?text=' + string;
-        var ttsUrl = 'ccr.voice-guidance-tts.xcr.comcast.net/tts?text=' + string;
+        var ttsUrl = 'http://ccr.voice-guidance-tts.xcr.comcast.net/tts?text=' + string;
         return ttsUrl;
     }
     function getGridTitle(map) {
