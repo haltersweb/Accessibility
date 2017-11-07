@@ -189,8 +189,29 @@ SCREEN READER CODE
         document.addEventListener('keydown', captureDpadEvents, false);
     }
     eventBindings();
+
+
+    context = new AudioContext();
+    source = null;
+    function playMp3() {
+        bufferLoader = new BufferLoader(
+            context,
+            [
+                'tts.mp3'
+            ],
+            finishedLoading
+        );
+        bufferLoader.load();
+    }
+    function finishedLoading(bufferList) {
+        source = context.createBufferSource();
+        source.buffer = bufferList[0];
+        source.connect(context.destination);
+        source.start();
+    }
     document.getElementById('useToTest').addEventListener('click', function () {
-        window.location=getTtsUrl('this is a text to speech test.');
+        //window.location=getTtsUrl('this is a text to speech test.');
+        playMp3();
     });
     getAndAnnounceText(null, document.activeElement); /* to announce the focused element on load */
 }());
