@@ -170,6 +170,8 @@ SCREEN READER CODE
         string = tidySpaces(string);
         sendStringToTextWindow(string, stringView);
         //sendStringToSynth(string);
+        //
+        //playMp3(string);
     }
     function captureDpadEvents (evt) {
         if (
@@ -193,7 +195,7 @@ SCREEN READER CODE
 
     context = new AudioContext();
     source = null;
-    function playMp3() {
+    function playMp3(string) {
         bufferLoader = new BufferLoader(
             context,
             [
@@ -201,6 +203,7 @@ SCREEN READER CODE
                 //'http://ccr.voice-guidance-tts.xcr.comcast.net/tts?text=Test'
                 //'http://vrextts.g.comcast.net/tts?text=this%20is%20a%20simple%20call'
                 'http://odol-atsec-pan-36.voice-guidance-tts.xcr.comcast.net/tts?text=Test'
+                //'http://odol-atsec-pan-36.voice-guidance-tts.xcr.comcast.net/tts?text=' + string
             ],
             finishedLoading
         );
