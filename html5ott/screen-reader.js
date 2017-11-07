@@ -198,7 +198,8 @@ SCREEN READER CODE
             context,
             [
                 //'tts.mp3'
-                'http://ccr.voice-guidance-tts.xcr.comcast.net/tts?text=Test'
+                //'http://ccr.voice-guidance-tts.xcr.comcast.net/tts?text=Test'
+                'http://vrextts.g.comcast.net/tts?text=this%20is%20a%20simple%20call'
             ],
             finishedLoading
         );
