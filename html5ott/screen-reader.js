@@ -197,7 +197,8 @@ SCREEN READER CODE
         bufferLoader = new BufferLoader(
             context,
             [
-                'tts.mp3'
+                //'tts.mp3'
+                'http://ccr.voice-guidance-tts.xcr.comcast.net/tts?text=Test'
             ],
             finishedLoading
         );
