@@ -211,8 +211,8 @@ SCREEN READER CODE
         source.start();
     }
     document.getElementById('useToTest').addEventListener('click', function () {
-        //window.location=getTtsUrl('this is a text to speech test.');
-        playMp3();
+        window.location=getTtsUrl('this is a text to speech test.');
+        //playMp3();
     });
     getAndAnnounceText(null, document.activeElement); /* to announce the focused element on load */
 }());
