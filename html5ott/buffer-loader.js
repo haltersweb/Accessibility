@@ -34,7 +34,7 @@ BufferLoader.prototype.loadBuffer = function(url, index) {
   }
 
   request.onerror = function() {
-    alert('BufferLoader: XHR error');
+    //alert('BufferLoader: XHR error');
 
 
     /* ADINA: added this to get around XHR error */

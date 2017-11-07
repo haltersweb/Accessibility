@@ -169,10 +169,21 @@ SCREEN READER CODE
         string = genString(map);
         string = tidySpaces(string);
         sendStringToTextWindow(string, stringView);
-        //sendStringToSynth(string);
+        sendStringToSynth(string);
         //
         //playMp3(string);
     }
+
+function getAndGoToTextUrl(evt, elem) {
+    var map = {};
+    var string = '';
+    elem = elem || this;
+    map = buildMap(elem);
+    string = genString(map);
+    string = tidySpaces(string);
+    window.location=getTtsUrl(string);
+}
+
     function captureDpadEvents (evt) {
         if (
             evt.keyCode === keyboard.right ||
@@ -192,7 +203,7 @@ SCREEN READER CODE
     }
     eventBindings();
 
-
+    /* ADINA ADDED TO TEST AJAX */
     context = new AudioContext();
     source = null;
     function playMp3(string) {
@@ -216,9 +227,11 @@ SCREEN READER CODE
         source.connect(context.destination);
         source.start();
     }
-    document.getElementById('useToTest').addEventListener('click', function () {
-        //window.location=getTtsUrl('this is a text to speech test.');
-        playMp3();
-    });
-    getAndAnnounceText(null, document.activeElement); /* to announce the focused element on load */
+    /* end ADINA test */
+
+
+    document.getElementById('useToTest').addEventListener('click', getAndGoToTextUrl, false);
+
+    /* announce the focused element on load */
+    getAndAnnounceText(null, document.activeElement);
 }());
