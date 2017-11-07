@@ -197,16 +197,17 @@ SCREEN READER CODE
         bufferLoader = new BufferLoader(
             context,
             [
-                'tts.mp3'
+                //'tts.mp3'
                 //'http://ccr.voice-guidance-tts.xcr.comcast.net/tts?text=Test'
                 //'http://vrextts.g.comcast.net/tts?text=this%20is%20a%20simple%20call'
-                //'http://odol-atsec-pan-36.voice-guidance-tts.xcr.comcast.net/tts?text=Test'
+                'http://odol-atsec-pan-36.voice-guidance-tts.xcr.comcast.net/tts?text=Test'
             ],
             finishedLoading
         );
         bufferLoader.load();
     }
     function finishedLoading(bufferList) {
+        console.log('LOAD COMPLETE');
         source = context.createBufferSource();
         source.buffer = bufferList[0];
         source.connect(context.destination);
