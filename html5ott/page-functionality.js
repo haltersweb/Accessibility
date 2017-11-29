@@ -15,7 +15,8 @@ ARROWING CODE
             right: 39,
             down: 40
         },
-        focusables = document.querySelectorAll('a, button, [tabindex]'),
+        focusablesString = 'a, button, [tabindex], input',
+        focusables = document.querySelectorAll(focusablesString),
         videoLaunchers = document.querySelector('[data-launcher]');
     function openPlayer() {
         document.getElementById('videoPlayer').classList.removeClass('hidden');
@@ -57,13 +58,13 @@ ARROWING CODE
                 case (keyboard.up):
                     newSection = document.querySelector('[data-section="' + (parseInt(thisSection.dataset.section) - 1) + '"]');
                     if (newSection) {
-                        newSection.querySelector('button, [tabindex="0"]').focus();
+                        newSection.querySelector(focusablesString).focus();
                     }
                     break;
                 case (keyboard.down):
                     newSection = document.querySelector('[data-section="' + (parseInt(thisSection.dataset.section) + 1) + '"]');
                     if (newSection) {
-                        newSection.querySelector('button, [tabindex="0"]').focus();
+                        newSection.querySelector(focusablesString).focus();
                     }
                     break;
                 default:

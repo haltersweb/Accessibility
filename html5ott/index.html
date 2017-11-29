@@ -79,12 +79,19 @@
           </div>
         </div>
         <form action="">
-          <label for="name">First Name</label>
-          <input type="text" name="name" id="name" aria-required="true" />
-          <label for="human">I'm a human
-            <input type="checkbox" name="human" id="human" required>
-          </label>
-          <fieldset>
+          <p data-section="4">
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" id="firstName" aria-required="true" />
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" id="lastName" aria-required="true" />
+          </p>
+          <p data-section="5">
+            <label for="human">I'm a human
+              <input type="checkbox" name="human" id="human" required aria-invalid="true" aria-describedby="humanErr">
+            </label>
+            <span id="humanErr">Make sure to check this box.</span>
+          </p>
+          <fieldset data-section="6">
             <legend>What's your favorite flavor</legend>
             <label><input type="radio" name="flavor" id="chocolate"> chocolate</label>
             <label><input type="radio" name="flavor" id="vanilla"> vanilla</label>

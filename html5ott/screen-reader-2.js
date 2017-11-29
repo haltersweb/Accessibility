@@ -10,7 +10,7 @@ SCREEN READER CODE
 
 (function () {
     'use script';
-    var keyboard = {
+    const keyboard = {
             left: 37,
             up: 38,
             right: 39,
@@ -24,14 +24,14 @@ SCREEN READER CODE
         return [];
     }
     function deleteAriaHidden(elem) {
-        var hiddenElements = elem.querySelectorAll('[aria-hidden="true"]');
-        for (var i = 0; i < hiddenElements.length; i += 1) {
+        const hiddenElements = elem.querySelectorAll('[aria-hidden="true"]');
+        for (let i = 0; i < hiddenElements.length; i += 1) {
             hiddenElements[i].remove();
         }
     }
     function deleteCssHiddenElems(elem) {
-        var elemsToCheck = elem.getElementsByTagName('*');
-        for (var i = 0; i < elemsToCheck.length; i += 1) {
+        const elemsToCheck = elem.getElementsByTagName('*');
+        for (let i = 0; i < elemsToCheck.length; i += 1) {
             if (
                 window.getComputedStyle(elemsToCheck[i])['display'] === 'none'
                 ||
@@ -42,15 +42,15 @@ SCREEN READER CODE
         }
     }
     function tidySpaces(string) {
-        var newLines = new RegExp(/\r?\n|\r/g), /* finds \n, \r, and \r\n */
+        const newLines = new RegExp(/\r?\n|\r/g), /* finds \n, \r, and \r\n */
             extraSpaces = new RegExp(/  +/g); /* finds more than one consecutive space */
         string = string.replace(newLines, ' '); /* change a new line to a space */
         string = string.replace(extraSpaces, ' '); /* change space clusters to a single space */
         return string;
     }
     function getRole(elem) {
-        var role = null,
-        ariaRolesFromNodeName = {
+        let role = null;
+        const ariaRolesFromNodeName = {
             'BUTTON': 'button',
             'A': 'link',
             'TD': 'cell',
@@ -61,12 +61,12 @@ SCREEN READER CODE
             'TEXTAREA': 'textbox' /* TO DO: need to set aria-multiline = 'true' */
         };
         function comboOrList(elem) {
-            var role = null;
+            let role = null;
             /* FIGURE OUT IF COMBO OR LISTBOX */
             return role;
         }
         function whichInputRole(elem) {
-            var role = null;
+            let role = null;
             switch (elem.type) {
             case 'text':
                 role = 'textbox';
@@ -86,17 +86,17 @@ SCREEN READER CODE
         return role;
     }
     function getTitle(elem, role) {
-        var ariaLabelledbyId = elem.getAttribute('aria-labelledby'),
+        const ariaLabelledbyId = elem.getAttribute('aria-labelledby'),
             ariaLabel = elem.getAttribute('aria-label'),
-            title = '',
             target = elem;
+        let title = '';
         function getLabel(elem) {
-            var id = elem.id,
-                label = document.querySelector('[for="' + id + '"]'),
+            const id = elem.id;
+            let label = document.querySelector('[for="' + id + '"]'),
                 title = '';
             //label = (label) ? label : elem.parentNode('label');
             if (!label) {
-                var parent = elem.parentNode;
+                const parent = elem.parentNode;
                 label = (parent.nodeName === 'LABEL') ? parent : label;
             }
             if (label) {
@@ -127,27 +127,22 @@ SCREEN READER CODE
         return null;
     }
     function getDescriptions(elem) {
-        var idListString = elem.getAttribute('aria-describedby'),
-            idArray = [],
+        const idListString = elem.getAttribute('aria-describedby'),
             descrArray = [];
+        let idArray = [];
         if (!idListString) {
             return null;
         }
         idArray = idListString.split(' ');
-        for (var i = 0; i < idArray.length; i += 1) {
-            var text = document.getElementById(idArray[i]).textContent;
+        for (let i = 0; i < idArray.length; i += 1) {
+            let text = document.getElementById(idArray[i]).textContent;
             text = tidySpaces(text);
             descrArray.push(text);
         }
         return descrArray;
     }
     function getStates(elem, role) {
-        var states = '',
-        state = {
-            checked: null,
-            required: null,
-            invalid: null
-        };
+        let states = '';
         if (role !== 'textbox' &
             role !== 'radio' &
             role !== 'checkbox') {
@@ -156,22 +151,18 @@ SCREEN READER CODE
         // checked vs unchecked
         if (role === 'radio' || role === 'checkbox') {
             if (elem.checked || elem.getAttribute('aria-required') === 'true') {
-                //state.checked = 'true';
                 states += 'Checked. ';
             } else {
-                //state.checked = 'false';
                 states += 'Unchecked. ';
             }
         }
         //required
         if (elem.required || elem.getAttribute('aria-required') === 'true') {
-            //state.required = 'true';
-            states += 'Required. '
+            states += 'Required. ';
         }
         // invalid
         if (elem.getAttribute('aria-invalid') === 'true') {
-            //state.invalid = 'true';
-            states += 'Invalid. '
+            states += 'Invalid. ';
         }
         states = (states === '') ? null : states;
         return states;
@@ -215,8 +206,8 @@ function ElemText(role, title, descrArray) {
         SPEECH_SYNTH.textToSpeech(string);
     }
     function constructAnnouncement(elem) {
-        var role = getRole(elem),
-            spokenRole = '',
+        const role = getRole(elem);
+        let spokenRole = '',
             text = [],
             voText = '';
         spokenRole = (role === 'cell' || role === 'gridcell') ? null : role;
@@ -230,7 +221,7 @@ function ElemText(role, title, descrArray) {
             getHints()
         ];
         //build text from textArray and add ". " between indexes
-        for (var i = 0; i <= text.length; i += 1) {
+        for (let i = 0; i <= text.length; i += 1) {
             if (text[i]) {
                 voText = voText + text[i] + '. ';
             }
@@ -239,14 +230,14 @@ function ElemText(role, title, descrArray) {
         return voText;
     }
     function announceText(evt, elem) {
-        var voText = '';
+        let voText = '';
         elem = elem || this;
         voText = constructAnnouncement(elem);
         sendStringToTextWindow(voText, stringView);
         sendStringToSynth(voText);
     }
     function eventBindings() {
-        for (var i = 0; i < focusables.length; i += 1) {
+        for (let i = 0; i < focusables.length; i += 1) {
             focusables[i].addEventListener('focus', announceText, false);
         }
     }
