@@ -78,7 +78,19 @@
             </div>
           </div>
         </div>
-
+        <form action="">
+          <label for="name">First Name</label>
+          <input type="text" name="name" id="name" aria-required="true" />
+          <label for="human">I'm a human
+            <input type="checkbox" name="human" id="human" required>
+          </label>
+          <fieldset>
+            <legend>What's your favorite flavor</legend>
+            <label><input type="radio" name="flavor" id="chocolate"> chocolate</label>
+            <label><input type="radio" name="flavor" id="vanilla"> vanilla</label>
+            <label><input type="radio" name="flavor" id="strawberry"> strawberry</label>
+          </fieldset>
+        </form>
         <div id="videoPlayer" aria-label="video player" class="hidden" tabindex="0">
             <button>play</button>
             <button>previous video</button>
@@ -88,7 +100,7 @@
     <script type="text/javascript" src="buffer-loader.js"></script>
     <script type="text/javascript" src="speech-synth.js"></script>
     <script type="text/javascript" src="page-functionality.js"></script>
-    <script type="text/javascript" src="screen-reader.js"></script>
+    <script type="text/javascript" src="screen-reader-2.js"></script>
 </body>
 </html>
 
