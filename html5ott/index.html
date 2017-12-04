@@ -8,7 +8,7 @@
 </head>
 <body>
     <p id="stringView"></p>
-    <h1>HTML5 SR SIMULATION - RUN ONLY IN CHROME</h1>
+    <h1>Your Videos</h1>
     <div role="application">
         <div class="button-group" data-section="1">
           <button>Recommended for you</button>
@@ -92,11 +92,17 @@
             <span id="humanErr">Make sure to check this box.</span>
           </p>
           <fieldset data-section="6">
-            <legend>What's your favorite flavor</legend>
+            <legend>What cuisines do you like?</legend>
+            <label><input type="checkbox" name="food" id="italian"> italian</label>
+            <label><input type="checkbox" name="food" id="mexican"> mexican</label>
+            <label><input type="checkbox" name="food" id="indian"> indian</label>
+          </fieldset>
+          <h2 id="flavorLegend">What's your favorite flavor</h2>
+          <div data-section="7" role="radiogroup" aria-describedby="flavorLegend" aria-label="FAV FLAV.">
             <label><input type="radio" name="flavor" id="chocolate"> chocolate</label>
             <label><input type="radio" name="flavor" id="vanilla"> vanilla</label>
             <label><input type="radio" name="flavor" id="strawberry"> strawberry</label>
-          </fieldset>
+          </div>
         </form>
         <div id="videoPlayer" aria-label="video player" class="hidden" tabindex="0">
             <button>play</button>
