@@ -65,7 +65,7 @@ a:hover,
 	}
 a.current {
 	color: #4f0100;
-	cursor: text;
+	pointer-events: none;
 	}
 a.current:hover {
 	text-decoration: none;

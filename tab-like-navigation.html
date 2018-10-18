@@ -23,10 +23,10 @@
 				<li>Show all content and scroll to the content requested.</li>
 			</ul>
 			<p>Use the buttons below to see each version.  The js does not change.</p>
-			<p>
-				<button type="button" id="allContentView">Full content version</button>
-				<button type="button" id="singleContainerView">Single content panel version</button>
-			</p>
+			<div class="toggle-group">
+				<button type="button" id="allContentView" class="toggle" aria-disabled="false">Full content version</button>
+				<button type="button" id="singleContainerView" class="toggle" aria-disabled="true">Single content panel version</button>
+			</div>
 			<div class="tabbed-content single-container-view">
 				<ul data-widget="tab-menu">
 					<li class="tab-menu-item"><a href="#one" class="tab-menu-link current">Section One</a></li>

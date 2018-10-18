@@ -1,3 +1,26 @@
+.toggle-group {
+	display: flex;
+	margin-bottom: 2ex;
+}
+.toggle {
+	height: 6ex;
+	padding: 1.25ex 1em;
+	border: 1px solid #000;
+	background-color: #666;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+}
+.toggle:hover,
+.toggle:active,
+.toggle:focus {
+	background-color: #006;
+}
+.toggle[aria-disabled="true"] {
+	background-color: #ccc;
+	color: #000;
+	pointer-events: none;
+}
 [data-widget="tab-menu"] {
 	position: relative;
 	margin: 0;
@@ -32,10 +55,14 @@
 .tab-menu-link:focus {
 	text-decoration: none;
 	background-color: #006;
-	}
+}
 .tab-menu-link.current {
+  pointer-events: auto;
+}
+.single-container-view .tab-menu-link.current {
 	background-color: #ccc;
 	color: #000;
+  pointer-events: none;
 }
 .single-container-view .content-panel {
 	display: none;
@@ -55,4 +82,19 @@
 .content-panel:focus {
 	outline: none;
 	box-shadow: none;
+}
+.single-container-view .current::after, [aria-disabled="true"]::after {
+	content: "current";
+	position: absolute !important;
+	display: block;
+	visibility: visible;
+	overflow: hidden;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	clip: rect(0px, 0px, 0px, 0px); /* deprecated */
+	clip-path: polygon(0px 0px, 0px 0px, 0px 0px, 0px 0px);
+  white-space: nowrap;
 }

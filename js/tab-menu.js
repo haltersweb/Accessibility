@@ -18,8 +18,12 @@
     */
     $('#singleContainerView').on('click', function (evt) {
     	$('.tabbed-content').addClass('single-container-view');
+      $(this).closest('.toggle-group').find('button').attr('aria-disabled', 'false');
+      $(this).attr('aria-disabled', 'true');
     });
     $('#allContentView').on('click', function (evt) {
     	$('.tabbed-content').removeClass('single-container-view');
+      $(this).closest('.toggle-group').find('button').attr('aria-disabled', 'false');
+      $(this).attr('aria-disabled', 'true');
     });
 }(jQuery, NAME));
