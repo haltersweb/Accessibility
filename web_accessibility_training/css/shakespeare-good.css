@@ -1,0 +1,147 @@
+/* PAGE STYLES */
+a {
+  color: #aa5;
+}
+:focus {
+    outline-color: #aa5;
+    outline-style: dotted;
+    outline-width: .2rem;
+    outline-offset: .3rem;
+}
+.screen-reader-text {
+	position: absolute !important;
+	display: block;
+	visibility: visible;
+	overflow: hidden;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	clip: rect(0px, 0px, 0px, 0px);
+	clip-path: polygon(0px 0px, 0px 0px, 0px 0px, 0px 0px);
+  white-space: nowrap;
+}
+.portrait {
+  width: 16rem;
+  float: left;
+  margin: 0 1em .5ex 0;
+  border: 1px solid #ccc;
+  padding: .7rem;
+  background-color: #445;
+}
+.field-wrap {
+  margin: 0 0 2ex 0;
+}
+label {
+  margin-right: 1.5em;
+}
+[type="radio"], [type="checkbox"] {
+  margin-right: .5em;
+}
+nav {
+  display: flex;
+  margin-top: 1.5ex;
+}
+.nav-link {
+  display: block;
+  margin-right: 1rem;
+  padding: 1ex 1em;
+  border: 1px solid #aa5;
+  text-decoration: none;
+}
+.nav-link:last-child {
+  margin-right: 0;
+}
+.nav-link:focus {
+  border: none;
+  background-color: #aa5;
+  color: black;
+}
+.footer-links {
+  display: flex;
+}
+.footer-link {
+  display: block;
+  margin-right: 2em;
+}
+.skip-to {
+  display: block;
+  margin: -4.5rem 0 2rem .4rem;
+  overflow: hidden;
+}
+.skip-to:focus {
+  display: inline-block;
+  height: auto;
+  margin-bottom: 0;
+}
+.text-label {
+  display: inline-block;
+  width: 9rem;
+  margin: 0;
+}
+.submit {
+  display: block;
+  margin-right: 1rem;
+  padding: 1ex 1em;
+  border: 1px solid #aa5;
+  color: #aa5;
+  text-decoration: none;
+  background-color: transparent;
+}
+.err {
+  display: none;
+  margin-top: .25ex;
+  margin-left: 9rem;
+  color: #f44;
+}
+.err.show {
+  display: inline-block;
+}
+.modal {
+  display: none;
+  position: fixed;
+  left: 25vw;
+  top: 25vh;
+  width: 50vw;
+  height: 50vh;
+  border-radius: 2rem;
+  color: #ddd;
+  background-color: #800;
+  border: .2rem solid #ccc;
+}
+.modal-content {
+  height: 46vh;
+  overflow: scroll;
+}
+.curtain {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,.7);
+}
+.close {
+  right: 0;
+  top: 0;
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 1ex;
+  border: .2rem solid #222;
+  border-radius: 1.25rem;
+  padding: 0;
+  color: #222;
+  font-weight: bold;
+  line-height: 0;
+}
+.close:focus {
+  color: #ccc;
+  background-color: #222;
+  border-color: #ccc;
+}
+.show {
+  display: block;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Accessible Shakespeare Page</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/shakespeare-good.css" />
+</head>
+<body>
+	<a href="#main" class="skip-to">skip to main content</a>
+	<nav>
+	  <a href="https://en.wikipedia.org/wiki/William_Shakespeare" class="nav-link">William Wiki</a>
+	  <a href="https://en.wikipedia.org/wiki/Globe_Theatre" class="nav-link">Globe Theatre Wiki</a>
+	  <a href="https://en.wikipedia.org/wiki/Stratford-upon-Avon" class="nav-link">Stratford Wiki</a>
+	  <a href="https://en.wikipedia.org/wiki/Lord_Chamberlain%27s_Men" class="nav-link">Lord Chamberlain's Men Wiki</a>
+	</nav>
+	<main id="main">
+	  <h1>William Shakespeare</h1>
+	  <h2>His life</h2>
+	  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Shakespeare.jpg/800px-Shakespeare.jpg" alt="Portrait of William Shakespeare" class="portrait">
+	  <p>William Shakespeare, also known as The Bard of Avon was, arguably, the most famous playwright in the world.  He was also a prolific poetry and sonnet writer. His works consist of at least 39 plays, 154 sonnets, and two narrative poems.</p>
+	  <h3>The early years</h3>
+	  <p>Shakespeare was born in 1564 in the English town of Stratford-upon-Avon, 90 miles from London. He was the third of eight children born to John and Mary Shakespeare.  John Shakespeare was a well-to-do glover and leather-worker and later entered into local politics, eventually becoming mayor of Stratford in 1568.</p>
+	  <p>Shakespeare was educated at the King's New School in Stratford. In 1582 at the age of 18 he married Anne Hathaway and they had 3 children. A decade later Shakespeare was already a part of the theater scene in London as an actor. In 1594 Shakespeare joined the The Lord Chamberlain's Men performing for both commoners and royalty.  Shakespeare eventually focused his talents to writing plays for The Lord Chamberlain's Men to perform.</p>
+	  <h3>Playwright and poet</h3>
+	  <p>Written between the years of 1589&ndash;1614, Shakespeare's plays spanned tragedies, comedys, and historical works. Most of his plays were written during the Elizabethan and Jacobean eras and staged at the Globe Theatre and Blackfriars Theatre.</p>
+	<p>Besides his plays, Shakespeare also wrote over 155 poems and sonnets.  Most of his sonnets were written for private eyes (though later collected into an anthology near the end of his life).  But during the plague of 1593-1594 Shakespeare wrote and published two long narritive poems which allowed him to put food on the table while the London theaters were closed down.</p>
+	  <form action="">
+	    <h2>Find out more about Shakespeare</h2>
+	    <div class="field-wrap">
+	      <label for="firstName" class="text-label">First Name*</label><input type="text" id="firstName" aria-required="true" />
+	      <div id="firstNameErr" class="err">Please enter a first name.</div>
+	    </div>
+	    <div class="field-wrap">
+	      <label for="lastName" class="text-label">Last Name*</label><input type="text" id="lastName" aria-required="true" />
+	      <div id="lastNameErr" class="err">Please enter a last name.</div>
+	    </div>
+	    <div class="field-wrap">
+	      <input type="checkbox" id="seen" /><label for="seen">I have seen at least one Shakespeare play in my life</label>
+	    </div>
+	    <fieldset class="field-wrap">
+	      <legend>What would you like to see?</legend>
+	      <input type="radio" id="all" name="list" checked /><label for="all">List of all plays</label>
+	      <input type="radio" id="history" name="list" /><label for="history">List of history plays</label>
+	      <input type="radio" id="tragedy" name="list" /><label for="tragedy">List of tragedies</label>
+	      <input type="radio" id="comedy" name="list" /><label for="comedy">List of comedies</label>
+	    </fieldset>
+	    <button type="button" id="submit" class="submit">Submit</button>
+	  </form>
+	</main>
+	<footer>
+	  <p>For all things Shakespeare take a look at the official <a href="https://www.shakespeare.org.uk/">Shakespeare Birthplace Trust</a>.</p>
+	  <p class="footer-links">
+	    <a href="https://www.shakespeare.org.uk/explore-shakespeare/shakespedia/shakespeares-words-phrases/" class="footer-link">words and phrases</a>
+	    <a href="https://www.shakespeare.org.uk/explore-shakespeare/moocs/" class="footer-link">free online couses</a>
+	    <a href="https://www.shakespeare.org.uk/visit/shakespeares-birthplace/" class="footer-link">his birthplace</a>
+	    <a href="https://www.shakespeare.org.uk/explore-shakespeare/blogs/is-all-of-this-true/" class="footer-link">"All is True"</a>
+	  </p>
+	</footer>
+	<div id="curtain" class="curtain"></div>
+	<div id="modal" class="modal">
+	  <div id="bookendTop" class="bookend" tabindex="0"></div>
+	  <button id="close" class="close" aria-label="close window">X</button>
+	  <div id="modalContent" class="modal-content"></div>
+	  <div id="bookendBottom" class="bookend" tabindex="0"></div>
+	</div>
+	<div aria-live="polite" class="screen-reader-text"></div>
+	<script type="text/javascript" src="js/shakespeare-good.js"></script>
+</body>
+</html>
