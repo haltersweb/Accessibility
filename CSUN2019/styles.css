@@ -1,0 +1,215 @@
+/* NORMALIZATION */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+html {
+    font-family: sans-serif; /* 1 */
+    -ms-text-size-adjust: 100%; /* 2 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+    font-size: 62.5%;
+}
+body {
+  background-color: #222;
+    margin: 2em;
+    font-size: 1.4rem;
+  color: #ccc;
+  line-height: 1.35;
+}
+*, *:before, *:after {
+	-moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+img {
+    border: 0;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+figure {
+    margin: 0;
+}
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 .2em;
+    padding: 0.35em 0.625em 0.75em;
+}
+button,
+input,
+select,
+textarea {
+    font-family: inherit; /* 1 */
+    font-size: 1.4rem; /* 2 */
+    margin: 0; /* 3 */
+}
+button,
+input {
+    line-height: normal;
+}
+button,
+select {
+    text-transform: none;
+}
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+}
+button[disabled],
+html input[disabled] {
+    cursor: default;
+}
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+textarea {
+    overflow: auto; /* 1 */
+    vertical-align: top; /* 2 */
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/* PAGE STYLES */
+a {
+  color: #aa5;
+}
+:focus {
+    border: none;
+    background-color: #aa5;
+    color: black;
+    outline-color: #aa5;
+    outline-style: dotted;
+    outline-width: .2rem;
+    outline-offset: .3rem;
+}
+.screen-reader-text {
+	position: absolute !important;
+	display: block;
+	visibility: visible;
+	overflow: hidden;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	clip: rect(0px, 0px, 0px, 0px);
+	clip-path: polygon(0px 0px, 0px 0px, 0px 0px, 0px 0px);
+  white-space: nowrap;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5ex;
+}
+.nav-link {
+  display: block;
+  min-width: 20%;
+  margin-right: 1rem;
+  border: 1px solid #aa5;
+  padding: 2ex 1em;
+  color: #aa5;
+  background-color: transparent;
+  text-align: center;
+  text-decoration: none;
+}
+.nav-link:last-child {
+  margin-right: 0;
+}
+.nav-link:focus {
+  border: none;
+  background-color: #aa5;
+  color: black;
+}
+.show {
+  display: block;
+}
+
+
+
+
+
+
+#stringView {
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: .5em .5em;
+  min-height: 3em;
+  width: 100%;
+  overflow: hidden;
+  background-color: black;
+  color: white;
+}
+h1 {
+  margin-top: 4ex;
+}
+.h2 {
+  margin-top: 3ex;
+  margin-bottom: .75ex;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+h2 {
+  text-align: left;
+  margin-bottom: .75ex;
+}
+table {
+  width: 100%;
+}
+caption {
+  font-size: 1.4em;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 2ex;
+  margin-bottom: .75ex;
+}
+td, [role="gridcell"] {
+  vertical-align: top;
+  padding: 1em;
+  border: 1px solid #aa5;
+}
+td {
+  width: 25%;
+}
+[role="grid"] {
+  margin-bottom: 5ex;
+}
+[role="row"] {
+  display: flex;
+}
+[role="gridcell"] {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 35%;
+}
+.hidden {
+  display: none;
+}
+.invisible {
+  visibility: hidden;
+}
