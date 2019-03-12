@@ -13,8 +13,8 @@ var keyboard = {
       'TD': 'cell',
       'DIV': ''
     },
-    focusables = document.querySelectorAll('a, button, [tabindex="0"]'),
-    stringView = document.getElementById('stringView');
+    //stringView = document.getElementById('stringView'),
+    focusables = document.querySelectorAll('a, button, [tabindex="0"]');
 function flagA11yHidden(container) {
   let elems = container.getElementsByTagName('*');
   for (let i = 0; i < elems.length; i += 1) {
@@ -153,7 +153,7 @@ for (var i = 0; i < focusables.length; i += 1) {
     var string;
     map = buildMap(this);
     string = genString(map);
-    sendString(string, stringView);
+    //sendString(string, stringView);
   });
   focusables[i].addEventListener('keydown', function (evt) {
     if (evt.keyCode === keyboard.right ||

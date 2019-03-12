@@ -94,13 +94,13 @@ table {
 
 /* PAGE STYLES */
 a {
-  color: #aa5;
+  color: #ca7;
 }
 :focus {
     border: none;
-    background-color: #aa5;
-    color: black;
-    outline-color: #aa5;
+    background-color: #ca7;
+    color: #222;
+    outline-color: #ca7;
     outline-style: dotted;
     outline-width: .2rem;
     outline-offset: .3rem;
@@ -126,11 +126,11 @@ nav {
 }
 .nav-link {
   display: block;
-  min-width: 20%;
+  min-width: 19%;
   margin-right: 1rem;
-  border: 1px solid #aa5;
+  border: 1px solid #ca7;
   padding: 2ex 1em;
-  color: #aa5;
+  color: #ca7;
   background-color: transparent;
   text-align: center;
   text-decoration: none;
@@ -140,8 +140,8 @@ nav {
 }
 .nav-link:focus {
   border: none;
-  background-color: #aa5;
-  color: black;
+  background-color: #ca7;
+  color: #222;
 }
 .show {
   display: block;
@@ -163,10 +163,11 @@ nav {
   width: 100%;
   overflow: hidden;
   background-color: black;
-  color: white;
+  color: #ccc;
 }
 h1 {
-  margin-top: 4ex;
+  margin-top: 3ex;
+  font-size: 3rem;
 }
 .h2 {
   margin-top: 3ex;
@@ -189,9 +190,11 @@ caption {
   margin-bottom: .75ex;
 }
 td, [role="gridcell"] {
+  position: relative;
   vertical-align: top;
   padding: 1em;
-  border: 1px solid #aa5;
+  border: 1px solid #ca7;
+  color: #ca7;
 }
 td {
   width: 25%;
@@ -207,9 +210,57 @@ td {
   justify-content: space-between;
   width: 35%;
 }
+[role="gridcell"]:focus {
+  color: #222;
+}
 .hidden {
   display: none;
 }
 .invisible {
   visibility: hidden;
+}
+.vid-title {
+  color: #ccc;
+  font-weight: bold;
+}
+:focus .vid-title {
+  color: #222;
+}
+.vid-time {
+  position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: .2em;
+    padding: .5ex .5em;
+    background-color: #ca7;
+    color: #222;
+    font-size: 1.1rem;
+}
+:focus .vid-time {
+  color: #ccc;
+  background-color: #222;
+}
+.vid-views {
+  display: inline-block;
+}
+.vid-age {
+  display: inline-block;
+}
+.vid-age::before {
+  content: ' * ';
+  position: relative;
+  top: .65ex;
+}
+.main-group {
+  position: relative;
+  top: 40vh;
+}
+.main-link {
+  width: 20vh;
+  height: 20vh;
+  min-width: auto;
+  border-radius: 10vh;
+  box-sizing: border-box;
+  font-size: 2.5rem;
+  line-height: 5;
 }
