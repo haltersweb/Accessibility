@@ -13,7 +13,7 @@ var keyboard = {
       'TD': 'cell',
       'DIV': ''
     },
-    //stringView = document.getElementById('stringView'),
+    stringView = document.getElementById('stringView'),
     focusables = document.querySelectorAll('a, button, [tabindex="0"]');
 function flagA11yHidden(container) {
   let elems = container.getElementsByTagName('*');
@@ -83,7 +83,7 @@ function getDescriptor(elem) {
 }
 function getSectionHeading(elem) {
   var sectionHeading = '';
-  const nodeArray = Array.from(document.querySelectorAll(':focus, h2, h3, h4, h5, h6, caption, [role="row"][aria-labelledby], [role="row"][aria-label]'));
+  const nodeArray = Array.from(document.querySelectorAll(':focus, h2, h3, h4, h5, h6, caption, [role="row"][aria-labelledby], [role="row"][aria-label], [role="heading"][aria-level]:not([aria-level="1"])'));
   const selectedIndex = nodeArray.findIndex(
     function(elem) {
 	    return elem == document.activeElement;
@@ -130,7 +130,7 @@ function buildMap(elem) {
 }
 function genString(map) {
   map.role = (map.role === 'cell' || map.role === 'gridcell') ? '' : map.role + '. ';
-  var string = map.page + map.section + map.title + map.role;
+  var string = '"' + map.page + map.section + map.title + map.role + '"';
   return string;
 }
 function sendString(string, target) {
@@ -153,7 +153,7 @@ for (var i = 0; i < focusables.length; i += 1) {
     var string;
     map = buildMap(this);
     string = genString(map);
-    //sendString(string, stringView);
+    sendString(string, stringView);
   });
   focusables[i].addEventListener('keydown', function (evt) {
     if (evt.keyCode === keyboard.right ||

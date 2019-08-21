@@ -147,47 +147,34 @@ nav {
   display: block;
 }
 
-
-
-
-
-
 #stringView {
   position: fixed;
-  left: 0;
-  top: 0;
+  left: 30%;
+  top: 5rem;
   box-sizing: border-box;
+  min-height: 3em;
+  width: 70%;
   margin: 0;
   padding: .5em .5em;
-  min-height: 3em;
-  width: 100%;
   overflow: hidden;
-  background-color: black;
-  color: #ccc;
+  background-color: cadetblue;
+  color: black;
+  font-size: 1.2em;
+  font-style: italic;
 }
 h1 {
   margin-top: 3ex;
   font-size: 3rem;
 }
-.h2 {
+h2, .h2, caption {
   margin-top: 3ex;
   margin-bottom: .75ex;
   font-weight: bold;
   font-size: 1.4em;
-}
-h2 {
   text-align: left;
-  margin-bottom: .75ex;
 }
 table {
   width: 100%;
-}
-caption {
-  font-size: 1.4em;
-  font-weight: bold;
-  text-align: left;
-  margin-top: 2ex;
-  margin-bottom: .75ex;
 }
 td, [role="gridcell"] {
   position: relative;
