@@ -153,7 +153,7 @@ for (var i = 0; i < focusables.length; i += 1) {
     var string;
     map = buildMap(this);
     string = genString(map);
-    sendString(string, stringView);
+    //sendString(string, stringView);
   });
   focusables[i].addEventListener('keydown', function (evt) {
     if (evt.keyCode === keyboard.right ||
