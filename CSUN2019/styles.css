@@ -158,8 +158,7 @@ nav {
   padding: .5em .5em;
   border: 3px solid yellow;
   overflow: hidden;
-  //background-color: cadetblue;
-  color: #fff;
+  color: yellow;
   font-size: 1.2em;
   font-style: italic;
 }
