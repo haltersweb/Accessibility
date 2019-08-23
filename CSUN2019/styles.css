@@ -156,9 +156,9 @@ nav {
   width: 70%;
   margin: 0;
   padding: .5em .5em;
-  border: 3px solid yellow;
+  border: 3px solid aquamarine;
   overflow: hidden;
-  color: yellow;
+  color: aquamarine;
   font-size: .9em;
   font-style: italic;
 }

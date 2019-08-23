@@ -1,5 +1,3 @@
-console.log('test');
-
 var keyboard = {
       enter: 13,
       left: 37,
@@ -134,7 +132,7 @@ function genString(map) {
   return string;
 }
 function sendString(string, target) {
-  target.textContent = string;
+  target.innerHTML = string;
 }
 function findThisSection(elem) {
   while (!elem.dataset.section && elem.nodeName !== 'BODY') {
