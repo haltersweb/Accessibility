@@ -24,7 +24,7 @@ body {
     margin: 2em;
     font-size: 1.4rem;
   color: #ccc;
-  line-height: 1.35;
+  line-height: 1;
 }
 *, *:before, *:after {
 	-moz-box-sizing: border-box;
@@ -149,8 +149,8 @@ nav {
 
 #stringView {
   position: fixed;
-  left: 30%;
-  top: 5rem;
+  right: 4ex;
+  top: 3.5rem;
   box-sizing: border-box;
   min-height: 3em;
   width: 70%;
@@ -159,16 +159,16 @@ nav {
   border: 3px solid yellow;
   overflow: hidden;
   color: yellow;
-  font-size: 1.2em;
+  font-size: .9em;
   font-style: italic;
 }
 h1 {
-  margin-top: 3ex;
+  margin-top: 2ex;
   font-size: 3rem;
 }
 h2, .h2, caption {
-  margin-top: 3ex;
-  margin-bottom: .75ex;
+  margin-top: 2ex;
+  margin-bottom: .5ex;
   font-weight: bold;
   font-size: 1.4em;
   text-align: left;
