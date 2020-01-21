@@ -106,11 +106,11 @@
     }
     // which date on the grid is currently selected?  returns the grid cell and mo, date, yr
     function getSelectedDate() {
-        var $currentCell = $('.selected[data-date]'),
-            date = parseInt($currentCell.attr('data-date')),
-            month = parseInt($currentCell.attr('data-month')),
-            year = parseInt($currentCell.attr('data-year'));
-        return {$currentCell: $currentCell, date: date, month: month, year: year};
+        var currentCell = dp.calendar.querySelector('.selected[data-date]'),
+            date = parseInt(currentCell.getAttribute('data-date')),
+            month = parseInt(currentCell.getAttribute('data-month')),
+            year = parseInt(currentCell.getAttribute('data-year'));
+        return {currentCell: currentCell, date: date, month: month, year: year};
     }
     // focus on the td[role=button] grid cell that is currently selected (assumes only one)
     function focusOnSelectedDate() { // FUNCTION IS OK
@@ -144,15 +144,14 @@
         numDaysInMo = daysInMonth(month, year);
         return {year: year, numDaysInMo: numDaysInMo};
     }
-    function positionDatePicker(anchorElem, xLocale, yLocale) {
+    function positionDatePicker(anchorElem, xLocale, yLocale) { //FUNCTION IS OK
         // anchorElem is the element that you want to place the date picker in reference to
         // xLocale will be "left" or "right" to state which anchor element's corner you want date picker's 0,0 point to line up with
         // yLocale will be "top" or "bottom" to state which anchor element's corner you want date picker's 0,0 point to line up with
         // for example, if you want your date picker's top/left (0,0) point to align with a button's bottom/left point you would say 'left', 'bottom'
-        var picker = $datePicker[0],
-            bcr = anchorElem.getBoundingClientRect();
-        picker.style.left = bcr[xLocale] + 'px';
-        picker.style.top = bcr[yLocale] + 'px';
+        let bcr = anchorElem.getBoundingClientRect();
+        dp.widget.style.left = bcr[xLocale] + 'px';
+        dp.widget.style.top = bcr[yLocale] + 'px';
     }
     function bindClickEvents() {
         // when button to launch date picker is clicked:
@@ -294,15 +293,15 @@
                         evt.keyCode === NAME.keyboard.left ||
                         evt.keyCode === NAME.keyboard.up ||
                         evt.keyCode === NAME.keyboard.down)) {
-                //var {$currentCell, date, month, year} = getSelectedDate(),
-                var selectedDate = getSelectedDate(),
-                    $currentCell = selectedDate.$currentCell,
+                //var {currentCell, date, month, year} = getSelectedDate(),
+                let selectedDate = getSelectedDate(),
+                    currentCell = selectedDate.currentCell,
                     date = selectedDate.date,
                     month = selectedDate.month,
                     year = selectedDate.year,
                     addend,
                     targetDate,
-                    $targetCell,
+                    targetCell,
                     newMonth,
                     numDaysInMo = daysInMonth(month, year);
                 switch (evt.keyCode) {
@@ -322,10 +321,10 @@
                     return false;
                 }
                 targetDate = date + addend;
-                $targetCell = $('#datePicker').find('[data-date="' + targetDate + '"]');
-                $currentCell.removeClass('selected');
-                if ($targetCell[0]) {
-                    $targetCell.addClass('selected');
+                targetCell = dp.widget.querySelector('[data-date="' + targetDate + '"]');
+                currentCell.classList.remove('selected');
+                if (targetCell) {
+                    targetCell.classList.add('selected');
                     focusOnSelectedDate();
                     return false;
                 }
@@ -375,12 +374,12 @@
         // HOME (fn + left) takes you to the first day of the month
         $('#datePicker').on('keydown', '[data-date]', function (evt) {
             if (evt.keyCode === NAME.keyboard.home) {
-                //var {$currentCell} = getSelectedDate(),
-                var selectedDate = getSelectedDate(),
-                    $currentCell = selectedDate.$currentCell,
-                    $targetCell = $('#datePicker').find('[data-date="' + 1 + '"]');
-                $currentCell.removeClass('selected');
-                $targetCell.addClass('selected');
+                //var {currentCell} = getSelectedDate(),
+                let selectedDate = getSelectedDate(),
+                    currentCell = selectedDate.currentCell,
+                    targetCell = dp.widget.querySelector('[data-date="' + 1 + '"]');
+                currentCell.classList.remove('selected');
+                targetCell.classList.add('selected');
                 focusOnSelectedDate();
                 return false;
             }
@@ -388,15 +387,15 @@
         // END (fn + right) takes you to the last day of the month
         $('#datePicker').on('keydown', '[data-date]', function (evt) {
             if (evt.keyCode === NAME.keyboard.end) {
-                //var {$currentCell, month, year} = getSelectedDate(),
-                var selectedDate = getSelectedDate(),
-                    $currentCell = selectedDate.$currentCell,
+                //var {currentCell, month, year} = getSelectedDate(),
+                let selectedDate = getSelectedDate(),
+                    currentCell = selectedDate.currentCell,
                     month = selectedDate.month,
                     year = selectedDate.year,
                     targetDate = daysInMonth(month, year),
-                    $targetCell = $('#datePicker').find('[data-date="' + targetDate + '"]');
-                $currentCell.removeClass('selected');
-                $targetCell.addClass('selected');
+                    targetCell = dp.widget.querySelector('[data-date="' + targetDate + '"]');
+                currentCell.classList.remove('selected');
+                targetCell.classList.add('selected');
                 focusOnSelectedDate();
                 return false;
             }
@@ -428,6 +427,6 @@
     }
     bindKeyEvents();
     bindClickEvents();
-    NAME.drag.simpleDrag($datePicker[0]);
+    NAME.drag.simpleDrag(dp.widget);
 
 }(jQuery, NAME));
