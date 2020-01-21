@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Accessible Date Picker</title>
+	<link rel="stylesheet" href="css/normalization.css" />
+	<link rel="stylesheet" href="css/base.css" />
+	<link rel="stylesheet" href="css/date-picker-new.css" />
+</head>
+<body>
+	<div class="container">
+		<a href="#main" class="skip-link">Skip to main content</a>
+		<div class="page-wrapper" id="main" role="main" tabindex="-1">
+			<h1>Accessible Date Picker</h1>
+			<p><a href="http://haltersweb.github.io/Accessibility/">View the full library of accessibility solutions.</a></p>
+			<p><strong>NOTE: This solution is written using ES2015 and is not compatible with IE11.</strong></p>
+			<p>This is also written with a mixture of vanilla JS and jQuery.  I would like to eventually write in all vanilla.</p>
+			<p>For mobile I suggest overriding this with the native date input functionality.</p>
+			<form action="">
+				<div class="form-row">
+					<!-- USE TYPE=DATE FOR MOBILE <label for="date">Date</label><input type="date" id="date" /> -->
+					<label for="date">Date</label><input id="date" aria-describedby="dateDesc" />
+					<button type="button" id="launchDatePicker" aria-describedby="launchDatePickerDesc">Choose Date <span class="screen-reader-text">using the date picker</span></button>
+					<p id="dateDesc">Type in format of MM/DD/YYYY or use the date picker to select a date</p>
+					<p id="launchDatePickerDesc" style="display: none;">If using date picker left and right arrows advance by day. Up and down arrows advance by week. Shift left and right advance by month. Shift up and down advance by year.</p>
+				</div>
+				<div class="form-row">
+					<!-- USE TYPE=TIME FOR MOBILE <label for="time">Time</label><input type="time" id="time" /> -->
+				</div>
+
+				<p><a href="http://www.google.com">Lorem ipsum</a> dolor sit amet, consectetur adipisicing elit. Cupiditate ab dolor mollitia ut, quibusdam quod repellendus numquam, temporibus reiciendis aperiam recusandae architecto sunt maiores eaque sit ipsum adipisci, aspernatur atque!</p>
+			</form>
+		</div>
+		<div id="datePicker" style="display: none;" draggable="true">
+			<div id="dialogDragger" class="dragger" tabindex="0" aria-label="drag date picker. use spacebar to grab." aria-grabbed="false"></div>
+			<div>
+				<button id="closeDatePicker" type="button" aria-label="close date picker" class="svg">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" focusable="false" role="presentation" class="svg-close">
+						<circle cx="35" cy="35" r="35"/>
+						<path fill="#FFFFFF" d="M43.7,54.9L39,47.7c-1.9-2.8-3.1-4.8-4.5-7.2h-0.2c-1.1,2.3-2.3,4.4-3.9,7.2l-4.1,7.2H13l14.7-20.2 L13.5,15.1h13.2l4.5,7.3c1.6,2.5,2.6,4.4,3.9,6.7h0.2c1.2-2.5,2.2-4.4,3.4-6.7l4.4-7.3h13.2L41.8,34.5L57,54.9H43.7z"/>
+					</svg>
+				</button>
+			</div>
+
+			<!--
+					css: .dragger { cursor: move; }
+						.dragger:hover,.dragger:focused {background-color: peach;}
+				user tabs to .dragger
+				user hits space bar to select
+					.dragger changes to aria-grabbed = true
+					activate arrow bind
+				user moves with arrows (10 px) and shift+arrows (100 px)
+				user hits enter to drop OR on blur
+					.dragger changes to aria-grabbed = false
+					arrows are unbound
+			-->
+
+			<div role="application">
+				<table id="datePickerCalendar" role="presentation">
+					<caption>
+						<h2 id="monthAndYear"></h2>
+					</caption>
+					<colgroup>
+						<col />
+						<col />
+						<col />
+						<col />
+						<col />
+						<col />
+						<col />
+					</colgroup>
+					<thead>
+						<tr>
+							<th scope="col"><abbr title="Sunday">Sun</abbr></th>
+							<th scope="col"><abbr title="Monday">Mon</abbr></th>
+							<th scope="col"><abbr title="Tuesday">Tue</abbr></th>
+							<th scope="col"><abbr title="Wednesday">Wed</abbr></th>
+							<th scope="col"><abbr title="Thursday">Thr</abbr></th>
+							<th scope="col"><abbr title="Friday">Fri</abbr></th>
+							<th scope="col"><abbr title="Saturday">Sat</abbr></th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+			<div>
+				<button id="showKeyboardShortcuts" type="button" aria-owns="keyboardShortcuts" aria-expanded="false">keyboard shortcuts</button>
+			</div>
+			<table id="keyboardShortcuts" style="display: none;">
+				<caption>
+					<h3>Keyboard Shortcuts</h3>
+					<p>While inside the calendar use the following shortcuts to navigate to different dates:</p>
+				</caption>
+				<colgroup>
+					<col />
+					<col />
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">shortcut</th>
+						<th scope="col">navigates to</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>left/right</td>
+						<td>previous/next day</td>
+					</tr>
+					<tr>
+						<td>up/down</td>
+						<td>previous/next week</td>
+					</tr>
+					<tr>
+						<td>
+							page up/page down<br />
+							(fn + up/fn + down for mac)
+						</td>
+						<td>previous/next month</td>
+					</tr>
+					<tr>
+						<td>
+							ctrl + page up/page down<br />
+							(cmd + fn + up/cmd + fn + down for mac)
+						</td>
+						<td>previous/next year</td>
+					</tr>
+					<tr>
+						<td>
+							home<br />
+							(fn + left for mac)
+						</td>
+						<td>first day of the month</td>
+					</tr>
+					<tr>
+						<td>
+							end
+							(fn + right for mac)
+						</td>
+						<td>last day of the month</td>
+					</tr>
+					<tr>
+						<td>T</td>
+						<td>today's date</td>
+					</tr>
+					<tr>
+						<td>enter or spacebar</td>
+						<td>accept the selected date</td>
+					</tr>
+					<tr>
+						<td>esc</td>
+						<td>close date picker without selection</td>
+					</tr>
+				</tbody>
+			</table>
+			<div style="display: none;">
+				<button id="goToToday" type="button">today</button>
+			</div>
+			<div>
+				<button id="backOneMonth" type="button" aria-label="previous month" class="svg">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" role="presentation" focusable="false" class="svg-single-left">
+						<circle cx="35" cy="35" r="35"/>
+						<path fill="#FFFFFF" d="M18.2,35l23.1-21c1.7-1.5,4.3-1.4,5.9,0.3c1.5,1.7,1.4,4.3-0.3,5.9L30.8,35 l16.1,14c1.7,1.5,2,4.2,0.4,5.9s-4.2,2-5.9,0.4L18.2,35z"/>
+					</svg>
+				</button>
+				<button id="backOneYear" type="button" aria-label="previous year" class="svg">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" role="presentation" focusable="false" class="svg-double-left">
+					<circle cx="35" cy="35" r="35"/>
+					<path fill="#FFFFFF" d="M25.9,35L49,14c1.7-1.5,4.3-1.4,5.9,0.3c1.5,1.7,1.4,4.3-0.3,5.9L38.5,35l16.1,14 c1.7,1.5,2,4.2,0.4,5.9s-4.2,2-5.9,0.4L25.9,35z"/>
+					<path fill="#FFFFFF" d="M6,35l23.1-21c1.7-1.5,4.3-1.4,5.9,0.3c1.5,1.7,1.4,4.3-0.3,5.9L18.6,35l16.1,14 c1.7,1.5,2,4.2,0.4,5.9s-4.2,2-5.9,0.4L6,35z"/>
+					</svg>
+				</button>
+				<button id="forwardOneMonth" type="button" aria-label="next month" class="svg">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" role="presentation" focusable="false" class="svg-single-right">
+						<circle cx="35" cy="35" r="35"/>
+						<path fill="#FFFFFF" d="M51.8,35L28.7,56c-1.7,1.5-4.3,1.4-5.9-0.3c-1.5-1.7-1.4-4.3,0.3-5.9 L39.2,35L23.1,21c-1.7-1.5-2-4.2-0.4-5.9c1.5-1.7,4.2-2,5.9-0.4L51.8,35z"/>
+					</svg>
+				</button>
+				<button id="forwardOneYear" type="button" aria-label="next year" class="svg">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 70" role="presentation" focusable="false" class="svg-double-right">
+						<circle cx="35" cy="35" r="35"/>
+						<path fill="#FFFFFF" d="M44.1,35L21,56c-1.7,1.5-4.3,1.4-5.9-0.3c-1.5-1.7-1.4-4.3,0.3-5.9 L31.5,35L15.4,21c-1.7-1.5-2-4.2-0.4-5.9c1.5-1.7,4.2-2,5.9-0.4L44.1,35z"/>
+						<path fill="#FFFFFF" d="M64,35L40.9,56c-1.7,1.5-4.3,1.4-5.9-0.3c-1.5-1.7-1.4-4.3,0.3-5.9 L51.4,35L35.3,21c-1.7-1.5-2-4.2-0.4-5.9c1.5-1.7,4.2-2,5.9-0.4L64,35z"/>
+					</svg>
+				</button>
+			</div>
+		</div>
+		<div class="overlay"></div>
+		<div class="block-screen"></div>
+		<div aria-live="polite" class="screen-reader-text"></div>
+		<div role="alert" class="screen-reader-text"></div>
+	</div>
+	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="js/namespacing.js"></script>
+	<script type="text/javascript" src="js/accessibility-helpers.js"></script>
+	<script type="text/javascript" src="js/dialog.js"></script>
+	<!-- <script type="text/javascript" src="js/drag-and-drop.js"></script> -->
+	<script type="text/javascript" src="js/drag-and-drop-new.js"></script>
+	<!-- <script type="text/javascript" src="js/date-picker.js"></script> -->
+	<script type="text/javascript" src="js/date-picker-new.js"></script>
+</body>
+</html>
+<!--
+1) Date in field should match date on picker
+2) button should say "choose date from date picker"
+3) aria-describedby should say "type date or choose date from date picker using date picker button"
+4) button should say collapsed / expanded
+5) upon launch widget should say "date picker widget"
+6) there should be a close button on the date picker
+7) up and down arrows should navigate by week even if it jumps to previous month or year
+8) arrow should navigate by day
+9) shift right/left arrow should navigate by month
+10) shift up/down arrow should navigate by year
+11) hint should be given when date picker launches
+12) H for hint
+13) ESC to dismiss
+14) tabbing out dismisses (may also go to close button and month/year buttons)
+15) full word for day and month (i.e. not "sa" for saturday)
+16) aria-live for "13 May, 2016" rather than reading number in cell (polite to cut off and read new date) <span aria-hidden="true">13</span>
+17) TD role="link" tabindex="-1" for focusability
+18) TR role="presentation" ?
+19) Table role="application" ?  and aria-label="Calendar" ? (can I use table caption?)
+20) table as role="grid"?????? instead
+-->

@@ -1,0 +1,82 @@
+.dragger {
+  height: 1.5em;
+  margin: -0.5em;
+  margin-bottom: .5em;
+  border-bottom: 2px solid #999;
+  background-color: #ccc;
+  cursor: pointer;
+}
+#datePicker {
+  position: absolute;
+  width: 250px;
+  border: 2px solid #999;
+  padding: 0.5em;
+  background: #eee;
+  font-size: 1.1rem;
+}
+#datePicker h2 {
+  font-size: 1.5rem;
+}
+#datePicker .svg {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-size: 0;
+}
+#closeDatePicker,
+#forwardOneMonth,
+#forwardOneYear {
+  float: right;
+}
+#backOneMonth,
+#backOneYear {
+  float: left;
+}
+#datePickerCalendar h2 {
+  margin-top: 0;
+}
+#datePickerCalendar td {
+  padding: 1ex 0 1ex 0;
+}
+#datePickerCalendar th {
+  padding: 0;
+}
+#datePickerCalendar tbody tr:last-child {
+  border: none;
+}
+#datePickerCalendar tbody tr:last-child td,
+#datePickerCalendar th {
+  padding-bottom: 0;
+}
+#datePickerCalendar col {
+  width: 14%;
+}
+#datePickerCalendar col:first,
+#datePickerCalendar col:last {
+  width: 15%;
+}
+#datePickerCalendar th, #datePickerCalendar td {
+  text-align: center;
+}
+#datePickerCalendar [data-date=""] {
+  padding: 0;
+}
+#keyboardShortcuts {
+  margin: 1ex 0;
+}
+#keyboardShortcuts caption {
+  text-align: left;
+}
+#keyboardShortcuts tr {
+  border: none;
+}
+#keyboardShortcuts td {
+  border: 1px solid #b5b5a8;
+  padding: .5ex .5em;
+}
+#keyboardShortcuts th {
+  padding: .5ex .5em;
+}
